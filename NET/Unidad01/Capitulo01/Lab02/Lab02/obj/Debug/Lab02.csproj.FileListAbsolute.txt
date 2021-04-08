@@ -1,7 +1,0 @@
-C:\NET\Unidad01\Capitulo01\Lab02\Lab02\obj\Debug\Lab02.csprojAssemblyReference.cache
-C:\NET\Unidad01\Capitulo01\Lab02\Lab02\obj\Debug\Lab02.csproj.CoreCompileInputs.cache
-C:\NET\Unidad01\Capitulo01\Lab02\Lab02\bin\Debug\Lab02.exe.config
-C:\NET\Unidad01\Capitulo01\Lab02\Lab02\bin\Debug\Lab02.exe
-C:\NET\Unidad01\Capitulo01\Lab02\Lab02\bin\Debug\Lab02.pdb
-C:\NET\Unidad01\Capitulo01\Lab02\Lab02\obj\Debug\Lab02.exe
-C:\NET\Unidad01\Capitulo01\Lab02\Lab02\obj\Debug\Lab02.pdb
