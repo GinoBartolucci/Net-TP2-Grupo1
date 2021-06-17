@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Entities", "Busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.Web", "UI.Web\UI.Web.csproj", "{C0AF76CD-96C1-4AF9-B2E3-5653DBB9BA76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diagrama", "Diagrama\Diagrama.csproj", "{54C24F36-4DCD-4788-8B71-DA4B7FB36844}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C0AF76CD-96C1-4AF9-B2E3-5653DBB9BA76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0AF76CD-96C1-4AF9-B2E3-5653DBB9BA76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0AF76CD-96C1-4AF9-B2E3-5653DBB9BA76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54C24F36-4DCD-4788-8B71-DA4B7FB36844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54C24F36-4DCD-4788-8B71-DA4B7FB36844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54C24F36-4DCD-4788-8B71-DA4B7FB36844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54C24F36-4DCD-4788-8B71-DA4B7FB36844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
