@@ -9,26 +9,26 @@ namespace Business.Logic
 {
     public class UsuarioLogic: BusinessLogic
     {
-        private Data.Database.UsuarioAdapter UsuarioData;
+        public Data.Database.UsuarioAdapter UsuarioData;
         public UsuarioLogic()
         {
             UsuarioData = new UsuarioAdapter();
         }
-        public void GetOne(int id)
+        public Business.Entities.Usuario GetOne(int id)
         {
-            Business.Entities.Usuario.
+            return UsuarioData.GetOne(id);
         }
         public List<Usuario> GetAll()
         {
             return UsuarioData.GetAll();
         }
-        public void Save()
+        public void Save(Business.Entities.Usuario u)
         {
-
+            UsuarioData.Save(u);
         }
-        public void Delete()
+        public void Delete(int id)
         {
-
+            UsuarioData.Delete(id);
         }
     }
 }

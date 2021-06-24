@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business.Entities
+﻿namespace Business.Entities
 {
-    public class Usuario
+    public class Usuario : BusinessEntity
     {
         private string _NombreUsuario, _Clave, _Nombre, _Apellido, _Email;
         private bool _Habilitado;
@@ -16,7 +10,7 @@ namespace Business.Entities
             get { return _NombreUsuario; }
             set { _NombreUsuario = value; }
         }
-        public string  Clave
+        public string Clave
         {
             get { return _Clave; }
             set { _Clave = value; }
@@ -27,18 +21,23 @@ namespace Business.Entities
             set { _Nombre = value; }
         }
 
-        public string  Apellido
+        public string Apellido
         {
             get { return _Apellido; }
             set { _Apellido = value; }
         }
 
-        public string  Email
+        public string EMail
         {
             get { return _Email; }
             set { _Email = value; }
         }
 
+        public bool Habilitado
+        {
+            get { return _Habilitado; }
+            set { _Habilitado = value; }
+        }
 
     }
 }
