@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL03\\TP2\\Diagrama\\Diagrama.csproj": {}
+    "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL04\\TP2\\Diagrama\\Diagrama.csproj": {}
   },
   "projects": {
-    "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL03\\TP2\\Diagrama\\Diagrama.csproj": {
+    "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL04\\TP2\\Diagrama\\Diagrama.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL03\\TP2\\Diagrama\\Diagrama.csproj",
+        "projectUniqueName": "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL04\\TP2\\Diagrama\\Diagrama.csproj",
         "projectName": "Diagrama",
-        "projectPath": "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL03\\TP2\\Diagrama\\Diagrama.csproj",
+        "projectPath": "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL04\\TP2\\Diagrama\\Diagrama.csproj",
         "packagesPath": "C:\\Users\\barto\\.nuget\\packages\\",
-        "outputPath": "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL03\\TP2\\Diagrama\\obj\\",
+        "outputPath": "J:\\Documents\\Proyectos\\TP2\\Net-TP2-Grupo1\\Labs\\TPL04\\TP2\\Diagrama\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
