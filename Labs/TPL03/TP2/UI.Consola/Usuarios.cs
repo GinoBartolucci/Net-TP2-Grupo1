@@ -15,57 +15,7 @@ namespace UI.Consola
             UsuarioNegocio = new UsuarioLogic();
         }
         private UsuarioLogic UsuarioNegocio;
-        
-        public void ListadoGeneral()
-        {
-            foreach(Usuario u in UsuarioNegocio.GetAll())
-            {
-                MostrarDatos(u);
-            }
-        }        
-        public void MostrarDatos(Usuario u)
-        {
-            Console.WriteLine("Usuario: {0}", u.ID);
-            Console.WriteLine("\tUsuario: {0}", u.Nombre);
-            Console.WriteLine("\tUsuario: {0}", u.Apellido);
-            Console.WriteLine("\tUsuario: {0}", u.NombreUsuario);
-            Console.WriteLine("\tUsuario: {0}", u.Clave);
-            Console.WriteLine("\tUsuario: {0}", u.EMail);
-            Console.WriteLine("\tUsuario: {0}", u.Habilitado);
-        }
-        public void Consultar()
-        {
-            try {
-                Console.WriteLine("Ingrese un id: ");
-                int id = int.Parse(Console.ReadLine());
-                MostrarDatos(UsuarioNegocio.GetOne(id));
 
-            }
-            catch (FormatException fe)
-            {
-                Console.WriteLine("La id ingresada debe ser un numero entero\n" + fe);
-            }catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Presione una tecla para continuar");
-                Console.ReadKey();
-            }
-        }
-        public void Agregar()
-        {
-
-        }
-        public void Modificar()
-        {
-
-        }
-        public void Eliminar()
-        {
-
-        }
         public void Menu()
         {
             int opciones()
@@ -110,5 +60,123 @@ namespace UI.Consola
                 x = opciones();
             }
         }
+        public void ListadoGeneral()
+        {
+            foreach(Usuario u in UsuarioNegocio.GetAll())
+            {
+                MostrarDatos(u);
+            }
+        }        
+        public void Consultar()
+        {
+            try
+            {
+                Console.WriteLine("Ingrese un id: ");
+                int id = int.Parse(Console.ReadLine());
+                MostrarDatos(UsuarioNegocio.GetOne(id));
+
+            }
+            catch (FormatException fe)
+            {
+                Console.WriteLine("La id ingresada debe ser un numero entero\n" + fe);
+            }catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+            }
+        }
+        public void MostrarDatos(Usuario u)
+        {
+            Console.WriteLine("Usuario: {0}", u.ID);
+            Console.WriteLine("\tUsuario: {0}", u.Nombre);
+            Console.WriteLine("\tUsuario: {0}", u.Apellido);
+            Console.WriteLine("\tUsuario: {0}", u.NombreUsuario);
+            Console.WriteLine("\tUsuario: {0}", u.Clave);
+            Console.WriteLine("\tUsuario: {0}", u.EMail);
+            Console.WriteLine("\tUsuario: {0}", u.Habilitado);
+        }
+        public void Agregar()
+        {
+            Usuario usuario = new Usuario();
+
+            Console.WriteLine("Ingrese Nombre: ");
+            usuario.Nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese Apellido: ");
+            usuario.Apellido = Console.ReadLine();
+            Console.WriteLine("Ingrese NombreUsuario: ");
+            usuario.NombreUsuario = Console.ReadLine();
+            Console.WriteLine("Ingrese Clave: ");
+            usuario.Clave = Console.ReadLine();
+            Console.WriteLine("Ingrese EMail: ");
+            usuario.EMail = Console.ReadLine();
+            Console.WriteLine("Ingrese Habilitacion de Usuario 1-Si / 2-No: ");
+            usuario.Habilitado = (Console.ReadLine() == "1");
+            usuario.State = BusinessEntity.States.New;
+            UsuarioNegocio.Save(usuario);
+            Console.WriteLine("Id: {0}", usuario.ID);
+
+        }
+        public void Modificar()
+        {
+            try 
+            { 
+                Console.WriteLine("Ingrese un id: ");
+                int id = int.Parse(Console.ReadLine());
+                Usuario usuario = UsuarioNegocio.GetOne(id);
+            
+                Console.WriteLine("Ingrese Nombre: ");
+                usuario.Nombre = Console.ReadLine();
+                Console.WriteLine("Ingrese Apellido: ");
+                usuario.Apellido = Console.ReadLine();
+                Console.WriteLine("Ingrese NombreUsuario: ");
+                usuario.NombreUsuario = Console.ReadLine();
+                Console.WriteLine("Ingrese Clave: ");
+                usuario.Clave = Console.ReadLine();
+                Console.WriteLine("Ingrese EMail: ");
+                usuario.EMail = Console.ReadLine();
+                Console.WriteLine("Ingrese Habilitacion de Usuario 1-Si / 2-No: ");
+                usuario.Habilitado = (Console.ReadLine()=="1");
+                usuario.State = BusinessEntity.States.Modified;
+                UsuarioNegocio.Save(usuario);
+            }
+            catch (FormatException fe)
+            {
+                Console.WriteLine("La id ingresada debe ser un numero entero\n" + fe);
+            }catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+            }
+        }
+        public void Eliminar()
+        {
+            try
+            { 
+                Console.WriteLine("Ingrese un id: ");
+                int id = int.Parse(Console.ReadLine());
+                UsuarioNegocio.Delete(id);
+            }
+            catch (FormatException fe)
+            {
+                Console.WriteLine("La id ingresada debe ser un numero entero\n" + fe);
+            }catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+            }
+        }
+        
     }
 }
