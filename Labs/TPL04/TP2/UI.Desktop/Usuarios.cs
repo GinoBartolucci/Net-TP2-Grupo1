@@ -17,6 +17,7 @@ namespace UI.Desktop
         public Usuarios()
         {
             InitializeComponent();
+            this.dgvUsuarios.AutoGenerateColumns = false;
         }
 
         private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
@@ -31,7 +32,17 @@ namespace UI.Desktop
         public void Listar()
         {
             UsuarioLogic ul = new UsuarioLogic();
-            this.dvgUsuarios.DataSource = ul.GetAll();
+            this.dgvUsuarios.DataSource = ul.GetAll();
+
+            id.DataPropertyName = "ID";
+            nombre.DataPropertyName = "Nombre";
+            apellido.DataPropertyName = "Apellido";
+            usuario.DataPropertyName = "Usuario";
+            email.DataPropertyName = "EMail";
+            habilitado.DataPropertyName = "Habilitado";
+            
+            
+            
         }
 
         private void Usuarios_Load(object sender, EventArgs e)
