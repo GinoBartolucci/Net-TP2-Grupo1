@@ -14,7 +14,6 @@
             set { _ID = value; }
 
         }
-
         private States _State;
         public States State
         {

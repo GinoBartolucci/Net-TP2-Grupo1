@@ -9,11 +9,12 @@ namespace Business.Logic
 {
     public class UsuarioLogic: BusinessLogic
     {
-        public Data.Database.UsuarioAdapter UsuarioData;
         public UsuarioLogic()
         {
             UsuarioData = new UsuarioAdapter();
         }
+        private Data.Database.UsuarioAdapter UsuarioData;
+        
         public Business.Entities.Usuario GetOne(int id)
         {
             return UsuarioData.GetOne(id);

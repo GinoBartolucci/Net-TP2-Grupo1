@@ -10,14 +10,14 @@ namespace UI.Consola
 {
     public class Usuarios
     {
-        public Business.Logic.UsuarioLogic UsuarioNegocio;
-
-        public Usuarios() {
+        public Usuarios()
+        {
             UsuarioNegocio = new UsuarioLogic();
         }
+        private UsuarioLogic UsuarioNegocio;
+        
         public void ListadoGeneral()
         {
-            Console.Clear();
             foreach(Usuario u in UsuarioNegocio.GetAll())
             {
                 MostrarDatos(u);
@@ -35,7 +35,24 @@ namespace UI.Consola
         }
         public void Consultar()
         {
+            try {
+                Console.WriteLine("Ingrese un id: ");
+                int id = int.Parse(Console.ReadLine());
+                MostrarDatos(UsuarioNegocio.GetOne(id));
 
+            }
+            catch (FormatException fe)
+            {
+                Console.WriteLine("La id ingresada debe ser un numero entero\n" + fe);
+            }catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+            }
         }
         public void Agregar()
         {
@@ -51,32 +68,46 @@ namespace UI.Consola
         }
         public void Menu()
         {
-            int x=0;
+            int opciones()
+            {
+                Console.Clear();
+                Console.WriteLine("1-Listado General");
+                Console.WriteLine("2-Consulta");
+                Console.WriteLine("3-Agregar");
+                Console.WriteLine("4-Modificar");
+                Console.WriteLine("5-Eliminar");
+                Console.WriteLine("6-Salir");
+                return int.Parse(Console.ReadLine());
+            }
+            int x = opciones();
             while (x != 6)
             {
                 Console.Clear();
-                Console.Write("1-Listado General" +
-                    "2-Consulta" +
-                    "3-Agregar" +
-                    "4-Modificar" +
-                    "5-Eliminar" +
-                    "6-Salir");
-                x = Console.Read();
                 switch (x)
                 {
                     case 1:
+                        ListadoGeneral();
                         break;
                     case 2:
+                        Consultar();
                         break;
                     case 3:
+                        Agregar();
                         break;
                     case 4:
+                        Modificar();
                         break;
                     case 5:
+                        Eliminar();
                         break;
                     case 6:
+                        Environment.Exit(0);
                         break;
                 }
+                Console.WriteLine("Presione una tecla para volver al menu");
+                Console.ReadKey();
+                Console.Clear();
+                x = opciones();
             }
         }
     }
