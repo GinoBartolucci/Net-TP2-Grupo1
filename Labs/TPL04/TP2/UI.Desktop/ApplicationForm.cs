@@ -38,7 +38,7 @@ namespace UI.Desktop
 
         }
 
-        public virtual void GuardarCambion()
+        public virtual void GuardarCambios()
         {
 
         }

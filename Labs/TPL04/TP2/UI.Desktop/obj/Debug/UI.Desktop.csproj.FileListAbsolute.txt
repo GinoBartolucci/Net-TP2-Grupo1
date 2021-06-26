@@ -31,3 +31,4 @@ J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\Labs\TPL04\TP2\UI.Desktop\obj\Debug\UI
 J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\Labs\TPL04\TP2\UI.Desktop\obj\Debug\UI.Desktop.exe
 J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\Labs\TPL04\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
 J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\Labs\TPL04\TP2\UI.Desktop\obj\Debug\UI.Desktop.Usuarios.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\Labs\TPL04\TP2\UI.Desktop\obj\Debug\UI.Desktop.UsuarioDesktop.resources
