@@ -15,7 +15,10 @@ namespace UI.Consola
             UsuarioNegocio = new UsuarioLogic();
         }
         private UsuarioLogic UsuarioNegocio;
-
+        public void NotificarError(Exception Ex)
+        {
+            Console.WriteLine(Ex.Message + "\nError Interno: " + Ex.InnerException.Message);
+        }
         public void Menu()
         {
             int opciones()
@@ -71,11 +74,10 @@ namespace UI.Consola
             }
             catch (Exception Ex)
             {
-                Console.WriteLine(Ex.Message +"\nError Interno: " + Ex.InnerException.Message);
-
+                NotificarError(Ex);
             }
         }
-            public void Consultar()
+        public void Consultar()
         {
             try
             {
@@ -89,7 +91,7 @@ namespace UI.Consola
                 Console.WriteLine("La id ingresada debe ser un numero entero\n" + fe);
             }catch (Exception Ex)
             {
-                Console.WriteLine(Ex.Message + "\nError Interno: " + Ex.InnerException.Message);
+                NotificarError(Ex);
             }
             finally
             {
@@ -99,13 +101,13 @@ namespace UI.Consola
         }
         public void MostrarDatos(Usuario u)
         {
-            Console.WriteLine("Usuario: {0}", u.ID);
-            Console.WriteLine("\tUsuario: {0}", u.Nombre);
-            Console.WriteLine("\tUsuario: {0}", u.Apellido);
-            Console.WriteLine("\tUsuario: {0}", u.NombreUsuario);
-            Console.WriteLine("\tUsuario: {0}", u.Clave);
-            Console.WriteLine("\tUsuario: {0}", u.EMail);
-            Console.WriteLine("\tUsuario: {0}", u.Habilitado);
+            Console.WriteLine("Id: {0}", u.ID);
+            Console.WriteLine("\tNombre: {0}", u.Nombre);
+            Console.WriteLine("\tApellido: {0}", u.Apellido);
+            Console.WriteLine("\tNombre de Usuario: {0}", u.NombreUsuario);
+            Console.WriteLine("\tClave: {0}", u.Clave);
+            Console.WriteLine("\tEmail: {0}", u.EMail);
+            Console.WriteLine("\tHabilitado: {0}", u.Habilitado);
         }
         public void Agregar()
         {
@@ -124,9 +126,14 @@ namespace UI.Consola
             Console.WriteLine("Ingrese Habilitacion de Usuario 1-Si / 2-No: ");
             usuario.Habilitado = (Console.ReadLine() == "1");
             usuario.State = BusinessEntity.States.New;
-            UsuarioNegocio.Save(usuario);
-            Console.WriteLine("Id: {0}", usuario.ID);
-
+            try
+            {
+                UsuarioNegocio.Save(usuario);
+                Console.WriteLine("Id: {0}", usuario.ID);
+            }catch(Exception Ex)
+            {
+                NotificarError(Ex);
+            }
         }
         public void Modificar()
         {
@@ -154,9 +161,9 @@ namespace UI.Consola
             catch (FormatException fe)
             {
                 Console.WriteLine("La id ingresada debe ser un numero entero\n" + fe);
-            }catch (Exception e)
+            }catch (Exception Ex)
             {
-                Console.WriteLine(e.Message);
+                NotificarError(Ex);
             }
             finally
             {
@@ -175,9 +182,9 @@ namespace UI.Consola
             catch (FormatException fe)
             {
                 Console.WriteLine("La id ingresada debe ser un numero entero\n" + fe);
-            }catch (Exception e)
+            }catch (Exception Ex)
             {
-                Console.WriteLine(e.Message);
+                NotificarError(Ex);
             }
             finally
             {

@@ -68,6 +68,7 @@ namespace Data.Database
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.Nombre = (string)drUsuarios["nombre"];
                     usr.Apellido = (string)drUsuarios["apellido"];
                     usr.EMail = (string)drUsuarios["email"];
@@ -83,7 +84,15 @@ namespace Data.Database
             {
                 CloseConnection();
             }
-            return usr;
+            if (usr.NombreUsuario != null)
+            {
+                return usr;
+            }
+            else
+            {
+                Exception Ex = new Exception(" ");
+                throw new Exception("El usuario no existe", Ex);
+            }
         }        
         public void Delete(int ID)
         {
