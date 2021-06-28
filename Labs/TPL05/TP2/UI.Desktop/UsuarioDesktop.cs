@@ -35,7 +35,14 @@ namespace UI.Desktop
         {
             Modo = modo;
             Business.Logic.UsuarioLogic ul = new Business.Logic.UsuarioLogic();
-            UsuarioActual = ul.GetOne(ID);
+            try
+            {
+                UsuarioActual = ul.GetOne(ID);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message + "\nError Interno: " + Ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             MapearDeDatos();
         }
         //Copia la informacion de los Usuarios en los controles del formulario (txtBox...etc (donde se
@@ -138,7 +145,14 @@ namespace UI.Desktop
         {
             MapearADatos();
             Business.Logic.UsuarioLogic ul = new Business.Logic.UsuarioLogic();
-            ul.Save(UsuarioActual);
+            try
+            {
+                ul.Save(UsuarioActual);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message + "\nError Interno: " + Ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void tlUsuarioDesktop_Paint(object sender, PaintEventArgs e)

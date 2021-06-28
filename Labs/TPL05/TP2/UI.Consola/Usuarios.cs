@@ -62,12 +62,20 @@ namespace UI.Consola
         }
         public void ListadoGeneral()
         {
-            foreach(Usuario u in UsuarioNegocio.GetAll())
+            try
             {
-                MostrarDatos(u);
+                foreach (Usuario u in UsuarioNegocio.GetAll())
+                {
+                    MostrarDatos(u);
+                }
             }
-        }        
-        public void Consultar()
+            catch (Exception Ex)
+            {
+                Console.WriteLine(Ex.Message +"\nError Interno: " + Ex.InnerException.Message);
+
+            }
+        }
+            public void Consultar()
         {
             try
             {
@@ -79,9 +87,9 @@ namespace UI.Consola
             catch (FormatException fe)
             {
                 Console.WriteLine("La id ingresada debe ser un numero entero\n" + fe);
-            }catch (Exception e)
+            }catch (Exception Ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(Ex.Message + "\nError Interno: " + Ex.InnerException.Message);
             }
             finally
             {

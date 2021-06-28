@@ -17,19 +17,47 @@ namespace Business.Logic
         
         public Business.Entities.Usuario GetOne(int id)
         {
-            return UsuarioData.GetOne(id);
+            try
+            {
+                return UsuarioData.GetOne(id);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }            
         }
         public List<Usuario> GetAll()
         {
-            return UsuarioData.GetAll();
+            try
+            {
+                return UsuarioData.GetAll();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
         }
         public void Save(Business.Entities.Usuario u)
         {
-            UsuarioData.Save(u);
+            try
+            {
+                UsuarioData.Save(u);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }            
         }
         public void Delete(int id)
         {
-            UsuarioData.Delete(id);
+            try
+            {
+                UsuarioData.Delete(id);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }            
         }
     }
 }

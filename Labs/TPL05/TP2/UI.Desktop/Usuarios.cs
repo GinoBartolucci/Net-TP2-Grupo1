@@ -24,12 +24,18 @@ namespace UI.Desktop
         {
 
         }
-
-        
         public void Listar()
         {
             UsuarioLogic ul = new UsuarioLogic();
-            this.dgvUsuarios.DataSource = ul.GetAll();
+            try
+            {
+                dgvUsuarios.DataSource = ul.GetAll();
+            }
+            catch(Exception Ex)
+            {
+                MessageBox.Show(Ex.Message + "\nError Interno: " + Ex.InnerException.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
             id.DataPropertyName = "ID";
             nombre.DataPropertyName = "Nombre";
