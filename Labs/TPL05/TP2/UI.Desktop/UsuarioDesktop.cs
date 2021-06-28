@@ -22,6 +22,7 @@ namespace UI.Desktop
         //Constructor para las altas
         public UsuarioDesktop(ModoForm modo):this()
         {
+            Text = modo.ToString();
             Modo = modo;
             UsuarioActual = new Business.Entities.Usuario();
         }
@@ -33,17 +34,29 @@ namespace UI.Desktop
         }
         public UsuarioDesktop(ModoForm modo, int ID) : this()
         {
-            Modo = modo;
+            Text = modo.ToString();
+            if (modo == ModoForm.Baja)
+            {
+                txtNombre.ReadOnly = true;
+                txtEMail.ReadOnly = true;
+                txtClave.ReadOnly = true;
+                txtApellido.ReadOnly = true;
+                txtUsuario.ReadOnly = true;
+                txtConfirmarClave.ReadOnly = true;
+                chkHabilitado.Enabled = false;
+            }
+            Modo = modo;;
             Business.Logic.UsuarioLogic ul = new Business.Logic.UsuarioLogic();
             try
             {
                 UsuarioActual = ul.GetOne(ID);
+                MapearDeDatos();
             }
             catch (Exception Ex)
             {
-                MessageBox.Show(Ex.Message + "\nError Interno: " + Ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw Ex;
             }
-            MapearDeDatos();
+            
         }
         //Copia la informacion de los Usuarios en los controles del formulario (txtBox...etc (donde se
         //escribe))
@@ -151,7 +164,7 @@ namespace UI.Desktop
             }
             catch (Exception Ex)
             {
-                MessageBox.Show(Ex.Message + "\nError Interno: " + Ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw Ex;
             }
         }
 

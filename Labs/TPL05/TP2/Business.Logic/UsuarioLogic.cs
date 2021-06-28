@@ -28,6 +28,8 @@ namespace Business.Logic
         }
         public List<Usuario> GetAll()
         {
+            //return UsuarioData.GetAll();
+            
             try
             {
                 return UsuarioData.GetAll();

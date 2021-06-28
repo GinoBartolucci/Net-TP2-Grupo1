@@ -19,7 +19,7 @@ namespace Data.Database
             get { return _sqlConn; }
             set { _sqlConn = value; }
         }
-
+        
 
         protected void OpenConnection()
         {

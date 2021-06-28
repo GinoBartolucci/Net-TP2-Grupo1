@@ -27,16 +27,17 @@ namespace UI.Desktop
         public void Listar()
         {
             UsuarioLogic ul = new UsuarioLogic();
+            //dgvUsuarios.DataSource = ul.GetAll();
             try
             {
                 dgvUsuarios.DataSource = ul.GetAll();
             }
             catch(Exception Ex)
             {
-                MessageBox.Show(Ex.Message + "\nError Interno: " + Ex.InnerException.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Ex.Message + "\nError Interno: ", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-
+            
             id.DataPropertyName = "ID";
             nombre.DataPropertyName = "Nombre";
             apellido.DataPropertyName = "Apellido";
@@ -67,9 +68,19 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            UsuarioDesktop ud = new UsuarioDesktop(ApplicationForm.ModoForm.Alta);
-            ud.ShowDialog();
-            Listar();
+            try
+            {
+                UsuarioDesktop ud = new UsuarioDesktop(ApplicationForm.ModoForm.Alta);
+                ud.ShowDialog();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message + "\nError Interno: " + Ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Listar();
+            }
         }
 
         private void tsbEdiar_Click(object sender, EventArgs e)
@@ -77,9 +88,18 @@ namespace UI.Desktop
             if (dgvUsuarios.SelectedRows != null)
             {
                 int id = ((Business.Entities.Usuario)dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
-                UsuarioDesktop ud = new UsuarioDesktop(ApplicationForm.ModoForm.Modificacion, id);
-                ud.ShowDialog();
-                Listar();
+                try
+                {
+                    UsuarioDesktop ud = new UsuarioDesktop(ApplicationForm.ModoForm.Modificacion, id);
+                    ud.ShowDialog();
+                }catch(Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message + "\nError Interno: " + Ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    Listar();
+                }
             }
             else if(dgvUsuarios.SelectedRows == null)
             {
@@ -89,10 +109,27 @@ namespace UI.Desktop
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            int id = ((Business.Entities.Usuario)dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
-            UsuarioDesktop ud = new UsuarioDesktop(ApplicationForm.ModoForm.Baja, id);
-            ud.ShowDialog();
-            Listar();
+            if (dgvUsuarios.SelectedRows != null)
+            {
+                int id = ((Business.Entities.Usuario)dgvUsuarios.SelectedRows[0].DataBoundItem).ID;
+                try
+                {
+                    UsuarioDesktop ud = new UsuarioDesktop(ApplicationForm.ModoForm.Baja, id);
+                    ud.ShowDialog();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message + "\nError Interno: " + Ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    Listar();
+                }
+            }
+            else if (dgvUsuarios.SelectedRows == null)
+            {
+                MessageBox.Show("Error", "Seleccione un Usuario\n para eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

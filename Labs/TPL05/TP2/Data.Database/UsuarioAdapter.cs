@@ -9,6 +9,10 @@ namespace Data.Database
 {
     public class UsuarioAdapter : Adapter
     {
+        public UsuarioAdapter()
+        {
+
+        }
         public List<Usuario> GetAll()
         {
             List<Usuario> usuarios = new List<Usuario>();
@@ -56,13 +60,13 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where id_usuario @id", sqlConn);
-                cmdUsuarios.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM usuarios WHERE id_usuario = @id_usuario", sqlConn);
+                cmdUsuarios.Parameters.Add("@id_usuario", SqlDbType.Int).Value = ID;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 while (drUsuarios.Read())
                 {
                     usr.ID = (int)drUsuarios["id_usuario"];
-                    usr.NombreUsuario = (string)drUsuarios["nombre_usuarios"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Nombre = (string)drUsuarios["nombre"];
                     usr.Apellido = (string)drUsuarios["apellido"];
@@ -86,7 +90,7 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete usuarios where id_usuarios=@id", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("delete usuarios where id_usuario = @id", sqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }
@@ -107,14 +111,13 @@ namespace Data.Database
                 Delete(usuario.ID);
             }
 
-            else if (usuario.State == BusinessEntity.States.New) {
+            else if (usuario.State == BusinessEntity.States.New) 
+            {
                 Insert(usuario);
-                
             }
             else if (usuario.State == BusinessEntity.States.Modified)
             {
                 Update(usuario); 
-                
             }
             usuario.State = BusinessEntity.States.Unmodified;
         }
@@ -124,7 +127,7 @@ namespace Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("UPDATE usuarios SET nombre_usuario = @nombre_usuario, clave = @clave, " +
-                    "habilitado = @habilitado, nombre = @nombre, apellido = @apeliido, email = @email " +
+                    "habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email " +
                     "WHERE id_usuario = @id ", sqlConn);
 
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
@@ -138,7 +141,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExceptionManejada = new Exception("Erorr al modificar datos del usuario", Ex);
+                Exception ExceptionManejada = new Exception("Error al modificar datos del usuario", Ex);
                 throw ExceptionManejada;
             }
             finally
@@ -152,11 +155,9 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("INSERT INTO usuarios ( nombre_usuario,clave,habilitado,nombre,apellido,email" +
-                    "values(@nombre_usuario, @clave, @habilitado,@nombre,@apellido,@email)" +
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO usuarios (nombre_usuario,clave,habilitado,nombre,apellido,email)" +
+                    "values(@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email)" +
                     "select @@identity ", sqlConn);
-
-                usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
 
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
@@ -165,11 +166,13 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.EMail;
 
-                cmdSave.ExecuteNonQuery();
+                usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+
+                //cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
-                Exception ExceptionManejada = new Exception("Erorr al modificar datos del usuario", Ex);
+                Exception ExceptionManejada = new Exception("Erro al crear usuario", Ex);
                 throw ExceptionManejada;
             }
             finally
