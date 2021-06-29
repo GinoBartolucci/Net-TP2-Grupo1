@@ -16,18 +16,10 @@ namespace UI.Desktop
         {
             InitializeComponent();
         }
-
-        private void btnUsuarios_Click(object sender, EventArgs e)
-        {
-            Usuarios u = new Usuarios();
-            u.ShowDialog();
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void FormMain_Load(object sender, EventArgs e)
         {
             //Aca agregar el metodo para el login (se habre apenas carga la aplicacion)
@@ -37,6 +29,26 @@ namespace UI.Desktop
             {
                 Close();
             }
+        }
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            Usuarios us = new Usuarios();
+            us.ShowDialog();
+        }
+        private void btnEspecialidades_Click(object sender, EventArgs e)
+        {
+            Especialidades es = new Especialidades();
+            es.ShowDialog();
+        }
+        private void btnModulos_Click(object sender, EventArgs e)
+        {
+            Modulos mo = new Modulos();
+            mo.ShowDialog();
+        }
+        private void btnComisiones_Click(object sender, EventArgs e)
+        {
+            Comisiones co = new Comisiones();
+            co.ShowDialog();
         }
     }
 }

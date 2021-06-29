@@ -72,3 +72,9 @@ J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug
 J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.CopyComplete
 J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.exe
 J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.EspecialidadDesktop.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especialidades.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.Comisiones.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.ComisionesDesktop.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.ModulosDesktop.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.Modulos.resources

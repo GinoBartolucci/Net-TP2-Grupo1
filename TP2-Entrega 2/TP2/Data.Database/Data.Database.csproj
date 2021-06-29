@@ -46,7 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter.cs" />
-    <Compile Include="UsuarioAdapter.cs" />
+    <Compile Include="TablesAdapters\ComisionesAdapter.cs" />
+    <Compile Include="TablesAdapters\EspecialidadesAdapter.cs" />
+    <Compile Include="TablesAdapters\ModulosAdapter.cs" />
+    <Compile Include="TablesAdapters\UsuarioAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

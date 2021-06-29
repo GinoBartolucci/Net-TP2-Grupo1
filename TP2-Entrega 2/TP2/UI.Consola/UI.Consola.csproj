@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TablesConsoles\Comisiones.cs" />
+    <Compile Include="TablesConsoles\Especialidades.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuarios.cs" />
+    <Compile Include="TablesConsoles\Modulos.cs" />
+    <Compile Include="TablesConsoles\Usuarios.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

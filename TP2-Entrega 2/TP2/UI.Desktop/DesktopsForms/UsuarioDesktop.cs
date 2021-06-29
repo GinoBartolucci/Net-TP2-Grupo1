@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 namespace UI.Desktop
 {
-    public partial class UsuarioDesktop:ApplicationForm
+    public partial class UsuarioDesktop: ApplicationForm
     {
         public UsuarioDesktop()
         {
@@ -45,8 +45,8 @@ namespace UI.Desktop
                 txtConfirmarClave.ReadOnly = true;
                 chkHabilitado.Enabled = false;
             }
-            Modo = modo;;
-            Business.Logic.UsuarioLogic ul = new Business.Logic.UsuarioLogic();
+            Modo = modo;
+            Business.Logic.UsuarioLogic ul= new Business.Logic.UsuarioLogic();
             try
             {
                 UsuarioActual = ul.GetOneId(ID);
@@ -157,7 +157,7 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            Business.Logic.UsuarioLogic ul = new Business.Logic.UsuarioLogic();
+            Business.Logic.UsuarioLogic ul= new Business.Logic.UsuarioLogic();
             try
             {
                 ul.Save(UsuarioActual);

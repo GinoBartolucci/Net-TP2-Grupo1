@@ -37,17 +37,6 @@ namespace UI.Desktop
                     {
                         DialogResult = DialogResult.OK;
                     }
-                    else if (txtUsuario.Text == "admin" && txtContraseña.Text == "admin")
-                    {
-                        DialogResult = DialogResult.OK;
-                        /*El código debe ser reemplazado 
-                        * 1)por un método que solicite a la capa de negocio  
-                        * recupere el usuario con nombre igual al 
-                        * ingresado en el txtUsuario. 
-                        * 2) Si existe invocar a un método que 
-                        * valide si su contraseña coincide  
-                        * con la ingresada entxtPass*/
-                    }
                     else if (usr.NombreUsuario != txtUsuario.Text || usr.Clave != txtContraseña.Text)
                     {
                         NotificarError("Usuario o Contraseña incorrectos");
