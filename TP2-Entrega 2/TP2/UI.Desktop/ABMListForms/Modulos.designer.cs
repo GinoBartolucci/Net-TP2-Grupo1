@@ -56,11 +56,11 @@ namespace UI.Desktop
             // tcModulos.ContentPanel
             // 
             this.tcModulos.ContentPanel.Controls.Add(this.tlModulos);
-            this.tcModulos.ContentPanel.Size = new System.Drawing.Size(981, 486);
+            this.tcModulos.ContentPanel.Size = new System.Drawing.Size(350, 323);
             this.tcModulos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcModulos.Location = new System.Drawing.Point(0, 0);
             this.tcModulos.Name = "tcModulos";
-            this.tcModulos.Size = new System.Drawing.Size(981, 511);
+            this.tcModulos.Size = new System.Drawing.Size(350, 348);
             this.tcModulos.TabIndex = 0;
             this.tcModulos.Text = "toolStripContainer1";
             // 
@@ -82,7 +82,7 @@ namespace UI.Desktop
             this.tlModulos.RowCount = 2;
             this.tlModulos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlModulos.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlModulos.Size = new System.Drawing.Size(981, 486);
+            this.tlModulos.Size = new System.Drawing.Size(350, 323);
             this.tlModulos.TabIndex = 0;
             // 
             // dgvModulos
@@ -101,7 +101,7 @@ namespace UI.Desktop
             this.dgvModulos.Name = "dgvModulos";
             this.dgvModulos.ReadOnly = true;
             this.dgvModulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvModulos.Size = new System.Drawing.Size(975, 451);
+            this.dgvModulos.Size = new System.Drawing.Size(344, 288);
             this.dgvModulos.TabIndex = 0;
             this.dgvModulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModulos_CellContentClick);
             // 
@@ -126,7 +126,7 @@ namespace UI.Desktop
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(822, 460);
+            this.btnActualizar.Location = new System.Drawing.Point(191, 297);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -136,7 +136,7 @@ namespace UI.Desktop
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(903, 460);
+            this.btnSalir.Location = new System.Drawing.Point(272, 297);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -189,7 +189,7 @@ namespace UI.Desktop
             // Modulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(981, 511);
+            this.ClientSize = new System.Drawing.Size(350, 348);
             this.Controls.Add(this.tcModulos);
             this.Name = "Modulos";
             this.Text = "Modulos";

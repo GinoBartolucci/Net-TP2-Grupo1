@@ -33,7 +33,6 @@ namespace UI.Desktop
         public void Listar()
         {
             ComisionesLogic cl= new ComisionesLogic();
-            //dgvComisiones.DataSource = ul.GetAll();
             try
             {
                 dgvComisiones.DataSource = cl.GetAll();

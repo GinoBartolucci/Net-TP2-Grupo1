@@ -19,12 +19,12 @@ namespace UI.Desktop
         {
             InitializeComponent();
         }
-        //Constructor para las altas
         public ComisionesDesktop(ModoForm modo) : this()
         {
             Text = modo.ToString();
             Modo = modo;
             ComisionActual = new Business.Entities.Comisiones();
+            ComisionActual.IdPlan = -1; // se pone en -1 para validar que se selecciono una FK
         }
         private Business.Entities.Comisiones _ComisionActual;
         public Business.Entities.Comisiones ComisionActual
@@ -39,7 +39,7 @@ namespace UI.Desktop
             {
                 txtAnio.ReadOnly = true;
                 txtDesc.ReadOnly = true;
-                txtIdPlan.ReadOnly = true;
+                btnSelectPlanes.Enabled = false;
  
             }
             Modo = modo; 
@@ -55,14 +55,13 @@ namespace UI.Desktop
             }
 
         }
-        //Copia la informacion de los Comisions en los controles del formulario (txtBox...etc (donde se
-        //escribe))
         public override void MapearDeDatos()
         {
             txtID.Text = ComisionActual.ID.ToString();
             txtAnio.Text = ComisionActual.AnioEspecialidad.ToString();
             txtDesc.Text = ComisionActual.DescComision;
-            txtIdPlan.Text = ComisionActual.IdPlan.ToString();
+            PlanesLogic pl = new PlanesLogic();
+            lbNombrePlan.Text = pl.GetOne(ComisionActual.IdPlan).desc_plan;
 
             switch (Modo)
             {
@@ -80,7 +79,6 @@ namespace UI.Desktop
                     break;
             }
         }
-        //Para pasar la informacion de los controles a una entidad
         public override void MapearADatos()
         {
             if (Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
@@ -88,16 +86,11 @@ namespace UI.Desktop
                 ComisionActual.State = BusinessEntity.States.Modified;
                 if (Modo == ModoForm.Alta)
                 {
-                    ComisionActual = new Business.Entities.Comisiones();
                     ComisionActual.State = BusinessEntity.States.New;
                 }
                 ComisionActual.AnioEspecialidad = int.Parse(txtAnio.Text);
                 ComisionActual.DescComision = txtDesc.Text;
-                ComisionActual.IdPlan =int.Parse(txtIdPlan.Text);
-               
-
-               
-
+                //ComisionActual.IdPlan se mapea en el metodo del boton seleccionar plan               
             }
             if (Modo == ModoForm.Baja)
             {
@@ -106,7 +99,7 @@ namespace UI.Desktop
         }
         public override bool Validar()
         {
-            string[] labels = { txtAnio.Text, txtDesc.Text, txtIdPlan.Text };
+            string[] labels = { txtAnio.Text, txtDesc.Text};
 
             foreach(string labelPosicionado in labels)
             {
@@ -114,43 +107,13 @@ namespace UI.Desktop
                 {
                     Notificar("Debe llenar todos los campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
-                }
-                    /* hay que crear estas tablas antes
-                    USE [tp2_net]
-                    GO
-
-                    INSERT INTO [dbo].[especialidades]
-                               ([desc_especialidad])
-                         VALUES
-                               ('especialidad especial de la bombonera')
-                    GO
-                    USE [tp2_net]
-                    GO
-
-                    INSERT INTO [dbo].[planes]
-                               ([desc_plan]
-                               ,[id_especialidad])
-                         VALUES
-                               ('comision futbolera esaa',
-                                1)
-                    GO
-                    USE [tp2_net]
-                    GO
-
-                    INSERT INTO [dbo].[comisiones]
-                               ([desc_comision]
-                               ,[anio_especialidad]
-                               ,[id_plan])
-                         VALUES
-                               ('comision futbolera esaaa',2000,2)
-                    GO
-                    */
+                }                    
             }
-            if (txtIdPlan.Text != "3")
+            if (ComisionActual.IdPlan < 0)
             {
                 /* txtIdPlan debe mostrar una lista de todos los nombres de los planes y al seleccionar uno 
                  ese seleccionado lo asigna a ComisionActual.IdPlan */
-                Notificar("La unica planficacion disponible es 3", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Notificar("Comisiones", "Debe seleccionar un Plan.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -199,16 +162,22 @@ namespace UI.Desktop
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
         
+
+        private void btnSelectPlanes_Click(object sender, EventArgs e)
+        {
+            SelectPlanes sp = new SelectPlanes();
+            DialogResult DRsp = sp.ShowDialog();
+            if (DRsp != DialogResult.Cancel)
+            {
+                ComisionActual.IdPlan = sp.idSelectPlan;
+                lbNombrePlan.Text = sp.descSelectPlan;
+            }
+            else if (DRsp == DialogResult.Cancel)
+            {
+                Notificar("Comisiones", "Debe seleccionar un Plan.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
 

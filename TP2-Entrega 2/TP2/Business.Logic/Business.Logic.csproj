@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TablesLogics\PlanesLogic.cs" />
     <Compile Include="TablesLogics\ModulosLogic.cs" />
     <Compile Include="TablesLogics\BusinessLogic.cs" />
     <Compile Include="TablesLogics\ComisionesLogic.cs" />

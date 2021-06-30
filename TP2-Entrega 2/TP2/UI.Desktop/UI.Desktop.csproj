@@ -69,10 +69,10 @@
     <Compile Include="DesktopsForms\ModulosDesktop.designer.cs">
       <DependentUpon>ModulosDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListForms\Comisiones.cs">
+    <Compile Include="ABMListForms\Comisiones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListForms\Comisiones.designer.cs">
+    <Compile Include="ABMListForms\Comisiones.designer.cs">
       <DependentUpon>Comisiones.cs</DependentUpon>
     </Compile>
     <Compile Include="DesktopsForms\EspecialidadDesktop.cs">
@@ -81,16 +81,16 @@
     <Compile Include="DesktopsForms\EspecialidadDesktop.designer.cs">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListForms\Especialidades.cs">
+    <Compile Include="ABMListForms\Especialidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListForms\Especialidades.designer.cs">
+    <Compile Include="ABMListForms\Especialidades.designer.cs">
       <DependentUpon>Especialidades.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListForms\Modulos.cs">
+    <Compile Include="ABMListForms\Modulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListForms\Modulos.designer.cs">
+    <Compile Include="ABMListForms\Modulos.designer.cs">
       <DependentUpon>Modulos.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm\FormMain.cs">
@@ -111,31 +111,55 @@
     <Compile Include="DesktopsForms\UsuarioDesktop.Designer.cs">
       <DependentUpon>UsuarioDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListForms\Usuarios.cs">
+    <Compile Include="ABMListForms\Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListForms\Usuarios.Designer.cs">
+    <Compile Include="ABMListForms\Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopsForms\PlanesDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopsForms\PlanesDesktop.designer.cs">
+      <DependentUpon>PlanesDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABMListForms\Planes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABMListForms\Planes.designer.cs">
+      <DependentUpon>Planes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectForms\SelectPlanes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForms\SelectPlanes.designer.cs">
+      <DependentUpon>SelectPlanes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectForms\SelectEspecialidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForms\SelectEspecialidades.Designer.cs">
+      <DependentUpon>SelectEspecialidades.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DesktopsForms\ComisionesDesktop.resx">
       <DependentUpon>ComisionesDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DesktopsForms\ModulosDesktop.resx">
       <DependentUpon>ModulosDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListForms\Comisiones.resx">
+    <EmbeddedResource Include="ABMListForms\Comisiones.resx">
       <DependentUpon>Comisiones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DesktopsForms\EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListForms\Especialidades.resx">
+    <EmbeddedResource Include="ABMListForms\Especialidades.resx">
       <DependentUpon>Especialidades.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListForms\Modulos.resx">
+    <EmbeddedResource Include="ABMListForms\Modulos.resx">
       <DependentUpon>Modulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FormMain.resx">
@@ -147,8 +171,17 @@
     <EmbeddedResource Include="DesktopsForms\UsuarioDesktop.resx">
       <DependentUpon>UsuarioDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListForms\Usuarios.resx">
+    <EmbeddedResource Include="ABMListForms\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopsForms\PlanesDesktop.resx">
+      <DependentUpon>PlanesDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABMListForms\Planes.resx">
+      <DependentUpon>Planes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectForms\SelectPlanes.resx">
+      <DependentUpon>SelectPlanes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -159,6 +192,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SelectForms\SelectEspecialidades.resx">
+      <DependentUpon>SelectEspecialidades.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

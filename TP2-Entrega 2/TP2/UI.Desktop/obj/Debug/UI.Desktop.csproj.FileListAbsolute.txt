@@ -78,3 +78,7 @@ J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug
 J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.ComisionesDesktop.resources
 J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.ModulosDesktop.resources
 J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.Modulos.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.SelectEspecialidades.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.Planes.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.PlanesDesktop.resources
+J:\Documents\Proyectos\TP2\Net-TP2-Grupo1\TP2-Entrega 2\TP2\UI.Desktop\obj\Debug\UI.Desktop.SelectPlanes.resources

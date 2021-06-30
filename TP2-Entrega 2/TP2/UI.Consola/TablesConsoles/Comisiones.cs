@@ -106,7 +106,7 @@ namespace UI.Consola
             Console.WriteLine("Id: {0}", u.ID);
             Console.WriteLine("\tDesripcion Comision: {0}", u.DescComision);
             Console.WriteLine("\tAnio Especialidad: {0}", u.AnioEspecialidad);
-            Console.WriteLine("\tId Plan: {0}", u.IdPlan);
+            Console.WriteLine("\tId Planes: {0}", u.IdPlan);
        
         }
         public void Agregar()
@@ -117,7 +117,7 @@ namespace UI.Consola
             comision.DescComision = Console.ReadLine();
             Console.WriteLine("Ingrese Anio especialidad: ");
             comision.AnioEspecialidad = int.Parse(Console.ReadLine());
-            Console.WriteLine("Ingrese Id Plan: ");
+            Console.WriteLine("Ingrese Id Planes: ");
             comision.IdPlan = int.Parse(Console.ReadLine());
             
             comision.State = BusinessEntity.States.New;
@@ -141,7 +141,7 @@ namespace UI.Consola
 
                 Console.WriteLine("\tDesripcion Comision: {0}", comision.DescComision);
                 Console.WriteLine("\tAnio Especialidad: {0}", comision.AnioEspecialidad);
-                Console.WriteLine("\tId Plan: {0}", comision.IdPlan);
+                Console.WriteLine("\tId Planes: {0}", comision.IdPlan);
                 ComisionNegocio.Save(comision);
             }
             catch (FormatException fe)

@@ -57,11 +57,11 @@ namespace UI.Desktop
             // tcComisiones.ContentPanel
             // 
             this.tcComisiones.ContentPanel.Controls.Add(this.tlComisiones);
-            this.tcComisiones.ContentPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcComisiones.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
             this.tcComisiones.ContentPanel.Size = new System.Drawing.Size(558, 386);
             this.tcComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcComisiones.Location = new System.Drawing.Point(0, 0);
-            this.tcComisiones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcComisiones.Margin = new System.Windows.Forms.Padding(2);
             this.tcComisiones.Name = "tcComisiones";
             this.tcComisiones.Size = new System.Drawing.Size(558, 413);
             this.tcComisiones.TabIndex = 0;
@@ -81,7 +81,7 @@ namespace UI.Desktop
             this.tlComisiones.Controls.Add(this.btnActualizar, 0, 1);
             this.tlComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlComisiones.Location = new System.Drawing.Point(0, 0);
-            this.tlComisiones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlComisiones.Margin = new System.Windows.Forms.Padding(2);
             this.tlComisiones.Name = "tlComisiones";
             this.tlComisiones.RowCount = 2;
             this.tlComisiones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -102,7 +102,7 @@ namespace UI.Desktop
             this.tlComisiones.SetColumnSpan(this.dgvComisiones, 2);
             this.dgvComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvComisiones.Location = new System.Drawing.Point(2, 2);
-            this.dgvComisiones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvComisiones.Margin = new System.Windows.Forms.Padding(2);
             this.dgvComisiones.MultiSelect = false;
             this.dgvComisiones.Name = "dgvComisiones";
             this.dgvComisiones.ReadOnly = true;
@@ -117,7 +117,7 @@ namespace UI.Desktop
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalir.Location = new System.Drawing.Point(481, 361);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -129,7 +129,7 @@ namespace UI.Desktop
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizar.Location = new System.Drawing.Point(402, 361);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -201,7 +201,7 @@ namespace UI.Desktop
             // 
             // anioEspecialidad
             // 
-            this.anioEspecialidad.HeaderText = "AnioEspecialidad";
+            this.anioEspecialidad.HeaderText = "Año Especialidad";
             this.anioEspecialidad.MinimumWidth = 6;
             this.anioEspecialidad.Name = "anioEspecialidad";
             this.anioEspecialidad.ReadOnly = true;
@@ -209,7 +209,7 @@ namespace UI.Desktop
             // 
             // idplan
             // 
-            this.idplan.HeaderText = "Plan";
+            this.idplan.HeaderText = "ID Plan";
             this.idplan.MinimumWidth = 6;
             this.idplan.Name = "idplan";
             this.idplan.ReadOnly = true;
@@ -221,7 +221,7 @@ namespace UI.Desktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 413);
             this.Controls.Add(this.tcComisiones);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Comisiones";
             this.Text = "Comisiones";
             this.Load += new System.EventHandler(this.Comisiones_Load);
