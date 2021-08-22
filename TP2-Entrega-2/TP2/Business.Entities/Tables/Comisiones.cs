@@ -30,7 +30,10 @@ namespace Business.Entities
             get { return _DescComision; }
             set { _DescComision = value; }
         }
-
+        
+        public void Prueba ()
+        { 
+        }
 
 
     }
