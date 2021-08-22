@@ -44,6 +44,7 @@
     <Compile Include="BusinessEntity.cs" />
     <Compile Include="Tables\Docentes_Cursos.cs" />
     <Compile Include="Tables\Mateir.cs" />
+    <Compile Include="Tables\Personas.cs" />
     <Compile Include="Tables\Planes.cs" />
     <Compile Include="Tables\Comisiones.cs" />
     <Compile Include="Tables\Especialidades.cs" />
