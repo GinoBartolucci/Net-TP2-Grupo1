@@ -24,7 +24,7 @@ namespace UI.Desktop
             {
                 msError = msError + "\nInner exception: " + Error.InnerException.Message;
             }
-            msError = msError + "\nStack trace: " + Error.StackTrace;
+            msError = msError + "\nStack trace:  " + Error.StackTrace;
             MessageBox.Show(msError, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         public void Listar()
