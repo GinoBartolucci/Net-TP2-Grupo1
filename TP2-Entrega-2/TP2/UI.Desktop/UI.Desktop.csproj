@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABMListForms\InscripcionesAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABMListForms\InscripcionesAlumnos.designer.cs">
+      <DependentUpon>InscripcionesAlumnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="App.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -86,6 +92,12 @@
     </Compile>
     <Compile Include="ABMListForms\Modulos.designer.cs">
       <DependentUpon>Modulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesktopsForms\InscripcionesAlumnosDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopsForms\InscripcionesAlumnosDesktop.designer.cs">
+      <DependentUpon>InscripcionesAlumnosDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm\FormMain.cs">
       <SubType>Form</SubType>
@@ -137,6 +149,9 @@
     <Compile Include="SelectForms\SelectEspecialidades.Designer.cs">
       <DependentUpon>SelectEspecialidades.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ABMListForms\InscripcionesAlumnos.resx">
+      <DependentUpon>InscripcionesAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DesktopsForms\ComisionesDesktop.resx">
       <DependentUpon>ComisionesDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABMListForms\Modulos.resx">
       <DependentUpon>Modulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopsForms\InscripcionesAlumnosDesktop.resx">
+      <DependentUpon>InscripcionesAlumnosDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
