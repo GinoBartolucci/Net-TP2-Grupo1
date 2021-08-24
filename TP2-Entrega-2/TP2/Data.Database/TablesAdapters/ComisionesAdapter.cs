@@ -167,7 +167,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExceptionManejada = new Exception("Erro al crear comision", Ex);
+                Exception ExceptionManejada = new Exception("Error al crear comision", Ex);
                 throw ExceptionManejada;
             }
             finally

@@ -42,8 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessEntity.cs" />
+    <Compile Include="Tables\Curso.cs" />
     <Compile Include="Tables\Docentes_Cursos.cs" />
+    <Compile Include="Tables\InscripcionesAlumnos.cs" />
     <Compile Include="Tables\Mateir.cs" />
+    <Compile Include="Tables\Materia.cs" />
     <Compile Include="Tables\Personas.cs" />
     <Compile Include="Tables\Planes.cs" />
     <Compile Include="Tables\Comisiones.cs" />

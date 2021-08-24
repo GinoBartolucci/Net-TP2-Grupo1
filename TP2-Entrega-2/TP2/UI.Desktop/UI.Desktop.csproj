@@ -63,12 +63,6 @@
     <Compile Include="DesktopsForms\ComisionesDesktop.designer.cs">
       <DependentUpon>ComisionesDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesktopsForms\ModulosDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DesktopsForms\ModulosDesktop.designer.cs">
-      <DependentUpon>ModulosDesktop.cs</DependentUpon>
-    </Compile>
     <Compile Include="ABMListForms\Comisiones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,9 +139,6 @@
     </Compile>
     <EmbeddedResource Include="DesktopsForms\ComisionesDesktop.resx">
       <DependentUpon>ComisionesDesktop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DesktopsForms\ModulosDesktop.resx">
-      <DependentUpon>ModulosDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABMListForms\Comisiones.resx">
       <DependentUpon>Comisiones.cs</DependentUpon>
