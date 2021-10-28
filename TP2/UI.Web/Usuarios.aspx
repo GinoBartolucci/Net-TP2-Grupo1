@@ -1,0 +1,82 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="UI.Web.Usuarios" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+
+            <asp:Panel ID ="gridPanel" runat ="server"> 
+            <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false"
+                SelectedRowStyle-BackColor="Black"
+                DataKeynames ="ID"
+                >
+                <SelectedRowStyle BackColor="Black" ForeColor="White" />
+
+                <Columns>
+                    <asp:BoundField HeaderText ="Nombre" DataField ="Nombre" />
+                    <asp:BoundField HeaderText ="Apellido" DataField ="Apellido" />
+                    <asp:BoundField HeaderText ="Email" DataField ="Email" />
+                    <asp:BoundField HeaderText ="Usuario" DataField ="NombreUsuario" />
+                    <asp:BoundField HeaderText ="Habilitado" DataField ="Habilitado" />
+                    <asp:CommandField HeaderText ="Seleccionar" ShowSelectButton ="True" />
+
+                </Columns>
+            </asp:GridView>
+            </asp:Panel>
+
+
+            <asp:Panel ID="Panel1" runat="server" Visible ="false">
+                <asp:Label ID="nombreLabel" runat="server" Text="Nombre"></asp:Label>
+                <asp:TextBox ID="nombreTextBox" runat="server"></asp:TextBox>
+                <br />
+
+                  <asp:Label ID="apellidoLabel" runat="server" Text="Apellido"></asp:Label>
+                <asp:TextBox ID="apellidoTextBox" runat="server"></asp:TextBox>
+                <br />
+
+                  <asp:Label ID="emailLabel" runat="server" Text="Email"></asp:Label>
+                <asp:TextBox ID="emailTextBox" runat="server"></asp:TextBox>
+                <br />
+
+                  <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado: "></asp:Label>
+                  <asp:CheckBox ID="habilitadoCheckBox" runat="server" />
+                <br />
+
+
+                  <asp:Label ID="nombreUsuarioLabel" runat="server" Text="Usuario: "></asp:Label>
+                <asp:TextBox ID="nombreUsuarioTextBox" runat="server"></asp:TextBox>
+                <br />
+
+                  <asp:Label ID="claveLabel" runat="server" Text="Clave"></asp:Label>
+                <asp:TextBox ID="ClaveTextBox" runat="server" TextMode="Password"></asp:TextBox>
+                <br />
+
+                
+                  <asp:Label ID="repetirClaveLabel" runat="server" Text="Repetir Clave"></asp:Label>
+                <asp:TextBox ID="repetirClaveTextBox" runat="server" TextMode="Password"></asp:TextBox>
+                <br />
+
+                     <asp:Panel ID="formActionsPanel" runat="server">
+                        <asp:Button ID="aceptarLinkButton" runat="server" Text="Aceptar" />
+                        <asp:Button ID="cancelarLinkButton" runat="server" Text="Cancelar" />
+              
+
+                    </asp:Panel>
+            </asp:Panel>
+
+            <asp:Panel ID="gridActionsPanel" runat="server">
+                <asp:Button ID="editarLinkButton" runat="server" Text="Editar" />
+                <asp:Button ID="eliminarLinkButton" runat="server" Text="Eliminar" />
+                <asp:Button ID="nuevoLinkButton" runat="server" Text="Nuevo" />
+
+            </asp:Panel>
+        </div>
+    </form>
+</body>
+</html>
