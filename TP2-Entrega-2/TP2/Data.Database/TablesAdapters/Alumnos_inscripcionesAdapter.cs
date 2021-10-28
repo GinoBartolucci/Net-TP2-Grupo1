@@ -10,9 +10,9 @@ using System.Data.SqlClient;
 
 namespace Data.Database.TablesAdapters
 {
-    public class InscripcionesAlumnosAdapter : Adapter
+    public class Alumnos_inscripcionesAdapter : Adapter
     {
-        public InscripcionesAlumnosAdapter()
+        public Alumnos_inscripcionesAdapter()
         {
       //      SELECT TOP(1000) [id_inscripcion]
       //,[id_alumno]
@@ -21,9 +21,9 @@ namespace Data.Database.TablesAdapters
       //,[nota]
       //      FROM[tp2_net].[dbo].[alumnos_inscripciones]
         }
-        public List<InscripcionesAlumnos> GetAll()
+        public List<Alumnos_inscripciones> GetAll()
         {
-            List<InscripcionesAlumnos> inscrip = new List<InscripcionesAlumnos>();
+            List<Alumnos_inscripciones> inscrip = new List<Alumnos_inscripciones>();
             try
             {
                 OpenConnection();
@@ -34,7 +34,7 @@ namespace Data.Database.TablesAdapters
 
                 while (drInscrip.Read())
                 {
-                    InscripcionesAlumnos inscrAl = new InscripcionesAlumnos();
+                    Alumnos_inscripciones inscrAl = new Alumnos_inscripciones();
 
                     inscrAl.ID = (int)drInscrip["id_inscripcion"];
                     inscrAl.IdAlumno = (int)drInscrip["id_alumno"];
@@ -61,9 +61,9 @@ namespace Data.Database.TablesAdapters
             return inscrip;
 
         }
-        public InscripcionesAlumnos GetOne(int ID)
+        public Alumnos_inscripciones GetOne(int ID)
         {
-            InscripcionesAlumnos inscripciones = new InscripcionesAlumnos();
+            Alumnos_inscripciones inscripciones = new Alumnos_inscripciones();
             try
             {
                 OpenConnection();
@@ -102,7 +102,7 @@ namespace Data.Database.TablesAdapters
         }
         //Suponiendo que el nombre de inscripcion es unico
  
-        public void Save(InscripcionesAlumnos inscripcion)
+        public void Save(Alumnos_inscripciones inscripcion)
         {
             if (inscripcion.State == BusinessEntity.States.Deleted)
             {
@@ -138,7 +138,7 @@ namespace Data.Database.TablesAdapters
                 CloseConnection();
             }
         }
-        protected void Update(InscripcionesAlumnos inscripcion)
+        protected void Update(Alumnos_inscripciones inscripcion)
         {
             try
             {
@@ -166,7 +166,7 @@ namespace Data.Database.TablesAdapters
             }
 
         }
-        protected void Insert(InscripcionesAlumnos inscripcion)
+        protected void Insert(Alumnos_inscripciones inscripcion)
         {
             try
             {

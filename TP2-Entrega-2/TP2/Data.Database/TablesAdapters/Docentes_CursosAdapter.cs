@@ -7,15 +7,15 @@ using System.Data.SqlClient;
 
 namespace Data.Database
 {
-    public class Docentes_CursosAdapter : Adapter
+    public class Docentes_cursosAdapter : Adapter
     {
-        public Docentes_CursosAdapter()
+        public Docentes_cursosAdapter()
         {
 
         }
-        public List<Docentes_Cursos> GetAll()
+        public List<Docentes_cursos> GetAll()
         {
-            List<Docentes_Cursos> docentes_cursos = new List<Docentes_Cursos>();
+            List<Docentes_cursos> docentes_cursos = new List<Docentes_cursos>();
             try
             {
                 OpenConnection();
@@ -26,7 +26,7 @@ namespace Data.Database
 
                 while (drDocentes_Cursos.Read())
                 {
-                    Docentes_Cursos dc = new Docentes_Cursos();
+                    Docentes_cursos dc = new Docentes_cursos();
 
                     dc.id_dictado = (int)drDocentes_Cursos["id_dictado"];
                     dc.id_curso = (int)drDocentes_Cursos["id_curso"];
@@ -40,7 +40,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Docentes_Cursos.", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Docentes_cursos.", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -51,9 +51,9 @@ namespace Data.Database
             return docentes_cursos;
 
         }
-        public Business.Entities.Docentes_Cursos GetOneId(int id_dictado)
+        public Business.Entities.Docentes_cursos GetOneId(int id_dictado)
         {
-            Docentes_Cursos dc = new Docentes_Cursos();
+            Docentes_cursos dc = new Docentes_cursos();
             try
             {
                 OpenConnection();
@@ -88,9 +88,9 @@ namespace Data.Database
             }
         }
   
-        public Business.Entities.Docentes_Cursos GetOneDictado(int id_dictado)
+        public Business.Entities.Docentes_cursos GetOneDictado(int id_dictado)
         {
-            Docentes_Cursos dc = new Docentes_Cursos();
+            Docentes_cursos dc = new Docentes_cursos();
             try
             {
                 OpenConnection();
@@ -108,7 +108,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos de Docentes_Cursos", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de Docentes_cursos", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -124,7 +124,7 @@ namespace Data.Database
                 throw new Exception("El curso no existe para ese docente");
             }
         }
-        public void Save(Docentes_Cursos docentes_cursos)
+        public void Save(Docentes_cursos docentes_cursos)
         {
             if (docentes_cursos.State == BusinessEntity.States.Deleted)
             {
@@ -160,7 +160,7 @@ namespace Data.Database
                 CloseConnection();
             }
         }
-        protected void Update(Docentes_Cursos docentes_cursos)
+        protected void Update(Docentes_cursos docentes_cursos)
         {
             try
             {
@@ -186,7 +186,7 @@ namespace Data.Database
             }
 
         }
-        protected void Insert(Docentes_Cursos docentes_cursos)
+        protected void Insert(Docentes_cursos docentes_cursos)
         {
             try
             {

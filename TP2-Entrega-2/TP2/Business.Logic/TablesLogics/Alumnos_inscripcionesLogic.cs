@@ -10,25 +10,25 @@ using Data.Database.TablesAdapters;
 
 namespace Business.Logic.TablesLogics
 {
-    public class InscripcionesAlumnosLogic : BusinessLogic
+    public class Alumnos_inscripcionesLogic : BusinessLogic
     {
-        public InscripcionesAlumnosLogic()
+        public Alumnos_inscripcionesLogic()
         {
-            InscripcionData = new InscripcionesAlumnosAdapter();
+            InscripcionData = new Alumnos_inscripcionesAdapter();
         }
-        InscripcionesAlumnosAdapter InscripcionData;
+        Alumnos_inscripcionesAdapter InscripcionData;
 
-        public InscripcionesAlumnos GetOne(int id)
+        public Alumnos_inscripciones GetOne(int id)
         {
             return InscripcionData.GetOne(id);
         }
 
-        public List<InscripcionesAlumnos> GetAll()
+        public List<Alumnos_inscripciones> GetAll()
         {
             return InscripcionData.GetAll();
         }
 
-        public void Save(InscripcionesAlumnos p)
+        public void Save(Alumnos_inscripciones p)
         {
             InscripcionData.Save(p);
         }

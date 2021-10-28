@@ -59,7 +59,7 @@ namespace Data.Database.TablesAdapters
             return personas;
 
         }
-        public Personas GetOneId(int ID)
+        public Personas GetOne(int ID)
         {
             Personas per = new Personas();
             try

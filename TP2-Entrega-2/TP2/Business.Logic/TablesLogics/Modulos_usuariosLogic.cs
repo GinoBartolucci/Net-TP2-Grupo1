@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Entities;
-using Data.Database;
+using Data.Database.TablesAdapters;
 namespace Business.Logic
 {
-    public class ModuloUsuarioLogic : BusinessLogic
+    public class Modulos_usuariosLogic : BusinessLogic
     {
-        public ModuloUsuarioLogic()
+        public Modulos_usuariosLogic()
         {
-            ModuloUsuarioData = new ModuloUsuarioAdapter();
+            ModuloUsuarioData = new Modulos_usuariosAdapter();
         }
-        private Data.Database.ModuloUsuarioAdapter ModuloUsuarioData;
+        private Modulos_usuariosAdapter ModuloUsuarioData;
 
-        public Business.Entities.ModuloUsuario GetOne(int id)
+        public Business.Entities.Modulos_usuarios GetOne(int id)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace Business.Logic
                 throw Ex;
             }
         }
-        public List<ModuloUsuario> GetAll()
+        public List<Modulos_usuarios> GetAll()
         {
             //return UsuarioData.GetAll();
 
@@ -39,7 +39,7 @@ namespace Business.Logic
                 throw Ex;
             }
         }
-        public void Save(Business.Entities.ModuloUsuario mu)
+        public void Save(Business.Entities.Modulos_usuarios mu)
         {
             try
             {

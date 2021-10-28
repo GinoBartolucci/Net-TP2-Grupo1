@@ -33,7 +33,7 @@ namespace UI.Desktop.ABMListForms
         }
         public void Listar()
         {
-            InscripcionesAlumnosLogic IA = new InscripcionesAlumnosLogic();
+            Alumnos_inscripcionesLogic IA = new Alumnos_inscripcionesLogic();
 
             try
             {
@@ -83,7 +83,7 @@ namespace UI.Desktop.ABMListForms
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID;
-            string textoID = ((Business.Entities.Tables.InscripcionesAlumnos)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString();
+            string textoID = ((Business.Entities.Tables.Alumnos_inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString();
 
             ID = int.Parse(textoID);
             InscripcionesAlumnosDesktop v1 = new InscripcionesAlumnosDesktop(ApplicationForm.ModoForm.Modificacion,ID);
@@ -94,7 +94,7 @@ namespace UI.Desktop.ABMListForms
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID;
-            string textoID = ((Business.Entities.Tables.InscripcionesAlumnos)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString() ;
+            string textoID = ((Business.Entities.Tables.Alumnos_inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString() ;
 
             ID = int.Parse(textoID);
 

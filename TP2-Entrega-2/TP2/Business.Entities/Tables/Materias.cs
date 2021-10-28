@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities.Tables
 {
-    public class Materia:BusinessEntity
+    public class Materias:BusinessEntity
     {
         private int _HorasSemanales, _HorasTotales, _IdPlan;
         private string _DescMateria;

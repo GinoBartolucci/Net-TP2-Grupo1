@@ -9,25 +9,25 @@ using Data.Database.TablesAdapters;
 using Data.Database;
 namespace Business.Logic.TablesLogics
 {
-   public class MateriaLogic
+   public class MateriasLogic
     {
-        public MateriaLogic()
+        public MateriasLogic()
         {
             MateriaData = new MateriasAdapter();
         }
         private MateriasAdapter MateriaData;
 
-        public Materia GetOne(int id)
+        public Materias GetOne(int id)
         {
             return MateriaData.GetOne(id);
         }
 
-        public List<Materia> GetAll()
+        public List<Materias> GetAll()
         {
             return MateriaData.GetAll();
         }
 
-        public void Save(Materia p)
+        public void Save(Materias p)
         {
             MateriaData.Save(p);
         }

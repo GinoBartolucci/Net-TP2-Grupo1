@@ -1,6 +1,6 @@
 ﻿namespace Business.Entities
 {
-    public class Docentes_Cursos : BusinessEntity
+    public class Docentes_cursos : BusinessEntity
     {
         private int _id_dictado, _id_curso, _id_docente, _cargo;
 

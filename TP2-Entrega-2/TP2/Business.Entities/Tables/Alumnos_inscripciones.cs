@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities.Tables
 {
-    public class InscripcionesAlumnos: BusinessEntity
+    public class Alumnos_inscripciones: BusinessEntity
     {
         private int _IdAlumno, _IdCurso, _Nota;
         private string _Condicion ;

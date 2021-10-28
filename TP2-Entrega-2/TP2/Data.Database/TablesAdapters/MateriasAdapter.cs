@@ -15,9 +15,9 @@ namespace Data.Database.TablesAdapters
     {
 
 
-        public List<Materia> GetAll()
+        public List<Materias> GetAll()
         {
-            List<Materia> materia = new List<Materia>();
+            List<Materias> materia = new List<Materias>();
 
             try
             {
@@ -28,7 +28,7 @@ namespace Data.Database.TablesAdapters
 
                 while (drMaterias.Read())
                 {
-                    Materia mat = new Materia();
+                    Materias mat = new Materias();
 
                     mat.ID = (int)drMaterias["id_materia"];
                     mat.DescMateria = (string)drMaterias["desc_materia"];
@@ -56,9 +56,9 @@ namespace Data.Database.TablesAdapters
 
             return materia;
         }
-        public Materia GetOne(int ID)
+        public Materias GetOne(int ID)
         {
-            Materia mat = new Materia();
+            Materias mat = new Materias();
             try
             {
                 OpenConnection();
@@ -114,7 +114,7 @@ namespace Data.Database.TablesAdapters
             }
         }
 
-        public void Save(Materia materia)
+        public void Save(Materias materia)
         {
             if (materia.State == BusinessEntity.States.Deleted)
             {
@@ -132,7 +132,7 @@ namespace Data.Database.TablesAdapters
             materia.State = BusinessEntity.States.Unmodified;
         }
 
-        protected void Update(Materia materia)
+        protected void Update(Materias materia)
         {
             try
             {
@@ -160,7 +160,7 @@ namespace Data.Database.TablesAdapters
 
         }
 
-        protected void Insert(Materia materia)
+        protected void Insert(Materias materia)
         {
             try
             {
