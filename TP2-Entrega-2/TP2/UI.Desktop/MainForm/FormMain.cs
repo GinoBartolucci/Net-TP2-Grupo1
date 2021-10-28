@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Desktop.ABMListForms;
 
 namespace UI.Desktop
 {
@@ -54,6 +55,12 @@ namespace UI.Desktop
         {
             Planes pl = new Planes();
             pl.ShowDialog();
+        }
+
+        private void btnInscripcionesAlumnos_Click(object sender, EventArgs e)
+        {
+            InscripcionesAlumnos ia1 = new InscripcionesAlumnos();
+            ia1.ShowDialog();
         }
     }
 }

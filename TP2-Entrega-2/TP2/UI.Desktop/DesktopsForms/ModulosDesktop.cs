@@ -22,11 +22,11 @@ namespace UI.Desktop
         {
             Text = modo.ToString();
             Modo = modo;
-            ModulosActual = new Business.Entities.Modulo();
+            ModulosActual = new Business.Entities.Modulos();
         }
 
-        private Business.Entities.Modulo _ModulosActual;
-        public Business.Entities.Modulo ModulosActual
+        private Business.Entities.Modulos _ModulosActual;
+        public Business.Entities.Modulos ModulosActual
         {
             get { return _ModulosActual; }
             set { _ModulosActual = value; }
@@ -47,8 +47,8 @@ namespace UI.Desktop
         public override void MapearDeDatos()
         {
             txtID.Text = ModulosActual.ID.ToString();
-            txtDescripcion.Text = ModulosActual.Descripcion;
-            txtEjecuta.Text = ModulosActual.Ejecuta;            
+            txtDescripcion.Text = ModulosActual.desc_modulo;
+            txtEjecuta.Text = ModulosActual.desc_modulo;            
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -72,11 +72,11 @@ namespace UI.Desktop
                 ModulosActual.State = Business.Entities.BusinessEntity.States.Modified;
                 if (Modo == ModoForm.Alta)
                 {
-                    ModulosActual = new Business.Entities.Modulo();
+                    ModulosActual = new Business.Entities.Modulos();
                     ModulosActual.State = Business.Entities.BusinessEntity.States.New;
                 }
-                ModulosActual.Descripcion = txtDescripcion.Text;
-                ModulosActual.Ejecuta = txtEjecuta.Text;
+                ModulosActual.desc_modulo = txtDescripcion.Text;
+                ModulosActual.ejecuta = txtEjecuta.Text;
             }
             if (Modo == ModoForm.Baja)
             {

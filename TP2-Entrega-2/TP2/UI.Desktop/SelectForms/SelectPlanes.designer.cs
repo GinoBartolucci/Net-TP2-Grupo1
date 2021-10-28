@@ -36,6 +36,7 @@ namespace UI.Desktop
             this.id_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desc_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tlEspecialidadesLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectPlanes)).BeginInit();
             this.SuspendLayout();
@@ -143,5 +144,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn id_plan;
         private System.Windows.Forms.DataGridViewTextBoxColumn desc_plan;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_especialidad;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

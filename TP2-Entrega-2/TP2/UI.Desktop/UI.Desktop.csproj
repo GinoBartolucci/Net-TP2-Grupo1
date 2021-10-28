@@ -99,6 +99,12 @@
     <Compile Include="DesktopsForms\InscripcionesAlumnosDesktop.designer.cs">
       <DependentUpon>InscripcionesAlumnosDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="DesktopsForms\ModulosDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopsForms\ModulosDesktop.designer.cs">
+      <DependentUpon>ModulosDesktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,18 @@
     </Compile>
     <Compile Include="ABMListForms\Planes.designer.cs">
       <DependentUpon>Planes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectForms\SelectAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForms\SelectAlumno.Designer.cs">
+      <DependentUpon>SelectAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectForms\SelectCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForms\SelectCurso.Designer.cs">
+      <DependentUpon>SelectCurso.cs</DependentUpon>
     </Compile>
     <Compile Include="SelectForms\SelectPlanes.cs">
       <SubType>Form</SubType>
@@ -171,6 +189,9 @@
     <EmbeddedResource Include="DesktopsForms\InscripcionesAlumnosDesktop.resx">
       <DependentUpon>InscripcionesAlumnosDesktop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DesktopsForms\ModulosDesktop.resx">
+      <DependentUpon>ModulosDesktop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +209,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABMListForms\Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectForms\SelectAlumno.resx">
+      <DependentUpon>SelectAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectForms\SelectCurso.resx">
+      <DependentUpon>SelectCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectForms\SelectPlanes.resx">
       <DependentUpon>SelectPlanes.cs</DependentUpon>

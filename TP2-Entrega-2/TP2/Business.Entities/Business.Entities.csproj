@@ -45,13 +45,11 @@
     <Compile Include="Tables\Curso.cs" />
     <Compile Include="Tables\Docentes_Cursos.cs" />
     <Compile Include="Tables\InscripcionesAlumnos.cs" />
-    <Compile Include="Tables\Mateir.cs" />
     <Compile Include="Tables\Materia.cs" />
     <Compile Include="Tables\Personas.cs" />
     <Compile Include="Tables\Planes.cs" />
     <Compile Include="Tables\Comisiones.cs" />
     <Compile Include="Tables\Especialidades.cs" />
-    <Compile Include="Tables\Modulo.cs" />
     <Compile Include="ModuloUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\Modulos.cs" />

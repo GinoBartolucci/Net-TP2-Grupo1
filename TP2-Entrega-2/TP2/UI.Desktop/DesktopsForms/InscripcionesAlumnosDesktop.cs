@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Entities.Tables;
 using Business.Entities;
-using Business.Logic.TablesLogics;
 using Business.Logic;
+using Business.Logic.TablesLogics;
+using UI.Desktop;
 using UI.Desktop.SelectForms;
 
 namespace UI.Desktop.DesktopsForms
@@ -159,6 +160,14 @@ namespace UI.Desktop.DesktopsForms
 
         private void btnIdAlumno_Click(object sender, EventArgs e)
         {
+            SelectAlumno SA = new SelectAlumno();
+            DialogResult DRidAlumno = SA.ShowDialog();
+
+            if(DRidAlumno != DialogResult.Cancel)
+            {
+                btnIdAlumno.Text = SA.id_alumno.ToString();
+                InscripcionActual.ID = SA.id_alumno;
+            }
 
         }
 
@@ -169,8 +178,8 @@ namespace UI.Desktop.DesktopsForms
 
             if(DRIdCurso != DialogResult.Cancel)
             {
-                btnIdCurso.Text = SC.IdSelectCurso.ToString();
-                InscripcionActual.IdCurso = SC.IdSelectCurso;
+                btnIdCurso.Text = SC.Id_Curso.ToString();
+                InscripcionActual.IdCurso = SC.Id_Curso;
             }
            
         }

@@ -69,8 +69,8 @@ namespace UI.Desktop
         {
             try
             {
-                ModulosDesktop ud = new ModulosDesktop(ApplicationForm.ModoForm.Alta);
-                ud.ShowDialog();
+               ModulosDesktop ud = new ModulosDesktop(ApplicationForm.ModoForm.Alta);
+               ud.ShowDialog();
             }
             catch (Exception Error)
             {
@@ -89,8 +89,8 @@ namespace UI.Desktop
                 int id = ((Business.Entities.Modulos)dgvModulos.SelectedRows[0].DataBoundItem).ID;
                 try
                 {
-                    ModulosDesktop ud = new ModulosDesktop(ApplicationForm.ModoForm.Modificacion, id);
-                    ud.ShowDialog();
+                  ModulosDesktop ud = new ModulosDesktop(ApplicationForm.ModoForm.Modificacion, id);
+                  ud.ShowDialog();
                 }
                 catch (Exception Error)
                 {
@@ -114,8 +114,8 @@ namespace UI.Desktop
                 int id = ((Business.Entities.Modulos)dgvModulos.SelectedRows[0].DataBoundItem).ID;
                 try
                 {
-                    ModulosDesktop md = new ModulosDesktop(ApplicationForm.ModoForm.Baja, id);
-                    md.ShowDialog();
+                  ModulosDesktop md = new ModulosDesktop(ApplicationForm.ModoForm.Baja, id);
+                  md.ShowDialog();
                 }
                 catch (Exception Error)
                 {

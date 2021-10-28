@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 using Business.Entities;
 using Data.Database;
 namespace Business.Logic
-{
+{/**
     public class ModuloUsuarioLogic : BusinessLogic
     {
         public ModuloUsuarioLogic()
         {
-            ModuloUsuarioData = new ModuloUsuarioAdapter();
+            ModuloUsuarioData = new UsuarioAdapter();
         }
-        private Data.Database.ModuloUsuarioAdapter ModuloUsuarioData;
+        private Data.Database.UsuarioAdapter ModuloUsuarioData;
 
         public Business.Entities.ModuloUsuario GetOne(int id)
         {
             try
             {
-                return ModuloUsuarioData.GetOne(id);
+                return ModuloUsuarioData.GetOneId(id);
             }
             catch (Exception Ex)
             {
@@ -61,5 +61,5 @@ namespace Business.Logic
                 throw Ex;
             }
         }
-    }
+    }**/
 }

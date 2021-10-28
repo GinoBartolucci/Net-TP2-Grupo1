@@ -33,11 +33,12 @@ namespace UI.Desktop
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnComisiones = new System.Windows.Forms.Button();
-            this.btnModulos = new System.Windows.Forms.Button();
-            this.btnEspecialidades = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnEspecialidades = new System.Windows.Forms.Button();
+            this.btnModulos = new System.Windows.Forms.Button();
+            this.btnComisiones = new System.Windows.Forms.Button();
             this.btnPlanes = new System.Windows.Forms.Button();
+            this.btnInscripcionesAlumnos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +73,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.btnModulos, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnComisiones, 7, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnPlanes, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnInscripcionesAlumnos, 3, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -85,29 +87,17 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Size = new System.Drawing.Size(595, 422);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // btnComisiones
+            // btnSalir
             // 
-            this.btnComisiones.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnComisiones.Location = new System.Drawing.Point(460, 130);
-            this.btnComisiones.Name = "btnComisiones";
-            this.btnComisiones.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnComisiones.Size = new System.Drawing.Size(82, 33);
-            this.btnComisiones.TabIndex = 4;
-            this.btnComisiones.Text = "Comisiones";
-            this.btnComisiones.UseVisualStyleBackColor = true;
-            this.btnComisiones.Click += new System.EventHandler(this.btnComisiones_Click);
-            // 
-            // btnModulos
-            // 
-            this.btnModulos.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnModulos.Location = new System.Drawing.Point(322, 130);
-            this.btnModulos.Name = "btnModulos";
-            this.btnModulos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnModulos.Size = new System.Drawing.Size(82, 33);
-            this.btnModulos.TabIndex = 3;
-            this.btnModulos.Text = "Modulos";
-            this.btnModulos.UseVisualStyleBackColor = true;
-            this.btnModulos.Click += new System.EventHandler(this.btnModulos_Click);
+            this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.btnSalir, 2);
+            this.btnSalir.Location = new System.Drawing.Point(517, 396);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 1;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnEspecialidades
             // 
@@ -121,17 +111,29 @@ namespace UI.Desktop
             this.btnEspecialidades.UseVisualStyleBackColor = true;
             this.btnEspecialidades.Click += new System.EventHandler(this.btnEspecialidades_Click);
             // 
-            // btnSalir
+            // btnModulos
             // 
-            this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.btnSalir, 2);
-            this.btnSalir.Location = new System.Drawing.Point(517, 396);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 1;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnModulos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnModulos.Location = new System.Drawing.Point(322, 130);
+            this.btnModulos.Name = "btnModulos";
+            this.btnModulos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnModulos.Size = new System.Drawing.Size(82, 33);
+            this.btnModulos.TabIndex = 3;
+            this.btnModulos.Text = "Modulos";
+            this.btnModulos.UseVisualStyleBackColor = true;
+            this.btnModulos.Click += new System.EventHandler(this.btnModulos_Click);
+            // 
+            // btnComisiones
+            // 
+            this.btnComisiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnComisiones.Location = new System.Drawing.Point(460, 130);
+            this.btnComisiones.Name = "btnComisiones";
+            this.btnComisiones.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnComisiones.Size = new System.Drawing.Size(82, 33);
+            this.btnComisiones.TabIndex = 4;
+            this.btnComisiones.Text = "Comisiones";
+            this.btnComisiones.UseVisualStyleBackColor = true;
+            this.btnComisiones.Click += new System.EventHandler(this.btnComisiones_Click);
             // 
             // btnPlanes
             // 
@@ -144,6 +146,16 @@ namespace UI.Desktop
             this.btnPlanes.Text = "Planes";
             this.btnPlanes.UseVisualStyleBackColor = true;
             this.btnPlanes.Click += new System.EventHandler(this.btnPlanes_Click);
+            // 
+            // btnInscripcionesAlumnos
+            // 
+            this.btnInscripcionesAlumnos.Location = new System.Drawing.Point(178, 218);
+            this.btnInscripcionesAlumnos.Name = "btnInscripcionesAlumnos";
+            this.btnInscripcionesAlumnos.Size = new System.Drawing.Size(91, 33);
+            this.btnInscripcionesAlumnos.TabIndex = 6;
+            this.btnInscripcionesAlumnos.Text = "Inscripciones Alumnos";
+            this.btnInscripcionesAlumnos.UseVisualStyleBackColor = true;
+            this.btnInscripcionesAlumnos.Click += new System.EventHandler(this.btnInscripcionesAlumnos_Click);
             // 
             // FormMain
             // 
@@ -170,5 +182,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnModulos;
         private System.Windows.Forms.Button btnComisiones;
         private System.Windows.Forms.Button btnPlanes;
+        private System.Windows.Forms.Button btnInscripcionesAlumnos;
     }
 }

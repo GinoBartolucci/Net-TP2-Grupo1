@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Business.Entities.Tables;
 using Data.Database.TablesAdapters;
 
-namespace Business.Logic
+namespace Business.Logic.TablesLogics
 {
-    class PersonasLogic : BusinessLogic
+    public class PersonasLogic : BusinessLogic
     {
         private PersonasAdapter PersonasData;
 
@@ -17,7 +17,7 @@ namespace Business.Logic
         }
         public Business.Entities.Tables.Personas GetOne(int id)
         {
-            return PersonasData.GetOne(id);
+            return PersonasData.GetOneId(id);
         }
         public List<Personas> GetAll()
         {
