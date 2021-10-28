@@ -26,7 +26,7 @@ namespace UI.Desktop.DesktopsForms
         {
             Text = modo.ToString();
             Modo = modo;
-            InscripcionActual = new InscripcionesAlumnos();
+            InscripcionActual = new Alumnos_inscripciones();
 
         }
 
@@ -43,14 +43,14 @@ namespace UI.Desktop.DesktopsForms
                 txtID.Enabled = false;
             }
             Modo = modo;
-            Business.Logic.TablesLogics.InscripcionesAlumnosLogic ul = new InscripcionesAlumnosLogic();
+            Business.Logic.TablesLogics.Alumnos_inscripcionesLogic ul = new Alumnos_inscripcionesLogic();
             InscripcionActual = ul.GetOne(ID);
             MapearDeDatos();
         }
 
-        private InscripcionesAlumnos _InscripcionActual;
+        private Alumnos_inscripciones _InscripcionActual;
 
-        public InscripcionesAlumnos InscripcionActual
+        public Alumnos_inscripciones InscripcionActual
         {
             get { return _InscripcionActual;  }
             set { _InscripcionActual = value; }
@@ -87,7 +87,7 @@ namespace UI.Desktop.DesktopsForms
                 InscripcionActual.State = BusinessEntity.States.Modified;
                 if(Modo == ModoForm.Alta)
                 {
-                    InscripcionActual = new Business.Entities.Tables.InscripcionesAlumnos();
+                    InscripcionActual = new Business.Entities.Tables.Alumnos_inscripciones();
                     InscripcionActual.State = BusinessEntity.States.New;
                 }
 
@@ -108,7 +108,7 @@ namespace UI.Desktop.DesktopsForms
         public override void GuardarCambios()
         {
             MapearADatos();
-            InscripcionesAlumnosLogic InscripcionLogic = new InscripcionesAlumnosLogic();
+            Alumnos_inscripcionesLogic InscripcionLogic = new Alumnos_inscripcionesLogic();
             InscripcionLogic.Save(InscripcionActual);
 
         }
