@@ -168,6 +168,9 @@ namespace Data.Database
                     "values(@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email)" +
                     "select @@identity ", sqlConn);
 
+
+ 
+
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
@@ -177,7 +180,7 @@ namespace Data.Database
 
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
 
-                //cmdSave.ExecuteNonQuery();
+ 
             }
             catch (Exception Ex)
             {
