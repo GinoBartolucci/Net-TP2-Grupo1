@@ -1,7 +1,7 @@
 ﻿
 namespace UI.Desktop.ABMListForms
 {
-    partial class Alumnos_inscripciones
+    partial class InscripcionesAlumnos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace UI.Desktop.ABMListForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Alumnos_inscripciones));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InscripcionesAlumnos));
             this.tcInscripcionesAlumnos = new System.Windows.Forms.ToolStripContainer();
             this.tlInscripcionesAlumnos = new System.Windows.Forms.TableLayoutPanel();
             this.dvgInscripcionesAlumnos = new System.Windows.Forms.DataGridView();
@@ -204,13 +204,13 @@ namespace UI.Desktop.ABMListForms
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
-            // Alumnos_inscripciones
+            // InscripcionesAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tcInscripcionesAlumnos);
-            this.Name = "Alumnos_inscripciones";
+            this.Name = "InscripcionesAlumnos";
             this.Text = "Inscripciones Alumnos Lista";
             this.Load += new System.EventHandler(this.InscripcionesAlumnos_Load);
             this.tcInscripcionesAlumnos.ContentPanel.ResumeLayout(false);

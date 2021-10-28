@@ -15,9 +15,9 @@ using UI.Desktop.DesktopsForms;
 
 namespace UI.Desktop.ABMListForms
 {
-    public partial class Alumnos_inscripciones : Form
+    public partial class InscripcionesAlumnos : Form
     {
-        public Alumnos_inscripciones()
+        public InscripcionesAlumnos()
         {
             InitializeComponent();
         }
