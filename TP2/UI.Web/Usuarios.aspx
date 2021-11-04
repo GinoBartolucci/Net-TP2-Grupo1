@@ -11,13 +11,14 @@
         <div>
 
 
-            <asp:Panel ID ="gridPanel" runat ="server"> 
+            <asp:Panel ID ="gridPanel" runat ="server" > 
             <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false"
                 SelectedRowStyle-BackColor="Black"
-                DataKeynames ="ID"
-                >
+                SelectedRowStyle-ForeColor="White"
+                DataKeynames ="ID" >
+ 
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />
-
+                
                 <Columns>
                     <asp:BoundField HeaderText ="Nombre" DataField ="Nombre" />
                     <asp:BoundField HeaderText ="Apellido" DataField ="Apellido" />
@@ -31,7 +32,7 @@
             </asp:Panel>
 
 
-            <asp:Panel ID="Panel1" runat="server" Visible ="false">
+            <asp:Panel ID="formPanel" runat="server" Visible ="false">
                 <asp:Label ID="nombreLabel" runat="server" Text="Nombre"></asp:Label>
                 <asp:TextBox ID="nombreTextBox" runat="server"></asp:TextBox>
                 <br />
@@ -63,7 +64,7 @@
                 <br />
 
                      <asp:Panel ID="formActionsPanel" runat="server">
-                        <asp:Button ID="aceptarLinkButton" runat="server" Text="Aceptar" />
+                        <asp:Button ID="aceptarLinkButton" runat="server" Text="Aceptar" OnClick="aceptarLinkButton_Click" />
                         <asp:Button ID="cancelarLinkButton" runat="server" Text="Cancelar" />
               
 
@@ -71,9 +72,9 @@
             </asp:Panel>
 
             <asp:Panel ID="gridActionsPanel" runat="server">
-                <asp:Button ID="editarLinkButton" runat="server" Text="Editar" />
-                <asp:Button ID="eliminarLinkButton" runat="server" Text="Eliminar" />
-                <asp:Button ID="nuevoLinkButton" runat="server" Text="Nuevo" />
+                <asp:Button ID="editarLinkButton" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
+                <asp:Button ID="eliminarLinkButton" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click" />
+                <asp:Button ID="nuevoLinkButton" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
             </asp:Panel>
         </div>
