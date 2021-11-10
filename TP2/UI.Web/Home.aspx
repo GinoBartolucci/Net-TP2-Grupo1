@@ -1,17 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="UI.Web.Home" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" MasterPageFile="~/Site.Master" Inherits="UI.Web.Home"  %>
 
-<!DOCTYPE html>
+ <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 
+    <br />
+    <div>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-</body>
-</html>
-
+    <asp:Label ID ="cartelBienvenida" runat="server" Text ="¡Bienvenido!"></asp:Label>
+  
+    </div>
+ 
+</asp:Content>

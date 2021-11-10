@@ -11,61 +11,70 @@ namespace UI.Web
 {
 
 
-    public partial class Site
+    public partial class Login
     {
 
         /// <summary>
-        /// head control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// form control.
+        /// usuarioLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form;
+        protected global::System.Web.UI.WebControls.Label usuarioLabel;
 
         /// <summary>
-        /// Menu control.
+        /// usuarioTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu;
+        protected global::System.Web.UI.WebControls.TextBox usuarioTextBox;
 
         /// <summary>
-        /// SiteMapDataSource control.
+        /// contraseniaLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource;
+        protected global::System.Web.UI.WebControls.Label contraseniaLabel;
 
         /// <summary>
-        /// bodyContentPlaceHolder control.
+        /// contraseniaTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder bodyContentPlaceHolder;
+        protected global::System.Web.UI.WebControls.TextBox contraseniaTextBox;
 
         /// <summary>
-        /// footerText control.
+        /// ingresarButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label footerText;
+        protected global::System.Web.UI.WebControls.Button ingresarButton;
+
+        /// <summary>
+        /// cartelErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label cartelErrorLabel;
     }
 }

@@ -11,8 +11,17 @@ namespace UI.Web
 {
 
 
-    public partial class Usuarios
+    public partial class Comisiones
     {
+
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
         /// gridPanel control.
@@ -42,229 +51,112 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Panel formPanel;
 
         /// <summary>
-        /// nombreLabel control.
+        /// descripcionLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreLabel;
+        protected global::System.Web.UI.WebControls.Label descripcionLabel;
 
         /// <summary>
-        /// nombreTextBox control.
+        /// descripcionTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombreTextBox;
+        protected global::System.Web.UI.WebControls.TextBox descripcionTextBox;
 
         /// <summary>
-        /// nombreValidacion control.
+        /// descripcionValidacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreValidacion;
+        protected global::System.Web.UI.WebControls.Label descripcionValidacion;
 
         /// <summary>
-        /// apellidoLabel control.
+        /// anioEspecialidadLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label apellidoLabel;
+        protected global::System.Web.UI.WebControls.Label anioEspecialidadLabel;
 
         /// <summary>
-        /// apellidoTextBox control.
+        /// anioEspecialidadTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox apellidoTextBox;
+        protected global::System.Web.UI.WebControls.TextBox anioEspecialidadTextBox;
 
         /// <summary>
-        /// apellidoValidacion control.
+        /// anioEspecialidadValidacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label apellidoValidacion;
+        protected global::System.Web.UI.WebControls.Label anioEspecialidadValidacion;
 
         /// <summary>
-        /// emailLabel control.
+        /// idPlanLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label emailLabel;
+        protected global::System.Web.UI.WebControls.Label idPlanLabel;
 
         /// <summary>
-        /// emailTextBox control.
+        /// idPlanTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox emailTextBox;
+        protected global::System.Web.UI.WebControls.TextBox idPlanTextBox;
 
         /// <summary>
-        /// emailValidacion control.
+        /// idPlanValidacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label emailValidacion;
+        protected global::System.Web.UI.WebControls.Label idPlanValidacion;
 
         /// <summary>
-        /// habilitadoLabel control.
+        /// validacionDescripcionCartel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label habilitadoLabel;
+        protected global::System.Web.UI.WebControls.Label validacionDescripcionCartel;
 
         /// <summary>
-        /// habilitadoCheckBox control.
+        /// validacionAnioEspecialidadCartel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox habilitadoCheckBox;
+        protected global::System.Web.UI.WebControls.Label validacionAnioEspecialidadCartel;
 
         /// <summary>
-        /// nombreUsuarioLabel control.
+        /// validacionIdPlanCartel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreUsuarioLabel;
-
-        /// <summary>
-        /// nombreUsuarioTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombreUsuarioTextBox;
-
-        /// <summary>
-        /// nombreUsuarioValidacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreUsuarioValidacion;
-
-        /// <summary>
-        /// claveLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label claveLabel;
-
-        /// <summary>
-        /// ClaveTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ClaveTextBox;
-
-        /// <summary>
-        /// claveValidacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label claveValidacion;
-
-        /// <summary>
-        /// repetirClaveLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label repetirClaveLabel;
-
-        /// <summary>
-        /// repetirClaveTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox repetirClaveTextBox;
-
-        /// <summary>
-        /// RepetirClaveValidacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label RepetirClaveValidacion;
-
-        /// <summary>
-        /// validacionNombreCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionNombreCartel;
-
-        /// <summary>
-        /// validacionApellidoCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionApellidoCartel;
-
-        /// <summary>
-        /// validacionEmailCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionEmailCartel;
-
-        /// <summary>
-        /// validacionNombreUsuarioCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionNombreUsuarioCartel;
-
-        /// <summary>
-        /// validacionClaveCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionClaveCartel;
+        protected global::System.Web.UI.WebControls.Label validacionIdPlanCartel;
 
         /// <summary>
         /// formActionsPanel control.

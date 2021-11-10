@@ -4,6 +4,7 @@
     {
         private string _NombreUsuario, _Clave, _Nombre, _Apellido, _Email;
         private bool _Habilitado;
+        private int _IdPersonas;
 
         public string NombreUsuario
         {
@@ -37,6 +38,12 @@
         {
             get { return _Habilitado; }
             set { _Habilitado = value; }
+        }
+        
+        public int IdPersonas
+        {
+            get { return _IdPersonas; }
+            set { _IdPersonas = value; }
         }
 
     }

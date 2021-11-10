@@ -10,13 +10,34 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="bodyFrom" runat="server">
-        <asp:Menu runat ="server" ID ="menu" DataSourceID ="SiteMapDataSource"></asp:Menu>
-       <asp:SiteMapDataSource ID ="SiteMapDataSource" runat ="server" />  
+    <form id="form" runat="server">
+        <header>
+    <asp:Menu ID="Menu" runat ="server" Orientation="Horizontal">
+        <Items>
+            <asp:MenuItem Text="Tablas" Value="Tablas">
+                <asp:MenuItem Text="Usuarios" Value="Usuarios"  NavigateUrl="~/Usuarios.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Comisiones" Value="Comisiones" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
+                 <asp:MenuItem Text="Especialidades" Value="Especialidades" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
+            </asp:MenuItem>
+
+            <asp:MenuItem Text="Reporte" Value="Reporte"></asp:MenuItem>
+        </Items>
+           
+</asp:Menu>
+     </header>
+       
+        
+        <asp:SiteMapDataSource ID ="SiteMapDataSource" runat ="server" />   
         <div>
             <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
+
             </asp:ContentPlaceHolder>
         </div>
     </form>
+
+    <footer>
+    <asp:Label ID="footerText" runat="server" Text="Informacion integrantes"></asp:Label>
+    </footer>
+
 </body>
 </html>

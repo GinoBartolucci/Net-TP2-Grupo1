@@ -20,9 +20,22 @@ namespace Business.Logic
             return UsuarioData.GetOneId(id);                     
         }
         public Business.Entities.Usuario GetOneUsuario(string nombreUsuario)
-        {            
-            return UsuarioData.GetOneUsuaio(nombreUsuario);           
+        {
+
+            try
+            {
+                return UsuarioData.GetOneUsuaio(nombreUsuario);
+
+            }
+            catch (Exception error)
+            {
+                throw error;
+                
+            }
+                  
         }
+
+
         public List<Usuario> GetAll()
         {            
             return UsuarioData.GetAll();            
