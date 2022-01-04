@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Business.Entities.Tables;
 using Business.Entities;
 using Business.Logic.TablesLogics;
 using Business.Logic;
@@ -87,7 +86,7 @@ namespace UI.Desktop.DesktopsForms
                 InscripcionActual.State = BusinessEntity.States.Modified;
                 if(Modo == ModoForm.Alta)
                 {
-                    InscripcionActual = new Business.Entities.Tables.Alumnos_inscripciones();
+                    InscripcionActual = new Business.Entities.Alumnos_inscripciones();
                     InscripcionActual.State = BusinessEntity.States.New;
                 }
 

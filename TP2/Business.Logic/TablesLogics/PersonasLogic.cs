@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Business.Entities.Tables;
+using Business.Entities;
 using Data.Database.TablesAdapters;
 
 namespace Business.Logic
@@ -15,7 +15,7 @@ namespace Business.Logic
         public PersonasLogic(){
             PersonasData = new PersonasAdapter();
         }
-        public Business.Entities.Tables.Personas GetOne(int id)
+        public Business.Entities.Personas GetOne(int id)
         {
             return PersonasData.GetOne(id);
         }

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
-using Business.Entities.Tables;
 using Business.Logic.TablesLogics;
 using UI.Desktop.DesktopsForms;
 
@@ -20,6 +19,7 @@ namespace UI.Desktop.ABMListForms
         public InscripcionesAlumnos()
         {
             InitializeComponent();
+            this.dvgInscripcionesAlumnos.AutoGenerateColumns = false;
         }
         public void NotificarError(Exception Error)
         {
@@ -83,7 +83,7 @@ namespace UI.Desktop.ABMListForms
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             int ID;
-            string textoID = ((Business.Entities.Tables.Alumnos_inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString();
+            string textoID = ((Business.Entities.Alumnos_inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString();
 
             ID = int.Parse(textoID);
             InscripcionesAlumnosDesktop v1 = new InscripcionesAlumnosDesktop(ApplicationForm.ModoForm.Modificacion,ID);
@@ -94,7 +94,7 @@ namespace UI.Desktop.ABMListForms
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             int ID;
-            string textoID = ((Business.Entities.Tables.Alumnos_inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString() ;
+            string textoID = ((Business.Entities.Alumnos_inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString() ;
 
             ID = int.Parse(textoID);
 
