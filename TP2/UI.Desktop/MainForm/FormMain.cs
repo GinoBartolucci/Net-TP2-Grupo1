@@ -25,7 +25,7 @@ namespace UI.Desktop
         {
             Login lg = new Login();
             DialogResult loginRes = lg.ShowDialog();
-            if(loginRes != DialogResult.OK)
+            if(loginRes != DialogResult.OK) //Si no logeo correctamente cierra el form
             {
                 Close();
             }

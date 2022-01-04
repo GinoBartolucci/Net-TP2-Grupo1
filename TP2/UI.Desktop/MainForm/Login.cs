@@ -32,6 +32,7 @@ namespace UI.Desktop
         {            
             MessageBox.Show(Error, "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        public int tipoPersona { get; set; }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             Business.Logic.UsuarioLogic ul = new UsuarioLogic();

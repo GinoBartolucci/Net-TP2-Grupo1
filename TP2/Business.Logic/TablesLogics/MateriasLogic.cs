@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Entities;
-using Business.Entities.Tables;
 using Data.Database.TablesAdapters;
 using Data.Database;
 namespace Business.Logic.TablesLogics

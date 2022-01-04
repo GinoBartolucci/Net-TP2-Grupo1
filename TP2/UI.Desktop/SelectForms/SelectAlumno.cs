@@ -31,7 +31,7 @@ namespace UI.Desktop.SelectForms
         {
             if (dgvSelectAlumno.SelectedRows != null)
             {
-                id_alumno = ((Business.Entities.Tables.Personas)dgvSelectAlumno.SelectedRows[0].DataBoundItem).ID;
+                id_alumno = ((Business.Entities.Personas)dgvSelectAlumno.SelectedRows[0].DataBoundItem).ID;
                 DialogResult = DialogResult.OK;
                 Close();
 
