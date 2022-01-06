@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Desktop.ABMListForms;
+using Business.Entities;
+
 
 namespace UI.Desktop
 {
@@ -23,12 +25,44 @@ namespace UI.Desktop
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
-            Login lg = new Login();
-            DialogResult loginRes = lg.ShowDialog();
-            if(loginRes != DialogResult.OK) //Si no logeo correctamente cierra el form
+            Login lg = new Login();   
+            if(lg.ShowDialog() != DialogResult.OK) //Si no logeo correctamente cierra el form
             {
                 Close();
             }
+            else
+            {
+                switch (Session.currentUser.TipoPersona)
+                {
+                    case 1:
+                        AdminDisplay();
+                        break;
+                    case 2:
+                        DocentesDisplay();
+                        break;
+                    case 3:
+                        AlumnosDisplay();
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+        }
+        private void AlumnosDisplay()
+        {
+            lblNombre.Text = "Alumno: "+ Session.currentUser.NombreCompleto;
+            lblPlan.Text = Session.currentUser.DescPlan;
+            lblEspecialidad.Text = Session.currentUser.DescEspecialidad;
+            //muestra u oculta para alumnos
+        }
+        private void DocentesDisplay()
+        {
+            //muestra u oculta para docentes
+        }
+        private void AdminDisplay()
+        {
+            //muestra u oculta para admins
         }
         private void btnUsuarios_Click(object sender, EventArgs e)
         {

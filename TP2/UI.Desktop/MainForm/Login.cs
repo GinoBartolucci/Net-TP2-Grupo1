@@ -35,26 +35,37 @@ namespace UI.Desktop
         public int tipoPersona { get; set; }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Business.Logic.UsuarioLogic ul = new UsuarioLogic();
-            Business.Entities.Usuario usr = new Usuario();
             try
             {
-                usr = ul.GetOneUsuario(txtUsuario.Text);
-                if (usr.Habilitado)
                 {
-                    if (usr.NombreUsuario == txtUsuario.Text && usr.Clave == txtContraseña.Text)
+                    if (txtUsuario.Text != "" && txtContraseña.Text != "")
                     {
-                        DialogResult = DialogResult.OK;
+                        Business.Entities.Usuario usr = Business.Logic.UsuarioLogic.GetInstance().LoginUsuario(txtUsuario.Text, txtContraseña.Text);
+                        if (usr != null)
+                        {
+                            if (usr.Habilitado != false)
+                            {
+                                DialogResult = DialogResult.OK;
+                                Business.Entities.Session.currentUser = usr;
+
+                            }
+                            else
+                            {
+                                NotificarError("Usuario no Habilitado");
+                            }
+
+                        }
+                        else
+                        {
+                            NotificarError("Usuario o Contraseña incorrectos");
+                        }
                     }
-                    else if (usr.NombreUsuario != txtUsuario.Text || usr.Clave != txtContraseña.Text)
+                    else
                     {
-                        NotificarError("Usuario o Contraseña incorrectos");
+                        NotificarError("Llene todos los campos");
                     }
                 }
-                else
-                {
-                    NotificarError("Usuario no Habilitado");
-                }
+                
             }
             catch(Exception Error)
             {
