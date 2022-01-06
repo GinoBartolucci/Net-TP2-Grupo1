@@ -53,7 +53,7 @@ namespace UI.Desktop
         {
             txtID.Text = UsuarioActual.ID.ToString();
             txtNombre.Text = UsuarioActual.Nombre;
-            txtEMail.Text = UsuarioActual.EMail;
+            txtEMail.Text = UsuarioActual.Email;
             txtClave.Text = UsuarioActual.Clave;
             txtApellido.Text = UsuarioActual.Apellido;
             txtUsuario.Text = UsuarioActual.NombreUsuario;
@@ -87,7 +87,7 @@ namespace UI.Desktop
                     UsuarioActual.State = Business.Entities.BusinessEntity.States.New;
                 }
                 UsuarioActual.Nombre = txtNombre.Text;
-                UsuarioActual.EMail = txtEMail.Text;
+                UsuarioActual.Email = txtEMail.Text;
                 UsuarioActual.Clave = txtClave.Text;
                 UsuarioActual.Apellido = txtApellido.Text;
                 UsuarioActual.NombreUsuario = txtUsuario.Text;

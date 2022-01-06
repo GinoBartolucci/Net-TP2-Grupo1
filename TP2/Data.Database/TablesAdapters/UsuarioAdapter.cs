@@ -20,7 +20,10 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios" +
+                    "inner join personas per on usr.id_persona = per.id_persona " +
+                    "inner join planes pl on pl.id_plan = per.id_plan" +
+                    "inner join  especialidades es on es.id_especialidad = pl.id_especialidad", sqlConn);
 
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
 
@@ -34,7 +37,35 @@ namespace Data.Database
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.Nombre = (string)drUsuarios["nombre"];
                     usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.EMail = (string)drUsuarios["email"];
+                    usr.Email = (string)drUsuarios["email"];
+
+                    usr.IdPersona = (int)drUsuarios["id_persona"];
+                    usr.Legajo = (int)drUsuarios["legajo"];
+                    usr.Direccion = (string)drUsuarios["direccion"];
+                    usr.Telefono = (string)drUsuarios["telefono"];
+                    usr.FechaNac = (DateTime)drUsuarios["fecha_nac"];
+                    usr.TipoPersona = (int)drUsuarios["tipo_persona"];
+
+                    usr.IdPlan = (int)drUsuarios["id_plan"];
+                    usr.DescPlan = (string)drUsuarios["desc_plan"];
+                    usr.IdEspecialidad = (int)drUsuarios["id_especialidad"];
+
+                    usr.DescEspecialidad = (string)drUsuarios["desc_especialidad"];
+
+                    switch (usr.TipoPersona)
+                    {
+                        case 1:
+                            usr.DescTipoPersona = "Administrativo";
+                            break;
+                        case 2:
+                            usr.DescTipoPersona = "Docente";
+                            break;
+                        case 3:
+                            usr.DescTipoPersona = "Alumnno";
+                            break;
+                        default:
+                            break;
+                    }
 
                     usuarios.Add(usr);
                 }
@@ -60,7 +91,11 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM usuarios WHERE id_usuario = @id_usuario", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios" +
+                    "inner join personas per on usr.id_persona = per.id_persona " +
+                    "inner join planes pl on pl.id_plan = per.id_plan" +
+                    "inner join  especialidades es on es.id_especialidad = pl.id_especialidad" +
+                    "where  id_usuario = @id_usuario", sqlConn);
                 cmdUsuarios.Parameters.Add("@id_usuario", SqlDbType.Int).Value = ID;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 while (drUsuarios.Read())
@@ -71,7 +106,35 @@ namespace Data.Database
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.Nombre = (string)drUsuarios["nombre"];
                     usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.EMail = (string)drUsuarios["email"];
+                    usr.Email = (string)drUsuarios["email"];
+
+                    usr.IdPersona = (int)drUsuarios["id_persona"];
+                    usr.Legajo = (int)drUsuarios["legajo"];
+                    usr.Direccion = (string)drUsuarios["direccion"];
+                    usr.Telefono = (string)drUsuarios["telefono"];
+                    usr.FechaNac = (DateTime)drUsuarios["fecha_nac"];
+                    usr.TipoPersona = (int)drUsuarios["tipo_persona"];
+
+                    usr.IdPlan = (int)drUsuarios["id_plan"];
+                    usr.DescPlan = (string)drUsuarios["desc_plan"];
+                    usr.IdEspecialidad = (int)drUsuarios["id_especialidad"];
+
+                    usr.DescEspecialidad = (string)drUsuarios["desc_especialidad"];
+
+                    switch (usr.TipoPersona)
+                    {
+                        case 1:
+                            usr.DescTipoPersona = "Administrativo";
+                            break;
+                        case 2:
+                            usr.DescTipoPersona = "Docente";
+                            break;
+                        case 3:
+                            usr.DescTipoPersona = "Alumnno";
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 drUsuarios.Close();
             }
@@ -93,15 +156,19 @@ namespace Data.Database
                 throw new Exception("El usuario no existe");
             }
         }
-        //Suponiendo que el nombre de usuario es unico
-        public Business.Entities.Usuario GetOneUsuaio(string nombreUsuario)
+        public Business.Entities.Usuario LoginUsuario(string nombreUsuario, string clave)
         {
             Usuario usr = new Usuario();
             try
             {
                 OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM usuarios WHERE nombre_usuario = @nombre_usuario", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios usr " +
+                    "inner join personas per on usr.id_persona = per.id_persona " +
+                    "inner join planes pl on pl.id_plan = per.id_plan " +
+                    "inner join especialidades es on es.id_especialidad = pl.id_especialidad " +
+                    "WHERE nombre_usuario = @nombre_usuario and clave = @clave", sqlConn);
                 cmdUsuarios.Parameters.Add("@nombre_usuario", SqlDbType.VarChar).Value = nombreUsuario;
+                cmdUsuarios.Parameters.Add("@clave", SqlDbType.VarChar).Value = clave;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 while (drUsuarios.Read())
                 {
@@ -111,7 +178,35 @@ namespace Data.Database
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.Nombre = (string)drUsuarios["nombre"];
                     usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.EMail = (string)drUsuarios["email"];
+                    usr.Email = (string)drUsuarios["email"];
+
+                    usr.IdPersona = (int)drUsuarios["id_persona"];
+                    usr.Legajo = (int)drUsuarios["legajo"];
+                    usr.Direccion = (string)drUsuarios["direccion"];
+                    usr.Telefono = (string)drUsuarios["telefono"];
+                    usr.FechaNac = (DateTime)drUsuarios["fecha_nac"];
+                    usr.TipoPersona = (int)drUsuarios["tipo_persona"];
+
+                    usr.IdPlan = (int)drUsuarios["id_plan"];
+                    usr.DescPlan = (string)drUsuarios["desc_plan"];
+                    usr.IdEspecialidad = (int)drUsuarios["id_especialidad"];
+
+                    usr.DescEspecialidad = (string)drUsuarios["desc_especialidad"];
+
+                    switch (usr.TipoPersona)
+                    {
+                        case 1:
+                            usr.DescTipoPersona = "Administrativo";
+                            break;
+                        case 2:
+                            usr.DescTipoPersona = "Docente";
+                            break;
+                        case 3:
+                            usr.DescTipoPersona = "Alumnno";
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 drUsuarios.Close();
             }
@@ -119,6 +214,7 @@ namespace Data.Database
             {
                 Exception ExcepcionManejada = new Exception("Error al recuperar datos de usuario", Ex);
                 throw ExcepcionManejada;
+                
             }
             finally
             {
@@ -128,10 +224,8 @@ namespace Data.Database
             {
                 return usr;
             }
-            else
-            {
-                throw new Exception("El usuario no existe");
-            }
+            else return null;
+                        
         }
         public void Save(Usuario usuario)
         {
@@ -184,7 +278,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
-                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.EMail;
+                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -212,7 +306,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
-                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.EMail;
+                cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
 
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
 

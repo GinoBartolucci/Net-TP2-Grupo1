@@ -9,19 +9,32 @@ namespace Business.Logic
 {
     public class UsuarioLogic: BusinessLogic
     {
+        private Data.Database.UsuarioAdapter UsuarioData;
+        private static UsuarioLogic singleton;
+        public static UsuarioLogic GetInstance()
+        {
+
+            if (singleton == null)
+            {
+                singleton = new UsuarioLogic();
+            }
+
+            return singleton;
+
+        }
         public UsuarioLogic()
         {
             UsuarioData = new UsuarioAdapter();
         }
-        private Data.Database.UsuarioAdapter UsuarioData;
+        
         
         public Business.Entities.Usuario GetOneId(int id)
         {            
             return UsuarioData.GetOneId(id);                     
         }
-        public Business.Entities.Usuario GetOneUsuario(string nombreUsuario)
+        public Business.Entities.Usuario LoginUsuario(string nombreUsuario, string clave)
         {            
-            return UsuarioData.GetOneUsuaio(nombreUsuario);           
+            return UsuarioData.LoginUsuario(nombreUsuario, clave);           
         }
         public List<Usuario> GetAll()
         {            
