@@ -11,34 +11,25 @@ namespace UI.Web
 {
 
 
-    public partial class Home
+    public partial class ReportePlanes
     {
 
         /// <summary>
-        /// nombreAlumno control.
+        /// ReportViewer1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreAlumno;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
 
         /// <summary>
-        /// especialidadAlumno control.
+        /// ObjectDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label especialidadAlumno;
-
-        /// <summary>
-        /// planAlumno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label planAlumno;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
     }
 }

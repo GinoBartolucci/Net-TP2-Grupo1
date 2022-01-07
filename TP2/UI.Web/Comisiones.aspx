@@ -1,35 +1,46 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Comisiones.aspx.cs" Inherits="UI.Web.Comisiones" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Comisiones.aspx.cs"  MasterPageFile="~/Site.Master" Inherits="UI.Web.Comisiones" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-   <form id="form1" runat="server">
-        <div>
-
-
-            <asp:Panel ID ="gridPanel" runat ="server" > 
+ <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
+     
+ <div> 
+            <asp:Panel ID ="gridPanel" runat ="server"  Visible ="false"> 
             <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False"
                 SelectedRowStyle-BackColor="Black"
-                SelectedRowStyle-ForeColor="White"
-                DataKeynames ="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" >
+                SelectedRowStyle-ForeColor="White" 
+                DataKeynames ="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" 
+               >
  
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />
                 
                 <Columns>
-                    <asp:BoundField HeaderText ="Descripcion" DataField ="desc_comision" />
-                    <asp:BoundField HeaderText ="Anio Especialidad" DataField ="anio_especialidad" />
-                    <asp:BoundField HeaderText ="ID Plan" DataField ="id_plan" />
-                    <asp:CommandField HeaderText ="Seleccionar" ShowSelectButton ="True" Visible ="false" />
+                    <asp:BoundField  HeaderText ="Descripcion" DataField ="DescComision" />
+                    <asp:BoundField HeaderText ="Anio Especialidad" DataField ="AnioEspecialidad" />
+                    <asp:BoundField HeaderText ="ID Plan" DataField ="IdPlan" />
+                    <asp:CommandField HeaderText ="Seleccionar" ShowSelectButton ="True"/>
 
+                </Columns>
+
+            </asp:GridView>
+              </asp:Panel>
+
+            <asp:Panel id="panelAlumnosDocentes" runat="server"> 
+                <asp:GridView ID="gridViewDocenteAlumno" runat="server" AutoGenerateColumns="False"  
+                   DataKeynames ="ID" >
+ 
+                <SelectedRowStyle BackColor="Black" ForeColor="White" />
+                
+                <Columns>
+                    <asp:BoundField HeaderText ="Descripcion" DataField ="DescComision" />
+                    <asp:BoundField HeaderText ="Anio Especialidad" DataField ="AnioEspecialidad" />
+                    <asp:BoundField HeaderText ="ID Plan" DataField ="IdPlan" />
                 </Columns>
  
             </asp:GridView>
-            
             </asp:Panel>
+
+           
 
 
             <asp:Panel ID="formPanel" runat="server" Visible ="false">
@@ -75,6 +86,5 @@
 
             </asp:Panel>
         </div>
-    </form>
-</body>
-</html>
+
+     </asp:Content>   

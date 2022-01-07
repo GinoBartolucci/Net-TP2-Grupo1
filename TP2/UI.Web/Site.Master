@@ -5,39 +5,209 @@
 <html xmlns ="http:www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Academia</title>
-
+      <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+ 
     <asp:ContentPlaceHolder ID="head" runat="server">
+         <link href="Styles/SiteMaster.css" rel="stylesheet" />  
     </asp:ContentPlaceHolder>
-</head>
-<body>
-    <form id="form" runat="server">
-        <header>
-    <asp:Menu ID="Menu" runat ="server" Orientation="Horizontal">
-        <Items>
-            <asp:MenuItem Text="Tablas" Value="Tablas">
-                <asp:MenuItem Text="Usuarios" Value="Usuarios"  NavigateUrl="~/Usuarios.aspx"></asp:MenuItem>
-                <asp:MenuItem Text="Comisiones" Value="Comisiones" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
-                 <asp:MenuItem Text="Especialidades" Value="Especialidades" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
-            </asp:MenuItem>
+    <style type="text/css">
+       * {
+    font-family: Roboto;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
 
-            <asp:MenuItem Text="Reporte" Value="Reporte"></asp:MenuItem>
-        </Items>
-           
-</asp:Menu>
-     </header>
-       
+.menu {
+    background-color: aqua;
+    width: 100%;
+    padding: 10px;
+    border: double;
+}
+
+body {
+    margin-top: 60px;
+    background-color: #f4f4f4;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-left: 10%;
+}
+
+li {
+    float: left;
+}
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        /* Change the link color to #111 (black) on hover */
+        li a:hover {
+            background-color: #111;
+        }
+
+.sitemaster-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 20px;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .45);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .45);
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #111;
+    height: auto;
+    width: 100vw;
+    padding-top: 40px;
+    color: #fff;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+    .footer-content h3 {
+        font-size: 2.1rem;
+        font-weight: 500;
+        text-transform: capitalize;
+        line-height: 3rem;
+    }
+
+    .footer-content p {
+        max-width: 500px;
+        margin: 10px auto;
+        line-height: 28px;
+        font-size: 14px;
+        color: #cacdd2;
+    }
+
+.footer-bottom {
+    background: #000;
+    width: 100vw;
+    padding: 20px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+    .footer-bottom p {
+        float: left;
+        font-size: 14px;
+        word-spacing: 2px;
+        text-transform: capitalize;
+    }
+
+        .footer-bottom p a {
+            color: #44bae8;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+    .footer-bottom span {
+        text-transform: uppercase;
+        opacity: .4;
+        font-weight: 200;
+    }
+
+    </style>
+</head>
+    <form id="form" runat="server">
+
+        <header>
+        <nav>
+            <ul class="auto-style1">
+              <li> <img src="https://avatars.githubusercontent.com/u/8503404?s=280&v=4" style="height:30px;"></img></li>
+              <li><a href="Home.aspx">Home</a></li>
+              <li><a href="news.asp">Materias</a></li>
+              <li><a href="contact.asp">Notas</a></li>
+              <li><a href="Comisiones.aspx"> <label>Lorem Ipsum</label> </a></li>
+            </ul>
+        </nav>
+            <!--
+                <asp:Menu CssClass="menu"  ID="Menu1" runat="server" Orientation="Horizontal" Visible ="false">
+                   <Items>
+                            <asp:MenuItem Text="Tablas" Value="Tablas">
+                                <asp:MenuItem  Text="Comisiones" Value="Comisiones" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Especialidades" Value="Especialidades" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Reporte" Value="Reporte"></asp:MenuItem>
+                   </Items>
+                </asp:Menu>
+
+                <asp:Menu class="menu" ID="MenuAlumno" runat ="server" Orientation="Horizontal" Visible ="false">
+                        <Items>
+                            <asp:MenuItem Text="Tablas" Value="Tablas">
+                                <asp:MenuItem Text="Comisiones" Value="Comisiones" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Especialidades" Value="Especialidades" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Reporte" Value="Reporte"></asp:MenuItem>   
+                        </Items>
+                    </asp:Menu>
+
+                <asp:Menu class="menu" ID="MenuAdministrador" runat ="server" Orientation="Horizontal" Visible ="false">
+                        <Items>
+                        
+                            <asp:MenuItem Text="Tablas" Value="Tablas">
+                                <asp:MenuItem Text="Usuarios" Value="Usuarios"  NavigateUrl="~/Usuarios.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Comisiones" Value="Comisiones" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Especialidades" Value="Especialidades" NavigateUrl="~/Comisiones.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Reporte" Value="Reporte"></asp:MenuItem>   
+                        </Items>
+                    </asp:Menu>
+             -->
+
+        </header>
+     
+    
         
+<body>
         <asp:SiteMapDataSource ID ="SiteMapDataSource" runat ="server" />   
-        <div>
+        <div class="sitemaster-container">
             <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
 
             </asp:ContentPlaceHolder>
         </div>
-    </form>
-
-    <footer>
-    <asp:Label ID="footerText" runat="server" Text="Informacion integrantes"></asp:Label>
-    </footer>
+ 
 
 </body>
+    <footer>
+        <div class="footer-content">
+            <h3>GRUPO 1</h3>
+            <p>Mendiburu Francisco y Gino Bartoluchi</p>
+      
+        </div>
+        <div class="footer-bottom">
+            <p>copyright &copy; <a href="#">Grupo 1 .NET</a>  </p>
+           
+        </div>
+        <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    </footer>
+
+    </form>
 </html>

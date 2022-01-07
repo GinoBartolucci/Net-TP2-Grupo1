@@ -25,6 +25,7 @@ namespace UI.Web
 
         private void NotificarError(Exception e)
         {
+             
             cartelErrorLabel.Visible = true;
             cartelErrorLabel.Text = e.ToString(); 
         }
@@ -50,8 +51,8 @@ namespace UI.Web
             }
             catch(Exception error)
             {
-
-                NotificarError(error);
+                NotificarError();
+                //NotificarError(error);
             }
 
 

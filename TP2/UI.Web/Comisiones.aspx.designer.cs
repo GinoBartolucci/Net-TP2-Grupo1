@@ -15,15 +15,6 @@ namespace UI.Web
     {
 
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
         /// gridPanel control.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,24 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridView;
+
+        /// <summary>
+        /// panelAlumnosDocentes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelAlumnosDocentes;
+
+        /// <summary>
+        /// gridViewDocenteAlumno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridViewDocenteAlumno;
 
         /// <summary>
         /// formPanel control.
