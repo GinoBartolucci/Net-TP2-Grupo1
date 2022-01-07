@@ -17,12 +17,11 @@ namespace UI.Web
             {
                 Usuario usuario = (Usuario)Session["current_user"];
                 nombreAlumno.Text = usuario.Apellido + " " + usuario.Nombre;
-                especialidadAlumno.Text = "Estudiante de " + usuario.EMail;                
+                especialidadAlumno.Text = "Estudiante de " + usuario.Email;                
                 planAlumno.Text = "Plan " + "2008";
             }
             else
             {
-                Response.Redirect("Login.aspx");
             }
         }
 

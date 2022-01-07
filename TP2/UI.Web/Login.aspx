@@ -6,6 +6,9 @@
 <head runat="server">
     <title>Iniciar Sesion</title>
      <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <style>
      
         * 
@@ -16,7 +19,7 @@
             padding:0;
         }
 
-        #cartelErrorLabel{
+        #cartelErrorLabel,#cartelErrorIcon{
             color:red;
         }
 
@@ -79,6 +82,12 @@
              font-size: 1em;
              color: #aaa;
          }
+
+         .icon-label
+         {
+             display:flex;
+             align-items:center;
+         }
      
     </style>
 </head>
@@ -91,20 +100,31 @@
     <form id="form1" runat="server">
          
             <label runat="server" style="text-align:center; font-size:20px; display:block; margin-bottom:30px">Iniciar Sesion</label>
-
+            
+            <div class="icon-label">
+            <span class="material-icons" style="opacity:0.2;" runat="server">person</span>
             <asp:Label class="label" ID="usuarioLabel" runat="server"  Text="usuario"></asp:Label>
+            </div>
            
             <br />
             <asp:TextBox  class="textbox" ID="usuarioTextBox" runat="server"></asp:TextBox>  
             <br />
-            <asp:Label  class="label" ID="contraseniaLabel" runat="server" Width="80%" Text="contraseña"></asp:Label>
+             <div class="icon-label">
+                 <span class="material-icons" style="opacity:0.2;" runat="server">lock</span> 
+                <asp:Label  class="label" ID="contraseniaLabel" runat="server" Width="80%" Text="contraseña"></asp:Label>
+             </div>
             <br />
             <asp:TextBox class="textbox" ID="contraseniaTextBox" runat="server" type ="password"></asp:TextBox>
             <br />
             <asp:Button ID="ingresarButton" runat="server" Text="Ingresar" OnClick="ingresarButton_Click" />
+ 
             <br />
+            <div class="icon-label">
+
+            <span class="material-icons" id="cartelErrorIcon" runat="server">warning</span>
             <asp:Label ID="cartelErrorLabel" runat="server" Text=""></asp:Label>
     
+            </div>
     </form>
           </section>
         

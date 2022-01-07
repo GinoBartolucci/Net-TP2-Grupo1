@@ -107,7 +107,7 @@ namespace UI.Consola
             Console.WriteLine("\tApellido: {0}", u.Apellido);
             Console.WriteLine("\tNombre de Usuario: {0}", u.NombreUsuario);
             Console.WriteLine("\tClave: {0}", u.Clave);
-            Console.WriteLine("\tEmail: {0}", u.EMail);
+            Console.WriteLine("\tEmail: {0}", u.Email);
             Console.WriteLine("\tHabilitado: {0}", u.Habilitado);
         }
         public void Agregar()
@@ -123,7 +123,7 @@ namespace UI.Consola
             Console.WriteLine("Ingrese Clave: ");
             usuario.Clave = Console.ReadLine();
             Console.WriteLine("Ingrese EMail: ");
-            usuario.EMail = Console.ReadLine();
+            usuario.Email = Console.ReadLine();
             Console.WriteLine("Ingrese Habilitacion de Usuario 1-Si / 2-No: ");
             usuario.Habilitado = (Console.ReadLine() == "1");
             usuario.State = BusinessEntity.States.New;
@@ -154,7 +154,7 @@ namespace UI.Consola
                 Console.WriteLine("Ingrese Clave: ");
                 usuario.Clave = Console.ReadLine();
                 Console.WriteLine("Ingrese EMail: ");
-                usuario.EMail = Console.ReadLine();
+                usuario.Email = Console.ReadLine();
                 Console.WriteLine("Ingrese Habilitacion de Usuario 1-Si / 2-No: ");
                 usuario.Habilitado = (Console.ReadLine() == "1");
                 usuario.State = BusinessEntity.States.Modified;

@@ -156,6 +156,49 @@ namespace Data.Database
                 throw new Exception("El usuario no existe");
             }
         }
+
+        //Suponiendo que el nombre de usuario es unico
+        public Business.Entities.Usuario GetOneUsuario(string nombreUsuario)
+        {
+            Usuario usr = new Usuario();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM usuarios WHERE nombre_usuario = @nombre_usuario", sqlConn);
+                cmdUsuarios.Parameters.Add("@nombre_usuario", SqlDbType.VarChar).Value = nombreUsuario;
+                SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
+                while (drUsuarios.Read())
+                {
+                    usr.ID = (int)drUsuarios["id_usuario"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
+                    usr.Clave = (string)drUsuarios["clave"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    usr.Nombre = (string)drUsuarios["nombre"];
+                    usr.Apellido = (string)drUsuarios["apellido"];
+                    usr.Email = (string)drUsuarios["email"];
+                    usr.IdPersona = (int)drUsuarios["id_persona"];
+                }
+                drUsuarios.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar datos de usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            if (usr.NombreUsuario != null)
+            {
+                return usr;
+            }
+            else
+            {
+                throw new Exception("El usuario no existe");
+            }
+        }
+
         public Business.Entities.Usuario LoginUsuario(string nombreUsuario, string clave)
         {
             Usuario usr = new Usuario();

@@ -26,8 +26,23 @@ namespace Business.Logic
         {
             UsuarioData = new UsuarioAdapter();
         }
-        
-        
+
+        public Business.Entities.Usuario GetOneUsuario(string nombreUsuario)
+        {
+
+            try
+            {
+                return UsuarioData.GetOneUsuario(nombreUsuario);
+
+            }
+            catch (Exception error)
+            {
+                throw error;
+
+            }
+
+        }
+
         public Business.Entities.Usuario GetOneId(int id)
         {            
             return UsuarioData.GetOneId(id);                     

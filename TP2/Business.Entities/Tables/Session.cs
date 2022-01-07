@@ -8,6 +8,7 @@ namespace Business.Entities
 {
     public class Session
     {
-        public static Usuario currentUser;
+        public static Usuario currentUser { get; set; }
+   
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Business.Entities.Tables;
+//using Business.Entities.Tables;
 using Business.Logic.TablesLogics;
 using Business.Entities;
 using Business.Logic;
@@ -91,7 +91,7 @@ namespace UI.Web
             this.Entity = this.Logic.GetOneId(id);
             this.apellidoTextBox.Text = this.Entity.Apellido;
             this.nombreTextBox.Text = this.Entity.Nombre;
-            this.emailTextBox.Text = this.Entity.EMail;
+           // this.emailTextBox.Text = this.Entity.EMail;
             this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
             this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
 
@@ -144,7 +144,7 @@ namespace UI.Web
         {
             usuario.Apellido = this.apellidoTextBox.Text;
             usuario.Nombre = this.nombreTextBox.Text;
-            usuario.EMail = this.emailTextBox.Text;
+          //  usuario.EMail = this.emailTextBox.Text;
             usuario.Clave = this.ClaveTextBox.Text;
             usuario.NombreUsuario = this.nombreUsuarioTextBox.Text;
             usuario.Habilitado = this.habilitadoCheckBox.Checked;

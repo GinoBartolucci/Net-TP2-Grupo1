@@ -46,6 +46,7 @@
     <Compile Include="TablesLogics\Alumnos_inscripcionesLogic.cs" />
     <Compile Include="TablesLogics\MateriasLogic.cs" />
     <Compile Include="TablesLogics\Modulos_usuariosLogic.cs" />
+    <Compile Include="TablesLogics\PersonasLogic.cs" />
     <Compile Include="TablesLogics\PlanesLogic.cs" />
     <Compile Include="TablesLogics\ModulosLogic.cs" />
     <Compile Include="TablesLogics\BusinessLogic.cs" />

@@ -13,14 +13,20 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            cartelErrorIcon.Visible = false;
 
+            if (Session["current_user"] != null)
+            {
+                Response.Redirect("Home.aspx");
+            }
         }
 
 
         private void NotificarError()
         {
             cartelErrorLabel.Visible = true;
-            cartelErrorLabel.Text = "Eror al ingresar la contrasenia o el usuario ";
+            cartelErrorIcon.Visible = false;
+            cartelErrorLabel.Text = " ¡Error al ingresar la contraseña o el usuario!";
         }
 
         private void NotificarError(Exception e)
@@ -39,7 +45,8 @@ namespace UI.Web
                 Usuario usuario = BD.GetOneUsuario(this.usuarioTextBox.Text);
                 if (usuario.Clave == this.contraseniaTextBox.Text)
                 {
-                    Session["current_user"] = usuario;
+
+                    Session["current_user"]  = usuario;
                     Response.Redirect("Home.aspx");
                 }
                 else

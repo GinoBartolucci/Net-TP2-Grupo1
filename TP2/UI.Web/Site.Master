@@ -15,39 +15,47 @@
     </asp:ContentPlaceHolder>
     <style type="text/css">
        * {
-    font-family: Roboto;
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-}
+                font-family: Roboto;
+                font-weight: normal;
+                margin: 0;
+                padding: 0;
+            }
 
-.menu {
-    background-color: aqua;
-    width: 100%;
-    padding: 10px;
-    border: double;
-}
+   
+            .menu {
+                background-color: aqua;
+                width: 100%;
+                padding: 10px;
+                border: double;
+            }
 
-body {
-    margin-top: 60px;
-    background-color: #f4f4f4;
-}
+            body {
+                margin-top: 60px;
+                background-color: #f4f4f4;
+            }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding-left: 10%;
-}
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                padding-left: 10%;
+            }
 
-li {
-    float: left;
-}
+        li {
+            float: left;
+             
+        }
+           .icon-label
+         {
+             display:flex;
+             align-items:center;
+             justify-content:space-evenly;
+         }
 
     li a {
         display: block;
@@ -141,12 +149,17 @@ footer {
         <header>
         <nav>
             <ul class="auto-style1">
+               
+
               <li> <img src="https://avatars.githubusercontent.com/u/8503404?s=280&v=4" style="height:30px;"></img></li>
-              <li><a href="Home.aspx">Home</a></li>
-              <li><a href="news.asp">Materias</a></li>
-              <li><a href="contact.asp">Notas</a></li>
-              <li><a href="Comisiones.aspx"> <label>Lorem Ipsum</label> </a></li>
+              <li><a class="icon-label"  href="Home.aspx"><i class="material-icons">home</i>Inicio</a></li>
+              <li><a class="icon-label" href="news.asp">Materias</a></li>
+              <li><a class="icon-label" href="contact.asp">Notas</a></li>
+              <li><a class="icon-label" href="Comisiones.aspx"> <label>Lorem Ipsum</label> </a></li>
+      
+               <li> <a class="icon-label" href="Comisiones.aspx"> <span class="material-icons">logout</span><label>Salir</label> </a></li>           
             </ul>
+          
         </nav>
             <!--
                 <asp:Menu CssClass="menu"  ID="Menu1" runat="server" Orientation="Horizontal" Visible ="false">

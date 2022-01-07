@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Business.Entities.Tables;
+//using Business.Entities.Tables;
 using Business.Entities;
 using Business.Logic;
 namespace UI.Web
@@ -99,11 +99,11 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            Personas persona = (Personas)Session["current_user"];
+            Usuario usuario = (Usuario)Session["current_user"];
             this.gridView.DataSource = this.Logic.GetAll();
             this.gridView.DataBind();
      
-            mostrarOpcionesABM(persona.Tipo_perona);
+            mostrarOpcionesABM(usuario.TipoPersona);
 
         }
         private void LoadGrid()
