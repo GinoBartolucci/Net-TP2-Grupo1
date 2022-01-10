@@ -15,12 +15,14 @@ namespace UI.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            if (Session["current_user"] != null)
+            nav_administrador.Visible = false;
+            nav_alumno.Visible = false;
+
+            if (Session["current_user"] != null )
             {
                 Usuario usr = (Usuario)Session["current_user"];
  
-                ocultarOpcionesMenu(usr.TipoPersona);
+                ocultarOpcionesMenu(usr.IdPersona);
    
     
             }
@@ -37,14 +39,14 @@ namespace UI.Web
             switch (tipoPersona)
             {
                 case 1: // alumno
-
-                    MenuAlumno.Visible = true;
+                   
+                    nav_alumno.Visible = true;
                     break;
                 case 2: // docente
                     Menu1.Visible = true;
                     break;
                 case 3: // administrador
-                    MenuAdministrador.Visible = true;
+                    nav_administrador.Visible = true;
                     break;
                 default:
                     break;

@@ -146,8 +146,24 @@ footer {
 </head>
     <form id="form" runat="server">
 
-        <header>
-        <nav>
+        <header>  
+       
+                <nav id ="nav_administrador" runat="server">
+            <ul class="auto-style1">
+               
+
+              <li> <img src="https://avatars.githubusercontent.com/u/8503404?s=280&v=4" style="height:30px;"></img></li>
+              <li><a class="icon-label"  href="Home.aspx"><i class="material-icons">home</i>Alumnos</a></li>
+              <li><a class="icon-label" href="news.asp">Docentes</a></li>
+              <li><a class="icon-label" href="contact.asp">Materias</a></li>
+              <li><a class="icon-label" href="Comisiones.aspx"> <label>Usuarios</label> </a></li>
+      
+               <li> <a class="icon-label" href="Comisiones.aspx"> <span class="material-icons">logout</span><label>Salir</label> </a></li>           
+            </ul>
+          
+        </nav>
+
+             <nav id ="nav_alumno" runat="server">
             <ul class="auto-style1">
                
 
@@ -160,7 +176,9 @@ footer {
                <li> <a class="icon-label" href="Comisiones.aspx"> <span class="material-icons">logout</span><label>Salir</label> </a></li>           
             </ul>
           
-        </nav>
+        </nav>  
+
+     
             <!--
                 <asp:Menu CssClass="menu"  ID="Menu1" runat="server" Orientation="Horizontal" Visible ="false">
                    <Items>

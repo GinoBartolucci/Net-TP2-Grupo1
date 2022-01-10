@@ -43,7 +43,7 @@ namespace UI.Web
             try
             {
                 Usuario usuario = BD.GetOneUsuario(this.usuarioTextBox.Text);
-                if (usuario.Clave == this.contraseniaTextBox.Text)
+                if (usuario.Clave == this.contraseniaTextBox.Text && usuario.Habilitado)
                 {
 
                     Session["current_user"]  = usuario;

@@ -363,6 +363,81 @@ namespace Data.Database
             {
                 CloseConnection();
             }
+             
+
+        }
+        public List<Usuario> GetAllAlumnos()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios" +
+                    "inner join personas per on usr.id_persona = per.id_persona " +
+                    "inner join planes pl on pl.id_plan = per.id_plan" +
+                    "inner join  especialidades es on es.id_especialidad = pl.id_especialidad" +
+                    "WHERE per.id_persona = 1", sqlConn);
+
+                SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
+
+                while (drUsuarios.Read())
+                {
+                    Usuario usr = new Usuario();
+
+                    usr.ID = (int)drUsuarios["id_usuario"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
+                    usr.Clave = (string)drUsuarios["clave"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    usr.Nombre = (string)drUsuarios["nombre"];
+                    usr.Apellido = (string)drUsuarios["apellido"];
+                    usr.Email = (string)drUsuarios["email"];
+
+                    usr.IdPersona = (int)drUsuarios["id_persona"];
+                    usr.Legajo = (int)drUsuarios["legajo"];
+                    usr.Direccion = (string)drUsuarios["direccion"];
+                    usr.Telefono = (string)drUsuarios["telefono"];
+                    usr.FechaNac = (DateTime)drUsuarios["fecha_nac"];
+                    usr.TipoPersona = (int)drUsuarios["tipo_persona"];
+
+                    usr.IdPlan = (int)drUsuarios["id_plan"];
+                    usr.DescPlan = (string)drUsuarios["desc_plan"];
+                    usr.IdEspecialidad = (int)drUsuarios["id_especialidad"];
+
+                    usr.DescEspecialidad = (string)drUsuarios["desc_especialidad"];
+
+                    switch (usr.TipoPersona)
+                    {
+                        case 1:
+                            usr.DescTipoPersona = "Administrativo";
+                            break;
+                        case 2:
+                            usr.DescTipoPersona = "Docente";
+                            break;
+                        case 3:
+                            usr.DescTipoPersona = "Alumnno";
+                            break;
+                        default:
+                            break;
+                    }
+
+                    usuarios.Add(usr);
+                }
+
+                drUsuarios.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return usuarios;
+
         }
     }
 }
