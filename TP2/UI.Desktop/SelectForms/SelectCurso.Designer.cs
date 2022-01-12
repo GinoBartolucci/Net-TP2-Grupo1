@@ -33,10 +33,11 @@ namespace UI.Desktop.SelectForms
             this.dgvSelectCurso = new System.Windows.Forms.DataGridView();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AnioCalendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblSelectCurso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectCurso)).BeginInit();
@@ -63,10 +64,11 @@ namespace UI.Desktop.SelectForms
             // 
             this.dgvSelectCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSelectCurso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.IdComision,
-            this.IdMateria,
+            this.id_curso,
             this.AnioCalendario,
+            this.descComision,
+            this.descMateria,
+            this.descPlan,
             this.Cupo});
             this.tblSelectCurso.SetColumnSpan(this.dgvSelectCurso, 2);
             this.dgvSelectCurso.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -99,29 +101,35 @@ namespace UI.Desktop.SelectForms
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
-            // Id
+            // id_curso
             // 
-            this.Id.HeaderText = "ID";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // IdComision
-            // 
-            this.IdComision.HeaderText = "ID Comision";
-            this.IdComision.Name = "IdComision";
-            this.IdComision.ReadOnly = true;
-            // 
-            // IdMateria
-            // 
-            this.IdMateria.HeaderText = "ID Materia";
-            this.IdMateria.Name = "IdMateria";
-            this.IdMateria.ReadOnly = true;
+            this.id_curso.HeaderText = "ID";
+            this.id_curso.Name = "id_curso";
+            this.id_curso.ReadOnly = true;
             // 
             // AnioCalendario
             // 
             this.AnioCalendario.HeaderText = "Año Calendario";
             this.AnioCalendario.Name = "AnioCalendario";
             this.AnioCalendario.ReadOnly = true;
+            // 
+            // descComision
+            // 
+            this.descComision.HeaderText = "Comision";
+            this.descComision.Name = "descComision";
+            this.descComision.ReadOnly = true;
+            // 
+            // descMateria
+            // 
+            this.descMateria.HeaderText = "Materia";
+            this.descMateria.Name = "descMateria";
+            this.descMateria.ReadOnly = true;
+            // 
+            // descPlan
+            // 
+            this.descPlan.HeaderText = "Plan";
+            this.descPlan.Name = "descPlan";
+            this.descPlan.ReadOnly = true;
             // 
             // Cupo
             // 
@@ -150,10 +158,11 @@ namespace UI.Desktop.SelectForms
         private System.Windows.Forms.DataGridView dgvSelectCurso;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnSeleccionar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdComision;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdMateria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_curso;
         private System.Windows.Forms.DataGridViewTextBoxColumn AnioCalendario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descComision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descMateria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descPlan;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cupo;
     }
 }

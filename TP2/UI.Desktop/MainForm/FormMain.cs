@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Desktop.ABMListForms;
+using UI.Desktop.SelectForms;
+using UI.Desktop.DesktopsForms;
 using Business.Entities;
 
 
@@ -54,47 +56,78 @@ namespace UI.Desktop
             lblNombre.Text = "Alumno: "+ Session.currentUser.NombreCompleto;
             lblPlan.Text = Session.currentUser.DescPlan;
             lblEspecialidad.Text = Session.currentUser.DescEspecialidad;
-            //muestra u oculta para alumnos
+            //Muestra u oculta para alumnos:
+            btnListadoAlumnos.Visible = false;
+            btnCargarNotas.Visible = false;
         }
-        private void DocentesDisplay()
-        {
+        private void DocentesDisplay() 
+        { 
+            lblNombre.Text = "Docente: "+ Session.currentUser.NombreCompleto;
+            lblPlan.Text = Session.currentUser.DescPlan;
+            lblEspecialidad.Text = Session.currentUser.DescEspecialidad;
             //muestra u oculta para docentes
+            btnNotasAlumno.Visible = false;
+            btnIncribirse.Visible = false;
+            btnMateriasPlanAlumno.Visible = false;
+            btnCursadoAlumno.Visible = false;
         }
+
         private void AdminDisplay()
         {
             //muestra u oculta para admins
-        }
-        private void btnUsuarios_Click(object sender, EventArgs e)
+        }             
+
+        //ALUMNO
+        //reporte
+        private void btnNotasAlumno_Click(object sender, EventArgs e)// REPORTE
         {
-            Usuarios us = new Usuarios();
-            us.ShowDialog();
+            //REPORTE
         }
-        private void btnEspecialidades_Click(object sender, EventArgs e)
+        private void btnIncribirse_Click(object sender, EventArgs e)
         {
-            Especialidades es = new Especialidades();
-            es.ShowDialog();
+            InscripcionesAlumnosDesktop nuevaInscripcion = new InscripcionesAlumnosDesktop(InscripcionesAlumnosDesktop.ModoForm.Alta);
+            nuevaInscripcion.ShowDialog();
+            if (nuevaInscripcion.DialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("Inscripcion Correcta", "Felicidades", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-        private void btnModulos_Click(object sender, EventArgs e)
+        private void btnMateriasPlanAlumno_Click(object sender, EventArgs e)
         {
-            Modulos mo = new Modulos();
-            mo.ShowDialog();
+            ABMListForms.Materias m = new ABMListForms.Materias();
+            m.ShowDialog();
         }
-        private void btnComisiones_Click(object sender, EventArgs e)
+        private void btnCursadoAlumno_Click(object sender, EventArgs e)
         {
-            Comisiones co = new Comisiones();
-            co.ShowDialog();
+            InscripcionesAlumnos.GetInstance().ShowDialog(); 
         }
 
-        private void btnPlanes_Click(object sender, EventArgs e)
+        //PROFESORES
+        private void btnListadoAlumnos_Click(object sender, EventArgs e)
         {
-            Planes pl = new Planes();
-            pl.ShowDialog();
+            //Muestra los cursos en los que el docente da clases
+            //selecciona el curso luego muestra las inscipciones de este año para ese curso sin los botones abm
+            SelectCurso listadoAlumnos = new SelectCurso();
+            listadoAlumnos.ShowDialog();
+            if (listadoAlumnos.DialogResult != DialogResult.OK)
+            {
+                MessageBox.Show("Error al seleccionar Curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            new InscripcionesAlumnos(InscripcionesAlumnos.ModoF.Lista, listadoAlumnos.IdCurso);
         }
 
-        private void btnInscripcionesAlumnos_Click(object sender, EventArgs e)
+        private void btnCargarNotas_Click(object sender, EventArgs e)
         {
-            InscripcionesAlumnos ia1 = new InscripcionesAlumnos();
-            ia1.ShowDialog();
+            //Muestra los cursos en los que el docente da clases
+            //selecciona el curso luego abre las inscripciones de este año para ese curso con el boton editar habilitado
+            //Que no muestre los alumnos que ya esten aprobados, que muestre los cursos de todos los años
+            SelectCurso listadoAlumnos = new SelectCurso();
+            listadoAlumnos.ShowDialog();
+            if (listadoAlumnos.DialogResult != DialogResult.OK)
+            {
+                MessageBox.Show("Error al inscribirse al Curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            new InscripcionesAlumnos(InscripcionesAlumnos.ModoF.Nota, listadoAlumnos.IdCurso).ShowDialog();
         }
     }
 }
