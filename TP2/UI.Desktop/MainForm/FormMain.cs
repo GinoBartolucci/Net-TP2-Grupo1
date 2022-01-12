@@ -120,6 +120,7 @@ namespace UI.Desktop
         {
             //Muestra los cursos en los que el docente da clases
             //selecciona el curso luego abre las inscripciones de este año para ese curso con el boton editar habilitado
+            //Que no muestre los alumnos que ya esten aprobados, que muestre los cursos de todos los años
             SelectCurso listadoAlumnos = new SelectCurso();
             listadoAlumnos.ShowDialog();
             if (listadoAlumnos.DialogResult != DialogResult.OK)
