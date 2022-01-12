@@ -13,6 +13,19 @@ namespace Data.Database
         {
 
         }
+        private static Docentes_cursosAdapter singleton;
+        public static Docentes_cursosAdapter GetInstance()
+        {
+
+            if (singleton == null)
+            {
+                singleton = new Docentes_cursosAdapter();
+            }
+
+            return singleton;
+
+        }
+
         public List<Docentes_cursos> GetAll()
         {
             List<Docentes_cursos> docentes_cursos = new List<Docentes_cursos>();

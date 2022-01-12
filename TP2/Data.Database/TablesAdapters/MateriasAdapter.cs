@@ -12,11 +12,22 @@ namespace Data.Database.TablesAdapters
 {
     public class MateriasAdapter : Adapter
     {
-
-
-        public List<Materias> GetAll()
+        private static MateriasAdapter singleton;
+        public static MateriasAdapter GetInstance()
         {
-            List<Materias> materia = new List<Materias>();
+
+            if (singleton == null)
+            {
+                singleton = new MateriasAdapter();
+            }
+
+            return singleton;
+
+        }
+
+        public List<Materia> GetAll()
+        {
+            List<Materia> materia = new List<Materia>();
 
             try
             {
@@ -27,7 +38,7 @@ namespace Data.Database.TablesAdapters
 
                 while (drMaterias.Read())
                 {
-                    Materias mat = new Materias();
+                    Materia mat = new Materia();
 
                     mat.ID = (int)drMaterias["id_materia"];
                     mat.DescMateria = (string)drMaterias["desc_materia"];
@@ -55,9 +66,54 @@ namespace Data.Database.TablesAdapters
 
             return materia;
         }
-        public Materias GetOne(int ID)
+
+        public List<Materia> GetAllPlan(int idPlan)
         {
-            Materias mat = new Materias();
+            List<Materia> materia = new List<Materia>();
+
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias " +
+                    "where id_plan = @id_plan", sqlConn);
+                cmdMaterias.Parameters.Add("@id_plan", SqlDbType.Int).Value = idPlan;
+                SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
+
+                while (drMaterias.Read())
+                {
+                    Materia mat = new Materia();
+
+                    mat.ID = (int)drMaterias["id_materia"];
+                    mat.DescMateria = (string)drMaterias["desc_materia"];
+                    mat.HorasSemanales = (int)drMaterias["hs_semanales"];
+                    mat.HorasTotales = (int)drMaterias["hs_totales"];
+                    mat.IdPlan = (int)drMaterias["id_plan"];
+
+                    materia.Add(mat);
+
+                }
+
+                drMaterias.Close();
+
+
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias.", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return materia;
+        }
+
+        public Materia GetOne(int ID)
+        {
+            Materia mat = new Materia();
             try
             {
                 OpenConnection();
@@ -93,6 +149,7 @@ namespace Data.Database.TablesAdapters
                 throw new Exception("La materia no existe");
             }
         }
+
         public void Delete(int ID)
         {
             try
@@ -112,8 +169,7 @@ namespace Data.Database.TablesAdapters
                 CloseConnection();
             }
         }
-
-        public void Save(Materias materia)
+        public void Save(Materia materia)
         {
             if (materia.State == BusinessEntity.States.Deleted)
             {
@@ -130,8 +186,7 @@ namespace Data.Database.TablesAdapters
             }
             materia.State = BusinessEntity.States.Unmodified;
         }
-
-        protected void Update(Materias materia)
+        protected void Update(Materia materia)
         {
             try
             {
@@ -158,8 +213,7 @@ namespace Data.Database.TablesAdapters
             }
 
         }
-
-        protected void Insert(Materias materia)
+        protected void Insert(Materia materia)
         {
             try
             {

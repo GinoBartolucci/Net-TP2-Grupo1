@@ -45,8 +45,8 @@
     <Compile Include="Tables\Session.cs" />
     <Compile Include="Tables\Curso.cs" />
     <Compile Include="Tables\Docentes_cursos.cs" />
-    <Compile Include="Tables\Alumnos_inscripciones.cs" />
-    <Compile Include="Tables\Materias.cs" />
+    <Compile Include="Tables\Inscripciones.cs" />
+    <Compile Include="Tables\Materia.cs" />
     <Compile Include="Tables\Planes.cs" />
     <Compile Include="Tables\Comisiones.cs" />
     <Compile Include="Tables\Especialidades.cs" />

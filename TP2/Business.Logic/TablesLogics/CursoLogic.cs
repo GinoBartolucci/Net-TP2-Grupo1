@@ -9,57 +9,43 @@ namespace Business.Logic
 {
     public class CursoLogic : BusinessLogic
     {
-        public CursoLogic()
+        private static CursoLogic singleton;
+        public static CursoLogic GetInstance()
         {
-            CursoData = new CursoAdapter();
+            if (singleton == null)
+            {
+                singleton = new CursoLogic();
+            }
+            return singleton;
         }
-        private Data.Database.CursoAdapter CursoData;
 
         public Business.Entities.Curso GetOne(int id)
         {
-            try
-            {
-                return CursoData.GetOne(id);
-            }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
+                return CursoAdapter.GetInstance().GetOne(id);            
         }
         public List<Curso> GetAll()
         {
-            //return CursoData.GetAll();
-
-            try
-            {
-                return CursoData.GetAll();
-            }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
+            return CursoAdapter.GetInstance().GetAll();            
+        }
+        public List<Curso> GetAllYear(int year)
+        {
+            return CursoAdapter.GetInstance().GetAllYear(year);            
+        }
+        public List<Curso> GetAllYearAlum(int idAlumno, int year)
+        {            
+            return CursoAdapter.GetInstance().GetAllYearAlum(idAlumno, year);            
+        }                
+        public List<Curso> GetAllDoc(int id_doc)
+        {
+            return CursoAdapter.GetInstance().GetAllDoc(id_doc);
         }
         public void Save(Business.Entities.Curso c)
         {
-            try
-            {
-                CursoData.Save(c);
-            }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
+            CursoAdapter.GetInstance().Save(c);
         }
         public void Delete(int id)
         {
-            try
-            {
-                CursoData.Delete(id);
-            }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
+            CursoAdapter.GetInstance().Delete(id);
         }
     }
 }

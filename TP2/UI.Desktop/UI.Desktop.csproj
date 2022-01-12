@@ -153,11 +153,11 @@
     <Compile Include="ABMListForms\Planes.designer.cs">
       <DependentUpon>Planes.cs</DependentUpon>
     </Compile>
-    <Compile Include="SelectForms\SelectAlumno.cs">
+    <Compile Include="ABMListForms\Materias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SelectForms\SelectAlumno.Designer.cs">
-      <DependentUpon>SelectAlumno.cs</DependentUpon>
+    <Compile Include="ABMListForms\Materias.designer.cs">
+      <DependentUpon>Materias.cs</DependentUpon>
     </Compile>
     <Compile Include="SelectForms\SelectCurso.cs">
       <SubType>Form</SubType>
@@ -228,8 +228,8 @@
     <EmbeddedResource Include="ABMListForms\Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SelectForms\SelectAlumno.resx">
-      <DependentUpon>SelectAlumno.cs</DependentUpon>
+    <EmbeddedResource Include="ABMListForms\Materias.resx">
+      <DependentUpon>Materias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectForms\SelectCurso.resx">
       <DependentUpon>SelectCurso.cs</DependentUpon>

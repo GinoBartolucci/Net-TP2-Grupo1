@@ -9,53 +9,116 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
-using Business.Logic.TablesLogics;
 using UI.Desktop.DesktopsForms;
 
 namespace UI.Desktop.ABMListForms
 {
     public partial class InscripcionesAlumnos : Form
     {
-        public InscripcionesAlumnos()
+        private static InscripcionesAlumnos singleton;
+        public static InscripcionesAlumnos GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new InscripcionesAlumnos();
+            }
+            return singleton;
+        }
+
+        public enum ModoF
+        {
+            Lista, Nota
+        }
+        private ModoF _Modo;
+        public ModoF Modo
+        {
+            get { return _Modo; }
+            set { _Modo = value; }
+        }
+
+        public InscripcionesAlumnos()//solo para alumnos
         {
             InitializeComponent();
             this.dvgInscripcionesAlumnos.AutoGenerateColumns = false;
-        }
-        public void NotificarError(Exception Error)
-        {
-            var msError = "Error message: " + Error.Message;
-            if (Error.InnerException != null)
+            if (Session.currentUser.TipoPersona == 3)//si es alumno no ve los botones abm
             {
-                msError = msError + "\nInner exception: " + Error.InnerException.Message;
+                tscInscripcionesAlumnos.Visible = false;
+                id_alumno.Visible = false;
+                nombreApellido.Visible = false;
+                legajo.Visible = false;
+                condicion.Visible = false;
+                nota.Visible = false;
             }
-            msError = msError + "\nStack trace: " + Error.StackTrace;
-            MessageBox.Show(msError, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Listar();
         }
-        public void Listar()
+        public InscripcionesAlumnos(ModoF modo, int idCurso)//para prof
         {
-            Alumnos_inscripcionesLogic IA = new Alumnos_inscripcionesLogic();
+            InitializeComponent();
+            this.dvgInscripcionesAlumnos.AutoGenerateColumns = false;
+            id_alumno.Visible = false;
+            id_inscripcion.Visible = false;
+            if (modo == ModoF.Lista)
+            {
+                tsbNuevo.Visible = false;
+                tsbEliminar.Visible = false;
+                tsbEditar.Visible = false;
+                id_alumno.Visible = false;
+            }
+            else {
+                tsbNuevo.Visible = false;
+                tsbEliminar.Visible = false;
 
+                id_alumno.Visible = false;
+            }
+            Listar(idCurso);
+
+        }
+
+        public void Listar(int? idCurso = null)
+        {
             try
             {
-                this.dvgInscripcionesAlumnos.DataSource = IA.GetAll();
+                if (Session.currentUser.TipoPersona == 3)
+                {
+                    this.dvgInscripcionesAlumnos.DataSource = Alumnos_inscripcionesLogic.GetInstance().GetAllYearAlum(Session.currentUser.IdPersona, Int32.Parse(DateTime.Now.ToString("yyyy"))); //
+                }
+                if (Session.currentUser.TipoPersona == 2)
+                {
+                    if (idCurso != null)
+                    {                        
+                        this.dvgInscripcionesAlumnos.DataSource = Alumnos_inscripcionesLogic.GetInstance().GetAllYearCurso(Int32.Parse(DateTime.Now.ToString("yyyy")), idCurso);
+                        
+                    }
+                }
             } 
             catch(Exception e)
             {
                  NotificarError(e);
             }
 
-            ID.DataPropertyName = "ID";
-            id_alumno.DataPropertyName = "IdAlumno";
-            id_curso.DataPropertyName = "IdCurso";
-            condicion.DataPropertyName = "Condicion";
-            nota.DataPropertyName = "Nota";
-
-
+            if (Session.currentUser.TipoPersona == 3)
+            {
+                id_curso.DataPropertyName = "IdCurso";
+                id_inscripcion.DataPropertyName = "ID";
+                desc_Materia.DataPropertyName = "DescMateria";
+                desc_Comision.DataPropertyName = "DescComision";
+            }
+            if (Session.currentUser.TipoPersona == 2)
+            {
+                id_inscripcion.DataPropertyName = "ID";
+                nombreApellido.DataPropertyName = "NombreApellido";
+                legajo.DataPropertyName = "Legajo";
+                id_curso.DataPropertyName = "IdCurso";
+                desc_Comision.DataPropertyName = "DescMateria";
+                desc_Comision.DataPropertyName = "DescComision";
+                condicion.DataPropertyName = "Condicion";//selecccionar
+                nota.DataPropertyName = "Nota";
+            }
         }
 
         private void InscripcionesAlumnos_Load(object sender, EventArgs e)
         {
-            Listar(); 
+            //Listar(); 
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -74,33 +137,39 @@ namespace UI.Desktop.ABMListForms
         }
 
         private void tsbNuevo_Click(object sender, EventArgs e)
-        {
+        {            
             InscripcionesAlumnosDesktop ventanaNuevaInscripcion = new InscripcionesAlumnosDesktop(ApplicationForm.ModoForm.Alta);
             ventanaNuevaInscripcion.ShowDialog();
             this.Listar();
         }
-
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int ID;
-            string textoID = ((Business.Entities.Alumnos_inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString();
-
-            ID = int.Parse(textoID);
-            InscripcionesAlumnosDesktop v1 = new InscripcionesAlumnosDesktop(ApplicationForm.ModoForm.Modificacion,ID);
+            InscripcionesAlumnosDesktop v1 = new InscripcionesAlumnosDesktop(ApplicationForm.ModoForm.Modificacion, ((Business.Entities.Inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID);
             v1.ShowDialog();
             this.Listar();
         }
-
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
+            //No es nesesario
             int ID;
-            string textoID = ((Business.Entities.Alumnos_inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString() ;
+            string textoID = ((Business.Entities.Inscripciones)this.dvgInscripcionesAlumnos.SelectedRows[0].DataBoundItem).ID.ToString() ;
 
             ID = int.Parse(textoID);
 
             InscripcionesAlumnosDesktop ventanaNuevaInscripcion = new InscripcionesAlumnosDesktop(ApplicationForm.ModoForm.Baja,ID);
             ventanaNuevaInscripcion.ShowDialog();
             this.Listar();
+        }
+
+        public void NotificarError(Exception Error)
+        {
+            var msError = "Error message: " + Error.Message;
+            if (Error.InnerException != null)
+            {
+                msError = msError + "\nInner exception: " + Error.InnerException.Message;
+            }
+            msError = msError + "\nStack trace: " + Error.StackTrace;
+            MessageBox.Show(msError, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

@@ -9,10 +9,170 @@ namespace Data.Database
 {
     public class CursoAdapter : Adapter
     {
+        private static CursoAdapter singleton;
+        public static CursoAdapter GetInstance()
+        {
+
+            if (singleton == null)
+            {
+                singleton = new CursoAdapter();
+            }
+
+            return singleton;
+
+        }
         public CursoAdapter()
         {
 
         }
+        public List<Curso> GetAllYear(int year)
+        {
+            List<Curso> cursos = new List<Curso>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdCursos = new SqlCommand("select * from cursos c " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join planes p on p.id_plan = com.id_plan " +
+                    "where c.anio_calendario = @year  ", sqlConn);
+                cmdCursos.Parameters.Add("@year", SqlDbType.Int).Value = year;
+                SqlDataReader drCursos = cmdCursos.ExecuteReader();
+
+                while (drCursos.Read())
+                {
+                    Curso cur = new Curso();
+
+                    cur.id_curso = (int)drCursos["id_curso"];
+                    cur.id_materia = (int)drCursos["id_materia"];
+                    cur.id_comision = (int)drCursos["id_comision"];
+                    cur.anio_calendario = (int)drCursos["anio_calendario"];
+                    cur.cupo = (int)drCursos["cupo"];
+
+                    cur.DescComision = (string)drCursos["desc_comision"];
+                    cur.DescMateria = (string)drCursos["desc_materia"];
+                    cur.DescPlan = (string)drCursos["desc_plan"];
+
+                    cursos.Add(cur);
+                }
+
+                drCursos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos GetAll()", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return cursos;
+
+        }
+
+        public List<Curso> GetAllYearAlum(int idAlumno, int year)
+        {
+            List<Curso> cursos = new List<Curso>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdCursos = new SqlCommand("select * from cursos c " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join alumnos_inscripciones ai on c.id_curso = ai.id_curso " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join planes p on p.id_plan = com.id_plan " +
+                    "where ai.id_alumno = @id_alumno " +
+                    "and c.anio_calendario = @year ", sqlConn);
+                cmdCursos.Parameters.Add("@id_alumno", SqlDbType.Int).Value = idAlumno;
+                cmdCursos.Parameters.Add("@year", SqlDbType.Int).Value = year;
+                SqlDataReader drCursos = cmdCursos.ExecuteReader();
+
+                while (drCursos.Read())
+                {
+                    Curso cur = new Curso();
+
+                    cur.id_curso = (int)drCursos["id_curso"];                    
+                    cur.id_materia = (int)drCursos["id_materia"];
+                    cur.id_comision = (int)drCursos["id_comision"];
+                    cur.anio_calendario = (int)drCursos["anio_calendario"];
+                    cur.cupo = (int)drCursos["cupo"];
+
+                    cur.DescComision = (string)drCursos["desc_comision"];
+                    cur.DescMateria = (string)drCursos["desc_materia"];
+                    cur.DescPlan = (string)drCursos["desc_plan"];
+
+                    cursos.Add(cur);
+                }
+
+                drCursos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos GetAll()", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return cursos;
+
+        }
+
+        public List<Curso> GetAllDoc(int id_doc)
+        {
+            List<Curso> cursos = new List<Curso>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdCursos = new SqlCommand("select * from cursos c " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join docentes_cursos dc on c.id_curso = dc.id_curso " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join planes p on p.id_plan = com.id_plan " +
+                    "where dc.id_doc = @id_doc ", sqlConn);
+                cmdCursos.Parameters.Add("@id_doc", SqlDbType.Int).Value = id_doc;
+                SqlDataReader drCursos = cmdCursos.ExecuteReader();
+
+                while (drCursos.Read())
+                {
+                    Curso cur = new Curso();
+
+                    cur.id_curso = (int)drCursos["id_curso"];
+                    cur.id_materia = (int)drCursos["id_materia"];
+                    cur.id_comision = (int)drCursos["id_comision"];
+                    cur.anio_calendario = (int)drCursos["anio_calendario"];
+                    cur.cupo = (int)drCursos["cupo"];
+
+                    cur.DescComision = (string)drCursos["desc_comision"];
+                    cur.DescMateria = (string)drCursos["desc_materia"];
+                    cur.DescPlan = (string)drCursos["desc_plan"];
+
+                    cursos.Add(cur);
+                }
+
+                drCursos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos GetAll()", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return cursos;
+
+        }
+
         public List<Curso> GetAll()
         {
             List<Curso> cursos = new List<Curso>();
@@ -53,6 +213,9 @@ namespace Data.Database
             return cursos;
 
         }
+        
+        
+
         public Business.Entities.Curso GetOne(int id_curso)
         {
             Curso cur = new Curso();
