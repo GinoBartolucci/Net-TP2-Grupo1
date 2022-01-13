@@ -31,5 +31,14 @@ namespace Business.Logic
         {
             PersonasData.Delete(id);
         }
+
+        public List<Personas> GetAllAlumnos()
+        {
+            return PersonasData.GetAllAlumnos(); 
+        }
+        public List<Personas> GetAllDocentes()
+        {
+            return PersonasData.GetAllDocentes(); 
+        }
     }
 }

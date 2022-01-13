@@ -58,6 +58,94 @@ namespace Data.Database.TablesAdapters
             return personas;
 
         }
+
+        public List<Personas> GetAllAlumnos()
+        {
+            List<Personas> personas = new List<Personas>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdPersonas = new SqlCommand("select * from personas WHERE tipo_persona = 2", sqlConn);
+
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
+                while (drPersonas.Read())
+                {
+                    Personas per = new Personas();
+
+                    per.ID = (int)drPersonas["id_persona"];
+                    per.Nombre = (string)drPersonas["nombre"];
+                    per.Apellido = (string)drPersonas["apellido"];
+                    per.Direccion = (string)drPersonas["direccion"];
+                    per.Email = (string)drPersonas["email"];
+                    per.Telefono = (string)drPersonas["telefono"];
+                    per.Legajo = (int)drPersonas["legajo"];
+                    per.Tipo_perona = (int)drPersonas["tipo_persona"];
+                    per.Fecha_nac = (DateTime)drPersonas["fecha_nac"];
+
+                    personas.Add(per);
+                }
+
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de personas.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return personas;
+
+        }
+
+        public List<Personas> GetAllDocentes()
+        {
+            List<Personas> personas = new List<Personas>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdPersonas = new SqlCommand("select * from personas WHERE tipo_persona = 1", sqlConn);
+
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
+                while (drPersonas.Read())
+                {
+                    Personas per = new Personas();
+
+                    per.ID = (int)drPersonas["id_persona"];
+                    per.Nombre = (string)drPersonas["nombre"];
+                    per.Apellido = (string)drPersonas["apellido"];
+                    per.Direccion = (string)drPersonas["direccion"];
+                    per.Email = (string)drPersonas["email"];
+                    per.Telefono = (string)drPersonas["telefono"];
+                    per.Legajo = (int)drPersonas["legajo"];
+                    per.Tipo_perona = (int)drPersonas["tipo_persona"];
+                    per.Fecha_nac = (DateTime)drPersonas["fecha_nac"];
+
+                    personas.Add(per);
+                }
+
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de personas.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return personas;
+
+        }
         public Personas GetOne(int ID)
         {
             Personas per = new Personas();

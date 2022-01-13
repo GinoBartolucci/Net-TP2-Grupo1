@@ -8,9 +8,7 @@
 </head>
 <body>
    <form id="form1" runat="server">
-        <div>
-
-
+        <div
             <asp:Panel ID ="gridPanel" runat ="server" > 
             <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False"
                 SelectedRowStyle-BackColor="Black"

@@ -3,96 +3,86 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <h2>Alumnos</h2>
-    <hr/>
-         
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+        <hr/>
+    <br />
+    <br />
+ 
+              <asp:Panel ID ="gridPanel" runat ="server" CssClass="tabla" > 
+            <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False"
+                SelectedRowStyle-BackColor="Black"
+                SelectedRowStyle-ForeColor="White"
+            Width="800px"
+                DataKeynames ="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" >
+ 
+                <SelectedRowStyle BackColor="Black" ForeColor="White" />
+                
+                <Columns>
+                    <asp:BoundField HeaderText ="ID" DataField ="ID" />
+        
+                    <asp:BoundField HeaderText ="IdAlumno" DataField ="IdAlumno" /> 
+                    <asp:BoundField HeaderText ="Legajo" DataField ="Legajo" />
+                    <asp:BoundField HeaderText ="NombreApellido" DataField ="NombreApellido" /> 
+                    <asp:BoundField HeaderText ="IdCurso" DataField ="IdCurso" />  
+                    <asp:BoundField HeaderText ="Condicion" DataField ="Nota" />  
+                    <asp:BoundField HeaderText ="DescMateria" DataField ="DescMateria" />  
+                    <asp:CommandField HeaderText ="Seleccionar" ShowSelectButton ="True" />
 
-    <asp:Button class="mdc-button mdc-button--raised" runat="server" Text="Agregar" />
-    <asp:Button class="mdc-button mdc-button--raised" runat="server" Text="Dar de baja" />
+                </Columns>
+            </asp:GridView>
+            </asp:Panel>
+           
+    <br />
 
-
-    <section class="crear-alumno" id="seccion_crear_alumno" runat="server">
-      <form method="post" action="">
         <div class ="form-label-input">
-            <label class="mdc-text-field mdc-text-field--filled" style="width:100%">
-              <span class="mdc-text-field__ripple"><p style="font-size:14px; color:gray; padding-left:4px;">Legajo</p></span>
-              <span class="mdc-floating-label" id="my-label-id">   </span>
-               <asp:TextBox CssClass="mdc-text-field__input" ID="legajoTextBox" runat="server"></asp:TextBox>
-              <span class="mdc-line-ripple"></span>
+            <label class="form" style="width:100%">
+                Legajo:
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID" ID="IdIngresoTextBox" runat="server"></asp:TextBox>
+         
             </label>
+            <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
         </div>
-        
-     <div class="form-col-2">
+    <asp:Button class="btn btn-primary" runat="server" Text="Agregar" />
+    <asp:Button class="btn btn-primary" runat="server" Text="Ver cursos" />
+    <asp:Button class="btn btn-primary" runat="server" Text="Ver nota" />
+    <asp:Button class="btn btn-danger" runat="server" Text="Dar de baja" />
 
-
-        <div class ="form-label-input" >
-           
-            <label class="mdc-text-field mdc-text-field--filled" style="width:100%">
-            <span class="mdc-text-field__ripple"><p style="font-size:14px; color:gray; padding-left:4px;">Nombre</p></span>
-              <span class="mdc-floating-label" id="my-label-id">   </span>
-               <asp:TextBox CssClass="mdc-text-field__input" ID="nombreTextBox" runat="server"></asp:TextBox>
-              <span class="mdc-line-ripple"></span>
-            </label>
-        </div>
-
-        <div class ="form-label-input" >
-           
-            <label class="mdc-text-field mdc-text-field--filled" style="width:100%">
-                <span class="mdc-text-field__ripple"><p style="font-size:14px; color:gray; padding-left:4px;">Apellido</p></span>
-              <span class="mdc-floating-label" id="my-label-id">   </span>
-               <asp:TextBox CssClass="mdc-text-field__input" ID="apellidoTextBox" runat="server"></asp:TextBox>
-              <span class="mdc-line-ripple"></span>
-            </label>
-        </div>
-           </div>
-
-          <div class="form-col-2">
-        <div class ="form-label-input" >
-            <label class="mdc-text-field mdc-text-field--filled"  style="width:100%">
-               <span class="mdc-text-field__ripple"><p style="font-size:14px; color:gray; padding-left:4px;">Fecha de Nacimiento (yyyy-mm-dd)</p></span>
-              <span class="mdc-floating-label" id="my-label-id"> </span>
+    
+    <section class="modificar-alumno" id="modificar_alumno" runat="server">
+      <form method="post" action="">
             
-               <asp:TextBox CssClass="mdc-text-field__input" ID="fechaNacimientoTextBox" runat="server"></asp:TextBox>
-              <span class="mdc-line-ripple"> </span>
-            </label>
-        </div>
-           
-        <div class ="form-label-input" >
-          
-            <label class="mdc-text-field mdc-text-field--filled" style="width:100%">
-              <span class="mdc-text-field__ripple"><p style="font-size:14px; color:gray; padding-left:4px;">Dirección</p></span>
-              <span class="mdc-floating-label" id="my-label-id">   </span>
-               <asp:TextBox CssClass="mdc-text-field__input" ID="direccionTextBox" runat="server"></asp:TextBox>
-              <span class="mdc-line-ripple"></span>
-            </label>
-        </div>
-              </div>
+            <div class="form-col-2">
+                <div class ="form-label-input" >
+                    <label>ID: </label>
+                    <asp:TextBox CssClass="form-input" placeholder="ID" ID="idTextBox" runat="server"></asp:TextBox>
+                 </div>
+                <div class ="form-label-input" >
+                    <asp:TextBox CssClass="form-input" placeholder="ID Alumno" ID="idAlumnoTextBox" runat="server"></asp:TextBox>
+                 </div>
+            </div>
 
-        <div class="form-col-2">
-          </div>
-          <div class ="form-label-input" >
-       
-            <label class="mdc-text-field mdc-text-field--filled" style="width:100%">
-              <span class="mdc-text-field__ripple"><p style="font-size:14px; color:gray; padding-left:4px;">Email</p></span>
-              <span class="mdc-floating-label" id="my-label-id">   </span>
-               <asp:TextBox CssClass="mdc-text-field__input" ID="emailTextBox" runat="server"></asp:TextBox>
-              <span class="mdc-line-ripple"></span>
-            </label>
-        </div>
+              <div class="form-col-2">
+                <div class ="form-label-input" >
+                    <label>Nombre y Apellido: </label>
+                    <asp:TextBox CssClass="form-input" placeholder="Nombre y apellido" ID="nombreYapellidoTextBox" runat="server"></asp:TextBox>
+                 </div>
+                <div class ="form-label-input" >
+                    <asp:TextBox CssClass="form-input" placeholder="Condicion" ID="condicionTextBox" runat="server"></asp:TextBox>
+                 </div>
+            </div>
 
-        
-          <div class ="form-label-input" >
-      
-            <label class="mdc-text-field mdc-text-field--filled" style="width:100%">
-             <span class="mdc-text-field__ripple"><p style="font-size:14px; color:gray; padding-left:4px;">Telefono</p></span>
-              <span class="mdc-floating-label" id="my-label-id">   </span>
-               <asp:TextBox CssClass="mdc-text-field__input" ID="telefonoTextBox" runat="server"></asp:TextBox>
-              <span class="mdc-line-ripple"></span>
-            </label>
-        </div>
-   
+                <div class="form-col-2">
+                <div class ="form-label-input" >
+                    <asp:TextBox CssClass="form-input" placeholder="ID Curso" ID="idCursoTextBox" runat="server"></asp:TextBox>
+                 </div>
+                <div class ="form-label-input" >
+                    <asp:TextBox CssClass="form-input" placeholder="Desc Materia" ID="descMateriaTextBox" runat="server"></asp:TextBox>
+                 </div>
+            </div>
 
  
-       <asp:Button ID="agregarAlumnoButton" class="mdc-button mdc-button--raised" runat="server" Text="Agregar" OnClick="agregarAlumnoButton_Click" />
+       <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="Agregar" OnClick="agregarAlumnoButton_Click" />
     </form>
     </section>
 

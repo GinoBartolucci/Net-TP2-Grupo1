@@ -51,6 +51,7 @@
     <Compile Include="TablesAdapters\Alumnos_inscripcionesAdapter.cs" />
     <Compile Include="TablesAdapters\MateriasAdapter.cs" />
     <Compile Include="TablesAdapters\Modulos_usuariosAdapter.cs" />
+    <Compile Include="TablesAdapters\PersonasAdapter.cs" />
     <Compile Include="TablesAdapters\PlanesAdapter.cs" />
     <Compile Include="TablesAdapters\ComisionesAdapter.cs" />
     <Compile Include="TablesAdapters\EspecialidadesAdapter.cs" />
