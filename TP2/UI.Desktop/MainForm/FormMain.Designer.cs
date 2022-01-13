@@ -30,33 +30,21 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.btnUsuarios = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnEspecialidades = new System.Windows.Forms.Button();
-            this.btnModulos = new System.Windows.Forms.Button();
-            this.btnComisiones = new System.Windows.Forms.Button();
-            this.btnPlanes = new System.Windows.Forms.Button();
-            this.btnInscripcionesAlumnos = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblPlan = new System.Windows.Forms.Label();
             this.lblEspecialidad = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.lblPlan = new System.Windows.Forms.Label();
+            this.btnNotasAlumno = new System.Windows.Forms.Button();
+            this.btnIncribirse = new System.Windows.Forms.Button();
+            this.btnMateriasPlanAlumno = new System.Windows.Forms.Button();
+            this.btnCursadoAlumno = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnListadoAlumnos = new System.Windows.Forms.Button();
+            this.btnCargarNotas = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnUsuarios
-            // 
-            this.btnUsuarios.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnUsuarios.Location = new System.Drawing.Point(46, 135);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnUsuarios.Size = new System.Drawing.Size(82, 33);
-            this.btnUsuarios.TabIndex = 0;
-            this.btnUsuarios.Text = "Usuarios";
-            this.btnUsuarios.UseVisualStyleBackColor = true;
-            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -71,15 +59,15 @@ namespace UI.Desktop
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.09402F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.324786F));
             this.tableLayoutPanel1.Controls.Add(this.btnSalir, 7, 6);
-            this.tableLayoutPanel1.Controls.Add(this.btnUsuarios, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnEspecialidades, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnModulos, 5, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnComisiones, 7, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnPlanes, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnInscripcionesAlumnos, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblNombre, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblEspecialidad, 7, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblPlan, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnNotasAlumno, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnIncribirse, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnMateriasPlanAlumno, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnCursadoAlumno, 7, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnListadoAlumnos, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnCargarNotas, 3, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -88,8 +76,8 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.08832F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.92593F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(595, 422);
@@ -107,64 +95,6 @@ namespace UI.Desktop
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // btnEspecialidades
-            // 
-            this.btnEspecialidades.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEspecialidades.Location = new System.Drawing.Point(181, 135);
-            this.btnEspecialidades.Name = "btnEspecialidades";
-            this.btnEspecialidades.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnEspecialidades.Size = new System.Drawing.Size(88, 33);
-            this.btnEspecialidades.TabIndex = 2;
-            this.btnEspecialidades.Text = "Especialidades";
-            this.btnEspecialidades.UseVisualStyleBackColor = true;
-            this.btnEspecialidades.Click += new System.EventHandler(this.btnEspecialidades_Click);
-            // 
-            // btnModulos
-            // 
-            this.btnModulos.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnModulos.Location = new System.Drawing.Point(322, 135);
-            this.btnModulos.Name = "btnModulos";
-            this.btnModulos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnModulos.Size = new System.Drawing.Size(82, 33);
-            this.btnModulos.TabIndex = 3;
-            this.btnModulos.Text = "Modulos";
-            this.btnModulos.UseVisualStyleBackColor = true;
-            this.btnModulos.Click += new System.EventHandler(this.btnModulos_Click);
-            // 
-            // btnComisiones
-            // 
-            this.btnComisiones.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnComisiones.Location = new System.Drawing.Point(460, 135);
-            this.btnComisiones.Name = "btnComisiones";
-            this.btnComisiones.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnComisiones.Size = new System.Drawing.Size(82, 33);
-            this.btnComisiones.TabIndex = 4;
-            this.btnComisiones.Text = "Comisiones";
-            this.btnComisiones.UseVisualStyleBackColor = true;
-            this.btnComisiones.Click += new System.EventHandler(this.btnComisiones_Click);
-            // 
-            // btnPlanes
-            // 
-            this.btnPlanes.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPlanes.Location = new System.Drawing.Point(46, 216);
-            this.btnPlanes.Name = "btnPlanes";
-            this.btnPlanes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnPlanes.Size = new System.Drawing.Size(82, 29);
-            this.btnPlanes.TabIndex = 5;
-            this.btnPlanes.Text = "Planes";
-            this.btnPlanes.UseVisualStyleBackColor = true;
-            this.btnPlanes.Click += new System.EventHandler(this.btnPlanes_Click);
-            // 
-            // btnInscripcionesAlumnos
-            // 
-            this.btnInscripcionesAlumnos.Location = new System.Drawing.Point(178, 216);
-            this.btnInscripcionesAlumnos.Name = "btnInscripcionesAlumnos";
-            this.btnInscripcionesAlumnos.Size = new System.Drawing.Size(91, 29);
-            this.btnInscripcionesAlumnos.TabIndex = 6;
-            this.btnInscripcionesAlumnos.Text = "Inscripciones Alumnos";
-            this.btnInscripcionesAlumnos.UseVisualStyleBackColor = true;
-            this.btnInscripcionesAlumnos.Click += new System.EventHandler(this.btnInscripcionesAlumnos_Click);
-            // 
             // lblNombre
             // 
             this.lblNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -175,17 +105,6 @@ namespace UI.Desktop
             this.lblNombre.TabIndex = 7;
             this.lblNombre.Text = "Nombre";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblPlan
-            // 
-            this.lblPlan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblPlan.AutoSize = true;
-            this.lblPlan.Location = new System.Drawing.Point(346, 3);
-            this.lblPlan.Name = "lblPlan";
-            this.lblPlan.Size = new System.Drawing.Size(35, 13);
-            this.lblPlan.TabIndex = 8;
-            this.lblPlan.Text = "label2";
-            this.lblPlan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblEspecialidad
             // 
@@ -198,6 +117,83 @@ namespace UI.Desktop
             this.lblEspecialidad.Text = "label3";
             this.lblEspecialidad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblPlan
+            // 
+            this.lblPlan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblPlan.AutoSize = true;
+            this.lblPlan.Location = new System.Drawing.Point(346, 3);
+            this.lblPlan.Name = "lblPlan";
+            this.lblPlan.Size = new System.Drawing.Size(35, 13);
+            this.lblPlan.TabIndex = 8;
+            this.lblPlan.Text = "label2";
+            this.lblPlan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnNotasAlumno
+            // 
+            this.btnNotasAlumno.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNotasAlumno.Location = new System.Drawing.Point(50, 140);
+            this.btnNotasAlumno.Name = "btnNotasAlumno";
+            this.btnNotasAlumno.Size = new System.Drawing.Size(75, 23);
+            this.btnNotasAlumno.TabIndex = 10;
+            this.btnNotasAlumno.Text = "Notas";
+            this.btnNotasAlumno.UseVisualStyleBackColor = true;
+            this.btnNotasAlumno.Click += new System.EventHandler(this.btnNotasAlumno_Click);
+            // 
+            // btnIncribirse
+            // 
+            this.btnIncribirse.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnIncribirse.Location = new System.Drawing.Point(188, 140);
+            this.btnIncribirse.Name = "btnIncribirse";
+            this.btnIncribirse.Size = new System.Drawing.Size(75, 23);
+            this.btnIncribirse.TabIndex = 11;
+            this.btnIncribirse.Text = "Incribirse";
+            this.btnIncribirse.UseVisualStyleBackColor = true;
+            this.btnIncribirse.Click += new System.EventHandler(this.btnIncribirse_Click);
+            // 
+            // btnMateriasPlanAlumno
+            // 
+            this.btnMateriasPlanAlumno.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnMateriasPlanAlumno.Location = new System.Drawing.Point(316, 140);
+            this.btnMateriasPlanAlumno.Name = "btnMateriasPlanAlumno";
+            this.btnMateriasPlanAlumno.Size = new System.Drawing.Size(95, 23);
+            this.btnMateriasPlanAlumno.TabIndex = 12;
+            this.btnMateriasPlanAlumno.Text = "Materias Plan";
+            this.btnMateriasPlanAlumno.UseVisualStyleBackColor = true;
+            this.btnMateriasPlanAlumno.Click += new System.EventHandler(this.btnMateriasPlanAlumno_Click);
+            // 
+            // btnCursadoAlumno
+            // 
+            this.btnCursadoAlumno.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCursadoAlumno.Location = new System.Drawing.Point(464, 140);
+            this.btnCursadoAlumno.Name = "btnCursadoAlumno";
+            this.btnCursadoAlumno.Size = new System.Drawing.Size(75, 23);
+            this.btnCursadoAlumno.TabIndex = 13;
+            this.btnCursadoAlumno.Text = "Cursado";
+            this.btnCursadoAlumno.UseVisualStyleBackColor = true;
+            this.btnCursadoAlumno.Click += new System.EventHandler(this.btnCursadoAlumno_Click);
+            // 
+            // btnListadoAlumnos
+            // 
+            this.btnListadoAlumnos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnListadoAlumnos.Location = new System.Drawing.Point(41, 235);
+            this.btnListadoAlumnos.Name = "btnListadoAlumnos";
+            this.btnListadoAlumnos.Size = new System.Drawing.Size(93, 23);
+            this.btnListadoAlumnos.TabIndex = 14;
+            this.btnListadoAlumnos.Text = "Listado Alumnos";
+            this.btnListadoAlumnos.UseVisualStyleBackColor = true;
+            this.btnListadoAlumnos.Click += new System.EventHandler(this.btnListadoAlumnos_Click);
+            // 
+            // btnCargarNotas
+            // 
+            this.btnCargarNotas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCargarNotas.Location = new System.Drawing.Point(179, 235);
+            this.btnCargarNotas.Name = "btnCargarNotas";
+            this.btnCargarNotas.Size = new System.Drawing.Size(92, 23);
+            this.btnCargarNotas.TabIndex = 15;
+            this.btnCargarNotas.Text = "Cargar Notas";
+            this.btnCargarNotas.UseVisualStyleBackColor = true;
+            this.btnCargarNotas.Click += new System.EventHandler(this.btnCargarNotas_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,25 +204,25 @@ namespace UI.Desktop
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Academia";
             this.Load += new System.EventHandler(this.FormMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnEspecialidades;
-        private System.Windows.Forms.Button btnModulos;
-        private System.Windows.Forms.Button btnComisiones;
-        private System.Windows.Forms.Button btnPlanes;
-        private System.Windows.Forms.Button btnInscripcionesAlumnos;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblPlan;
         private System.Windows.Forms.Label lblEspecialidad;
+        private System.Windows.Forms.Button btnNotasAlumno;
+        private System.Windows.Forms.Button btnIncribirse;
+        private System.Windows.Forms.Button btnMateriasPlanAlumno;
+        private System.Windows.Forms.Button btnCursadoAlumno;
+        private System.Windows.Forms.Button btnListadoAlumnos;
+        private System.Windows.Forms.Button btnCargarNotas;
     }
 }

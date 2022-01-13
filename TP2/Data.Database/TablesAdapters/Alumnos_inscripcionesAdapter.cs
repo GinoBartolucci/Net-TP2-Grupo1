@@ -13,16 +13,11 @@ namespace Data.Database.TablesAdapters
     {
         public Alumnos_inscripcionesAdapter()
         {
-      //      SELECT TOP(1000) [id_inscripcion]
-      //,[id_alumno]
-      //,[id_curso]
-      //,[condicion]
-      //,[nota]
-      //      FROM[tp2_net].[dbo].[alumnos_inscripciones]
         }
-        public List<Alumnos_inscripciones> GetAll()
+
+        public List<Inscripciones> GetAll()
         {
-            List<Alumnos_inscripciones> inscrip = new List<Alumnos_inscripciones>();
+            List<Inscripciones> inscrip = new List<Inscripciones>();
             try
             {
                 OpenConnection();
@@ -33,7 +28,7 @@ namespace Data.Database.TablesAdapters
 
                 while (drInscrip.Read())
                 {
-                    Alumnos_inscripciones inscrAl = new Alumnos_inscripciones();
+                    Inscripciones inscrAl = new Inscripciones();
 
                     inscrAl.ID = (int)drInscrip["id_inscripcion"];
                     inscrAl.IdAlumno = (int)drInscrip["id_alumno"];
@@ -60,13 +55,178 @@ namespace Data.Database.TablesAdapters
             return inscrip;
 
         }
-        public Alumnos_inscripciones GetOne(int ID)
+
+        public List<Inscripciones> GetAllYear(int year)
         {
-            Alumnos_inscripciones inscripciones = new Alumnos_inscripciones();
+            List<Inscripciones> inscrip = new List<Inscripciones>();
             try
             {
                 OpenConnection();
-                SqlCommand cmdInscripciones = new SqlCommand("SELECT * FROM alumnos_inscripciones WHERE id_inscripcion = @idInscripciones", sqlConn);
+
+                SqlCommand cmdInscrip = new SqlCommand("select ai.id_inscripcion, ai.id_alumno, ai.id_curso, ai.condicion, isnull(ai.nota, -1) nota, m.desc_materia, com.desc_comision, concat(p.nombre, p.apellido) nombre, p.legajo  " +
+                    "from alumnos_inscripciones ai " +
+                    "inner join cursos c on c.id_curso = ai.id_curso " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join personas p on p.id_persona = ai.id_alumno " +
+                    "where c.anio_calendario = @year ", sqlConn);
+                cmdInscrip.Parameters.Add("@year", SqlDbType.Int).Value = year;
+                SqlDataReader drInscrip = cmdInscrip.ExecuteReader();
+
+                while (drInscrip.Read())
+                {
+                    Inscripciones inscrAl = new Inscripciones();
+
+                    inscrAl.ID = (int)drInscrip["id_inscripcion"];
+                    inscrAl.IdAlumno = (int)drInscrip["id_alumno"];
+                    inscrAl.IdCurso = (int)drInscrip["id_curso"];
+                    inscrAl.Condicion = (string)drInscrip["condicion"];
+                    inscrAl.Nota = (int)drInscrip["nota"];
+
+                    inscrAl.DescMateria = (string)drInscrip["desc_materia"];
+                    inscrAl.DescComision = (string)drInscrip["desc_comision"];
+                    inscrAl.NombreApellido = (string)drInscrip["nombre"];
+                    inscrAl.Legajo = (int)drInscrip["legajo"];
+
+
+                    inscrip.Add(inscrAl);
+                }
+
+                drInscrip.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de las inscripciones de alumnos.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return inscrip;
+
+        }
+
+        public List<Inscripciones> GetAllYearAlum(int idAlumno, int year )
+        {
+            List<Inscripciones> inscrip = new List<Inscripciones>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdInscrip = new SqlCommand("select ai.id_inscripcion, ai.id_alumno, ai.id_curso, ai.condicion, isnull(ai.nota, -1) nota, m.desc_materia, com.desc_comision, concat(p.nombre, p.apellido) nombre, p.legajo  " +
+                    "from alumnos_inscripciones ai " +
+                    "inner join cursos c on c.id_curso = ai.id_curso " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join personas p on p.id_persona = ai.id_alumno " +
+                    "where ai.id_alumno=@id_alumno " +
+                    "and c.anio_calendario = @year ", sqlConn);
+                cmdInscrip.Parameters.Add("@id_alumno", SqlDbType.Int).Value = idAlumno;
+                cmdInscrip.Parameters.Add("@year", SqlDbType.Int).Value = year;
+                SqlDataReader drInscrip = cmdInscrip.ExecuteReader();
+
+                while (drInscrip.Read())
+                {
+                    Inscripciones inscrAl = new Inscripciones();
+
+                    inscrAl.ID = (int)drInscrip["id_inscripcion"];
+                    inscrAl.IdAlumno = (int)drInscrip["id_alumno"];
+                    inscrAl.IdCurso = (int)drInscrip["id_curso"];
+                    inscrAl.Condicion = (string)drInscrip["condicion"];
+                    inscrAl.Nota = (int)drInscrip["nota"];
+
+                    inscrAl.DescMateria = (string)drInscrip["desc_materia"];
+                    inscrAl.DescComision = (string)drInscrip["desc_comision"];
+                    inscrAl.NombreApellido = (string)drInscrip["nombre"];
+                    inscrAl.Legajo = (int)drInscrip["legajo"];
+
+                    inscrip.Add(inscrAl);
+                }
+
+                drInscrip.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de las inscripciones de alumnos.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return inscrip;
+
+        }
+
+        public List<Inscripciones> GetAllYearCurso(int year, int? idCurso = null)
+        {
+            List<Inscripciones> inscrip = new List<Inscripciones>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdInscrip = new SqlCommand("select ai.*, m.desc_materia, com.desc_comision, concat(p.nombre, p.apellido) nombre, p.legajo  " +
+                    "from alumnos_inscripciones ai " +
+                    "inner join cursos c on c.id_curso = ai.id_curso " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join personas p on p.id_persona = ai.id_alumno " +
+                    "where c.anio_ calendario = @year" +
+                    "and c.id_curso = @id_curso ", sqlConn);
+                cmdInscrip.Parameters.Add("@id_curso", SqlDbType.Int).Value = idCurso;
+                cmdInscrip.Parameters.Add("@year", SqlDbType.Int).Value = year;
+                SqlDataReader drInscrip = cmdInscrip.ExecuteReader();
+
+                while (drInscrip.Read())
+                {
+                    Inscripciones inscrAl = new Inscripciones();
+
+                    inscrAl.ID = (int)drInscrip["id_inscripcion"];
+                    inscrAl.IdAlumno = (int)drInscrip["id_alumno"];
+                    inscrAl.IdCurso = (int)drInscrip["id_curso"];
+                    inscrAl.Condicion = (string)drInscrip["condicion"];
+                    inscrAl.Nota = (int)drInscrip["nota"];
+
+                    inscrAl.DescMateria = (string)drInscrip["desc_materia"];
+                    inscrAl.DescComision = (string)drInscrip["desc_comision"];
+                    inscrAl.NombreApellido = (string)drInscrip["nombre"];
+                    inscrAl.Legajo = (int)drInscrip["legajo"];
+
+                    inscrip.Add(inscrAl);
+                }
+
+                drInscrip.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de las inscripciones de alumnos.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return inscrip;
+
+        }
+
+        public Inscripciones GetOne(int ID)
+        {
+            Inscripciones inscripciones = new Inscripciones();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdInscripciones = new SqlCommand("SELECT ai.id_inscripcion, ai.id_alumno, ai.id_curso, ai.condicion, isnull(ai.nota, -1) nota, m.desc_materia, com.desc_comision, concat(p.nombre, p.apellido) nombre, p.legajo " +
+                    "FROM alumnos_inscripciones ai " +
+                    "inner join cursos c on c.id_curso = ai.id_curso " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join personas p on p.id_persona = ai.id_alumno " +
+                    "WHERE ai.id_inscripcion = @idInscripciones", sqlConn);
                 cmdInscripciones.Parameters.Add("@idInscripciones", SqlDbType.Int).Value = ID;
                 SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
 
@@ -77,6 +237,11 @@ namespace Data.Database.TablesAdapters
                     inscripciones.IdCurso = (int)drInscripciones["id_curso"];
                     inscripciones.Nota = (int)drInscripciones["nota"];
                     inscripciones.Condicion = (string)drInscripciones["condicion"];
+
+                    inscripciones.DescMateria = (string)drInscripciones["desc_materia"];
+                    inscripciones.DescComision = (string)drInscripciones["desc_comision"];
+                    inscripciones.NombreApellido = (string)drInscripciones["nombre"];
+                    inscripciones.Legajo = (int)drInscripciones["legajo"];
 
                 }
                 drInscripciones.Close();
@@ -98,10 +263,9 @@ namespace Data.Database.TablesAdapters
             //{
             //    throw new Exception("El inscripcion no existe");
             //}
-        }
-        //Suponiendo que el nombre de inscripcion es unico
+        }    
  
-        public void Save(Alumnos_inscripciones inscripcion)
+        public void Save(Inscripciones inscripcion)
         {
             if (inscripcion.State == BusinessEntity.States.Deleted)
             {
@@ -137,7 +301,7 @@ namespace Data.Database.TablesAdapters
                 CloseConnection();
             }
         }
-        protected void Update(Alumnos_inscripciones inscripcion)
+        protected void Update(Inscripciones inscripcion)
         {
             try
             {
@@ -165,23 +329,20 @@ namespace Data.Database.TablesAdapters
             }
 
         }
-        protected void Insert(Alumnos_inscripciones inscripcion)
+        protected void Insert(Inscripciones inscripcion)
         {
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("INSERT INTO alumnos_inscripciones (id_curso,condicion,nota,id_alumno)" +
-                    "values(@IdCurso,@condicion,@nota,@id_alumno)" +
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO alumnos_inscripciones (id_alumno, id_curso, condicion)" +
+                    "values(@id_alumno, @IdCurso,@condicion)" +
                     "select @@identity ", sqlConn);
-
-               
-                cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
-                cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;
+                //El que crea la inscripcion es el alumno no hace falta nota
                 cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = inscripcion.IdAlumno;
                 cmdSave.Parameters.Add("@IdCurso", SqlDbType.Int).Value = inscripcion.IdCurso;
-
+                cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = inscripcion.Condicion;
+                //cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = inscripcion.Nota;                
                 inscripcion.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
-
             }
             catch (Exception Ex)
             {

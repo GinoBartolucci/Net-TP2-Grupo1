@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Business.Logic.TablesLogics;
 using Business.Logic;
 using Business.Entities;
 namespace UI.Desktop.DesktopsForms
@@ -24,12 +23,12 @@ namespace UI.Desktop.DesktopsForms
         {
             Text = modo.ToString();
             Modo = modo;
-            MateriaActual = new Materias();
+            MateriaActual = new Materia();
             MateriaActual.IdPlan = -1;
         }
 
-        private Materias _MateriaActual;
-        public Materias MateriaActual
+        private Materia _MateriaActual;
+        public Materia MateriaActual
         {
             get { return _MateriaActual; }
             set { _MateriaActual = value; }
@@ -44,7 +43,7 @@ namespace UI.Desktop.DesktopsForms
 
             }
             Modo = modo;
-            MateriasLogic ml = new MateriasLogic();
+            MateriaLogic ml = new MateriaLogic();
             MateriaActual = ml.GetOne(ID);
             MapearDeDatos();
         }
@@ -82,7 +81,7 @@ namespace UI.Desktop.DesktopsForms
                 MateriaActual.State = BusinessEntity.States.Modified;
                 if (Modo == ModoForm.Alta)
                 {
-                    MateriaActual = new Materias();
+                    MateriaActual = new Materia();
                     MateriaActual.State = BusinessEntity.States.New;
                 }
                 // MateriaActual.ID = int.Parse(txtId.Text);
@@ -116,7 +115,7 @@ namespace UI.Desktop.DesktopsForms
         public override void GuardarCambios()
         {
             MapearADatos();
-            MateriasLogic ul = new MateriasLogic();
+            MateriaLogic ul = new MateriaLogic();
             ul.Save(MateriaActual);
         }
 

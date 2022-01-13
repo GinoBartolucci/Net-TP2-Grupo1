@@ -10,28 +10,22 @@ using Data.Database;
 namespace Business.Logic
 {
     public class Docentes_cursosLogic : BusinessLogic
-    {
-        public Docentes_cursosLogic()
-        {
-            Docentes_CursosData = new Docentes_cursosAdapter();
-        }
-        private Data.Database.Docentes_cursosAdapter Docentes_CursosData;
-
+    {        
         public Business.Entities.Docentes_cursos GetOneIdDictado(int id_dictado)
         {
-            return Docentes_CursosData.GetOneId(id_dictado);
+            return Docentes_cursosAdapter.GetInstance().GetOneId(id_dictado);
         }
         public List<Docentes_cursos> GetAll()
         {
-            return Docentes_CursosData.GetAll(); 
+            return Docentes_cursosAdapter.GetInstance().GetAll(); 
         }
         public void Save(Business.Entities.Docentes_cursos docentes_cursos)
         {
-            Docentes_CursosData.Save(docentes_cursos);
+            Docentes_cursosAdapter.GetInstance().Save(docentes_cursos);
         }
         public void Delete(int id)
         {
-            Docentes_CursosData.Delete(id);
+            Docentes_cursosAdapter.GetInstance().Delete(id);
         }
 
     }

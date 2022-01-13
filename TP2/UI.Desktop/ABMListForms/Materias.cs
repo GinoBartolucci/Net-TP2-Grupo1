@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Business.Entities.Tables;
-using Business.Logic.TablesLogics;
+using Business.Entities;
+using Business.Logic;
 using UI.Desktop.DesktopsForms;
 
 
@@ -20,6 +20,11 @@ namespace UI.Desktop.ABMListForms
         {
             InitializeComponent();
             this.dgvMaterias.AutoGenerateColumns = false;
+            if (Session.currentUser.TipoPersona ==3)
+            {
+                tsMaterias.Visible = false; //si es alumno saca los abm
+                IdPlan.Visible = false;
+            }
         }
         public void NotificarError(Exception Error)
         {
@@ -37,8 +42,14 @@ namespace UI.Desktop.ABMListForms
             MateriaLogic m1 = new MateriaLogic();
             try
             {
-                this.dgvMaterias.DataSource = m1.GetAll();
-               
+                if (Session.currentUser.TipoPersona == 3)
+                {
+                    this.dgvMaterias.DataSource = MateriaLogic.GetInstance().GetAllPlan(Session.currentUser.IdPlan);
+                }
+                else
+                {
+                    this.dgvMaterias.DataSource = MateriaLogic.GetInstance().GetAll();
+                }
 
             }
             catch (Exception e)
@@ -49,7 +60,7 @@ namespace UI.Desktop.ABMListForms
             DescMateria.DataPropertyName = "DescMateria";
             HsSemanales.DataPropertyName = "HorasSemanales";
             HsTotales.DataPropertyName = "HorasTotales";
-            IdPlan.DataPropertyName = "IdPlan";
+            IdPlan.DataPropertyName = "IdPlan";// no se ve
         }
 
 
@@ -82,7 +93,7 @@ namespace UI.Desktop.ABMListForms
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            if (dgvMaterias.SelectedRows != null)
+            if (dgvMaterias.SelectedRows.Count != 0)
             {
                 int id = ((Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID;
                 try
@@ -99,7 +110,7 @@ namespace UI.Desktop.ABMListForms
                     Listar();
                 }
             }
-            else if (dgvMaterias.SelectedRows == null)
+            else if (dgvMaterias.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Error", "Seleccione una mteria\n para editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
