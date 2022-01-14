@@ -22,7 +22,7 @@ namespace UI.Web
             {
                 Usuario usr = (Usuario)Session["current_user"];
  
-                ocultarOpcionesMenu(usr.IdPersona);
+                ocultarOpcionesMenu(usr.TipoPersona);
    
     
             }
@@ -38,14 +38,14 @@ namespace UI.Web
         {
             switch (tipoPersona)
             {
-                case 1: // alumno
+                case 2: // alumno
                    
                     nav_alumno.Visible = true;
                     break;
-                case 2: // docente
+                case 1: // docente
                     Menu1.Visible = true;
                     break;
-                case 3: // administrador
+                case 0: // administrador
                     nav_administrador.Visible = true;
                     break;
                 default:

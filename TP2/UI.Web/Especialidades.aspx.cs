@@ -10,8 +10,9 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Especialidades : Father
+    public partial class Especialidades : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
@@ -19,7 +20,7 @@ namespace UI.Web
 
         private Business.Entities.Especialidades Entity { get; set; }
 
-        EspecialidadesLogic _logic; 
+        EspecialidadesLogic _logic;
 
         private EspecialidadesLogic Logic
         {
@@ -94,7 +95,7 @@ namespace UI.Web
 
         private void EnableForm(bool enable)
         {
-            
+
             this.descripcionEspecialidadLabel.Visible = enable;
             this.descripcionTextBox.Enabled = enable; // >>> ???? >> > > > > >> > > > > > > > > 
         }
@@ -113,7 +114,7 @@ namespace UI.Web
         private void ClearForm()
         {
             this.descripcionTextBox.Text = string.Empty;
-   
+
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -124,6 +125,7 @@ namespace UI.Web
 
                 this.formPanel.Visible = true;
                 this.FormMode = FormModes.Modificacion;
+                tituloForm.Text = "Modificar alumno";
                 this.LoadForm(this.SelectedID);
             }
         }
@@ -135,6 +137,7 @@ namespace UI.Web
                 this.formPanel.Visible = true;
                 this.FormMode = FormModes.Baja;
                 this.LoadForm(this.SelectedID);
+                tituloForm.Text = "Editar especialidad";
             }
         }
 
@@ -179,12 +182,28 @@ namespace UI.Web
             this.FormMode = FormModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
+            tituloForm.Text = "Nueva especialidad";
         }
 
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+        }
+
+        protected void buscarButton_Click(object sender, EventArgs e)
+        {
+            if (especialidadIngresoTextBox.Text.Length > 0)
+            {
+                LoadForm(int.Parse(especialidadIngresoTextBox.Text));
+                tituloForm.Text = "Modificar alumno";
+                this.FormMode = FormModes.Modificacion;
+              
+            }
+            else
+            {
+               // mostrarMensajeDeError("Ingresa la ID de un alumno");
+            }
         }
     }
 }

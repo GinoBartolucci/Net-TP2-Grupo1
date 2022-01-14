@@ -107,6 +107,56 @@ namespace Data.Database.TablesAdapters
             return inscrip;
 
         }
+        public List<Inscripciones> GetAllAlum(int idAlumno)
+        {
+            List<Inscripciones> inscrip = new List<Inscripciones>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdInscrip = new SqlCommand("select ai.id_inscripcion, ai.id_alumno, ai.id_curso, ai.condicion, isnull(ai.nota, -1) nota, m.desc_materia, com.desc_comision, concat(p.nombre, p.apellido) nombre, p.legajo  " +
+                    "from alumnos_inscripciones ai " +
+                    "inner join cursos c on c.id_curso = ai.id_curso " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join personas p on p.id_persona = ai.id_alumno " +
+                    "where ai.id_alumno = @id_alumno " , sqlConn);
+                cmdInscrip.Parameters.Add("@id_alumno", SqlDbType.Int).Value = idAlumno;
+                SqlDataReader drInscrip = cmdInscrip.ExecuteReader();
+
+                while (drInscrip.Read())
+                {
+                    Inscripciones inscrAl = new Inscripciones();
+
+                    inscrAl.ID = (int)drInscrip["id_inscripcion"];
+                    inscrAl.IdAlumno = (int)drInscrip["id_alumno"];
+                    inscrAl.IdCurso = (int)drInscrip["id_curso"];
+                    inscrAl.Condicion = (string)drInscrip["condicion"];
+                    inscrAl.Nota = (int)drInscrip["nota"];
+
+                    inscrAl.DescMateria = (string)drInscrip["desc_materia"];
+                    inscrAl.DescComision = (string)drInscrip["desc_comision"];
+                    inscrAl.NombreApellido = (string)drInscrip["nombre"];
+                    inscrAl.Legajo = (int)drInscrip["legajo"];
+
+                    inscrip.Add(inscrAl);
+                }
+
+                drInscrip.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de las inscripciones de alumnos.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return inscrip;
+
+        }
 
         public List<Inscripciones> GetAllYearAlum(int idAlumno, int year )
         {

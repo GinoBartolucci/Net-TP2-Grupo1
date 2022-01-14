@@ -91,7 +91,7 @@ namespace Data.Database.TablesAdapters
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de personas.", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de alumnos.", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -135,7 +135,7 @@ namespace Data.Database.TablesAdapters
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de personas.", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de docentes.", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -166,6 +166,7 @@ namespace Data.Database.TablesAdapters
                     per.Legajo = (int)drPersonas["legajo"];
                     per.Tipo_perona = (int)drPersonas["tipo_persona"];
                     per.Fecha_nac = (DateTime)drPersonas["fecha_nac"];
+                    per.Id_Plan = (int)drPersonas["id_plan"];
                 }
                 drPersonas.Close();
             }
@@ -230,7 +231,7 @@ namespace Data.Database.TablesAdapters
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("UPDATE personas SET nombre = @nombre, apellido = @apellido, " +
                     "direccion = @direccion, email = @email, telefono = @telefono, legajo = @legajo, tipo_persona= @tipo_persona," +
-                    "fecha_nac = @fecha_nac WHERE id = @id ", sqlConn);
+                    "fecha_nac = @fecha_nac, id_plan = @idPlan WHERE id_persona = @id ", sqlConn);
 
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = persona.ID;
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = persona.Nombre;
@@ -240,7 +241,8 @@ namespace Data.Database.TablesAdapters
                 cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = persona.Telefono;
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = persona.Tipo_perona;
-                cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = persona.Tipo_perona;
+                cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = persona.Fecha_nac;
+                cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = persona.Id_Plan;
                 cmdSave.ExecuteNonQuery();
                 //fijarse que exista la clave foranea de plan
 
@@ -261,8 +263,8 @@ namespace Data.Database.TablesAdapters
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("INSERT INTO personas (nombre,apellido,direccion,email,telefono,legajo,tipo_persona,fecha_nac)" +
-                    "values(@nombre,@apellido,@direccion,@email,@telefono,@legajo,@tipo_persona,@fecha_nac)" +
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO personas (nombre,apellido,direccion,email,telefono,legajo,tipo_persona,fecha_nac,id_plan)" +
+                    "values(@nombre,@apellido,@direccion,@email,@telefono,@legajo,@tipo_persona,@fecha_nac, @idPlan)" +
                     "select @@identity ", sqlConn);
 
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = persona.ID;
@@ -274,7 +276,7 @@ namespace Data.Database.TablesAdapters
                 cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
                 cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = persona.Tipo_perona;
                 cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime).Value = persona.Fecha_nac;
-
+                cmdSave.Parameters.Add("@idPlan", SqlDbType.Int).Value = persona.Id_Plan;
                 persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
 
             }

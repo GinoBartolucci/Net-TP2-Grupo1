@@ -15,13 +15,22 @@ namespace UI.Web
     {
 
         /// <summary>
-        /// form1 control.
+        /// especialidadIngresoTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox especialidadIngresoTextBox;
+
+        /// <summary>
+        /// buscarButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button buscarButton;
 
         /// <summary>
         /// gridPanel control.
@@ -49,6 +58,15 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel formPanel;
+
+        /// <summary>
+        /// tituloForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label tituloForm;
 
         /// <summary>
         /// descripcionEspecialidadLabel control.
