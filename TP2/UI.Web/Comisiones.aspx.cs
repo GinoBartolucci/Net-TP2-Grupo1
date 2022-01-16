@@ -116,7 +116,7 @@ namespace UI.Web
 
         private void mostrarOpcionesABM(int tipoPersona)
         {
-            if (tipoPersona == 3) // si es administrador
+            if (tipoPersona == 0) // si es administrador
             {
                 this.cancelarLinkButton.Visible = true;
                 this.aceptarLinkButton.Visible = true;

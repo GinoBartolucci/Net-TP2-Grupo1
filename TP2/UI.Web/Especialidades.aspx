@@ -51,7 +51,7 @@
 
                 
                   <br />
-                <asp:Label ID="validacionDescripcionEspecialidad" runat="server" Text="* La descripcion no puede estar vacia" ForeColor="#CC3300"></asp:Label>
+                <asp:Label ID="validacionDescripcionEspecialidad" runat="server" Visible="false" Text="* La descripcion no puede estar vacia" ForeColor="#CC3300"></asp:Label>
                 <br />
 
                 

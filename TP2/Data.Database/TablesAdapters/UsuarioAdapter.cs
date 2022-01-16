@@ -20,10 +20,10 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios" +
-                    "inner join personas per on usr.id_persona = per.id_persona " +
-                    "inner join planes pl on pl.id_plan = per.id_plan" +
-                    "inner join  especialidades es on es.id_especialidad = pl.id_especialidad", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios usr " +
+                    " inner join personas per on usr.id_persona = per.id_persona " +
+                    " inner join planes pl on pl.id_plan = per.id_plan " +
+                    " inner join  especialidades es on es.id_especialidad = pl.id_especialidad ", sqlConn);
 
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
 
@@ -91,11 +91,11 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios" +
-                    "inner join personas per on usr.id_persona = per.id_persona " +
-                    "inner join planes pl on pl.id_plan = per.id_plan" +
-                    "inner join  especialidades es on es.id_especialidad = pl.id_especialidad" +
-                    "where  id_usuario = @id_usuario", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios usr " +
+                    " inner join personas per on usr.id_persona = per.id_persona " +
+                    " inner join planes pl on pl.id_plan = per.id_plan" +
+                    " inner join  especialidades es on es.id_especialidad = pl.id_especialidad" +
+                    " where  usr.id_usuario = @id_usuario", sqlConn);
                 cmdUsuarios.Parameters.Add("@id_usuario", SqlDbType.Int).Value = ID;
                 SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
                 while (drUsuarios.Read())

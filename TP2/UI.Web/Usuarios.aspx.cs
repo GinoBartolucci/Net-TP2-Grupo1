@@ -91,7 +91,7 @@ namespace UI.Web
             this.Entity = this.Logic.GetOneId(id);
             this.apellidoTextBox.Text = this.Entity.Apellido;
             this.nombreTextBox.Text = this.Entity.Nombre;
-           // this.emailTextBox.Text = this.Entity.EMail;
+            this.emailTextBox.Text = this.Entity.Email;
             this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
             this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
 
@@ -106,7 +106,7 @@ namespace UI.Web
             this.emailTextBox.Enabled = enable;
             this.nombreUsuarioTextBox.Enabled = enable;
 
-            // this.habilitadoCheckBox.Enabled = enable;
+            this.habilitadoCheckBox.Enabled = enable;
             this.claveLabel.Visible = enable;
             this.ClaveTextBox.Visible = enable;
             this.repetirClaveLabel.Visible = enable;
@@ -142,12 +142,13 @@ namespace UI.Web
 
         private void LoadEntity(Usuario usuario)
         {
-            usuario.Apellido = this.apellidoTextBox.Text;
-            usuario.Nombre = this.nombreTextBox.Text;
-          //  usuario.EMail = this.emailTextBox.Text;
-            usuario.Clave = this.ClaveTextBox.Text;
-            usuario.NombreUsuario = this.nombreUsuarioTextBox.Text;
-            usuario.Habilitado = this.habilitadoCheckBox.Checked;
+           
+                usuario.Apellido = this.apellidoTextBox.Text;
+                usuario.Nombre = this.nombreTextBox.Text;
+                usuario.Email = this.emailTextBox.Text;
+                usuario.Clave = this.ClaveTextBox.Text;
+                usuario.NombreUsuario = this.nombreUsuarioTextBox.Text;
+                usuario.Habilitado = this.habilitadoCheckBox.Checked;          
 
         }
         private void SaveEntity(Usuario usuario)
@@ -157,30 +158,41 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
+
             switch (this.FormMode)
             {
                 case FormModes.Baja:
                     this.DeleteEntity(this.SelectedID);
                     this.LoadGrid();
+                    this.formPanel.Visible = false;
                     break;
                 case FormModes.Modificacion:
-                    this.Entity = new Usuario();
-                    this.Entity.ID = this.SelectedID;
-                    this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
-                    this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
-                    this.LoadGrid();
+                    if (validacioneForm())
+                    {
+                        this.Entity = new Usuario();
+                        this.Entity.ID = this.SelectedID;
+                        this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
+                        this.LoadEntity(this.Entity);
+                        this.SaveEntity(this.Entity);
+                        this.LoadGrid();
+                        this.formPanel.Visible = false;
+                    }
                     break;
+                   
                 default:
                     break; 
                 case FormModes.Alta:
-                    this.Entity = new Usuario();
-                    this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
-                    this.LoadGrid();
+                    if (validacioneForm())
+                    {
+                        this.Entity = new Usuario();
+                        this.LoadEntity(this.Entity);
+                        this.SaveEntity(this.Entity);
+                        this.LoadGrid();
+                        this.formPanel.Visible = false;
+                    }
                     break; 
             }
-            this.formPanel.Visible = false;
+           
         }
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
@@ -210,6 +222,37 @@ namespace UI.Web
             ClearForm();
             this.formPanel.Visible = false;
             
+        }
+
+        private bool validacioneForm()
+        {
+            bool bandera = false;
+            int contador = 0;
+
+            bandera = ( String.IsNullOrEmpty(nombreTextBox.Text)) ? true : false;
+            contador = (bandera == true) ? contador + 1 : contador;
+            validacionNombreCartel.Visible = bandera;
+
+            bandera = (String.IsNullOrEmpty(apellidoTextBox.Text)) ? true : false;
+            contador = (bandera == true) ? contador + 1 : contador;
+            validacionApellidoCartel.Visible = bandera;
+
+            bandera = (String.IsNullOrEmpty(emailTextBox.Text)) ? true : false;
+            contador = (bandera == true) ? contador + 1 : contador;
+            validacionEmailCartel.Visible = bandera;
+
+            bandera = (String.IsNullOrEmpty(nombreUsuarioTextBox.Text)) ? true : false;
+            contador = (bandera == true) ? contador + 1 : contador;
+            validacionNombreUsuarioCartel.Visible = bandera;
+
+            bandera = ( String.IsNullOrEmpty(ClaveTextBox.Text) || ClaveTextBox.Text != repetirClaveTextBox.Text) ? true : false;
+            contador = (bandera == true) ? contador++ : contador;
+            validacionClaveCartel.Visible = bandera;
+
+
+
+
+            return contador == 0; 
         }
     } 
 }

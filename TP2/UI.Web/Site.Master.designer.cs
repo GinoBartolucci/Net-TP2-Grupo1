@@ -33,15 +33,6 @@ namespace UI.Web
         protected global::System.Web.UI.HtmlControls.HtmlForm form;
 
         /// <summary>
-        /// nav_administrador control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nav_administrador;
-
-        /// <summary>
         /// nav_alumno control.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl nav_alumno;
+
+        /// <summary>
+        /// nav_administrador control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nav_administrador;
 
         /// <summary>
         /// Menu1 control.

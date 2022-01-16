@@ -143,6 +143,8 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
+            if(descripcionTextBox.Text.Length > 0)
+            {
             switch (this.FormMode)
             {
                 case FormModes.Baja:
@@ -167,6 +169,12 @@ namespace UI.Web
                     break;
             }
             this.formPanel.Visible = false;
+            validacionDescripcionEspecialidad.Visible = false;
+            }
+            else
+            {
+                validacionDescripcionEspecialidad.Visible = true;
+            }
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {

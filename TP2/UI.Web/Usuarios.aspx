@@ -6,18 +6,30 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 
 
-    <div>
+    <div class="container">
+          <h2>Usuarios</h2>  
+        <hr/>
 
+        <div class ="form-label-input">
+            <label class="form" style="width:100%">
+                ID:
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la comision" ID="especialidadIngresoTextBox" runat="server"></asp:TextBox>
+         
+            </label>
+            <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" />
+        </div>
 
-            <asp:Panel ID ="gridPanel" runat ="server" > 
+            <asp:Panel cssClass="py-3" ID ="gridPanel" runat ="server" > 
             <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="false"
                 SelectedRowStyle-BackColor="Black"
                 SelectedRowStyle-ForeColor="White"
+                Width="100%"
                 DataKeynames ="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" >
  
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />
                 
                 <Columns>
+                    <asp:BoundField HeaderText ="ID" DataField ="id" />
                     <asp:BoundField HeaderText ="Nombre" DataField ="Nombre" />
                     <asp:BoundField HeaderText ="Apellido" DataField ="Apellido" />
                     <asp:BoundField HeaderText ="Email" DataField ="Email" />
@@ -30,7 +42,7 @@
             </asp:Panel>
 
 
-            <asp:Panel ID="formPanel" runat="server" Visible ="false">
+            <asp:Panel cssClass="py-3" ID="formPanel" runat="server" Visible ="false">
                 <asp:Label ID="nombreLabel" runat="server" Text="Nombre"></asp:Label>
                 <asp:TextBox ID="nombreTextBox" runat="server"></asp:TextBox>
                 <asp:Label ID="nombreValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
@@ -66,29 +78,29 @@
                 <br />
 
                 
-                <asp:Label ID="validacionNombreCartel" runat="server" Text="* El nombre no puede estar vacio" ForeColor="#CC3300"></asp:Label> 
+                <asp:Label ID="validacionNombreCartel" Visible="false" runat="server" Text="* El nombre no puede estar vacio" ForeColor="#CC3300"></asp:Label> 
                 <br />
-                <asp:Label ID="validacionApellidoCartel" runat="server" Text="* El apellido no puede estar vacio" ForeColor="#CC3300"></asp:Label>
+                <asp:Label ID="validacionApellidoCartel" Visible="false" runat="server" Text="* El apellido no puede estar vacio" ForeColor="#CC3300"></asp:Label>
                 <br />
-                <asp:Label ID="validacionEmailCartel" runat="server" Text="* El email es invalido" ForeColor="#CC3300"></asp:Label>
+                <asp:Label ID="validacionEmailCartel" Visible="false" runat="server" Text="* El email es invalido" ForeColor="#CC3300"></asp:Label>
                 <br />
-                <asp:Label ID="validacionNombreUsuarioCartel" runat="server" Text="* El nombre usuario  no puede estar vacio" ForeColor="#CC3300"></asp:Label>
+                <asp:Label ID="validacionNombreUsuarioCartel" Visible="false" runat="server" Text="* El nombre usuario  no puede estar vacio" ForeColor="#CC3300"></asp:Label>
                 <br />
-                 <asp:Label ID="validacionClaveCartel" runat="server" Text="* Las claves no coinciden" ForeColor="#CC3300"></asp:Label>
+                 <asp:Label ID="validacionClaveCartel"  Visible="false" runat="server" Text="* Las claves no coinciden" ForeColor="#CC3300"></asp:Label>
               
 
                      <asp:Panel ID="formActionsPanel" runat="server">
-                        <asp:Button ID="aceptarLinkButton" runat="server" Text="Aceptar" OnClick="aceptarLinkButton_Click" />
-                        <asp:Button ID="cancelarLinkButton" runat="server" Text="Cancelar" OnClick="cancelarLinkButton_Click" />
+                        <asp:Button cssClass="btn btn-success" ID="aceptarLinkButton" runat="server" Text="Aceptar" OnClick="aceptarLinkButton_Click" />
+                        <asp:Button cssClass="btn btn-danger" ID="cancelarLinkButton" runat="server" Text="Cancelar" OnClick="cancelarLinkButton_Click" />
               
 
                     </asp:Panel>
             </asp:Panel>
 
             <asp:Panel ID="gridActionsPanel" runat="server">
-                <asp:Button ID="editarLinkButton" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
-                <asp:Button ID="eliminarLinkButton" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click" />
-                <asp:Button ID="nuevoLinkButton" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
+                <asp:Button ID="editarLinkButton" cssClass="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
+                <asp:Button ID="eliminarLinkButton" cssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click" />
+                <asp:Button ID="nuevoLinkButton" cssClass="btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
             </asp:Panel>
         </div>

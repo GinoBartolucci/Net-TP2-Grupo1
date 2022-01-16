@@ -3,18 +3,32 @@
  <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-     
- <div> 
-            <asp:Panel ID ="gridPanel" runat ="server"  Visible ="false"> 
+
+    <div class="container"> 
+          <h2>Comisiones</h2>  
+        <hr/>
+    
+          <div class ="form-label-input">
+            <label class="form" style="width:100%">
+                ID:
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la comision" ID="especialidadIngresoTextBox" runat="server"></asp:TextBox>
+         
+            </label>
+            <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" />
+        </div>
+
+            <asp:Panel ID ="gridPanel" CssClass="py-3" runat ="server"  Visible ="false"> 
             <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False"
                 SelectedRowStyle-BackColor="Black"
                 SelectedRowStyle-ForeColor="White" 
+                Width="100%"
                 DataKeynames ="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" 
                >
  
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />
                 
                 <Columns>
+                    <asp:BoundField HeaderText="ID" DataField="id" />
                     <asp:BoundField  HeaderText ="Descripcion" DataField ="DescComision" />
                     <asp:BoundField HeaderText ="Anio Especialidad" DataField ="AnioEspecialidad" />
                     <asp:BoundField HeaderText ="ID Plan" DataField ="IdPlan" />
@@ -25,13 +39,14 @@
             </asp:GridView>
               </asp:Panel>
 
-            <asp:Panel id="panelAlumnosDocentes" runat="server"> 
+            <asp:Panel CssClass="py-3" id="panelAlumnosDocentes" runat="server"> 
                 <asp:GridView ID="gridViewDocenteAlumno" runat="server" AutoGenerateColumns="False"  
                    DataKeynames ="ID" >
  
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />
                 
                 <Columns>
+                    <asp:BoundField HeaderText="ID" DataField="id" />
                     <asp:BoundField HeaderText ="Descripcion" DataField ="DescComision" />
                     <asp:BoundField HeaderText ="Anio Especialidad" DataField ="AnioEspecialidad" />
                     <asp:BoundField HeaderText ="ID Plan" DataField ="IdPlan" />
@@ -72,17 +87,17 @@
               
 
                      <asp:Panel ID="formActionsPanel" runat="server">
-                        <asp:Button ID="aceptarLinkButton" runat="server" Text="Aceptar" OnClick="aceptarLinkButton_Click" />
-                        <asp:Button ID="cancelarLinkButton" runat="server" Text="Cancelar" OnClick="cancelarLinkButton_Click" />
+                        <asp:Button ID="aceptarLinkButton" CssClass="btn btn-success" runat="server" Text="Aceptar" OnClick="aceptarLinkButton_Click" />
+                        <asp:Button ID="cancelarLinkButton" CssClass="btn btn-danger" runat="server" Text="Cancelar" OnClick="cancelarLinkButton_Click" />
               
 
                     </asp:Panel>
             </asp:Panel>
 
             <asp:Panel ID="gridActionsPanel" runat="server">
-                <asp:Button ID="editarLinkButton" runat="server" Text="Editar" OnClick="editarLinkButton_Click" Visible ="false" />
-                <asp:Button ID="eliminarLinkButton" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click"  Visible ="false" />
-                <asp:Button ID="nuevoLinkButton" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click"  Visible ="false" />
+                <asp:Button ID="editarLinkButton" CssClass="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click" Visible ="false" />
+                <asp:Button ID="eliminarLinkButton" CssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click"  Visible ="false" />
+                <asp:Button ID="nuevoLinkButton" CssClass="btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click"  Visible ="false" />
 
             </asp:Panel>
         </div>
