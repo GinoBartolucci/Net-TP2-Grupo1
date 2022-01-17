@@ -24,7 +24,7 @@ namespace UI.Desktop.ABMListForms
             }
             return singleton;
         }
-
+        public int idCursoDocente;
         public enum ModoF
         {
             Lista, Nota
@@ -49,15 +49,15 @@ namespace UI.Desktop.ABMListForms
                 condicion.Visible = false;
                 nota.Visible = false;
             }
-            Listar();
         }
         public InscripcionesAlumnos(ModoF modo, int idCurso)//para prof
         {
             InitializeComponent();
+            Modo = modo;
             this.dvgInscripcionesAlumnos.AutoGenerateColumns = false;
             id_alumno.Visible = false;
             id_inscripcion.Visible = false;
-            if (modo == ModoF.Lista)
+            if (Modo == ModoF.Lista)
             {
                 tsbNuevo.Visible = false;
                 tsbEliminar.Visible = false;
@@ -70,11 +70,10 @@ namespace UI.Desktop.ABMListForms
 
                 id_alumno.Visible = false;
             }
-            Listar(idCurso);
-
+            idCursoDocente = idCurso;
         }
 
-        public void Listar(int? idCurso = null)
+        public void Listar()
         {
             try
             {
@@ -83,12 +82,18 @@ namespace UI.Desktop.ABMListForms
                     this.dvgInscripcionesAlumnos.DataSource = Alumnos_inscripcionesLogic.GetInstance().GetAllYearAlum(Session.currentUser.IdPersona, Int32.Parse(DateTime.Now.ToString("yyyy"))); //
                 }
                 if (Session.currentUser.TipoPersona == 2)
-                {
-                    if (idCurso != null)
-                    {                        
-                        this.dvgInscripcionesAlumnos.DataSource = Alumnos_inscripcionesLogic.GetInstance().GetAllYearCurso(Int32.Parse(DateTime.Now.ToString("yyyy")), idCurso);
-                        
-                    }
+                {                      
+                        List<Inscripciones> listaInscrip = Alumnos_inscripcionesLogic.GetInstance().GetAllCurso(idCursoDocente);
+                        if (Modo == ModoF.Nota)
+                        {
+                            listaInscrip.RemoveAll(item => item.Condicion == "Aprobado" || item.Condicion == "Libre");// para poder la nota solo trae los regulares
+                            if (listaInscrip.Count == 0)
+                            {
+                                MessageBox.Show("No hay alumnos no aprobados en este curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Close();
+                            }
+                        }
+                        dvgInscripcionesAlumnos.DataSource = listaInscrip;                    
                 }
             } 
             catch(Exception e)
@@ -109,16 +114,17 @@ namespace UI.Desktop.ABMListForms
                 nombreApellido.DataPropertyName = "NombreApellido";
                 legajo.DataPropertyName = "Legajo";
                 id_curso.DataPropertyName = "IdCurso";
-                desc_Comision.DataPropertyName = "DescMateria";
+                desc_Materia.DataPropertyName = "DescMateria";
                 desc_Comision.DataPropertyName = "DescComision";
                 condicion.DataPropertyName = "Condicion";//selecccionar
                 nota.DataPropertyName = "Nota";
+                
             }
         }
 
         private void InscripcionesAlumnos_Load(object sender, EventArgs e)
         {
-            //Listar(); 
+            Listar(); 
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)

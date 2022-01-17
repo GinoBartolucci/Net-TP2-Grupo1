@@ -83,7 +83,7 @@ namespace UI.Desktop.DesktopsForms
             this.txtLegajo.Text = this.InscripcionActual.Legajo.ToString();
             txtNombre.Text = this.InscripcionActual.NombreApellido.ToString();
             cbxCondicion.SelectedItem = this.InscripcionActual.Condicion;
-            if (cbxCondicion.SelectedItem.ToString() == "Aprobado" || cbxCondicion.SelectedItem.ToString() == "Libre")
+            if (InscripcionActual.Condicion == "Aprobado" || InscripcionActual.Condicion == "Libre")
             {
                 cbxNotas.Enabled = false;
                 cbxCondicion.Enabled = false;//si ya esta aprobado o libre no se puede cambiar
@@ -124,7 +124,10 @@ namespace UI.Desktop.DesktopsForms
                 {
                     this.InscripcionActual.ID = int.Parse(this.txtID.Text);
                     this.InscripcionActual.Condicion = this.cbxCondicion.SelectedItem.ToString();
-                    this.InscripcionActual.Nota = int.Parse(cbxNotas.SelectedItem.ToString());
+                    if (InscripcionActual.Condicion == "Aprobado") 
+                    {
+                        this.InscripcionActual.Nota = int.Parse(cbxNotas.SelectedItem.ToString());
+                    }                    
                     //this.InscripcionActual.Nota = int.Parse(txtNota.Text);
                     this.InscripcionActual.IdCurso = int.Parse(this.txtCurso.Text);
                     this.InscripcionActual.Legajo = int.Parse(this.txtLegajo.Text);
@@ -156,15 +159,21 @@ namespace UI.Desktop.DesktopsForms
             }
             else
             {
-                string[] labels = { txtID.Text, txtCurso.Text, txtLegajo.Text, txtNombre.Text };
+                //string[] labels = { txtID.Text, txtCurso.Text, txtLegajo.Text, txtNombre.Text };
                 if (cbxNotas.SelectedItem.ToString() != "Nota" && cbxCondicion.SelectedItem.ToString() == "Aprobado")
                 {
-                    if (BusinessRules.ValidarCampos(labels))
-                    {
+                    //if (BusinessRules.ValidarCampos(labels))
+                    //{
                         GuardarCambios();
                         DialogResult = DialogResult.OK;
                         this.Close();
-                    }
+                    //}
+                }
+                else if (cbxNotas.SelectedItem.ToString() == "Nota" && (cbxCondicion.SelectedItem.ToString() == "Regular" || cbxCondicion.SelectedItem.ToString() == "Libre"))
+                {
+                    GuardarCambios();
+                    DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {

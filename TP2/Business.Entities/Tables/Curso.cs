@@ -8,7 +8,9 @@
 
         private string _descMateria;
 
-        string _descPlan;
+        private string _descPlan;
+
+        private int _anioEspecialidad;
 
         public int id_curso
         {
@@ -41,5 +43,6 @@
         public string DescComision { get => _descComision; set => _descComision = value; }
         public string DescMateria { get => _descMateria; set => _descMateria = value; }
         public string DescPlan { get => _descPlan; set => _descPlan = value; }
+        public int AnioEspecialidad { get => _anioEspecialidad; set => _anioEspecialidad = value; }
     }
 }

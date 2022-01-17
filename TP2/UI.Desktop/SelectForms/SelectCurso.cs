@@ -39,7 +39,7 @@ namespace UI.Desktop.SelectForms
                 if (Session.currentUser.TipoPersona == 3)
                 {
                     //Trae de la base los cursos de este año
-                    List<Curso> listaCursos = CursoLogic.GetInstance().GetAllYear(Int32.Parse(DateTime.Now.ToString("yyyy")));    
+                    List<Curso> listaCursos = CursoLogic.GetInstance().GetAllYearPlan(Int32.Parse(DateTime.Now.ToString("yyyy")), Session.currentUser.IdPlan);    
                     listaCursos = BusinessRules.ValidarCursosAlumnos(listaCursos);
                     this.dgvSelectCurso.DataSource = listaCursos;                    
                  
@@ -54,6 +54,7 @@ namespace UI.Desktop.SelectForms
                 {
                     //Habrir selectcurso para seleccionar los cursos en los que da clase el profesor
                     List<Curso> listaCursos = CursoLogic.GetInstance().GetAllDoc(Session.currentUser.IdPersona);
+                    this.dgvSelectCurso.DataSource = listaCursos;
                     if (listaCursos.Count == 0)
                     {
                         MessageBox.Show("No hay cursos en los que dicte", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -75,10 +76,11 @@ namespace UI.Desktop.SelectForms
                 Close();
             }
             id_curso.DataPropertyName = "id_curso";
+            anio_especialidad.DataPropertyName = "AnioEspecialidad";
             AnioCalendario.DataPropertyName = "anio_calendario";            
-            descComision.DataPropertyName = "descComision";
-            descMateria.DataPropertyName = "descMateria";
-            descPlan.DataPropertyName = "descPlan";
+            descComision.DataPropertyName = "DescComision";
+            descMateria.DataPropertyName = "DescMateria";
+            descPlan.DataPropertyName = "DescPlan";
             Cupo.DataPropertyName = "cupo";
 
 

@@ -54,9 +54,9 @@ namespace Business.Logic
             return InscripcionData.GetAllYearAlum(idAlumno, year);
         }
 
-        public List<Inscripciones> GetAllYearCurso(int year, int? idCurso = null)
+        public List<Inscripciones> GetAllCurso(int idCurso)
         {
-            return InscripcionData.GetAllYearCurso(year, idCurso);
+            return InscripcionData.GetAllCurso(idCurso);
         }
 
         public void Save(Inscripciones p)

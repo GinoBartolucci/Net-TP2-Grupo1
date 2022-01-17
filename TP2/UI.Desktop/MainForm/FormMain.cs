@@ -113,7 +113,8 @@ namespace UI.Desktop
             {
                 MessageBox.Show("Error al seleccionar Curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            new InscripcionesAlumnos(InscripcionesAlumnos.ModoF.Lista, listadoAlumnos.IdCurso);
+            InscripcionesAlumnos inscripcionesListado = new InscripcionesAlumnos(InscripcionesAlumnos.ModoF.Lista, listadoAlumnos.IdCurso);
+            inscripcionesListado.ShowDialog();
         }
 
         private void btnCargarNotas_Click(object sender, EventArgs e)
@@ -125,9 +126,15 @@ namespace UI.Desktop
             listadoAlumnos.ShowDialog();
             if (listadoAlumnos.DialogResult != DialogResult.OK)
             {
-                MessageBox.Show("Error al inscribirse al Curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al seleccionar Curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            new InscripcionesAlumnos(InscripcionesAlumnos.ModoF.Nota, listadoAlumnos.IdCurso).ShowDialog();
+            InscripcionesAlumnos inscripcionesNotas = new InscripcionesAlumnos(InscripcionesAlumnos.ModoF.Nota, listadoAlumnos.IdCurso);
+            inscripcionesNotas.ShowDialog();
+        }
+
+        private void btnDictado_Click(object sender, EventArgs e)
+        {
+            DocentesCursos.GetInstance().ShowDialog();
         }
     }
 }
