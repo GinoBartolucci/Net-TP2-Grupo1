@@ -39,7 +39,6 @@ namespace UI.Desktop.ABMListForms
 
         public void Listar()
         {
-            MateriaLogic m1 = new MateriaLogic();
             try
             {
                 if (Session.currentUser.TipoPersona == 3)

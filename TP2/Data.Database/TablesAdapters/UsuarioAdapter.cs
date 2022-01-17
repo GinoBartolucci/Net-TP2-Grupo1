@@ -178,14 +178,18 @@ namespace Data.Database
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.Nombre = (string)drUsuarios["nombre"];
                     usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.Email = (string)drUsuarios["email"];
+                    //usr.Email = (string)drUsuarios["email"];
 
-                    usr.IdPersona = (int)drUsuarios["id_persona"];
-                    usr.Legajo = (int)drUsuarios["legajo"];
-                    usr.Direccion = (string)drUsuarios["direccion"];
-                    usr.Telefono = (string)drUsuarios["telefono"];
-                    usr.FechaNac = (DateTime)drUsuarios["fecha_nac"];
                     usr.TipoPersona = (int)drUsuarios["tipo_persona"];
+                    usr.IdPersona = (int)drUsuarios["id_persona"];
+                    if(usr.TipoPersona == 1)
+                    {
+                        usr.Legajo = (int)drUsuarios["legajo"];
+                    }                    
+                    //usr.Direccion = (string)drUsuarios["direccion"];
+                    //usr.Telefono = (string)drUsuarios["telefono"];
+                    usr.FechaNac = (DateTime)drUsuarios["fecha_nac"];
+                    
 
                     usr.IdPlan = (int)drUsuarios["id_plan"];
                     usr.DescPlan = (string)drUsuarios["desc_plan"];

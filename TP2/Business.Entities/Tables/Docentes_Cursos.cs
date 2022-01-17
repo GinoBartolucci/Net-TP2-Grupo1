@@ -4,6 +4,10 @@
     {
         private int _id_dictado, _id_curso, _id_docente, _cargo;
 
+        private string _descMateria;
+        private string _descComision;
+        private string _nombreApellido;
+
         public int id_dictado
         {
             get { return _id_dictado; }
@@ -25,5 +29,9 @@
             get { return _cargo; }
             set { _cargo = value; }
         }
+
+        public string DescMateria { get => _descMateria; set => _descMateria = value; }
+        public string DescComision { get => _descComision; set => _descComision = value; }
+        public string NombreApellido { get => _nombreApellido; set => _nombreApellido = value; }
     }
 }

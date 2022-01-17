@@ -161,23 +161,21 @@ namespace Data.Database.TablesAdapters
 
         }
 
-        public List<Inscripciones> GetAllYearCurso(int year, int? idCurso = null)
+        public List<Inscripciones> GetAllCurso(int idCurso)
         {
             List<Inscripciones> inscrip = new List<Inscripciones>();
             try
             {
                 OpenConnection();
 
-                SqlCommand cmdInscrip = new SqlCommand("select ai.*, m.desc_materia, com.desc_comision, concat(p.nombre, p.apellido) nombre, p.legajo  " +
+                SqlCommand cmdInscrip = new SqlCommand("select ai.id_inscripcion, ai.id_alumno, ai.id_curso, ai.condicion, isnull(ai.nota, -1) nota, m.desc_materia, com.desc_comision, concat(p.nombre, p.apellido) nombre, p.legajo  " +
                     "from alumnos_inscripciones ai " +
                     "inner join cursos c on c.id_curso = ai.id_curso " +
                     "inner join materias m on m.id_materia = c.id_materia " +
                     "inner join comisiones com on com.id_comision = c.id_comision " +
                     "inner join personas p on p.id_persona = ai.id_alumno " +
-                    "where c.anio_ calendario = @year" +
-                    "and c.id_curso = @id_curso ", sqlConn);
+                    "where c.id_curso = @id_curso ", sqlConn);
                 cmdInscrip.Parameters.Add("@id_curso", SqlDbType.Int).Value = idCurso;
-                cmdInscrip.Parameters.Add("@year", SqlDbType.Int).Value = year;
                 SqlDataReader drInscrip = cmdInscrip.ExecuteReader();
 
                 while (drInscrip.Read())

@@ -25,7 +25,7 @@ namespace Data.Database
         {
 
         }
-        public List<Curso> GetAllYear(int year)
+        public List<Curso> GetAllYearPlan(int year, int idPlan)
         {
             List<Curso> cursos = new List<Curso>();
             try
@@ -36,8 +36,10 @@ namespace Data.Database
                     "inner join materias m on m.id_materia = c.id_materia " +
                     "inner join comisiones com on com.id_comision = c.id_comision " +
                     "inner join planes p on p.id_plan = com.id_plan " +
-                    "where c.anio_calendario = @year  ", sqlConn);
+                    "where c.anio_calendario = @year " +
+                    "and m.id_plan = @id_plan", sqlConn);
                 cmdCursos.Parameters.Add("@year", SqlDbType.Int).Value = year;
+                cmdCursos.Parameters.Add("@id_plan", SqlDbType.Int).Value = idPlan;
                 SqlDataReader drCursos = cmdCursos.ExecuteReader();
 
                 while (drCursos.Read())
@@ -53,6 +55,8 @@ namespace Data.Database
                     cur.DescComision = (string)drCursos["desc_comision"];
                     cur.DescMateria = (string)drCursos["desc_materia"];
                     cur.DescPlan = (string)drCursos["desc_plan"];
+
+                    cur.AnioEspecialidad = (int)drCursos["anio_especialidad"];
 
                     cursos.Add(cur);
                 }
@@ -105,6 +109,8 @@ namespace Data.Database
                     cur.DescMateria = (string)drCursos["desc_materia"];
                     cur.DescPlan = (string)drCursos["desc_plan"];
 
+                    cur.AnioEspecialidad = (int)drCursos["anio_especialidad"];
+
                     cursos.Add(cur);
                 }
 
@@ -136,7 +142,7 @@ namespace Data.Database
                     "inner join docentes_cursos dc on c.id_curso = dc.id_curso " +
                     "inner join comisiones com on com.id_comision = c.id_comision " +
                     "inner join planes p on p.id_plan = com.id_plan " +
-                    "where dc.id_doc = @id_doc ", sqlConn);
+                    "where dc.id_docente = @id_doc ", sqlConn);
                 cmdCursos.Parameters.Add("@id_doc", SqlDbType.Int).Value = id_doc;
                 SqlDataReader drCursos = cmdCursos.ExecuteReader();
 
@@ -153,6 +159,8 @@ namespace Data.Database
                     cur.DescComision = (string)drCursos["desc_comision"];
                     cur.DescMateria = (string)drCursos["desc_materia"];
                     cur.DescPlan = (string)drCursos["desc_plan"];
+
+                    cur.AnioEspecialidad = (int)drCursos["anio_especialidad"];
 
                     cursos.Add(cur);
                 }
