@@ -224,5 +224,25 @@ namespace UI.Web
             this.formPanel.Visible = false;
 
         }
+        protected void seleccionarButton(object sender, EventArgs e)
+        {
+            LoadEspecialidadGrid();
+            tablaPlan.Visible = true;
+
+        }
+
+        private void LoadEspecialidadGrid()
+        {
+            this.planGridView.DataSource = new PlanesLogic().GetAll();
+            this.planGridView.DataBind();
+        }
+
+        protected void planGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.idPlanTextBox.Text = this.planGridView.SelectedValue.ToString();
+            this.tablaPlan.Visible = false;
+        }
+
+
     }
 }

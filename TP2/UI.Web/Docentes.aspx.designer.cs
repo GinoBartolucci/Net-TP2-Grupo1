@@ -24,13 +24,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Button agregarAlumnoButton;
 
         /// <summary>
-        /// idAlumnoIngresoTextBox control.
+        /// idDocenteIngresoTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idAlumnoIngresoTextBox;
+        protected global::System.Web.UI.WebControls.TextBox idDocenteIngresoTextBox;
 
         /// <summary>
         /// buscarButton control.
@@ -42,22 +42,22 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Button buscarButton;
 
         /// <summary>
-        /// alumnosPanel control.
+        /// docentesPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel alumnosPanel;
+        protected global::System.Web.UI.WebControls.Panel docentesPanel;
 
         /// <summary>
-        /// AlumnosGridView control.
+        /// DocentesGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AlumnosGridView;
+        protected global::System.Web.UI.WebControls.GridView DocentesGridView;
 
         /// <summary>
         /// cursosAlumnoButton control.
@@ -87,13 +87,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Button modificarAlumnoButton;
 
         /// <summary>
-        /// form_alumno control.
+        /// form_docente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_alumno;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_docente;
 
         /// <summary>
         /// tituloForm control.

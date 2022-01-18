@@ -210,6 +210,7 @@ footer {
               <li><a class="icon-label" href="Usuarios.aspx"> <label>Usuarios</label> </a></li>
                 <li><a class="icon-label" href="Comisiones.aspx"> <label>Comisiones</label> </a></li>
               <li><a class="icon-label" href="Alumnos.aspx"> <label>Alumnos</label> </a></li>
+                 <li><a class="icon-label" href="Planes.aspx"> <label>Planes</label> </a></li>
                 <li><a class="icon-label" href="Especialidades.aspx"> <label>Especialidades</label> </a></li>
                <li> <a class="icon-label" href="Comisiones.aspx"> <span class="material-icons">logout</span><label>Salir</label> </a></li>           
             </ul>

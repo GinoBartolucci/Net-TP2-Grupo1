@@ -6,20 +6,20 @@
     <h2>Docentes</h2>  
         <hr/>
     <br />
-        <asp:Button ID="agregarAlumnoButton" class="btn btn-success" runat="server" Text="Agregar nuevo alumno" OnClick="agregarAlumnoButton_Click" />
+        <asp:Button ID="agregarAlumnoButton" class="btn btn-success" runat="server" Text="Agregar nuevo docente" OnClick="agregarAlumnoButton_Click" />
                <br />    
         <div class ="form-label-input">
             <label class="form" style="width:100%">
                 ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID del alumno" ID="idAlumnoIngresoTextBox" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID del docente" ID="idDocenteIngresoTextBox" runat="server"></asp:TextBox>
          
             </label>
             <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
         </div>
     
         <br />  
-                   <asp:Panel ID ="alumnosPanel" runat ="server" CssClass="tabla" > 
-            <asp:GridView ID="AlumnosGridView" runat="server" AutoGenerateColumns="False"
+                   <asp:Panel ID ="docentesPanel" runat ="server" CssClass="tabla" > 
+            <asp:GridView ID="DocentesGridView" runat="server" AutoGenerateColumns="False"
                 SelectedRowStyle-BackColor="Black"
                 SelectedRowStyle-ForeColor="White"
                  Width="1000px"
@@ -52,7 +52,7 @@
   
     
 
-    <section class="container modificar-alumno" id="form_alumno" runat="server">
+    <section class="container modificar-docente" id="form_docente" runat="server">
       
         <h4><asp:Label runat="server" ID="tituloForm" Text=""></asp:Label></h4>
         <hr/>
