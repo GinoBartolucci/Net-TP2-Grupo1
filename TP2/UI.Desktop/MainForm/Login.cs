@@ -40,6 +40,7 @@ namespace UI.Desktop
                 {
                     if (txtUsuario.Text != "" && txtContraseña.Text != "")
                     {
+                        //Business.Entities.Usuario usr = Business.Logic.UsuarioLogic.GetInstance().LoginUsuario("gino00", "123456");
                         Business.Entities.Usuario usr = Business.Logic.UsuarioLogic.GetInstance().LoginUsuario(txtUsuario.Text, txtContraseña.Text);
                         if (usr != null)
                         {

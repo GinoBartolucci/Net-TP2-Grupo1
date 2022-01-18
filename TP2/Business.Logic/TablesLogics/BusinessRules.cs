@@ -11,12 +11,7 @@ namespace Business.Logic
     {
         //SELECT_CURSOS INSCRIBIRSE
         public static List<Curso> ValidarCursosAlumnos(List<Curso> listaCursos)
-        {
-            //Quita cursos en los que la materia no es del plan del alumno
-            if (listaCursos.Count != 0)
-            {
-                listaCursos = ValidarMateriaPlan(listaCursos);
-            }
+        {           
             //Quita cursos en los que ya esta inscripto o es de una materia ya insripta
             if (listaCursos.Count != 0)
             {
@@ -55,16 +50,6 @@ namespace Business.Logic
                 listaCursos.RemoveAll(item => item.id_curso == insAlu.id_curso || item.id_materia == insAlu.id_materia);
             }            
             return listaCursos;
-        }
-        public static List<Curso> ValidarMateriaPlan(List<Curso> listaCursos)
-        {
-            //Trae de la base de datos las materias del plan del alumno
-            List<Materia> materiasPlan = MateriaLogic.GetInstance().GetAllPlan(Session.currentUser.IdPlan);
-            foreach (var materias in materiasPlan)
-            {
-                listaCursos.RemoveAll(item => item.id_materia != materias.ID);
-            }
-            return listaCursos;            
         }
 
         //INSCRIPCIONES_ALUMNOS_DESKTOP 

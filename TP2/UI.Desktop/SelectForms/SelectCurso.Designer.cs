@@ -34,10 +34,11 @@ namespace UI.Desktop.SelectForms
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.id_curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anio_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AnioCalendario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblSelectCurso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectCurso)).BeginInit();
@@ -57,7 +58,7 @@ namespace UI.Desktop.SelectForms
             this.tblSelectCurso.RowCount = 2;
             this.tblSelectCurso.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblSelectCurso.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblSelectCurso.Size = new System.Drawing.Size(682, 283);
+            this.tblSelectCurso.Size = new System.Drawing.Size(747, 283);
             this.tblSelectCurso.TabIndex = 0;
             // 
             // dgvSelectCurso
@@ -65,10 +66,11 @@ namespace UI.Desktop.SelectForms
             this.dgvSelectCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSelectCurso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_curso,
+            this.descPlan,
+            this.anio_especialidad,
             this.AnioCalendario,
             this.descComision,
             this.descMateria,
-            this.descPlan,
             this.Cupo});
             this.tblSelectCurso.SetColumnSpan(this.dgvSelectCurso, 2);
             this.dgvSelectCurso.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -77,12 +79,12 @@ namespace UI.Desktop.SelectForms
             this.dgvSelectCurso.Name = "dgvSelectCurso";
             this.dgvSelectCurso.ReadOnly = true;
             this.dgvSelectCurso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSelectCurso.Size = new System.Drawing.Size(676, 248);
+            this.dgvSelectCurso.Size = new System.Drawing.Size(741, 248);
             this.dgvSelectCurso.TabIndex = 0;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(604, 257);
+            this.btnSalir.Location = new System.Drawing.Point(669, 257);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 1;
@@ -93,7 +95,7 @@ namespace UI.Desktop.SelectForms
             // btnSeleccionar
             // 
             this.btnSeleccionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSeleccionar.Location = new System.Drawing.Point(523, 257);
+            this.btnSeleccionar.Location = new System.Drawing.Point(588, 257);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.btnSeleccionar.TabIndex = 2;
@@ -103,13 +105,26 @@ namespace UI.Desktop.SelectForms
             // 
             // id_curso
             // 
+            this.id_curso.Frozen = true;
             this.id_curso.HeaderText = "ID";
             this.id_curso.Name = "id_curso";
             this.id_curso.ReadOnly = true;
             // 
+            // descPlan
+            // 
+            this.descPlan.HeaderText = "Plan";
+            this.descPlan.Name = "descPlan";
+            this.descPlan.ReadOnly = true;
+            // 
+            // anio_especialidad
+            // 
+            this.anio_especialidad.HeaderText = "Año Especialidad";
+            this.anio_especialidad.Name = "anio_especialidad";
+            this.anio_especialidad.ReadOnly = true;
+            // 
             // AnioCalendario
             // 
-            this.AnioCalendario.HeaderText = "Año Calendario";
+            this.AnioCalendario.HeaderText = "Año Dictado";
             this.AnioCalendario.Name = "AnioCalendario";
             this.AnioCalendario.ReadOnly = true;
             // 
@@ -125,12 +140,6 @@ namespace UI.Desktop.SelectForms
             this.descMateria.Name = "descMateria";
             this.descMateria.ReadOnly = true;
             // 
-            // descPlan
-            // 
-            this.descPlan.HeaderText = "Plan";
-            this.descPlan.Name = "descPlan";
-            this.descPlan.ReadOnly = true;
-            // 
             // Cupo
             // 
             this.Cupo.HeaderText = "Cupo";
@@ -141,7 +150,7 @@ namespace UI.Desktop.SelectForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 283);
+            this.ClientSize = new System.Drawing.Size(747, 283);
             this.Controls.Add(this.tblSelectCurso);
             this.Name = "SelectCurso";
             this.Text = "SelectCurso";
@@ -159,10 +168,11 @@ namespace UI.Desktop.SelectForms
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_curso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descPlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anio_especialidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn AnioCalendario;
         private System.Windows.Forms.DataGridViewTextBoxColumn descComision;
         private System.Windows.Forms.DataGridViewTextBoxColumn descMateria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descPlan;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cupo;
     }
 }

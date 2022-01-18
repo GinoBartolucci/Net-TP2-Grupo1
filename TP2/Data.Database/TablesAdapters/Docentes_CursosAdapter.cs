@@ -64,6 +64,55 @@ namespace Data.Database
             return docentes_cursos;
 
         }
+
+        public List<Docentes_cursos> GetAllYearDoc(int idDoc, int year)
+        {
+            List<Docentes_cursos> docentes_cursos = new List<Docentes_cursos>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdDocentes_Cursos = new SqlCommand("select * from docentes_cursos dc " +
+                    "inner join cursos c on c.id_curso = dc.id_curso " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "where dc.id_docente=@id_docente " +
+                    "and c.anio_calendario = @year ", sqlConn);
+                cmdDocentes_Cursos.Parameters.Add("@id_docente", SqlDbType.Int).Value = idDoc;
+                cmdDocentes_Cursos.Parameters.Add("@year", SqlDbType.Int).Value = year;
+                SqlDataReader drDocentes_Cursos = cmdDocentes_Cursos.ExecuteReader();
+
+                while (drDocentes_Cursos.Read())
+                {
+                    Docentes_cursos dc = new Docentes_cursos();
+
+                    dc.id_dictado = (int)drDocentes_Cursos["id_dictado"];
+                    dc.id_curso = (int)drDocentes_Cursos["id_curso"];
+                    dc.id_docente = (int)drDocentes_Cursos["id_docente"];
+                    dc.cargo = (int)drDocentes_Cursos["cargo"];
+
+                    dc.DescMateria = (string)drDocentes_Cursos["desc_materia"];
+                    dc.DescComision = (string)drDocentes_Cursos["desc_comision"];
+
+                    docentes_cursos.Add(dc);
+                }
+
+                drDocentes_Cursos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de Docentes_cursos.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return docentes_cursos;
+
+        }
+
         public Business.Entities.Docentes_cursos GetOneId(int id_dictado)
         {
             Docentes_cursos dc = new Docentes_cursos();
@@ -137,6 +186,7 @@ namespace Data.Database
                 throw new Exception("El curso no existe para ese docente");
             }
         }
+        
         public void Save(Docentes_cursos docentes_cursos)
         {
             if (docentes_cursos.State == BusinessEntity.States.Deleted)
