@@ -14,6 +14,15 @@ namespace UI.Desktop
 {
     public partial class Especialidades : Form
     {
+        private static Especialidades singleton;
+        public static Especialidades GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new Especialidades();
+            }
+            return singleton;
+        }
         public Especialidades()
         {
             InitializeComponent();

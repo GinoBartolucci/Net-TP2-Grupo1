@@ -35,7 +35,7 @@ namespace UI.Desktop
             this.dgvPlanes = new System.Windows.Forms.DataGridView();
             this.id_planes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desc_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Actualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.tsPlanes = new System.Windows.Forms.ToolStrip();
@@ -56,11 +56,11 @@ namespace UI.Desktop
             // tcPlanes.ContentPanel
             // 
             this.tcPlanes.ContentPanel.Controls.Add(this.tlPlanes);
-            this.tcPlanes.ContentPanel.Size = new System.Drawing.Size(349, 419);
+            this.tcPlanes.ContentPanel.Size = new System.Drawing.Size(405, 419);
             this.tcPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcPlanes.Location = new System.Drawing.Point(0, 0);
             this.tcPlanes.Name = "tcPlanes";
-            this.tcPlanes.Size = new System.Drawing.Size(349, 444);
+            this.tcPlanes.Size = new System.Drawing.Size(405, 444);
             this.tcPlanes.TabIndex = 0;
             this.tcPlanes.Text = "toolStripContainer1";
             // 
@@ -82,7 +82,7 @@ namespace UI.Desktop
             this.tlPlanes.RowCount = 2;
             this.tlPlanes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlPlanes.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlPlanes.Size = new System.Drawing.Size(349, 419);
+            this.tlPlanes.Size = new System.Drawing.Size(405, 419);
             this.tlPlanes.TabIndex = 0;
             // 
             // dgvPlanes
@@ -93,7 +93,7 @@ namespace UI.Desktop
             this.dgvPlanes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_planes,
             this.desc_plan,
-            this.id_especialidad});
+            this.desc_especialidad});
             this.tlPlanes.SetColumnSpan(this.dgvPlanes, 2);
             this.dgvPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPlanes.Location = new System.Drawing.Point(3, 3);
@@ -101,7 +101,7 @@ namespace UI.Desktop
             this.dgvPlanes.Name = "dgvPlanes";
             this.dgvPlanes.ReadOnly = true;
             this.dgvPlanes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanes.Size = new System.Drawing.Size(343, 384);
+            this.dgvPlanes.Size = new System.Drawing.Size(399, 384);
             this.dgvPlanes.TabIndex = 0;
             this.dgvPlanes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanes_CellContentClick);
             // 
@@ -113,20 +113,20 @@ namespace UI.Desktop
             // 
             // desc_plan
             // 
-            this.desc_plan.HeaderText = "Descripcion";
+            this.desc_plan.HeaderText = "Plan";
             this.desc_plan.Name = "desc_plan";
             this.desc_plan.ReadOnly = true;
             // 
-            // id_especialidad
+            // desc_especialidad
             // 
-            this.id_especialidad.HeaderText = "Id Especialidad";
-            this.id_especialidad.Name = "id_especialidad";
-            this.id_especialidad.ReadOnly = true;
+            this.desc_especialidad.HeaderText = "Especialidad";
+            this.desc_especialidad.Name = "desc_especialidad";
+            this.desc_especialidad.ReadOnly = true;
             // 
             // Actualizar
             // 
             this.Actualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Actualizar.Location = new System.Drawing.Point(190, 393);
+            this.Actualizar.Location = new System.Drawing.Point(246, 393);
             this.Actualizar.Name = "Actualizar";
             this.Actualizar.Size = new System.Drawing.Size(75, 23);
             this.Actualizar.TabIndex = 1;
@@ -136,7 +136,7 @@ namespace UI.Desktop
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(271, 393);
+            this.btnSalir.Location = new System.Drawing.Point(327, 393);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -153,7 +153,7 @@ namespace UI.Desktop
             this.tsbEliminar});
             this.tsPlanes.Location = new System.Drawing.Point(3, 0);
             this.tsPlanes.Name = "tsPlanes";
-            this.tsPlanes.Size = new System.Drawing.Size(112, 25);
+            this.tsPlanes.Size = new System.Drawing.Size(58, 25);
             this.tsPlanes.TabIndex = 0;
             // 
             // tsbNuevo
@@ -185,13 +185,14 @@ namespace UI.Desktop
             this.tsbEliminar.Name = "tsbEliminar";
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "Eliminar";
+            this.tsbEliminar.Visible = false;
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
             // Planes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 444);
+            this.ClientSize = new System.Drawing.Size(405, 444);
             this.Controls.Add(this.tcPlanes);
             this.Name = "Planes";
             this.Text = "Planes";
@@ -222,6 +223,6 @@ namespace UI.Desktop
         private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_planes;
         private System.Windows.Forms.DataGridViewTextBoxColumn desc_plan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_especialidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desc_especialidad;
     }
 }

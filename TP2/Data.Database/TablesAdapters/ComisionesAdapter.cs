@@ -10,6 +10,15 @@ namespace Data.Database
 {
     public class ComisionesAdapter:Adapter
     {
+        private static ComisionesAdapter singleton;
+        public static ComisionesAdapter GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new ComisionesAdapter();
+            }
+            return singleton;
+        }
         public ComisionesAdapter()
         {
 
@@ -21,7 +30,9 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdComisiones = new SqlCommand("SELECT * FROM comisiones", sqlConn);
+                SqlCommand cmdComisiones = new SqlCommand("SELECT * FROM comisiones c " +
+                    "inner join planes p on p.id_plan = c.id_plan " +
+                    "inner join especialidades e on e.id_especialidad= p.id_especialidad ", sqlConn);
 
                 SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
 
@@ -33,6 +44,11 @@ namespace Data.Database
                     com.DescComision = (string)drComisiones["desc_comision"];
                     com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
                     com.IdPlan = (int)drComisiones["id_plan"];
+
+                    com.DescPlan = (string)drComisiones["desc_plan"];
+
+                    com.DescEspecialidad = (string)drComisiones["desc_especialidad"];
+                    com.IdEspecialidad = (int)drComisiones["id_especialidad"];
                     comisiones.Add(com);
                 }
 
@@ -55,7 +71,10 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdComisiones = new SqlCommand("SELECT * FROM comisiones WHERE id_comision = @ID", sqlConn);
+                SqlCommand cmdComisiones = new SqlCommand("SELECT * FROM comisiones c " +
+                    "inner join planes p on p.id_plan = c.id_plan " +
+                    "inner join especialidades e on e.id_especialidad= p.id_especialidad " +
+                    "WHERE id_comision = @ID", sqlConn);
                 cmdComisiones.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
                 SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
                 while (drComisiones.Read())
@@ -64,6 +83,11 @@ namespace Data.Database
                     com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
                     com.DescComision = (string)drComisiones["desc_comision"];
                     com.IdPlan = (int)drComisiones["id_plan"];
+
+                    com.DescPlan = (string)drComisiones["desc_plan"];
+
+                    com.DescEspecialidad = (string)drComisiones["desc_especialidad"];
+                    com.IdEspecialidad = (int)drComisiones["id_especialidad"];
 
                 }
                 drComisiones.Close();

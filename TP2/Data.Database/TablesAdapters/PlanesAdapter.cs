@@ -11,6 +11,15 @@ namespace Data.Database
 {
     public class PlanesAdapter : Adapter
     {
+        private static PlanesAdapter singleton;
+        public static PlanesAdapter GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new PlanesAdapter();
+            }
+            return singleton;
+        }
         public PlanesAdapter()
         {
 
@@ -22,7 +31,8 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdPlanes = new SqlCommand("SELECT * FROM planes", sqlConn);
+                SqlCommand cmdPlanes = new SqlCommand("SELECT * FROM planes p " +
+                    "inner join especialidades e on e.id_especialidad = p.id_especialidad ", sqlConn);
 
                 SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
 
@@ -31,8 +41,9 @@ namespace Data.Database
                     Planes pln = new Planes();
 
                     pln.ID = (int)drPlanes["id_plan"];
-                    pln.desc_plan = (string)drPlanes["desc_plan"];
-                    pln.id_especialidad = (int)drPlanes["id_especialidad"];
+                    pln.DescPlan = (string)drPlanes["desc_plan"];
+                    pln.IdEspecialidad = (int)drPlanes["id_especialidad"];
+                    pln.DescEspecialidad = (string)drPlanes["desc_especialidad"];
                     planes.Add(pln);
                 }
 
@@ -55,14 +66,18 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdPlanes = new SqlCommand("SELECT * FROM planes WHERE id_plan = @ID", sqlConn);
+                SqlCommand cmdPlanes = new SqlCommand("SELECT * FROM planes p " +
+                    "inner join especialidades e on e.id_especialidad = p.id_especialidad " +
+                    "WHERE id_plan = @ID", sqlConn);
                 cmdPlanes.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
                 SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
                 while (drPlanes.Read())
                 {
                     pln.ID = (int)drPlanes["id_plan"];
-                    pln.desc_plan = (string)drPlanes["desc_plan"];
-                    pln.id_especialidad = (int)drPlanes["id_especialidad"];
+                    pln.DescPlan = (string)drPlanes["desc_plan"];
+                    pln.IdEspecialidad = (int)drPlanes["id_especialidad"];
+
+                    pln.DescEspecialidad = (string)drPlanes["desc_especialidad"];
 
                 }
                 drPlanes.Close();
@@ -76,7 +91,7 @@ namespace Data.Database
             {
                 CloseConnection();
             }
-            if (pln.desc_plan != null)
+            if (pln.DescPlan != null)
             {
                 return pln;
             }
@@ -131,8 +146,8 @@ namespace Data.Database
                     "WHERE id_plan = @id ", sqlConn);
 
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
-                cmdSave.Parameters.Add("@descPlan", SqlDbType.VarChar, 50).Value = plan.desc_plan;
-                cmdSave.Parameters.Add("@IdEsp", SqlDbType.Int).Value = plan.id_especialidad;
+                cmdSave.Parameters.Add("@descPlan", SqlDbType.VarChar, 50).Value = plan.DescPlan;
+                cmdSave.Parameters.Add("@IdEsp", SqlDbType.Int).Value = plan.IdEspecialidad;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -155,8 +170,8 @@ namespace Data.Database
                     "select @@identity ", sqlConn);
 
 
-                cmdSave.Parameters.Add("@descPlan", SqlDbType.VarChar, 50).Value = plan.desc_plan;
-                cmdSave.Parameters.Add("@idEspecialidad", SqlDbType.Int).Value = plan.id_especialidad;
+                cmdSave.Parameters.Add("@descPlan", SqlDbType.VarChar, 50).Value = plan.DescPlan;
+                cmdSave.Parameters.Add("@idEspecialidad", SqlDbType.Int).Value = plan.IdEspecialidad;
                 plan.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
 
             }

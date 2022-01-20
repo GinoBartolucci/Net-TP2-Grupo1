@@ -55,11 +55,11 @@ namespace UI.Desktop
             // tcEspecialidades.ContentPanel
             // 
             this.tcEspecialidades.ContentPanel.Controls.Add(this.tlEspecialidades);
-            this.tcEspecialidades.ContentPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcEspecialidades.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
             this.tcEspecialidades.ContentPanel.Size = new System.Drawing.Size(309, 346);
             this.tcEspecialidades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcEspecialidades.Location = new System.Drawing.Point(0, 0);
-            this.tcEspecialidades.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcEspecialidades.Margin = new System.Windows.Forms.Padding(2);
             this.tcEspecialidades.Name = "tcEspecialidades";
             this.tcEspecialidades.Size = new System.Drawing.Size(309, 373);
             this.tcEspecialidades.TabIndex = 0;
@@ -79,7 +79,7 @@ namespace UI.Desktop
             this.tlEspecialidades.Controls.Add(this.btnSalir, 1, 1);
             this.tlEspecialidades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlEspecialidades.Location = new System.Drawing.Point(0, 0);
-            this.tlEspecialidades.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlEspecialidades.Margin = new System.Windows.Forms.Padding(2);
             this.tlEspecialidades.Name = "tlEspecialidades";
             this.tlEspecialidades.RowCount = 2;
             this.tlEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -99,7 +99,7 @@ namespace UI.Desktop
             this.tlEspecialidades.SetColumnSpan(this.dgvEspecialidades, 2);
             this.dgvEspecialidades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEspecialidades.Location = new System.Drawing.Point(2, 2);
-            this.dgvEspecialidades.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvEspecialidades.Margin = new System.Windows.Forms.Padding(2);
             this.dgvEspecialidades.MultiSelect = false;
             this.dgvEspecialidades.Name = "dgvEspecialidades";
             this.dgvEspecialidades.ReadOnly = true;
@@ -129,7 +129,7 @@ namespace UI.Desktop
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizar.Location = new System.Drawing.Point(153, 321);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -140,7 +140,7 @@ namespace UI.Desktop
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(232, 321);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -158,7 +158,7 @@ namespace UI.Desktop
             this.tsbEliminar});
             this.tsEspecialidades.Location = new System.Drawing.Point(9, 0);
             this.tsEspecialidades.Name = "tsEspecialidades";
-            this.tsEspecialidades.Size = new System.Drawing.Size(84, 27);
+            this.tsEspecialidades.Size = new System.Drawing.Size(115, 27);
             this.tsEspecialidades.TabIndex = 0;
             this.tsEspecialidades.Text = "toolStrip1";
             // 
@@ -193,6 +193,7 @@ namespace UI.Desktop
             this.tsbEliminar.Size = new System.Drawing.Size(24, 24);
             this.tsbEliminar.Text = "toolStripButton1";
             this.tsbEliminar.ToolTipText = "Eliminar";
+            this.tsbEliminar.Visible = false;
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click_1);
             // 
             // Especialidades
@@ -201,7 +202,7 @@ namespace UI.Desktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(309, 373);
             this.Controls.Add(this.tcEspecialidades);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Especialidades";
             this.Text = "Especialidades";
             this.Load += new System.EventHandler(this.especialidades_Load);

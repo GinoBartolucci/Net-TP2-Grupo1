@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -33,7 +32,11 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdDocentes_Cursos = new SqlCommand("select * from docentes_cursos", sqlConn);
+                SqlCommand cmdDocentes_Cursos = new SqlCommand("select * from docentes_cursos dc " +
+                    "inner join cursos c on c.id_curso = dc.id_curso " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join personas p on p.id_persona = dc.id_docente ", sqlConn);
 
                 SqlDataReader drDocentes_Cursos = cmdDocentes_Cursos.ExecuteReader();
 
@@ -45,6 +48,12 @@ namespace Data.Database
                     dc.id_curso = (int)drDocentes_Cursos["id_curso"];
                     dc.id_docente = (int)drDocentes_Cursos["id_docente"];
                     dc.cargo = (int)drDocentes_Cursos["cargo"];
+
+
+                    dc.DescMateria = (string)drDocentes_Cursos["desc_materia"];
+                    dc.DescComision = (string)drDocentes_Cursos["desc_comision"];
+                    dc.Nombre = (string)drDocentes_Cursos["nombre"];
+                    dc.Apellido = (string)drDocentes_Cursos["apellido"];
 
                     docentes_cursos.Add(dc);
                 }
@@ -76,6 +85,7 @@ namespace Data.Database
                     "inner join cursos c on c.id_curso = dc.id_curso " +
                     "inner join materias m on m.id_materia = c.id_materia " +
                     "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join personas p on p.id_persona = dc.id_docente " +
                     "where dc.id_docente=@id_docente " +
                     "and c.anio_calendario = @year ", sqlConn);
                 cmdDocentes_Cursos.Parameters.Add("@id_docente", SqlDbType.Int).Value = idDoc;
@@ -93,6 +103,8 @@ namespace Data.Database
 
                     dc.DescMateria = (string)drDocentes_Cursos["desc_materia"];
                     dc.DescComision = (string)drDocentes_Cursos["desc_comision"];
+                    dc.Nombre = (string)drDocentes_Cursos["nombre"];
+                    dc.Apellido = (string)drDocentes_Cursos["apellido"];
 
                     docentes_cursos.Add(dc);
                 }
@@ -113,13 +125,18 @@ namespace Data.Database
 
         }
 
-        public Business.Entities.Docentes_cursos GetOneId(int id_dictado)
+        public Business.Entities.Docentes_cursos GetOne(int id_dictado)
         {
             Docentes_cursos dc = new Docentes_cursos();
             try
             {
                 OpenConnection();
-                SqlCommand cmdDocentes_Cursos = new SqlCommand("SELECT * FROM docentes_cursos WHERE id_dictado = @id_dictado", sqlConn);
+                SqlCommand cmdDocentes_Cursos = new SqlCommand("select * from docentes_cursos dc " +
+                    "inner join cursos c on c.id_curso = dc.id_curso " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join personas p on p.id_persona = dc.id_docente " +
+                    "WHERE dc.id_dictado = @id_dictado", sqlConn);
                 cmdDocentes_Cursos.Parameters.Add("@id_dictado", SqlDbType.Int).Value = id_dictado;
                 SqlDataReader drDocentes_Cursos = cmdDocentes_Cursos.ExecuteReader();
                 while (drDocentes_Cursos.Read())
@@ -128,6 +145,12 @@ namespace Data.Database
                     dc.id_curso = (int)drDocentes_Cursos["id_curso"];
                     dc.id_docente = (int)drDocentes_Cursos["id_docente"];
                     dc.cargo = (int)drDocentes_Cursos["cargo"];
+
+                    dc.DescMateria = (string)drDocentes_Cursos["desc_materia"];
+                    dc.DescComision = (string)drDocentes_Cursos["desc_comision"];
+                    dc.Nombre = (string)drDocentes_Cursos["nombre"];
+                    dc.Apellido = (string)drDocentes_Cursos["apellido"];
+
                 }
                 drDocentes_Cursos.Close();
             }
@@ -165,6 +188,7 @@ namespace Data.Database
                     dc.id_curso = (int)drDocentes_Cursos["id_curso"];
                     dc.id_docente = (int)drDocentes_Cursos["id_docente"];
                     dc.cargo = (int)drDocentes_Cursos["cargo"];
+
                 }
                 drDocentes_Cursos.Close();
             }

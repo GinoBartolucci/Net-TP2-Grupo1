@@ -19,14 +19,11 @@ namespace Business.Logic
         private static Alumnos_inscripcionesLogic singleton;
         public static Alumnos_inscripcionesLogic GetInstance()
         {
-
             if (singleton == null)
             {
                 singleton = new Alumnos_inscripcionesLogic();
             }
-
             return singleton;
-
         }
 
         public Inscripciones GetOne(int id)

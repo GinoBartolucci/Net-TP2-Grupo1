@@ -11,29 +11,34 @@ namespace Business.Logic
 {
     public class ComisionesLogic:BusinessLogic
     {
-
-        private ComisionesAdapter ComisionesData;
-
+        private static ComisionesLogic singleton;
+        public static ComisionesLogic GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new ComisionesLogic();
+            }
+            return singleton;
+        }
         public ComisionesLogic()
         {
-            ComisionesData = new ComisionesAdapter();
-        }       
 
+        }       
         public Comisiones GetOne(int id)
         {
-            return ComisionesData.GetOne(id);            
+            return ComisionesAdapter.GetInstance().GetOne(id);            
         }
         public List<Comisiones> GetAll()
         {
-            return ComisionesData.GetAll();            
+            return ComisionesAdapter.GetInstance().GetAll();            
         }
         public void Save(Business.Entities.Comisiones c)
         {
-            ComisionesData.Save(c);            
+            ComisionesAdapter.GetInstance().Save(c);            
         }
         public void Delete(int id)
         {
-            ComisionesData.Delete(id);           
+            ComisionesAdapter.GetInstance().Delete(id);           
         }
     }
 }

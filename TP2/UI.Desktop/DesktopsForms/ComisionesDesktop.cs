@@ -35,15 +35,15 @@ namespace UI.Desktop
         public ComisionesDesktop(ModoForm modo, int ID) : this()
         {
             Text = modo.ToString();
+            btnSelectPlanes.Visible = false;
             if (modo == ModoForm.Baja)
             {
                 txtAnio.ReadOnly = true;
                 txtDesc.ReadOnly = true;
                 btnSelectPlanes.Enabled = false; 
             }
-            Modo = modo; 
-            ComisionesLogic cl= new  ComisionesLogic();            
-            ComisionActual = cl.GetOne(ID);
+            Modo = modo;         
+            ComisionActual = ComisionesLogic.GetInstance().GetOne(ID);
             MapearDeDatos();
                         
         }
@@ -52,8 +52,7 @@ namespace UI.Desktop
             txtID.Text = ComisionActual.ID.ToString();
             txtAnio.Text = ComisionActual.AnioEspecialidad.ToString();
             txtDesc.Text = ComisionActual.DescComision;
-            PlanesLogic pl = new PlanesLogic();
-            lbNombrePlan.Text = pl.GetOne(ComisionActual.IdPlan).desc_plan;
+            lbNombrePlan.Text = ComisionActual.DescPlan +" "+ ComisionActual.DescEspecialidad;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -149,13 +148,14 @@ namespace UI.Desktop
         private void btnSelectPlanes_Click(object sender, EventArgs e)
         {
             SelectPlanes sp = new SelectPlanes();
-            DialogResult DRsp = sp.ShowDialog();
-            if (DRsp != DialogResult.Cancel)
+            sp.ShowDialog();
+            if (sp.DialogResult != DialogResult.Cancel)
             {
                 ComisionActual.IdPlan = sp.idSelectPlan;
-                lbNombrePlan.Text = sp.descSelectPlan;
+                lbNombrePlan.Text = sp.descSelectPlan +" "+ sp.descSelectEspecialidad;
+                ComisionActual.DescPlan = sp.descSelectPlan;
             }
-            else if (DRsp == DialogResult.Cancel)
+            else if (sp.DialogResult == DialogResult.Cancel)
             {
                 Notificar("Comisiones", "Debe seleccionar un Plan.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

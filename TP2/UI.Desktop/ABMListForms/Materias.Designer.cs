@@ -31,7 +31,6 @@ namespace UI.Desktop.ABMListForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Materias));
             this.tcMaterias = new System.Windows.Forms.ToolStripContainer();
-            this.tlMateria = new System.Windows.Forms.TableLayoutPanel();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dgvMaterias = new System.Windows.Forms.DataGridView();
@@ -39,18 +38,20 @@ namespace UI.Desktop.ABMListForms
             this.DescMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HsSemanales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HsTotales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsMaterias = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tcMaterias.ContentPanel.SuspendLayout();
             this.tcMaterias.TopToolStripPanel.SuspendLayout();
             this.tcMaterias.SuspendLayout();
-            this.tlMateria.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaterias)).BeginInit();
             this.tsMaterias.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcMaterias
@@ -58,14 +59,14 @@ namespace UI.Desktop.ABMListForms
             // 
             // tcMaterias.ContentPanel
             // 
-            this.tcMaterias.ContentPanel.Controls.Add(this.tlMateria);
+            this.tcMaterias.ContentPanel.Controls.Add(this.tableLayoutPanel1);
             this.tcMaterias.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.tcMaterias.ContentPanel.Size = new System.Drawing.Size(604, 348);
+            this.tcMaterias.ContentPanel.Size = new System.Drawing.Size(646, 380);
             this.tcMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcMaterias.Location = new System.Drawing.Point(0, 0);
             this.tcMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.tcMaterias.Name = "tcMaterias";
-            this.tcMaterias.Size = new System.Drawing.Size(604, 373);
+            this.tcMaterias.Size = new System.Drawing.Size(646, 405);
             this.tcMaterias.TabIndex = 0;
             this.tcMaterias.Text = "toolStripContainer1";
             // 
@@ -74,31 +75,13 @@ namespace UI.Desktop.ABMListForms
             this.tcMaterias.TopToolStripPanel.Controls.Add(this.tsMaterias);
             this.tcMaterias.TopToolStripPanel.Click += new System.EventHandler(this.toolStripContainer1_TopToolStripPanel_Click);
             // 
-            // tlMateria
-            // 
-            this.tlMateria.ColumnCount = 2;
-            this.tlMateria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlMateria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlMateria.Controls.Add(this.btnActualizar, 0, 1);
-            this.tlMateria.Controls.Add(this.btnSalir, 1, 1);
-            this.tlMateria.Controls.Add(this.dgvMaterias, 0, 0);
-            this.tlMateria.Location = new System.Drawing.Point(0, 0);
-            this.tlMateria.Margin = new System.Windows.Forms.Padding(2);
-            this.tlMateria.Name = "tlMateria";
-            this.tlMateria.RowCount = 2;
-            this.tlMateria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlMateria.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlMateria.Size = new System.Drawing.Size(600, 346);
-            this.tlMateria.TabIndex = 0;
-            this.tlMateria.Paint += new System.Windows.Forms.PaintEventHandler(this.tlMateria_Paint);
-            // 
             // btnActualizar
             // 
-            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(463, 315);
+            this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnActualizar.Location = new System.Drawing.Point(480, 351);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 29);
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 0;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -106,10 +89,11 @@ namespace UI.Desktop.ABMListForms
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(542, 315);
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSalir.Location = new System.Drawing.Point(569, 351);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(56, 29);
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -117,21 +101,20 @@ namespace UI.Desktop.ABMListForms
             // 
             // dgvMaterias
             // 
-            this.dgvMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMaterias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idMateria,
             this.DescMateria,
             this.HsSemanales,
             this.HsTotales,
-            this.IdPlan});
-            this.tlMateria.SetColumnSpan(this.dgvMaterias, 2);
-            this.dgvMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.desc_especialidad,
+            this.desc_plan});
+            this.tableLayoutPanel1.SetColumnSpan(this.dgvMaterias, 2);
             this.dgvMaterias.Location = new System.Drawing.Point(2, 2);
             this.dgvMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.dgvMaterias.Name = "dgvMaterias";
             this.dgvMaterias.RowTemplate.Height = 24;
             this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterias.Size = new System.Drawing.Size(596, 309);
+            this.dgvMaterias.Size = new System.Drawing.Size(642, 340);
             this.dgvMaterias.TabIndex = 2;
             // 
             // idMateria
@@ -162,12 +145,18 @@ namespace UI.Desktop.ABMListForms
             this.HsTotales.Name = "HsTotales";
             this.HsTotales.ReadOnly = true;
             // 
-            // IdPlan
+            // desc_especialidad
             // 
-            this.IdPlan.Frozen = true;
-            this.IdPlan.HeaderText = "ID Plan";
-            this.IdPlan.Name = "IdPlan";
-            this.IdPlan.ReadOnly = true;
+            this.desc_especialidad.Frozen = true;
+            this.desc_especialidad.HeaderText = "Especialidad";
+            this.desc_especialidad.Name = "desc_especialidad";
+            // 
+            // desc_plan
+            // 
+            this.desc_plan.Frozen = true;
+            this.desc_plan.HeaderText = "Plan";
+            this.desc_plan.Name = "desc_plan";
+            this.desc_plan.ReadOnly = true;
             // 
             // tsMaterias
             // 
@@ -178,7 +167,7 @@ namespace UI.Desktop.ABMListForms
             this.tsbEliminar});
             this.tsMaterias.Location = new System.Drawing.Point(3, 0);
             this.tsMaterias.Name = "tsMaterias";
-            this.tsMaterias.Size = new System.Drawing.Size(81, 25);
+            this.tsMaterias.Size = new System.Drawing.Size(58, 25);
             this.tsMaterias.TabIndex = 0;
             // 
             // tsbNuevo
@@ -212,13 +201,32 @@ namespace UI.Desktop.ABMListForms
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "toolStripButton3";
             this.tsbEliminar.ToolTipText = "Eliminar";
+            this.tsbEliminar.Visible = false;
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.31732F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.68268F));
+            this.tableLayoutPanel1.Controls.Add(this.dgvMaterias, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnActualizar, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnSalir, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.97938F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.020618F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(646, 380);
+            this.tableLayoutPanel1.TabIndex = 3;
             // 
             // Materias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 373);
+            this.ClientSize = new System.Drawing.Size(646, 405);
             this.Controls.Add(this.tcMaterias);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Materias";
@@ -229,10 +237,10 @@ namespace UI.Desktop.ABMListForms
             this.tcMaterias.TopToolStripPanel.PerformLayout();
             this.tcMaterias.ResumeLayout(false);
             this.tcMaterias.PerformLayout();
-            this.tlMateria.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaterias)).EndInit();
             this.tsMaterias.ResumeLayout(false);
             this.tsMaterias.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -241,7 +249,6 @@ namespace UI.Desktop.ABMListForms
 
         private System.Windows.Forms.ToolStripContainer tcMaterias;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TableLayoutPanel tlMateria;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridView dgvMaterias;
@@ -253,6 +260,8 @@ namespace UI.Desktop.ABMListForms
         private System.Windows.Forms.DataGridViewTextBoxColumn DescMateria;
         private System.Windows.Forms.DataGridViewTextBoxColumn HsSemanales;
         private System.Windows.Forms.DataGridViewTextBoxColumn HsTotales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdPlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desc_especialidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desc_plan;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

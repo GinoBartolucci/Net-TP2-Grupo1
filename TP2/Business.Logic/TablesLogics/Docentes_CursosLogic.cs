@@ -20,9 +20,9 @@ namespace Business.Logic
             }
             return singleton;
         }
-        public Business.Entities.Docentes_cursos GetOneIdDictado(int id_dictado)
+        public Business.Entities.Docentes_cursos GetOne(int id_dictado)
         {
-            return Docentes_cursosAdapter.GetInstance().GetOneId(id_dictado);
+            return Docentes_cursosAdapter.GetInstance().GetOne(id_dictado);
         }
         public List<Docentes_cursos> GetAll()
         {

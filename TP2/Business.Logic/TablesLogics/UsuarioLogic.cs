@@ -9,59 +9,42 @@ namespace Business.Logic
 {
     public class UsuarioLogic: BusinessLogic
     {
-        private Data.Database.UsuarioAdapter UsuarioData;
         private static UsuarioLogic singleton;
         public static UsuarioLogic GetInstance()
         {
-
             if (singleton == null)
             {
                 singleton = new UsuarioLogic();
             }
-
             return singleton;
-
         }
         public UsuarioLogic()
-        {
-            UsuarioData = new UsuarioAdapter();
+        {            
         }
-
         public Business.Entities.Usuario GetOneUsuario(string nombreUsuario)
-        {
-
-            try
-            {
-                return UsuarioData.GetOneUsuario(nombreUsuario);
-
-            }
-            catch (Exception error)
-            {
-                throw error;
-
-            }
-
+        {                
+            return UsuarioAdapter.GetInstance().GetOneUsuario(nombreUsuario);           
         }
 
         public Business.Entities.Usuario GetOneId(int id)
         {            
-            return UsuarioData.GetOneId(id);                     
+            return UsuarioAdapter.GetInstance().GetOneId(id);                     
         }
         public Business.Entities.Usuario LoginUsuario(string nombreUsuario, string clave)
         {            
-            return UsuarioData.LoginUsuario(nombreUsuario, clave);           
+            return UsuarioAdapter.GetInstance().LoginUsuario(nombreUsuario, clave);           
         }
         public List<Usuario> GetAll()
         {            
-            return UsuarioData.GetAll();            
+            return UsuarioAdapter.GetInstance().GetAll();            
         }
         public void Save(Business.Entities.Usuario u)
-        {            
-            UsuarioData.Save(u);                       
+        {
+            UsuarioAdapter.GetInstance().Save(u);                       
         }
         public void Delete(int id)
-        {            
-            UsuarioData.Delete(id);                      
+        {
+            UsuarioAdapter.GetInstance().Delete(id);                      
         }
     }
 }
