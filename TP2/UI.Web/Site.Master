@@ -200,18 +200,43 @@ footer {
           
         </nav>  
 
-                      <nav id ="nav_administrador" runat="server">
+                      <nav id ="nav_administrador" class="nav justify-content-center" runat="server" style="z-index=1000;">
             <ul class="auto-style1">
    
               <li> <img src="https://avatars.githubusercontent.com/u/8503404?s=280&v=4" style="height:30px;"></img></li>
               <li><a class="icon-label" href="Home.aspx">Inicio</a></li>
+                <!--
+               <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Personas</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="Docentes.aspx">Alumnos</a></li>
+                      <li><a class="dropdown-item" href="Materias.aspx">Docentes</a></li>
+                      <li><a class="dropdown-item" href="Usuarios.aspx">Usuarios</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Inscripciones</a></li>
+                    </ul>
+                 </li>      
+
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Institucional</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="Especialidades.aspx">Especialidades</a></li>
+                      <li><a class="dropdown-item" href="Planes.aspx">Planes</a></li>
+                      <li><a class="dropdown-item" href="Materias.aspx">Materias</a></li>
+                         <li><a class="dropdown-item" href="Cursos.aspx">Cursos</a></li>
+ 
+                    </ul>
+                 </li> -->
               <li><a class="icon-label" href="Docentes.aspx">Docentes</a></li>
               <li><a class="icon-label" href="Materias.aspx">Materias</a></li>
+              <li><a class="icon-label" href="Alumnos.aspx"> <label>Alumnos</label> </a></li>
               <li><a class="icon-label" href="Usuarios.aspx"> <label>Usuarios</label> </a></li>
                 <li><a class="icon-label" href="Comisiones.aspx"> <label>Comisiones</label> </a></li>
-              <li><a class="icon-label" href="Alumnos.aspx"> <label>Alumnos</label> </a></li>
                  <li><a class="icon-label" href="Planes.aspx"> <label>Planes</label> </a></li>
                 <li><a class="icon-label" href="Especialidades.aspx"> <label>Especialidades</label> </a></li>
+                 <li><a class="icon-label" href="Cursos.aspx"> <label>Cursos</label> </a></li>
+               
+                <li><a class="icon-label" href="Materias.aspx">Inscripciones</a></li>
                <li> <a class="icon-label" href="Comisiones.aspx"> <span class="material-icons">logout</span><label>Salir</label> </a></li>           
             </ul>
           

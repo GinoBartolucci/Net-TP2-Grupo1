@@ -46,6 +46,7 @@ namespace Data.Database
                 {
                     Curso cur = new Curso();
 
+                    cur.ID = (int)drCursos["id_curso"];
                     cur.id_curso = (int)drCursos["id_curso"];
                     cur.id_materia = (int)drCursos["id_materia"];
                     cur.id_comision = (int)drCursos["id_comision"];
@@ -99,6 +100,7 @@ namespace Data.Database
                 {
                     Curso cur = new Curso();
 
+                    cur.ID = (int)drCursos["id_curso"];
                     cur.id_curso = (int)drCursos["id_curso"];                    
                     cur.id_materia = (int)drCursos["id_materia"];
                     cur.id_comision = (int)drCursos["id_comision"];
@@ -150,6 +152,7 @@ namespace Data.Database
                 {
                     Curso cur = new Curso();
 
+                    cur.ID = (int)drCursos["id_curso"];
                     cur.id_curso = (int)drCursos["id_curso"];
                     cur.id_materia = (int)drCursos["id_materia"];
                     cur.id_comision = (int)drCursos["id_comision"];
@@ -252,7 +255,7 @@ namespace Data.Database
             {
                 CloseConnection();
             }
-            if (cur.id_curso != 0)
+            if (cur.ID != 0)
             {
                 return cur;
             }
