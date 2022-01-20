@@ -12,27 +12,34 @@ namespace Business.Logic
     {
         public PlanesLogic()
         {
-            PlanData = new PlanesAdapter();
         }
-        private Data.Database.PlanesAdapter PlanData;
+        private static PlanesLogic singleton;
+        public static PlanesLogic GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new PlanesLogic();
+            }
+            return singleton;
+        }
 
         public  Planes GetOne(int id)
         {
-            return PlanData.GetOne(id);
+            return PlanesAdapter.GetInstance().GetOne(id);
         }
 
         public List<Planes> GetAll()
-        {         
-            return PlanData.GetAll();
+        {
+            return PlanesAdapter.GetInstance().GetAll();
         }
 
         public void Save( Planes p)
         {
-            PlanData.Save(p);
+            PlanesAdapter.GetInstance().Save(p);
         }
         public void Delete(int id)
         {
-            PlanData.Delete(id);
+            PlanesAdapter.GetInstance().Delete(id);
         }
     }
 }

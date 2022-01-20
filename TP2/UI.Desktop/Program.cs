@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Desktop.DesktopsForms;
-
+using UI.Desktop.ABMListForms;
 namespace UI.Desktop
 {
     static class Program
@@ -17,7 +17,8 @@ namespace UI.Desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new InscripcionesAlumnosDesktop(ApplicationForm.ModoForm.Modificacion, 1));
+            //Application.Run(new UsuarioDesktop(ApplicationForm.ModoForm.Alta));
+            //Application.Run(new DocentesCursos());
             Application.Run( new FormMain());
         }
     }

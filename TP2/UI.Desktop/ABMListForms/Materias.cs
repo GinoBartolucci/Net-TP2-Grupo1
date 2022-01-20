@@ -16,14 +16,23 @@ namespace UI.Desktop.ABMListForms
 {
     public partial class Materias : Form
     {
+        private static Materias singleton;
+        public static Materias GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new Materias();
+            }
+            return singleton;
+        }
         public Materias()
         {
             InitializeComponent();
             this.dgvMaterias.AutoGenerateColumns = false;
+            Text = "Materias";
             if (Session.currentUser.TipoPersona ==3)
             {
                 tsMaterias.Visible = false; //si es alumno saca los abm
-                IdPlan.Visible = false;
             }
         }
         public void NotificarError(Exception Error)
@@ -59,7 +68,8 @@ namespace UI.Desktop.ABMListForms
             DescMateria.DataPropertyName = "DescMateria";
             HsSemanales.DataPropertyName = "HorasSemanales";
             HsTotales.DataPropertyName = "HorasTotales";
-            IdPlan.DataPropertyName = "IdPlan";// no se ve
+            desc_plan.DataPropertyName = "DescPlan";
+            desc_plan.DataPropertyName = "DescEspecialidad";
         }
 
 

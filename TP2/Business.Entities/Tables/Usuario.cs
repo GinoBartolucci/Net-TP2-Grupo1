@@ -41,7 +41,7 @@ namespace Business.Entities
     
         public string NombreCompleto
         {
-            get { return Nombre + Apellido; }
+            get { return _Nombre + " " + _Apellido; }
         }
     }
 }

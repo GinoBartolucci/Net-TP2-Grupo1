@@ -22,6 +22,7 @@ namespace UI.Desktop
         }
         public int idSelectPlan { get; set; }
         public string descSelectPlan { get; set; }
+        public string descSelectEspecialidad { get; set; }
         public void Listar()
         {            
             try
@@ -41,8 +42,8 @@ namespace UI.Desktop
                 Close();
             }
             id_plan.DataPropertyName = "ID";
-            desc_plan.DataPropertyName = "desc_plan";
-            id_especialidad.DataPropertyName = "id_especialidad";
+            desc_plan.DataPropertyName = "DescPlan";
+            desc_especialidad.DataPropertyName = "DescEspecialidad";
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -55,7 +56,9 @@ namespace UI.Desktop
             if (dgvSelectPlanes.SelectedRows != null)
             {
                 idSelectPlan = ((Business.Entities.Planes)dgvSelectPlanes.SelectedRows[0].DataBoundItem).ID;
-                descSelectPlan = ((Business.Entities.Planes)dgvSelectPlanes.SelectedRows[0].DataBoundItem).desc_plan;
+                descSelectPlan = ((Business.Entities.Planes)dgvSelectPlanes.SelectedRows[0].DataBoundItem).DescPlan;
+                descSelectEspecialidad = ((Business.Entities.Planes)dgvSelectPlanes.SelectedRows[0].DataBoundItem).DescEspecialidad;
+
                 DialogResult = DialogResult.OK;
                 Close();
             }

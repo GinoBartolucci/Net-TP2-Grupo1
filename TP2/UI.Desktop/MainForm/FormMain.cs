@@ -19,6 +19,7 @@ namespace UI.Desktop
     {
         public FormMain()
         {
+            
             InitializeComponent();
         }
         private void btnSalir_Click(object sender, EventArgs e)
@@ -59,6 +60,9 @@ namespace UI.Desktop
             //Muestra u oculta para alumnos:
             btnListadoAlumnos.Visible = false;
             btnCargarNotas.Visible = false;
+            btnDictado.Visible = false;
+
+            btnABMUsuario.Visible = false;
         }
         private void DocentesDisplay() 
         { 
@@ -70,6 +74,8 @@ namespace UI.Desktop
             btnIncribirse.Visible = false;
             btnMateriasPlanAlumno.Visible = false;
             btnCursadoAlumno.Visible = false;
+
+            btnABMUsuario.Visible = false;
         }
 
         private void AdminDisplay()
@@ -116,7 +122,6 @@ namespace UI.Desktop
             InscripcionesAlumnos inscripcionesListado = new InscripcionesAlumnos(InscripcionesAlumnos.ModoF.Lista, listadoAlumnos.IdCurso);
             inscripcionesListado.ShowDialog();
         }
-
         private void btnCargarNotas_Click(object sender, EventArgs e)
         {
             //Muestra los cursos en los que el docente da clases
@@ -131,10 +136,47 @@ namespace UI.Desktop
             InscripcionesAlumnos inscripcionesNotas = new InscripcionesAlumnos(InscripcionesAlumnos.ModoF.Nota, listadoAlumnos.IdCurso);
             inscripcionesNotas.ShowDialog();
         }
-
         private void btnDictado_Click(object sender, EventArgs e)
         {
             DocentesCursos.GetInstance().ShowDialog();
         }
+
+        private void btnABMUsuario_Click(object sender, EventArgs e)
+        {
+            Usuarios.GetInstance().ShowDialog();
+        }
+
+        private void btnABMPlanes_Click(object sender, EventArgs e)
+        {
+            Planes.GetInstance().ShowDialog();
+        }
+
+        private void btnABMEspecialidad_Click(object sender, EventArgs e)
+        {
+            Especialidades.GetInstance().ShowDialog();
+        }
+
+        private void btnABMComision_Click(object sender, EventArgs e)
+        {
+            Comisiones.GetInstance().ShowDialog();
+        }
+
+        private void btnABMCurso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnABMMateria_Click(object sender, EventArgs e)
+        {
+            Materias.GetInstance().ShowDialog();
+        }
+
+        private void btnABMDictadoDocentes_Click(object sender, EventArgs e)
+        {
+            DocentesCursos.GetInstance().ShowDialog();
+        }
+
+        //ADMIN
+
     }
 }

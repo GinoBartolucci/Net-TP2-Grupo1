@@ -35,7 +35,7 @@ namespace UI.Desktop
             this.dgvSelectPlanes = new System.Windows.Forms.DataGridView();
             this.id_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desc_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlEspecialidadesLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectPlanes)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +89,7 @@ namespace UI.Desktop
             this.dgvSelectPlanes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_plan,
             this.desc_plan,
-            this.id_especialidad});
+            this.desc_especialidad});
             this.tlEspecialidadesLista.SetColumnSpan(this.dgvSelectPlanes, 2);
             this.dgvSelectPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSelectPlanes.Location = new System.Drawing.Point(3, 3);
@@ -108,15 +108,15 @@ namespace UI.Desktop
             // 
             // desc_plan
             // 
-            this.desc_plan.HeaderText = "Descripcion";
+            this.desc_plan.HeaderText = "Plan";
             this.desc_plan.Name = "desc_plan";
             this.desc_plan.ReadOnly = true;
             // 
-            // id_especialidad
+            // desc_especialidad
             // 
-            this.id_especialidad.HeaderText = "ID Especialidad";
-            this.id_especialidad.Name = "id_especialidad";
-            this.id_especialidad.ReadOnly = true;
+            this.desc_especialidad.HeaderText = "Especialidad";
+            this.desc_especialidad.Name = "desc_especialidad";
+            this.desc_especialidad.ReadOnly = true;
             // 
             // SelectPlanes
             // 
@@ -142,6 +142,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridView dgvSelectPlanes;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_plan;
         private System.Windows.Forms.DataGridViewTextBoxColumn desc_plan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_especialidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desc_especialidad;
     }
 }

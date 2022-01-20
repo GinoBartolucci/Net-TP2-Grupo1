@@ -14,6 +14,15 @@ namespace UI.Desktop
 {
     public partial class Comisiones : Form
     {
+        private static Comisiones singleton;
+        public static Comisiones GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new Comisiones();
+            }
+            return singleton;
+        }
         public Comisiones()
         {
         
@@ -53,7 +62,8 @@ namespace UI.Desktop
             Id.DataPropertyName = "ID";
             descripcion.DataPropertyName = "DescComision";
             anioEspecialidad.DataPropertyName = "AnioEspecialidad"; 
-            idplan.DataPropertyName = "IdPlan";
+            desc_plan.DataPropertyName = "DescPlan";
+            desc_specialidad.DataPropertyName = "DescEspecialidad";
 
         }
 

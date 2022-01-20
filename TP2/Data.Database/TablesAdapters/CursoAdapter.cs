@@ -188,7 +188,10 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdCursos = new SqlCommand("select * from cursos", sqlConn);
+                SqlCommand cmdCursos = new SqlCommand("select * from cursos c " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join planes p on p.id_plan = com.id_plan ", sqlConn);
 
                 SqlDataReader drCursos = cmdCursos.ExecuteReader();
 
@@ -196,12 +199,17 @@ namespace Data.Database
                 {
                     Curso cur = new Curso();
 
-                    cur.ID = (int)drCursos["id_curso"];
-                    // cur.id_curso = (int)drCursos["id_curso"]; esta mal
+                    cur.id_curso = (int)drCursos["id_curso"];
                     cur.id_materia = (int)drCursos["id_materia"];
                     cur.id_comision = (int)drCursos["id_comision"];
                     cur.anio_calendario = (int)drCursos["anio_calendario"];
                     cur.cupo = (int)drCursos["cupo"];
+
+                    cur.DescComision = (string)drCursos["desc_comision"];
+                    cur.DescMateria = (string)drCursos["desc_materia"];
+                    cur.DescPlan = (string)drCursos["desc_plan"];
+
+                    cur.AnioEspecialidad = (int)drCursos["anio_especialidad"];
 
                     cursos.Add(cur);
                 }

@@ -37,14 +37,14 @@ namespace UI.Desktop.DesktopsForms
         public MateriaDesktop(ModoForm modo, int ID) : this()
         {
             Text = modo.ToString();
+            btnSeleccionarPlan.Enabled = false;
             if (modo == ModoForm.Baja)
             {
                 txtId.ReadOnly = true;
 
             }
             Modo = modo;
-            MateriaLogic ml = new MateriaLogic();
-            MateriaActual = ml.GetOne(ID);
+            MateriaActual = MateriaLogic.GetInstance().GetOne(ID);
             MapearDeDatos();
         }
 
@@ -53,7 +53,7 @@ namespace UI.Desktop.DesktopsForms
             txtId.Text = MateriaActual.ID.ToString();
             txtDescMateria.Text = MateriaActual.DescMateria;
             txtHsSemanales.Text = MateriaActual.HorasSemanales.ToString();
-            lblIdPlan.Text = MateriaActual.IdPlan.ToString();
+            lblPlan.Text = MateriaActual.DescMateria + " " + MateriaActual.DescEspecialidad;
             txtHsTotales.Text = MateriaActual.HorasTotales.ToString();
 
 
@@ -67,7 +67,7 @@ namespace UI.Desktop.DesktopsForms
                     break;
                 case ModoForm.Baja:
                     btnAceptar.Text = "Eliminar";
-                    btnSeleccionarIdPlan.Visible = false;
+                    btnSeleccionarPlan.Visible = false;
                     break;
                 case ModoForm.Consulta:
                     btnAceptar.Text = "Aceptar";
@@ -81,13 +81,12 @@ namespace UI.Desktop.DesktopsForms
                 MateriaActual.State = BusinessEntity.States.Modified;
                 if (Modo == ModoForm.Alta)
                 {
-                    MateriaActual = new Materia();
                     MateriaActual.State = BusinessEntity.States.New;
                 }
                 // MateriaActual.ID = int.Parse(txtId.Text);
                 MateriaActual.DescMateria = txtDescMateria.Text;
                 MateriaActual.HorasSemanales = int.Parse(txtHsSemanales.Text);
-                MateriaActual.IdPlan = int.Parse(lblIdPlan.Text);
+                MateriaActual.IdPlan = int.Parse(lblPlan.Text);
                 MateriaActual.HorasTotales = int.Parse(txtHsTotales.Text);
 
 
@@ -103,7 +102,7 @@ namespace UI.Desktop.DesktopsForms
             String[] controles = { txtDescMateria.Text, txtHsSemanales.Text, txtHsTotales.Text};
             foreach (string valor in controles)
             {
-                if (String.IsNullOrWhiteSpace(valor) || lblIdPlan.Text  == "Debés seleccionar un id plan")
+                if (String.IsNullOrWhiteSpace(valor) || lblPlan.Text  == "Debés seleccionar un id plan")
                 {
                     Notificar("Debe llenar todos los campos y seleccionar un id plan", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -146,7 +145,9 @@ namespace UI.Desktop.DesktopsForms
             if (DRventanaSPlanes != DialogResult.Cancel)
             {
                 MateriaActual.IdPlan = ventanaSPlanes.idSelectPlan;
-                lblIdPlan.Text = ventanaSPlanes.idSelectPlan.ToString();
+                MateriaActual.DescMateria = ventanaSPlanes.descSelectPlan;
+                MateriaActual.DescEspecialidad = ventanaSPlanes.descSelectEspecialidad;
+                lblPlan.Text = MateriaActual.DescPlan +" "+ MateriaActual.DescEspecialidad;
 
             }
             else
