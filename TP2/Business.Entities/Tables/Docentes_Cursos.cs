@@ -6,7 +6,8 @@
 
         private string _descMateria;
         private string _descComision;
-        private string _nombreApellido;
+        private string _Nombre;
+        private string _Apellido;
 
         public int id_dictado
         {
@@ -32,6 +33,9 @@
 
         public string DescMateria { get => _descMateria; set => _descMateria = value; }
         public string DescComision { get => _descComision; set => _descComision = value; }
-        public string NombreApellido { get => _nombreApellido; set => _nombreApellido = value; }
+        public string NombreApellido { get { return Nombre + " " + Apellido; } }
+
+        public string Nombre { get => _Nombre; set => _Nombre = value; }
+        public string Apellido { get => _Apellido; set => _Apellido = value; }
     }
 }

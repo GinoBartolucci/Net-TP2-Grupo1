@@ -11,7 +11,9 @@ namespace Business.Entities
         private int _AnioEspecialidad, _IdPlan;
         private string _DescComision;
 
-
+        private string _DescPlan;
+        private string _DescEspecialidad;
+        private int _IdEspecialidad;
 
         public int AnioEspecialidad
         {
@@ -30,7 +32,11 @@ namespace Business.Entities
             get { return _DescComision; }
             set { _DescComision = value; }
         }
-        
+
+        public string DescPlan { get => _DescPlan; set => _DescPlan = value; }
+        public string DescEspecialidad { get => _DescEspecialidad; set => _DescEspecialidad = value; }
+        public int IdEspecialidad { get => _IdEspecialidad; set => _IdEspecialidad = value; }
+
         public void Prueba ()
         { 
         }

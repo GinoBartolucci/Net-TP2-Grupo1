@@ -15,14 +15,11 @@ namespace Data.Database.TablesAdapters
         private static MateriasAdapter singleton;
         public static MateriasAdapter GetInstance()
         {
-
             if (singleton == null)
             {
                 singleton = new MateriasAdapter();
             }
-
             return singleton;
-
         }
 
         public List<Materia> GetAll()
@@ -33,7 +30,9 @@ namespace Data.Database.TablesAdapters
             {
                 OpenConnection();
 
-                SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias", sqlConn);
+                SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias m " +
+                    "inner join planes p on p.id_plan = m.id_plan " +
+                    "inner join especialidades e on e.id_especialidad = p.id_especialidad ", sqlConn);
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
 
                 while (drMaterias.Read())
@@ -45,6 +44,9 @@ namespace Data.Database.TablesAdapters
                     mat.HorasSemanales = (int)drMaterias["hs_semanales"];
                     mat.HorasTotales = (int)drMaterias["hs_totales"];
                     mat.IdPlan = (int)drMaterias["id_plan"];
+
+                    mat.DescPlan = (string)drMaterias["desc_plan"];
+                    mat.DescEspecialidad = (string)drMaterias["desc_especialidad"];
 
                     materia.Add(mat);
 
@@ -75,7 +77,9 @@ namespace Data.Database.TablesAdapters
             {
                 OpenConnection();
 
-                SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias " +
+                SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias m " +
+                    "inner join planes p on p.id_plan = m.id_plan " +
+                    "inner join especialidades e on e.id_especialidad = p.id_especialidad " +
                     "where id_plan = @id_plan", sqlConn);
                 cmdMaterias.Parameters.Add("@id_plan", SqlDbType.Int).Value = idPlan;
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
@@ -89,6 +93,9 @@ namespace Data.Database.TablesAdapters
                     mat.HorasSemanales = (int)drMaterias["hs_semanales"];
                     mat.HorasTotales = (int)drMaterias["hs_totales"];
                     mat.IdPlan = (int)drMaterias["id_plan"];
+
+                    mat.DescPlan = (string)drMaterias["desc_plan"];
+                    mat.DescEspecialidad = (string)drMaterias["desc_especialidad"];
 
                     materia.Add(mat);
 
@@ -117,7 +124,10 @@ namespace Data.Database.TablesAdapters
             try
             {
                 OpenConnection();
-                SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias WHERE id_materia = @ID", sqlConn);
+                SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias m " +
+                    "inner join planes p on p.id_plan = m.id_plan " +
+                    "inner join especialidades e on e.id_especialidad = p.id_especialidad  " +
+                    "WHERE id_materia = @ID", sqlConn);
                 cmdMaterias.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
                 while (drMaterias.Read())
@@ -128,6 +138,8 @@ namespace Data.Database.TablesAdapters
                     mat.HorasTotales = (int)drMaterias["hs_totales"];
                     mat.IdPlan = (int)drMaterias["id_plan"];
 
+                    mat.DescPlan = (string)drMaterias["desc_plan"];
+                    mat.DescEspecialidad = (string)drMaterias["desc_especialidad"];
                 }
                 drMaterias.Close();
             }

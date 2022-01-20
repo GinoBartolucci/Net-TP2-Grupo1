@@ -20,6 +20,15 @@ namespace UI.Desktop
             InitializeComponent();
             this.dgvPlanes.AutoGenerateColumns = false;
         }
+        private static Planes singleton;
+        public static Planes GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new Planes();
+            }
+            return singleton;
+        }
         public void NotificarError(Exception Error)
         {
             var msError = "Error message: " + Error.Message;
@@ -32,18 +41,17 @@ namespace UI.Desktop
         }
         public void Listar()
         {
-            PlanesLogic pl = new PlanesLogic();
             try
             {
-                dgvPlanes.DataSource = pl.GetAll();
+                dgvPlanes.DataSource = PlanesLogic.GetInstance().GetAll();
             }
             catch (Exception Error)
             {
                 NotificarError(Error);
             }
             id_planes.DataPropertyName = "ID";
-            desc_plan.DataPropertyName = "desc_plan";
-            id_especialidad.DataPropertyName = "id_especialidad";
+            desc_plan.DataPropertyName = "DescPlan";
+            desc_especialidad.DataPropertyName = "DescEspecialidad";
         }
         private void button1_Click(object sender, EventArgs e)
         {

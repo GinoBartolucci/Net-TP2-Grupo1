@@ -7,6 +7,15 @@ namespace UI.Desktop
 {
     public partial class PlanesDesktop : ApplicationForm
     {
+        private static PlanesDesktop singleton;
+        public static PlanesDesktop GetInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new PlanesDesktop();
+            }
+            return singleton;
+        }
         public PlanesDesktop()
         {
             InitializeComponent();
@@ -16,7 +25,7 @@ namespace UI.Desktop
             Text = modo.ToString();
             Modo = modo;
             PlanActual = new Business.Entities.Planes();
-            PlanActual.id_especialidad = -1;// se pone en -1 para validar que se selecciono una FK
+            PlanActual.IdEspecialidad = -1;// se pone en -1 para validar que se selecciono una FK
         }
         private Business.Entities.Planes _PlanActual;
         public Business.Entities.Planes PlanActual
@@ -27,23 +36,20 @@ namespace UI.Desktop
         public PlanesDesktop(ModoForm modo, int ID) : this()
         {
             Text = modo.ToString();
+            btnSeleccionarEspecialidad.Visible = false;
             if (modo == ModoForm.Baja)
             {
                 txtDesc.ReadOnly = true;
-                btnSeleccionarEspecialidad.Enabled = false;
             }
-            Modo = modo;
-            PlanesLogic ul = new PlanesLogic();            
-            PlanActual = ul.GetOne(ID);
+            Modo = modo;       
+            PlanActual = PlanesLogic.GetInstance().GetOne(ID);
             MapearDeDatos();            
         }
         public override void MapearDeDatos()
         {
-            txtID.Text = PlanActual.ID.ToString();
-       
-            txtDesc.Text = PlanActual.desc_plan;
-            EspecialidadesLogic el = new EspecialidadesLogic();
-            lbNombreEspecialidad.Text = el.GetOne(PlanActual.id_especialidad).desc_especialidad;
+            txtID.Text = PlanActual.ID.ToString();       
+            txtDesc.Text = PlanActual.DescPlan;
+            lbNombreEspecialidad.Text = PlanActual.DescEspecialidad;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -69,7 +75,7 @@ namespace UI.Desktop
                 {
                     PlanActual.State = BusinessEntity.States.New;
                 }
-                PlanActual.desc_plan = txtDesc.Text;
+                PlanActual.DescPlan = txtDesc.Text;
                /*PlanActual.id_especialidad se setea al seleccionar el boton especialidad
                 Y en validacion es obligatorio seleccionar un boton antes de MapearADatos*/
             }
@@ -85,7 +91,7 @@ namespace UI.Desktop
                 Notificar("Debe llenar todos los campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (PlanActual.id_especialidad < 0)//si no se apreto el boton seleccionar especialidad queda -1 (seteado al principio ene l constructor)
+            if (PlanActual.IdEspecialidad < 0)//si no se apreto el boton seleccionar especialidad queda -1 (seteado al principio ene l constructor)
             {
                 Notificar("Planes", "Debe seleccionar una Especialidad.\nSi no hay debe crear una", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -120,13 +126,14 @@ namespace UI.Desktop
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             SelectEspecialidades se = new SelectEspecialidades();
-            DialogResult DRse = se.ShowDialog();
-            if (DRse == DialogResult.OK)
+            se.ShowDialog();
+            if (se.DialogResult == DialogResult.OK)
             {
-                PlanActual.id_especialidad = se.idSelectEspecilidad;
+                PlanActual.IdEspecialidad = se.idSelectEspecilidad;
+                PlanActual.DescPlan = se.descSelectEspecialidad;
                 lbNombreEspecialidad.Text = se.descSelectEspecialidad;
             }
-            else if (DRse != DialogResult.OK)
+            else if (se.DialogResult != DialogResult.OK)
             {
                 Notificar("Planes", "Debe seleccionar una Especialidad.\nSi no hay debe crear una", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            

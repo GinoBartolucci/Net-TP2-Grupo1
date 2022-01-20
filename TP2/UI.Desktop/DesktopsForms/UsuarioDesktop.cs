@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
-using System.Text.RegularExpressions;
+
 
 namespace UI.Desktop
 {
@@ -18,6 +18,7 @@ namespace UI.Desktop
         public UsuarioDesktop()
         {
             InitializeComponent();
+            cbxTipoPersona.SelectedIndex = 2;
         }        
         public UsuarioDesktop(ModoForm modo):this()
         {
@@ -34,6 +35,7 @@ namespace UI.Desktop
         public UsuarioDesktop(ModoForm modo, int ID) : this()
         {
             Text = modo.ToString();
+            btnPlan.Enabled = false;
             if (modo == ModoForm.Baja)
             {
                 txtNombre.ReadOnly = true;
@@ -41,12 +43,14 @@ namespace UI.Desktop
                 txtClave.ReadOnly = true;
                 txtApellido.ReadOnly = true;
                 txtUsuario.ReadOnly = true;
+                txtTelefono.ReadOnly = true;
+                txtDireccion.ReadOnly = true;
                 txtConfirmarClave.ReadOnly = true;
-                chkHabilitado.Enabled = false;
+                
+                //chkHabilitado.Enabled = true;
             }
             Modo = modo;
-            Business.Logic.UsuarioLogic ul= new Business.Logic.UsuarioLogic();            
-            UsuarioActual = ul.GetOneId(ID);
+            UsuarioActual = Business.Logic.UsuarioLogic.GetInstance().GetOneId(ID);
             MapearDeDatos();            
         }
         public override void MapearDeDatos()
@@ -59,7 +63,26 @@ namespace UI.Desktop
             txtUsuario.Text = UsuarioActual.NombreUsuario;
             txtConfirmarClave.Text = UsuarioActual.Clave;
             chkHabilitado.Checked = UsuarioActual.Habilitado;
-            
+            txtDireccion.Text = UsuarioActual.Direccion;
+            txtTelefono.Text = UsuarioActual.Telefono;
+            txtPlan.Text = UsuarioActual.DescPlan +" "+ UsuarioActual.DescEspecialidad;
+            txtLegajo.Text = UsuarioActual.Legajo.ToString();
+            dtpFechaNacimiento.Value = UsuarioActual.FechaNac;
+
+            switch (UsuarioActual.TipoPersona)
+            {
+                case 1:
+                    cbxTipoPersona.SelectedIndex = 0;
+                    break;
+                case 2:
+                    cbxTipoPersona.SelectedIndex = 1;
+                    break;
+                case 3:
+                    cbxTipoPersona.SelectedIndex = 2;
+                    break;
+                default: break;
+            }
+
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -69,7 +92,7 @@ namespace UI.Desktop
                     btnConfirmar.Text = "Guardar";
                     break;
                 case ModoForm.Baja:
-                    btnConfirmar.Text = "Eliminar";
+                    btnConfirmar.Text = "Dar de Baja";
                     break;
                 case ModoForm.Consulta:
                     btnConfirmar.Text = "Aceptar";
@@ -78,69 +101,71 @@ namespace UI.Desktop
         }
         public override void MapearADatos()
         {
-            if(Modo == ModoForm.Alta || Modo == ModoForm.Modificacion)
+            UsuarioActual.State = Business.Entities.BusinessEntity.States.Modified;
+            if (Modo == ModoForm.Alta)
             {
-                UsuarioActual.State = Business.Entities.BusinessEntity.States.Modified;
-                if (Modo == ModoForm.Alta)
-                {
-                    UsuarioActual = new Business.Entities.Usuario();
-                    UsuarioActual.State = Business.Entities.BusinessEntity.States.New;
-                }
-                UsuarioActual.Nombre = txtNombre.Text;
-                UsuarioActual.Email = txtEMail.Text;
-                UsuarioActual.Clave = txtClave.Text;
-                UsuarioActual.Apellido = txtApellido.Text;
-                UsuarioActual.NombreUsuario = txtUsuario.Text;
-                UsuarioActual.Clave = txtClave.Text;
-                UsuarioActual.Habilitado = chkHabilitado.Checked;
+                UsuarioActual.State = Business.Entities.BusinessEntity.States.New;
             }
-            if (Modo == ModoForm.Baja)
+            switch (cbxTipoPersona.SelectedIndex)
             {
-                UsuarioActual.State = Business.Entities.BusinessEntity.States.Deleted;
+                case 0:
+                    UsuarioActual.TipoPersona = 1;
+                    break;
+                case 1:
+                    UsuarioActual.TipoPersona = 2;
+                    break;
+                case 2:
+                    UsuarioActual.TipoPersona = 3;
+                    break;
+                default: break;
             }
+            UsuarioActual.Nombre = txtNombre.Text;
+            UsuarioActual.Email = txtEMail.Text;
+            UsuarioActual.Clave = txtClave.Text;
+            UsuarioActual.Apellido = txtApellido.Text;
+            UsuarioActual.NombreUsuario = txtUsuario.Text;
+            UsuarioActual.Clave = txtClave.Text;
+            UsuarioActual.Habilitado = chkHabilitado.Checked;
+            UsuarioActual.Legajo = int.Parse(txtLegajo.Text);
+            UsuarioActual.FechaNac = dtpFechaNacimiento.Value;
+            //UsuarioActual.State = Business.Entities.BusinessEntity.States.Deleted;
+            //La baja es sacarle al habilitado
         }
         public override bool Validar()
-        {
-            String[] controles = { txtNombre.Text, txtEMail.Text, txtClave.Text, txtApellido.Text, txtUsuario.Text, txtConfirmarClave.Text };
-            foreach (string valor in controles)
+        {   
+            if(cbxTipoPersona.SelectedIndex == 2)
             {
-                if (String.IsNullOrWhiteSpace(valor))
+                String[] controles = { txtNombre.Text, txtApellido.Text, txtEMail.Text, txtClave.Text, 
+                    txtConfirmarClave.Text, txtDireccion.Text, txtTelefono.Text, txtLegajo.Text, txtPlan.Text};
+                if (!BusinessRules.ValidarCampos(controles))
                 {
                     Notificar("Debe llenar todos los campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
+            else
+            {
+                String[] controles = { txtNombre.Text, txtApellido.Text, txtEMail.Text, txtClave.Text,
+                    txtConfirmarClave.Text, txtDireccion.Text, txtTelefono.Text, txtPlan.Text };
+                if (BusinessRules.ValidarCampos(controles))
+                {
+                    Notificar("Debe llenar todos los campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+                       
             if (txtClave.Text.Length <8 || txtClave.Text != txtConfirmarClave.Text)
             {
                 Notificar("Contraseña Invalida", "Las contaseñas no coinciden\n(debe ser mayor a 8 caracteres)", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (!email_bien_escrito(txtEMail.Text))
+            if (!BusinessRules.email_bien_escrito(txtEMail.Text))
             {
                 Notificar("Email Invalido", "El Email ingresado es invalido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            
             return true;
-        }
-        private Boolean email_bien_escrito(String email)
-        {
-            String expresion;
-            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(email, expresion))
-            {
-                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
         }
         public override void GuardarCambios()
         {
@@ -164,6 +189,38 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnPlan_Click(object sender, EventArgs e)
+        {
+            SelectPlanes selPlan = new SelectPlanes();
+            selPlan.ShowDialog();
+            if (selPlan.DialogResult != DialogResult.OK)
+            {
+                MessageBox.Show("Error al seleccionar el Plan", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            UsuarioActual.IdPlan = selPlan.idSelectPlan;
+            UsuarioActual.DescPlan = selPlan.descSelectPlan;
+            txtPlan.Text = UsuarioActual.DescPlan +" "+ selPlan.descSelectEspecialidad;
+        }
+
+        private void cbxTipoPersona_SelectedValueChanged(object sender, EventArgs e)
+        {
+            switch (cbxTipoPersona.SelectedIndex)
+            {
+                case 0:
+                    txtLegajo.Enabled = false;
+                    txtLegajo.Text = "0";
+                    break;
+                case 1:
+                    txtLegajo.Enabled = false;
+                    txtLegajo.Text = "0";
+                    break;
+                case 2:
+                    txtLegajo.Enabled = true;
+                    break;
+                default: break;
+            }
         }
     }
 }

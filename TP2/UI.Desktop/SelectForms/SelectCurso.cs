@@ -30,7 +30,8 @@ namespace UI.Desktop.SelectForms
             this.dgvSelectCurso.AutoGenerateColumns = false;
         }
         public int IdCurso { get; set; }
-        
+        public string DescComision { get; set; }
+        public string DescMateria { get; set; }
 
         public void Listar()
         {
@@ -61,8 +62,20 @@ namespace UI.Desktop.SelectForms
                         Close();
                     }
                     Cupo.Visible = false;
-                }               
-                
+                }
+                if (Session.currentUser.TipoPersona == 1)
+                {
+                    //Trae de la base los cursos de este año
+                    List<Curso> listaCursos = CursoLogic.GetInstance().GetAll();
+                    this.dgvSelectCurso.DataSource = listaCursos;
+                    if (listaCursos.Count == 0)
+                    {
+                        MessageBox.Show("No quedan mas Cursos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DialogResult = DialogResult.Cancel;
+                        Close();
+                    }
+                }
+
             } 
             catch(Exception Error)
             {
@@ -97,6 +110,8 @@ namespace UI.Desktop.SelectForms
             {
                 // al seleccionar un curso traer todas las personas que estan en ese curso haceindo un join entre inscripciones alumno y personas
                 IdCurso = ((Business.Entities.Curso)dgvSelectCurso.SelectedRows[0].DataBoundItem).id_curso; // selecciona toda la linea y solo asigna id_curso
+                DescComision = ((Business.Entities.Curso)dgvSelectCurso.SelectedRows[0].DataBoundItem).DescComision;
+                DescMateria = ((Business.Entities.Curso)dgvSelectCurso.SelectedRows[0].DataBoundItem).DescMateria;
                 DialogResult = DialogResult.OK;
                 Close();
                                                
