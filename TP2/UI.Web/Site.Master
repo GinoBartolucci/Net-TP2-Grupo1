@@ -236,7 +236,7 @@ footer {
                 <li><a class="icon-label" href="Especialidades.aspx"> <label>Especialidades</label> </a></li>
                  <li><a class="icon-label" href="Cursos.aspx"> <label>Cursos</label> </a></li>
                
-                <li><a class="icon-label" href="Materias.aspx">Inscripciones</a></li>
+                <li><a class="icon-label" href="Inscripciones.aspx">Inscripciones</a></li>
                <li> <a class="icon-label" href="Comisiones.aspx"> <span class="material-icons">logout</span><label>Salir</label> </a></li>           
             </ul>
           

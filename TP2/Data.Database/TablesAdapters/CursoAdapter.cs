@@ -132,6 +132,59 @@ namespace Data.Database
 
         }
 
+        public List<Curso> GetAllAlum(int idAlumno)
+        {
+            List<Curso> cursos = new List<Curso>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdCursos = new SqlCommand("select * from cursos c " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join alumnos_inscripciones ai on c.id_curso = ai.id_curso " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join planes p on p.id_plan = com.id_plan " +
+                    "where ai.id_alumno = @id_alumno " , sqlConn);
+                cmdCursos.Parameters.Add("@id_alumno", SqlDbType.Int).Value = idAlumno;
+      
+                SqlDataReader drCursos = cmdCursos.ExecuteReader();
+
+                while (drCursos.Read())
+                {
+                    Curso cur = new Curso();
+
+                    cur.ID = (int)drCursos["id_curso"];
+                    cur.id_curso = (int)drCursos["id_curso"];
+                    cur.id_materia = (int)drCursos["id_materia"];
+                    cur.id_comision = (int)drCursos["id_comision"];
+                    cur.anio_calendario = (int)drCursos["anio_calendario"];
+                    cur.cupo = (int)drCursos["cupo"];
+
+                    cur.DescComision = (string)drCursos["desc_comision"];
+                    cur.DescMateria = (string)drCursos["desc_materia"];
+                    cur.DescPlan = (string)drCursos["desc_plan"];
+
+                    cur.AnioEspecialidad = (int)drCursos["anio_especialidad"];
+
+                    cursos.Add(cur);
+                }
+
+                drCursos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos GetAll()", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return cursos;
+
+        }
+
         public List<Curso> GetAllDoc(int id_doc)
         {
             List<Curso> cursos = new List<Curso>();
@@ -202,6 +255,7 @@ namespace Data.Database
                 {
                     Curso cur = new Curso();
 
+                    cur.ID = (int)drCursos["id_curso"];
                     cur.id_curso = (int)drCursos["id_curso"];
                     cur.id_materia = (int)drCursos["id_materia"];
                     cur.id_comision = (int)drCursos["id_comision"];

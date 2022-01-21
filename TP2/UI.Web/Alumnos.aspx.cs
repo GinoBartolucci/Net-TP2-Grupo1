@@ -105,7 +105,7 @@ namespace UI.Web
 
         private void LoadGridInscripciones(int id)
         {
-            List<Inscripciones> inscripcionesDelAlumno = this.Logic.GetAllAlum(id);
+            List<Business.Entities.Inscripciones> inscripcionesDelAlumno = this.Logic.GetAllAlum(id);
             if(inscripcionesDelAlumno.Count > 0)
             {
                 this.gridView.DataSource = this.Logic.GetAllAlum(id);
@@ -366,6 +366,13 @@ namespace UI.Web
             this.form_alumno.Visible = false;
             showAdminButtons();
 
+        }
+
+        protected void cursosAlumnoButton_Click(object sender, EventArgs e)
+        {
+            cursoGridView.DataSource = new CursoLogic().GetAllAlum(this.SelectedID);
+            cursoGridView.DataBind();
+            cursos_alumno.Visible = true;
         }
     }
 

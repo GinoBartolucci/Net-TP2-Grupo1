@@ -102,14 +102,14 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
-            this.descripcionTextBox.Text = this.Entity.desc_plan;
-            this.idEspecialidadTextBox.Text = Entity.id_especialidad.ToString();
+            this.descripcionTextBox.Text = this.Entity.DescPlan;
+            this.idEspecialidadTextBox.Text = Entity.IdEspecialidad.ToString();
 
         }
         private void LoadEntity(Business.Entities.Planes plan)
         {
-            plan.desc_plan = this.descripcionTextBox.Text;
-            plan.id_especialidad = int.Parse(this.idEspecialidadTextBox.Text);
+            plan.DescPlan = this.descripcionTextBox.Text;
+            plan.IdEspecialidad = int.Parse(this.idEspecialidadTextBox.Text);
         }
 
         private void ClearForm()

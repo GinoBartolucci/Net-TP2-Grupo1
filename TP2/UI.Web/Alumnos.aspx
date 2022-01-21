@@ -44,9 +44,33 @@
     <br />
 
         
-    <asp:Button class="btn btn-info" ID="cursosAlumnoButton" runat="server" Text="Ver cursos" />
+    <asp:Button class="btn btn-info" ID="cursosAlumnoButton" runat="server" Text="Ver cursos" OnClick="cursosAlumnoButton_Click" />
         <asp:Button class="btn btn-info" ID="inscripcionesAlumnoButton" runat="server" Text="Ver inscripciones" OnClick="inscripcionesAlumnoButton_Click" />
     <asp:Button class="btn btn-dark"  ID="modificarAlumnoButton" runat="server" Text="Modificar" OnClick="modificarAlumnoButton_Click1" />
+
+    <section id="cursos_alumno" runat="server" Visible="false">
+        <asp:Panel ID="cursoPanel" runat="server">
+        <asp:GridView ID="cursoGridView" runat="server" AutoGenerateColumns="False"
+            SelectedRowStyle-BackColor="Black"
+            SelectedRowStyle-ForeColor="White"
+            Width="100%"
+            DataKeyNames="ID">
+
+            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+
+            <Columns>
+                <asp:BoundField HeaderText="ID" DataField="ID" />
+
+                <asp:BoundField HeaderText="ID Materia" DataField="id_materia" />
+                <asp:BoundField HeaderText="ID Comision" DataField="id_comision" />
+                <asp:BoundField HeaderText="Año Calendario" DataField="anio_calendario" />
+                <asp:BoundField HeaderText="Cupo" DataField="cupo" />
+                <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
+
+            </Columns>
+        </asp:GridView>
+    </asp:Panel>
+    </section>
 
     <section class="inscripciones_alumno" id="inscripciones_alumno" runat="server">
            <asp:Panel ID ="gridPanel" runat ="server" CssClass="tabla" > 

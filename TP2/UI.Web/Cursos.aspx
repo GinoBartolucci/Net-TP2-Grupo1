@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cursos.aspx.cs" Inherits="UI.Web.Cursos" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
@@ -7,13 +8,13 @@
 
 
     <div class="form-label-input">
-            <label class="form" style="width:100%">
-                ID:
+        <label class="form" style="width: 100%">
+            ID:
                <asp:TextBox CssClass="form-input" placeholder="ingresar ID del curso" ID="ingresoTextBox" runat="server"></asp:TextBox>
-         
-            </label>
-            <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
-        </div>
+
+        </label>
+        <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
+    </div>
 
 
     <asp:Panel ID="gridPanel" runat="server">
@@ -40,81 +41,86 @@
 
 
     <asp:Panel ID="formPanel" CssClass="p-3" runat="server" Visible="false">
-        <h4><asp:Label runat="server" ID="tituloForm" Text=""></asp:Label></h4>
+        <h4>
+            <asp:Label runat="server" ID="tituloForm" Text=""></asp:Label>
+        </h4>
         <hr />
-         <label>Cupo</label> <br />
-                        <asp:TextBox ID="cupoTextBox"  CssClass="form-input" runat="server"></asp:TextBox>
+        <label>Cupo</label>
+        <br />
+        <asp:TextBox ID="cupoTextBox" CssClass="form-input" runat="server"></asp:TextBox>
 
         <div class="row py-3">
-                    <div class="col">
-                        <label>Año Calendario</label> <br />
-                        <asp:TextBox ID="anioCalendarioTextBox"  CssClass="form-input" runat="server"></asp:TextBox>
-                    </div>
-                      <div class="col">
-                        <label>Id Materia</label> <br />
-                        <asp:TextBox ID="idMateriaTextBox"  CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>
-                        <asp:Button  cssClass="btn btn-primary" runat="server" text="Seleccionar" OnClick="seleccionarMateriaButton" />
-                     </div>
-                     <div class="col">
-                        <label>Id Comision</label> <br />
-                        <asp:TextBox ID="idComisionTextBox"  CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>
-                        <asp:Button  cssClass="btn btn-primary" runat="server" text="Seleccionar" OnClick="seleccionarComisionButton" />
-                     </div>
+            <div class="col">
+                <label>Año Calendario</label>
+                <br />
+                <asp:TextBox ID="anioCalendarioTextBox" CssClass="form-input" runat="server"></asp:TextBox>
+            </div>
+            <div class="col">
+                <label>Id Materia</label>
+                <br />
+                <asp:TextBox ID="idMateriaTextBox" CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>
+                <asp:Button cssClass="btn btn-primary" runat="server" text="Seleccionar" OnClick="seleccionarMateriaButton" />
+            </div>
+            <div class="col">
+                <label>Id Comision</label>
+                <br />
+                <asp:TextBox ID="idComisionTextBox" CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>
+                <asp:Button cssClass="btn btn-primary" runat="server" text="Seleccionar" OnClick="seleccionarComisionButton" />
+            </div>
 
-                </div>
+        </div>
 
 
 
         <br />
         <div class="row m-2 py-2" id="tablaMateria" runat="server" visible="false">
-                    <h3>Seleccionar materia</h3>
-                <asp:Panel ID="materiaPanel" runat="server">
-        <asp:GridView ID="materiaGridView" runat="server" AutoGenerateColumns="False"
-            SelectedRowStyle-BackColor="Black"
-            SelectedRowStyle-ForeColor="White"
-            Width="100%"
-            DataKeyNames="ID" OnSelectedIndexChanged="materiaGridView_SelectedIndexChanged">
+            <h3>Seleccionar materia</h3>
+            <asp:Panel ID="materiaPanel" runat="server">
+                <asp:GridView ID="materiaGridView" runat="server" AutoGenerateColumns="False"
+                    SelectedRowStyle-BackColor="Black"
+                    SelectedRowStyle-ForeColor="White"
+                    Width="100%"
+                    DataKeyNames="ID" OnSelectedIndexChanged="materiaGridView_SelectedIndexChanged">
 
-            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+                    <selectedrowstyle backcolor="Black" forecolor="White" />
 
-            <Columns>
-                <asp:BoundField HeaderText="ID" DataField="ID" />
+                    <columns>
+                        <asp:BoundField HeaderText="ID" DataField="ID" />
 
-                <asp:BoundField HeaderText="Descripcion materia" DataField="DescMateria" />
-                <asp:BoundField HeaderText="Horas Samanales" DataField="HorasSemanales" />
-                <asp:BoundField HeaderText="Horas Totales" DataField="HorasTotales" />
-                <asp:BoundField HeaderText="Id Plan" DataField="IdPlan" />
-                <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
+                        <asp:BoundField HeaderText="Descripcion materia" DataField="DescMateria" />
+                        <asp:BoundField HeaderText="Horas Samanales" DataField="HorasSemanales" />
+                        <asp:BoundField HeaderText="Horas Totales" DataField="HorasTotales" />
+                        <asp:BoundField HeaderText="Id Plan" DataField="IdPlan" />
+                        <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
 
-            </Columns>
-        </asp:GridView>
-                    </asp:Panel>
+                    </columns>
+                </asp:GridView>
+            </asp:Panel>
 
 
-            </div>
+        </div>
         <div id="tablaComision" runat="server" class="row m-2 py-2" visible="false">
-        <h3>Seleccionar comision</h3>
-             <asp:Panel ID ="comisionPanel" CssClass="py-3" runat ="server"  Visible ="false"> 
-            <asp:GridView ID="comisionGridView" runat="server" AutoGenerateColumns="False"
-                SelectedRowStyle-BackColor="Black"
-                SelectedRowStyle-ForeColor="White" 
-                Width="100%"
-                DataKeynames ="ID"   
-               >
- 
-                <SelectedRowStyle BackColor="Black" ForeColor="White" />
-                
-                <Columns>
-                    <asp:BoundField HeaderText="ID" DataField="ID" />
-                    <asp:BoundField  HeaderText ="Descripcion" DataField ="DescComision" />
-                    <asp:BoundField HeaderText ="Anio Especialidad" DataField ="AnioEspecialidad" />
-                    <asp:BoundField HeaderText ="ID Plan" DataField ="IdPlan" />
-                    <asp:CommandField HeaderText ="Seleccionar" ShowSelectButton ="True"/>
-                </Columns>
+            <h3>Seleccionar comision</h3>
+            <asp:Panel ID="comisionPanel" CssClass="py-3" runat="server" Visible="false">
+                <asp:GridView ID="comisionGridView" runat="server" AutoGenerateColumns="False"
+                    SelectedRowStyle-BackColor="Black"
+                    SelectedRowStyle-ForeColor="White"
+                    Width="100%"
+                    DataKeynames="ID">
 
-            </asp:GridView>
-              </asp:Panel>
-        <br />
+                    <selectedrowstyle backcolor="Black" forecolor="White" />
+
+                    <columns>
+                        <asp:BoundField HeaderText="ID" DataField="ID" />
+                        <asp:BoundField HeaderText="Descripcion" DataField="DescComision" />
+                        <asp:BoundField HeaderText="Anio Especialidad" DataField="AnioEspecialidad" />
+                        <asp:BoundField HeaderText="ID Plan" DataField="IdPlan" />
+                        <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
+                    </columns>
+
+                </asp:GridView>
+            </asp:Panel>
+            <br />
         </div>
         <asp:Label ID="descripcionEspecialidadValidacion" runat="server" ForeColor="#CC3300" Text="*"></asp:Label>
         <br />
