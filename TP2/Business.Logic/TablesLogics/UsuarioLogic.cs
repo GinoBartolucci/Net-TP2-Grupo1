@@ -21,11 +21,6 @@ namespace Business.Logic
         public UsuarioLogic()
         {            
         }
-        public Business.Entities.Usuario GetOneUsuario(string nombreUsuario)
-        {                
-            return UsuarioAdapter.GetInstance().GetOneUsuario(nombreUsuario);           
-        }
-
         public Business.Entities.Usuario GetOneId(int id)
         {            
             return UsuarioAdapter.GetInstance().GetOneId(id);                     

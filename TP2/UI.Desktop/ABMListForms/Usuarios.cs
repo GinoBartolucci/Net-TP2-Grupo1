@@ -18,6 +18,7 @@ namespace UI.Desktop
         {
             InitializeComponent();
             this.dgvUsuarios.AutoGenerateColumns = false;
+            Modo = ModoForm.ABM;
         }
         public Usuarios(ModoForm modo) 
         {
@@ -40,7 +41,7 @@ namespace UI.Desktop
         }
         public enum ModoForm
         {
-            Seleccion
+            Docente, ABM
         }
         private ModoForm _Modo;
         public ModoForm Modo
@@ -52,7 +53,7 @@ namespace UI.Desktop
         {
             try
             {
-                if (Modo == ModoForm.Seleccion)
+                if (Modo == ModoForm.Docente)
                 {
                     List<Usuario> listUruarios= UsuarioLogic.GetInstance().GetAll();
                     listUruarios.RemoveAll(item => item.TipoPersona != 2);
@@ -81,7 +82,7 @@ namespace UI.Desktop
                     email.DataPropertyName = "Email";
                     Especialidad.DataPropertyName = "DescEspecialidad";
                     DescPlan.DataPropertyName = "DescPlan";
-                    email.DataPropertyName = "Email";
+                    email.DataPropertyName = "EMail";
                     habilitado.DataPropertyName = "Habilitado";
                 }
             }

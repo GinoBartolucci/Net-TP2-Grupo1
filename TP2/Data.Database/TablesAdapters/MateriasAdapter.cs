@@ -80,7 +80,7 @@ namespace Data.Database.TablesAdapters
                 SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias m " +
                     "inner join planes p on p.id_plan = m.id_plan " +
                     "inner join especialidades e on e.id_especialidad = p.id_especialidad " +
-                    "where id_plan = @id_plan", sqlConn);
+                    "where m.id_plan = @id_plan", sqlConn);
                 cmdMaterias.Parameters.Add("@id_plan", SqlDbType.Int).Value = idPlan;
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
 
@@ -127,7 +127,7 @@ namespace Data.Database.TablesAdapters
                 SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias m " +
                     "inner join planes p on p.id_plan = m.id_plan " +
                     "inner join especialidades e on e.id_especialidad = p.id_especialidad  " +
-                    "WHERE id_materia = @ID", sqlConn);
+                    "WHERE m.id_materia = @ID", sqlConn);
                 cmdMaterias.Parameters.Add("@ID", SqlDbType.Int).Value = ID;
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
                 while (drMaterias.Read())
