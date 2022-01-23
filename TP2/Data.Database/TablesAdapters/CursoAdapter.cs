@@ -205,7 +205,13 @@ namespace Data.Database
                     "inner join personas per on per.id_plan = m.id_plan  " +
                     "inner join comisiones com on com.id_comision = c.id_comision " +
                     "inner join planes p on p.id_plan = com.id_plan  " +
-                    "where per.id_persona = @id_alumno ", sqlConn);
+                    "where per.id_persona = @id_alumno " +
+                    "AND m.id_materia NOT IN" +
+                    " ( " +
+                    " SELECT curs.id_materia FROM alumnos_inscripciones  ai " +
+                    " INNER JOIN cursos curs ON curs.id_curso = ai.id_curso	 " +
+                    " WHERE  ai.id_alumno  = @id_alumno " +
+                    " ) ", sqlConn);
                 cmdCursos.Parameters.Add("@id_alumno", SqlDbType.Int).Value = idAlumno;
 
                 SqlDataReader drCursos = cmdCursos.ExecuteReader();

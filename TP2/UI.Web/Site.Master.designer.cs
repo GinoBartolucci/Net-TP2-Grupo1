@@ -42,6 +42,15 @@ namespace UI.Web
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl nav_administrador;
 
         /// <summary>
+        /// nav_alumno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nav_alumno;
+
+        /// <summary>
         /// SiteMapDataSource control.
         /// </summary>
         /// <remarks>

@@ -11,9 +11,12 @@ namespace UI.Web
 {
     public partial class Inscripciones : System.Web.UI.Page
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            modificarVistaSegunPermisosDelUsuario();
         }
         private Business.Entities.Inscripciones Entity { get; set; }
 
@@ -29,6 +32,30 @@ namespace UI.Web
                 }
                 return _logic;
             }
+        }
+
+        private void modificarVistaSegunPermisosDelUsuario()
+        {
+            Usuario usr = (Usuario)Session["current_user"];
+            switch (usr.DescTipoPersona)
+            {
+                case "Administrativo": break;
+                case "Docente": Response.Redirect("Home.aspx"); break;
+                case "Alumno": vistaParaAlumno(); break;
+            }
+        }
+
+        private void vistaParaAlumno()
+        {
+            editarLinkButton.Visible = false;
+            idPersonaLabel.Visible = false;
+            seleccionarPersonaButton.Visible = false;
+            condicionLabel.Visible = false;
+            condicionTextBox.Visible = false;
+            notaLabel.Visible = false;
+            notaTextBox.Visible = false;
+            idPersonaTextBox.Visible = false;
+
         }
 
 
@@ -93,9 +120,24 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-           
-                this.gridView.DataSource = this.Logic.GetEveryone();
-                this.gridView.DataBind();
+            Usuario usr = (Usuario)Session["current_user"];
+            switch (usr.DescTipoPersona)
+            {
+                case "Administrativo": this.gridView.DataSource = this.Logic.GetEveryone(); break;
+                case "Docente": Response.Redirect("Home.aspx"); break;
+                case "Alumno": 
+                    this.gridView.DataSource = this.Logic.GetAllAlum(usr.IdPersona);
+                    this.gridView.Columns[0].Visible = false;
+                    this.gridView.Columns[2].Visible = false;
+                    this.gridView.Columns[7].Visible = false;
+                    
+                    break;
+            }
+            this.gridView.Columns[1].Visible = false;
+
+            this.gridView.DataBind();
+         
+              
           
            
         }
@@ -110,6 +152,7 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
+            
             idCursoTextBox.Text = Entity.IdCurso.ToString();
             idPersonaTextBox.Text = Entity.IdAlumno.ToString();
             condicionTextBox.Text = Entity.Condicion;
@@ -118,10 +161,24 @@ namespace UI.Web
         }
         private void LoadEntity(Business.Entities.Inscripciones inscripcion)
         {
-            inscripcion.IdAlumno = int.Parse(this.idPersonaTextBox.Text);
+            Usuario usr = (Usuario)Session["current_user"];
+            switch (usr.DescTipoPersona)
+            {
+                case "Administrativo": 
+                    inscripcion.IdAlumno = int.Parse(this.idPersonaTextBox.Text); ;
+                    inscripcion.Condicion = this.condicionTextBox.Text;
+                    inscripcion.Nota = int.Parse(this.notaTextBox.Text);
+                    break;
+                case "Docente":  ; break;
+                case "Alumno":
+                    inscripcion.IdAlumno = usr.IdPersona;
+                    inscripcion.Condicion = "Cursando";
+                    inscripcion.Nota = -1;
+                    break;
+            }
+           
             inscripcion.IdCurso = int.Parse(this.idCursoTextBox.Text);
-            inscripcion.Condicion = this.condicionTextBox.Text;
-            inscripcion.Nota = int.Parse(this.notaTextBox.Text);
+           
         }
 
         private void ClearForm()
@@ -154,17 +211,7 @@ namespace UI.Web
             tituloForm.Text = "Crear inscripcion";
             this.ClearForm();
         }
-
-        protected void eliminarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.LoadForm(this.SelectedID);
-                tituloForm.Text = "Eliminar inscripcion";
-            }
-        }
+ 
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
@@ -231,6 +278,17 @@ namespace UI.Web
 
         protected void seleccionarCursoButton_Click(object sender, EventArgs e)
         {
+            Usuario usr = (Usuario)Session["current_user"];
+            switch (usr.DescTipoPersona)
+            {
+               
+                case "Docente":  break;
+                case "Alumno":
+                    idPersonaTextBox.Text = usr.IdPersona.ToString();
+                    
+                    break;
+            }
+
             this.alumnosPanel.Visible = false;
             cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty)? 
                     new CursoLogic().GetAllForAlum(int.Parse(idPersonaTextBox.Text)) 

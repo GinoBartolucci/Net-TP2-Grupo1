@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inscripciones.aspx.cs" Inherits="UI.Web.Inscripciones" %>
+﻿<%@ Page Title="Inscripciones" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inscripciones.aspx.cs" Inherits="UI.Web.Inscripciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <div class="container">
+    <div class=" ">
         <h2>Inscripciones</h2>
         <hr />
 
@@ -31,8 +31,10 @@
                 <Columns>
                     <asp:BoundField HeaderText="ID" DataField="ID" />
 
-                    <asp:BoundField HeaderText="ID Persona" DataField="IdAlumno" />
-                    <asp:BoundField HeaderText="ID Curso" DataField="IdCurso" />
+                    <asp:BoundField HeaderText="Alumno" DataField="NombreApellido" />
+                    <asp:BoundField HeaderText="ID Curso" DataField="IdCurso" Visible="True" />
+                    <asp:BoundField HeaderText="Materia" DataField="DescMateria" Visible="True" />
+                    <asp:BoundField HeaderText="Comision" DataField="DescComision" Visible="True" />
                     <asp:BoundField HeaderText="Condición" DataField="Condicion" />
                     <asp:BoundField HeaderText="Nota" DataField="Nota" />
                     <asp:CommandField HeaderText="SeleIccionar" ShowSelectButton="True" />
@@ -50,8 +52,7 @@
             <div class="row py-3">
 
                 <div class="col">
-                    <label>
-                    Id Persona</label>
+                    <asp:Label ID="idPersonaLabel" runat="server" Text=" Id Persona"></asp:Label>
                     <br />
                     <asp:TextBox ID="idPersonaTextBox" runat="server" CssClass="form-input" Enabled="false"></asp:TextBox>
                     <asp:Button ID="seleccionarPersonaButton" runat="server" cssClass="btn btn-primary" OnClick="seleccionarPersonaButton_Click" text="Seleccionar" />
@@ -64,13 +65,11 @@
                 <asp:Button ID="seleccionarCursoButton" runat="server" cssClass="btn btn-primary" OnClick="seleccionarCursoButton_Click" text="Seleccionar" />
             </div>
             <div class="col">
-                <label>
-                Condición</label>
+                <asp:Label ID="condicionLabel" runat="server" Text="Condición"></asp:Label>
                 <br />
                 <asp:TextBox ID="condicionTextBox" runat="server" CssClass="form-input"></asp:TextBox>
                 <br />
-                <label>
-                Nota</label>
+                <asp:Label ID="notaLabel" runat="server" Text="Nota"></asp:Label>
                 <br />
                 <asp:TextBox ID="notaTextBox" runat="server" CssClass="form-input"></asp:TextBox>
             </div>
@@ -118,7 +117,7 @@
 
         <asp:Panel ID="gridActionsPanel" runat="server">
             <asp:Button ID="editarLinkButton" class="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click"   />
-            <asp:Button ID="eliminarLinkButton" class="btn btn-danger" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click"   />
+          
             <asp:Button ID="nuevoLinkButton" class="btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
         </asp:Panel>

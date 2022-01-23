@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
- 
+
 using Business.Entities;
 using Business.Logic;
 
@@ -15,24 +15,22 @@ namespace UI.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-             nav_administrador.Visible = false;
-            //navAdministrador.Visible = false;
-            //nav_alumno.Visible = false;
+            nav_administrador.Visible = false;
+            nav_alumno.Visible = false;
 
-            if (Session["current_user"] != null )
+            if (Session["current_user"] != null)
             {
                 Usuario usr = (Usuario)Session["current_user"];
- 
+
                 ocultarOpcionesMenu(usr.TipoPersona);
-   
-    
+ 
             }
             else
             {
 
                 Response.Redirect("Login.aspx");
             }
-           
+
         }
 
         private void ocultarOpcionesMenu(int tipoPersona)
@@ -40,15 +38,13 @@ namespace UI.Web
             switch (tipoPersona)
             {
                 case 2: // alumno
-                   
-                  //  nav_alumno.Visible = true;
+                   nav_alumno.Visible = true;
                     break;
                 case 1: // docente
                     //Menu1.Visible = true;
                     break;
                 case 0: // administrador
-                  nav_administrador.Visible = true;
-                //    navAdministrador.Visible = true;
+                    nav_administrador.Visible = true;
                     break;
                 default:
                     break;

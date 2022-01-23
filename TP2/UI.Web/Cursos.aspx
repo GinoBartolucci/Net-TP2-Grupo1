@@ -62,13 +62,13 @@
                 <label>Id Materia</label>
                 <br />
                 <asp:TextBox ID="idMateriaTextBox" CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>
-                <asp:Button cssClass="btn btn-primary" runat="server" text="Seleccionar" OnClick="seleccionarMateriaButton" />
+                <asp:Button cssClass="btn btn-primary" runat="server" ID="selecMateriaButton" text="Seleccionar" OnClick="seleccionarMateriaButton" />
             </div>
             <div class="col">
                 <label>Id Comision</label>
                 <br />
                 <asp:TextBox ID="idComisionTextBox" CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>
-                <asp:Button cssClass="btn btn-primary" runat="server" text="Seleccionar" OnClick="seleccionarComisionButton" />
+                <asp:Button cssClass="btn btn-primary" runat="server"  ID="selecComisionButton" text="Seleccionar" OnClick="seleccionarComisionButton" />
             </div>
 
         </div>
@@ -136,7 +136,6 @@
 
     <asp:Panel CssClass="py-3" ID="gridActionsPanel" runat="server">
         <asp:Button ID="editarLinkButton" class="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
-        <asp:Button ID="eliminarLinkButton" class="btn btn-danger" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click" />
         <asp:Button ID="nuevoLinkButton" class="btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
     </asp:Panel>

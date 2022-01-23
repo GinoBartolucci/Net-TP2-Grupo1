@@ -96,6 +96,15 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox idMateriaTextBox;
 
         /// <summary>
+        /// selecMateriaButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button selecMateriaButton;
+
+        /// <summary>
         /// idComisionTextBox control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox idComisionTextBox;
+
+        /// <summary>
+        /// selecComisionButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button selecComisionButton;
 
         /// <summary>
         /// tablaMateria control.
@@ -211,15 +229,6 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button editarLinkButton;
-
-        /// <summary>
-        /// eliminarLinkButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button eliminarLinkButton;
 
         /// <summary>
         /// nuevoLinkButton control.

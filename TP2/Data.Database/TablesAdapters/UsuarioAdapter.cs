@@ -219,14 +219,14 @@ namespace Data.Database
 
                     switch (usr.TipoPersona)
                     {
-                        case 1:
+                        case 0:
                             usr.DescTipoPersona = "Administrativo";
                             break;
-                        case 2:
+                        case 1:
                             usr.DescTipoPersona = "Docente";
                             break;
-                        case 3:
-                            usr.DescTipoPersona = "Alumnno";
+                        case 2:
+                            usr.DescTipoPersona = "Alumno";
                             break;
                         default:
                             break;

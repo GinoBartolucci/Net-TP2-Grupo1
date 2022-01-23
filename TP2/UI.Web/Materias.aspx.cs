@@ -13,12 +13,15 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             this.LoadGrid();
+            modificarVistaSegunPermisosDelUsuario();
         }
 
         private Business.Entities.Materia Entity { get; set; }
 
         MateriaLogic _logic;
+
 
         private MateriaLogic Logic
         {
@@ -32,6 +35,27 @@ namespace UI.Web
             }
         }
 
+
+        private void modificarVistaSegunPermisosDelUsuario()
+        {
+            Usuario usr = (Usuario)Session["current_user"];
+            switch (usr.DescTipoPersona)
+            {
+                case "Administrativo": break;
+                case "Docente": Response.Redirect("Home.aspx"); break;
+                case "Alumno": vistaParaAlumno(); break;
+            }
+        }
+
+
+
+        private void vistaParaAlumno()
+        {
+
+            formActionsPanel.Visible = false;
+            gridActionsPanel.Visible = false;
+            seleccionaBtn.Visible = false;
+        }
 
         private int SelectedID
         {
@@ -87,8 +111,20 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            this.gridView.DataSource = this.Logic.GetAll();
+            Usuario usr = (Usuario)Session["current_user"];
+            switch (usr.DescTipoPersona)
+            {
+                case "Administrativo":
+                    this.gridView.DataSource = this.Logic.GetAll(); break;
+                case "Alumno":
+                    this.gridView.DataSource = this.Logic.GetAllPlan(usr.IdPlan);
+                    this.gridView.Columns[0].Visible = false;
+                    this.gridView.Columns[4].Visible = false;
+                    this.gridView.Columns[5].Visible = false;
+                    break;
+            }
             this.gridView.DataBind();
+
         }
 
         private void EnableForm(bool enable)

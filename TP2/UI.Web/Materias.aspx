@@ -60,7 +60,7 @@
                      <div class="col">
                         <label>Id Plan</label> <br />
                         <asp:TextBox ID="idPlanTextBox"  CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>
-                        <asp:Button  cssClass="btn btn-primary" runat="server" text="Seleccionar especialidad" OnClick="seleccionarButton" />
+                        <asp:Button  cssClass="btn btn-primary" runat="server" text="Seleccionar especialidad" ID="seleccionaBtn" OnClick="seleccionarButton" />
                      </div>
 
                 </div>

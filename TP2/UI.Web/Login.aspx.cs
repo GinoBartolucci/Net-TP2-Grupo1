@@ -42,24 +42,16 @@ namespace UI.Web
 
             try
             {
-                Usuario usuario = BD.GetOneUsuario(this.usuarioTextBox.Text);
-                if (usuario.Clave == this.contraseniaTextBox.Text && usuario.Habilitado)
-                {
-
-                    Session["current_user"]  = usuario;
-                    Response.Redirect("Home.aspx");
-                }
-                else
-                {
-                    NotificarError();
-
-                }
+                Usuario usuario = BD.LoginUsuario(this.usuarioTextBox.Text, this.contraseniaTextBox.Text);
+             
+                Session["current_user"]  = usuario;
+                Response.Redirect("Home.aspx"); 
 
             }
             catch(Exception error)
             {
                 NotificarError();
-                //NotificarError(error);
+           
             }
 
 

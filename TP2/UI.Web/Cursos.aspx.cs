@@ -14,6 +14,7 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
+            modificarVistaSegunPermisosDelUsuario();
         }
 
         private Business.Entities.Curso Entity { get; set; }
@@ -30,6 +31,29 @@ namespace UI.Web
                 }
                 return _logic;
             }
+        }
+
+        private void modificarVistaSegunPermisosDelUsuario()
+        {
+            Usuario usr = (Usuario)Session["current_user"];
+            switch (usr.DescTipoPersona)
+            {
+                case "Administrativo": break;
+                case "Docente": Response.Redirect("Home.aspx"); break;
+                case "Alumno": vistaParaAlumno(); break;
+            }
+        }
+
+        private void vistaParaAlumno()
+        {
+
+            formActionsPanel.Visible = false;
+            gridActionsPanel.Visible = false;
+           
+
+            
+            selecMateriaButton.Visible = false;
+            selecComisionButton.Visible = false; 
         }
 
 
@@ -87,7 +111,19 @@ namespace UI.Web
 
         private void LoadGrid()
         {
-            this.gridView.DataSource = this.Logic.GetAll();
+            Usuario usr = (Usuario)Session["current_user"];
+            switch (usr.DescTipoPersona)
+            {
+                case "Administrativo": this.gridView.DataSource = this.Logic.GetAll(); break;
+                case "Docente": Response.Redirect("Home.aspx"); break;
+                case "Alumno": 
+                    this.gridView.DataSource = this.Logic.GetAllYearAlum(usr.IdPersona,DateTime.Now.Year);
+                    this.gridView.Columns[0].Visible = false;
+                    this.gridView.Columns[4].Visible = false;
+                    this.gridView.Columns[5].Visible = false;
+                    break;
+            }
+          
             this.gridView.DataBind();
         }
 
@@ -137,18 +173,7 @@ namespace UI.Web
                 tituloForm.Text = "Modificar curso";
                 this.LoadForm(this.SelectedID);
             }
-        }
-
-        protected void eliminarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.LoadForm(this.SelectedID);
-                tituloForm.Text = "Eliminar curso";
-            }
-        }
+        } 
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {

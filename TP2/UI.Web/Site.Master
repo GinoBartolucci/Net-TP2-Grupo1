@@ -27,6 +27,7 @@
                         body {
                             margin-top: 60px;
                             background-color: #f4f4f4;
+                            z-index:0;
                         }
 
                         ul {
@@ -217,7 +218,31 @@
                 </a></li>
 
                 <li><a class="icon-label" href="Inscripciones.aspx">Inscripciones</a></li>
-                <li><a class="icon-label" href="Comisiones.aspx"><span class="material-icons">logout</span><label>Salir</label>
+                <li><a class="icon-label" href="LogOut.aspx"><span class="material-icons">logout</span><label>Salir</label>
+                </a></li>
+            </ul>
+
+        </nav>
+
+        
+        <nav id="nav_alumno" class="nav justify-content-center" runat="server">
+            <ul class="auto-style1">
+
+                <li>
+                    <img src="https://avatars.githubusercontent.com/u/8503404?s=280&v=4" style="height: 30px;" class="align-self-center"></img></li>
+                <li><a class="icon-label" href="Home.aspx">Inicio</a></li>
+        
+              <!--  <li><a class="icon-label" href="Docentes.aspx">Docentes</a></li> -->
+                <li><a class="icon-label" href="Materias.aspx">Materias de tu carrera</a></li>
+          
+              
+          
+                <li><a class="icon-label" href="Cursos.aspx">
+                    <label>Cursos de este año</label>
+                </a></li>
+
+                <li><a class="icon-label" href="Inscripciones.aspx">Inscripciones</a></li>
+                <li><a class="icon-label" href="LogOut.aspx"><span class="material-icons">logout</span><label>Salir</label>
                 </a></li>
             </ul>
 

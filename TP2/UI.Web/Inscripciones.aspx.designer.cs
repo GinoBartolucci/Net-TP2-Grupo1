@@ -69,6 +69,15 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Label tituloForm;
 
         /// <summary>
+        /// idPersonaLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idPersonaLabel;
+
+        /// <summary>
         /// idPersonaTextBox control.
         /// </summary>
         /// <remarks>
@@ -105,6 +114,15 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Button seleccionarCursoButton;
 
         /// <summary>
+        /// condicionLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label condicionLabel;
+
+        /// <summary>
         /// condicionTextBox control.
         /// </summary>
         /// <remarks>
@@ -112,6 +130,15 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox condicionTextBox;
+
+        /// <summary>
+        /// notaLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label notaLabel;
 
         /// <summary>
         /// notaTextBox control.
@@ -211,15 +238,6 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button editarLinkButton;
-
-        /// <summary>
-        /// eliminarLinkButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button eliminarLinkButton;
 
         /// <summary>
         /// nuevoLinkButton control.
