@@ -28,9 +28,12 @@
 
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="ID" />
-
-                <asp:BoundField HeaderText="ID Materia" DataField="id_materia" />
+                 
+             <%--   <asp:BoundField HeaderText="ID Materia" DataField="id_materia" />
                 <asp:BoundField HeaderText="ID Comision" DataField="id_comision" />
+              --%>
+                <asp:BoundField HeaderText="Materia" DataField="DescMateria" />
+                 <asp:BoundField HeaderText="Comision" DataField="DescComision" />
                 <asp:BoundField HeaderText="Año Calendario" DataField="anio_calendario" />
                 <asp:BoundField HeaderText="Cupo" DataField="cupo" />
                 <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
@@ -90,7 +93,7 @@
                         <asp:BoundField HeaderText="Descripcion materia" DataField="DescMateria" />
                         <asp:BoundField HeaderText="Horas Samanales" DataField="HorasSemanales" />
                         <asp:BoundField HeaderText="Horas Totales" DataField="HorasTotales" />
-                        <asp:BoundField HeaderText="Id Plan" DataField="IdPlan" />
+                        <asp:BoundField HeaderText="Plan" DataField="DescPlan" />
                         <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
 
                     </columns>
@@ -101,12 +104,12 @@
         </div>
         <div id="tablaComision" runat="server" class="row m-2 py-2" visible="false">
             <h3>Seleccionar comision</h3>
-            <asp:Panel ID="comisionPanel" CssClass="py-3" runat="server" Visible="false">
+            <asp:Panel ID="comisionPanel" CssClass="py-3" runat="server">
                 <asp:GridView ID="comisionGridView" runat="server" AutoGenerateColumns="False"
                     SelectedRowStyle-BackColor="Black"
                     SelectedRowStyle-ForeColor="White"
                     Width="100%"
-                    DataKeynames="ID">
+                    DataKeynames="ID" OnSelectedIndexChanged="comisionGridView_SelectedIndexChanged">
 
                     <selectedrowstyle backcolor="Black" forecolor="White" />
 
@@ -114,7 +117,7 @@
                         <asp:BoundField HeaderText="ID" DataField="ID" />
                         <asp:BoundField HeaderText="Descripcion" DataField="DescComision" />
                         <asp:BoundField HeaderText="Anio Especialidad" DataField="AnioEspecialidad" />
-                        <asp:BoundField HeaderText="ID Plan" DataField="IdPlan" />
+                        <asp:BoundField HeaderText="Plan" DataField="DescPlan" />
                         <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
                     </columns>
 

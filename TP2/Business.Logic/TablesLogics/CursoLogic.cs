@@ -41,6 +41,11 @@ namespace Business.Logic
             return CursoAdapter.GetInstance().GetAllAlum(idAlumno);
         }
 
+        public List<Curso> GetAllForAlum(int idAlumno)
+        {
+            return CursoAdapter.GetInstance().GetAllForAlum(idAlumno);
+        }
+
         public List<Curso> GetAllDoc(int id_doc)
         {
             return CursoAdapter.GetInstance().GetAllDoc(id_doc);

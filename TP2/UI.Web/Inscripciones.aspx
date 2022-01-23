@@ -18,7 +18,8 @@
         </div>
 
 
-        <asp:Panel ID="gridPanel" runat="server">
+
+        <asp:Panel ID="gridPanel" runat="server" CssClass="py-3">
             <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False"
                 SelectedRowStyle-BackColor="Black"
                 SelectedRowStyle-ForeColor="White"
@@ -79,8 +80,8 @@
                     <selectedrowstyle backcolor="Black" forecolor="White" />
                     <columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" />
-                        <asp:BoundField DataField="id_materia" HeaderText="ID Materia" />
-                        <asp:BoundField DataField="id_comision" HeaderText="ID Comision" />
+                        <asp:BoundField DataField="DescMateria" HeaderText="Materia" />
+                        <asp:BoundField DataField="DescComision" HeaderText="Comision" />
                         <asp:BoundField DataField="anio_calendario" HeaderText="Año Calendario" />
                         <asp:BoundField DataField="cupo" HeaderText="Cupo" />
                         <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
@@ -88,7 +89,7 @@
                 </asp:GridView>
             </asp:Panel>
             <asp:Panel ID="alumnosPanel" runat="server" CssClass="tabla">
-                <asp:GridView ID="AlumnosGridView" runat="server" AutoGenerateColumns="False" DataKeynames="ID" OnSelectedIndexChanged="AlumnosGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">
+                <asp:GridView ID="AlumnosGridView" runat="server" AutoGenerateColumns="False" DataKeynames="ID" OnSelectedIndexChanged="AlumnosGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="1000px">
                     <SelectedRowStyle BackColor="Black" ForeColor="White" />
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" />

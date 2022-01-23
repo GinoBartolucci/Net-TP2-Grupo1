@@ -23,6 +23,11 @@ namespace Business.Logic
         {
             return PersonasData.GetAll();
         }
+        public List<Personas> GetAlumnsByCourse(int idCurso)
+        {
+            return PersonasData.GetAlumnsByCourse(idCurso);
+        }
+        
         public void Save(Personas p)
         {
             PersonasData.Save(p);

@@ -15,8 +15,9 @@ namespace UI.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            nav_administrador.Visible = false;
-            nav_alumno.Visible = false;
+             nav_administrador.Visible = false;
+            //navAdministrador.Visible = false;
+            //nav_alumno.Visible = false;
 
             if (Session["current_user"] != null )
             {
@@ -40,13 +41,14 @@ namespace UI.Web
             {
                 case 2: // alumno
                    
-                    nav_alumno.Visible = true;
+                  //  nav_alumno.Visible = true;
                     break;
                 case 1: // docente
-                    Menu1.Visible = true;
+                    //Menu1.Visible = true;
                     break;
                 case 0: // administrador
-                    nav_administrador.Visible = true;
+                  nav_administrador.Visible = true;
+                //    navAdministrador.Visible = true;
                     break;
                 default:
                     break;

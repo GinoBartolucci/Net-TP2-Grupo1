@@ -89,8 +89,8 @@
                 <Columns>
                     <asp:BoundField HeaderText ="ID" DataField ="ID" />
         
-                    <asp:BoundField  HeaderText ="Descripcion Plan" DataField ="desc_plan" />  
-                    <asp:BoundField HeaderText ="Id Especialidad" DataField ="id_especialidad" />  
+                    <asp:BoundField  HeaderText ="Descripcion Plan" DataField ="DescPlan" />  
+                    <asp:BoundField HeaderText ="Descripcion Especialidad" DataField ="DescEspecialidad" />  
                     <asp:CommandField HeaderText ="Seleccionar" ShowSelectButton ="True" />
 
                 </Columns>

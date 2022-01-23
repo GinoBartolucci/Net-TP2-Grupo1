@@ -32,6 +32,11 @@ namespace Business.Logic
         {
             return ComisionesAdapter.GetInstance().GetAll();            
         }
+
+        public List<Comisiones> GetAllByMateria(int idMateria)
+        {
+            return ComisionesAdapter.GetInstance().GetAllByMateria(idMateria);
+        }
         public void Save(Business.Entities.Comisiones c)
         {
             ComisionesAdapter.GetInstance().Save(c);            

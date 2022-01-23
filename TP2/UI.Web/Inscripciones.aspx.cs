@@ -110,8 +110,8 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
-            idCursoTextBox.Text = Entity.IdAlumno.ToString();
-            idPersonaTextBox.Text = Entity.IdCurso.ToString();
+            idCursoTextBox.Text = Entity.IdCurso.ToString();
+            idPersonaTextBox.Text = Entity.IdAlumno.ToString();
             condicionTextBox.Text = Entity.Condicion;
             notaTextBox.Text = Entity.Nota.ToString();
 
@@ -210,22 +210,35 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+            ClearForm();
+            this.formPanel.Visible = false;
+
         }
 
         protected void seleccionarPersonaButton_Click(object sender, EventArgs e)
         {
-            AlumnosGridView.DataSource = new PersonasLogic().GetAllAlumnos();
+            this.tablaCurso.Visible = false;
+            AlumnosGridView.DataSource = (idCursoTextBox.Text != string.Empty)? 
+                    new PersonasLogic().GetAlumnsByCourse(int.Parse(idCursoTextBox.Text))
+                    :
+                    new PersonasLogic().GetAllAlumnos();
             AlumnosGridView.DataBind();
-            this.alumnosPanel.Visible = true;
+            this.alumnosPanel.Visible = true; 
+            
         }
 
  
 
         protected void seleccionarCursoButton_Click(object sender, EventArgs e)
         {
-            cursoGridView.DataSource = new CursoLogic().GetAll();
+            this.alumnosPanel.Visible = false;
+            cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty)? 
+                    new CursoLogic().GetAllForAlum(int.Parse(idPersonaTextBox.Text)) 
+                    :
+                    new CursoLogic().GetAll();
             cursoGridView.DataBind();
             this.tablaCurso.Visible = true;
+      
         }
 
         protected void cursoGridView_SelectedIndexChanged(object sender, EventArgs e)

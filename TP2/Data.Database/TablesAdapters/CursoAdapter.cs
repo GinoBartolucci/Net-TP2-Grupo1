@@ -185,6 +185,58 @@ namespace Data.Database
 
         }
 
+        public List<Curso> GetAllForAlum(int idAlumno)
+        {
+            List<Curso> cursos = new List<Curso>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdCursos = new SqlCommand("select * from cursos c " +
+                    "inner join materias m on m.id_materia = c.id_materia " +
+                    "inner join personas per on per.id_plan = m.id_plan  " +
+                    "inner join comisiones com on com.id_comision = c.id_comision " +
+                    "inner join planes p on p.id_plan = com.id_plan  " +
+                    "where per.id_persona = @id_alumno ", sqlConn);
+                cmdCursos.Parameters.Add("@id_alumno", SqlDbType.Int).Value = idAlumno;
+
+                SqlDataReader drCursos = cmdCursos.ExecuteReader();
+
+                while (drCursos.Read())
+                {
+                    Curso cur = new Curso();
+
+                    cur.ID = (int)drCursos["id_curso"];
+                    cur.id_curso = (int)drCursos["id_curso"];
+                    cur.id_materia = (int)drCursos["id_materia"];
+                    cur.id_comision = (int)drCursos["id_comision"];
+                    cur.anio_calendario = (int)drCursos["anio_calendario"];
+                    cur.cupo = (int)drCursos["cupo"];
+                    cur.DescComision = (string)drCursos["desc_comision"];
+                    cur.DescMateria = (string)drCursos["desc_materia"];
+                    cur.DescPlan = (string)drCursos["desc_plan"];
+
+                    cur.AnioEspecialidad = (int)drCursos["anio_especialidad"];
+
+                    cursos.Add(cur);
+                }
+
+                drCursos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos GetAll()", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return cursos;
+
+        }
+
         public List<Curso> GetAllDoc(int id_doc)
         {
             List<Curso> cursos = new List<Curso>();
@@ -394,11 +446,11 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("INSERT INTO cursos (id_curso,id_materia,id_comision,anio_calendario,cupo)" +
-                    "values(@id_curso,@id_materia,@id_comision,@anio_calendario,@cupo)" +
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO cursos (id_materia,id_comision,anio_calendario,cupo)" +
+                    "values(@id_materia,@id_comision,@anio_calendario,@cupo)" +
                     "select @@identity ", sqlConn);
 
-                cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = curso.ID;
+              //  cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = curso.ID;
                 cmdSave.Parameters.Add("@id_materia", SqlDbType.Int).Value = curso.id_materia;
                 cmdSave.Parameters.Add("@id_comision", SqlDbType.Int).Value = curso.id_comision;
                 cmdSave.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = curso.anio_calendario;

@@ -65,6 +65,54 @@ namespace Data.Database
             }
             return comisiones;
         }
+
+        public List<Comisiones> GetAllByMateria(int idMateria)
+        {
+            List<Comisiones> comisiones = new List<Comisiones>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdComisiones = new SqlCommand("SELECT c.*, p.*, e.* FROM comisiones c " +
+                    "inner join planes p on p.id_plan = c.id_plan " +
+                    "inner join especialidades e on e.id_especialidad= p.id_especialidad " +
+                      " inner join materias m ON m.id_plan = p.id_plan " +
+                    " WHERE m.id_materia  = @idMateria", sqlConn);
+
+                cmdComisiones.Parameters.Add("@idMateria", SqlDbType.Int).Value = idMateria;
+
+                SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
+
+                while (drComisiones.Read())
+                {
+                    Comisiones com = new Comisiones();
+
+                    com.ID = (int)drComisiones["id_comision"];
+                    com.DescComision = (string)drComisiones["desc_comision"];
+                    com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
+                    com.IdPlan = (int)drComisiones["id_plan"];
+
+                    com.DescPlan = (string)drComisiones["desc_plan"];
+
+                    com.DescEspecialidad = (string)drComisiones["desc_especialidad"];
+                    com.IdEspecialidad = (int)drComisiones["id_especialidad"];
+                    comisiones.Add(com);
+                }
+
+                drComisiones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de comisiones.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return comisiones;
+        }
+
         public Comisiones GetOne(int ID)
         {
             Comisiones com = new Comisiones();

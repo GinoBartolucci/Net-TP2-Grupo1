@@ -221,19 +221,29 @@ namespace UI.Web
 
         }
         protected void seleccionarMateriaButton(object sender, EventArgs e)
-        {
-            tablaMateria.Visible = true;
+        { 
+          
             tablaComision.Visible = false;
-            materiaGridView.DataSource = new MateriaLogic().GetAll();
+
+            materiaGridView.DataSource = (idComisionTextBox.Text != String.Empty)?
+                new MateriaLogic().GetAllByComision(int.Parse(idComisionTextBox.Text))
+                :
+                new MateriaLogic().GetAll();
             materiaGridView.DataBind();
+
+            tablaMateria.Visible = true;
         }
 
         protected void seleccionarComisionButton(object sender, EventArgs e)
         {
-            tablaMateria.Visible = false ;
-            comisionGridView.DataSource = new ComisionesLogic().GetAll();
+            tablaMateria.Visible = false;
+            comisionGridView.DataSource = (idMateriaTextBox.Text != String.Empty)?
+                new ComisionesLogic().GetAllByMateria(int.Parse(idMateriaTextBox.Text)) 
+                :
+                new ComisionesLogic().GetAll();
             comisionGridView.DataBind();
             tablaComision.Visible = true;
+   
            
         }
 
@@ -241,6 +251,13 @@ namespace UI.Web
         {
             this.idMateriaTextBox.Text = this.materiaGridView.SelectedValue.ToString();
             tablaMateria.Visible = false;
+        }
+
+        protected void comisionGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.idComisionTextBox.Text = this.comisionGridView.SelectedValue.ToString();
+            tablaComision.Visible = false;
+            
         }
     }
 }

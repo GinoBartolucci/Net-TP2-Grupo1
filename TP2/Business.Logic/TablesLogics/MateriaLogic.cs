@@ -32,6 +32,11 @@ namespace Business.Logic
             return MateriasAdapter.GetInstance().GetAll();
         }
 
+        public object GetAllByComision(int idComision)
+        {
+            return MateriasAdapter.GetInstance().GetAllByComision(idComision);
+        }
+
         public List<Materia> GetAllPlan(int idPlan)
         {
             return MateriasAdapter.GetInstance().GetAllPlan(idPlan);
@@ -45,5 +50,7 @@ namespace Business.Logic
         {
             MateriasAdapter.GetInstance().Delete(id);
         }
+
+
     }
 }

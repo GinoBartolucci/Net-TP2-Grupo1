@@ -103,6 +103,60 @@ namespace Data.Database.TablesAdapters
 
         }
 
+        public List<Personas> GetAlumnsByCourse(int IdCurso)
+        {
+            List<Personas> personas = new List<Personas>();
+            try
+            {
+                OpenConnection();
+
+                SqlCommand cmdPersonas = new SqlCommand("SELECT DISTINCT p.* FROM cursos cur" + 
+
+                " INNER JOIN materias m ON m.id_materia = cur.id_materia" +
+
+                " INNER JOIN comisiones c ON c.id_comision = cur.id_comision " +
+
+                " INNER JOIN personas p ON p.id_plan = m.id_plan " + 
+
+               " WHERE cur.id_curso = @idCurso AND tipo_persona = 2", sqlConn);
+
+                cmdPersonas.Parameters.Add("@idCurso", SqlDbType.Int).Value = IdCurso;
+
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
+                while (drPersonas.Read())
+                {
+                    Personas per = new Personas();
+
+                    per.ID = (int)drPersonas["id_persona"];
+                    per.Nombre = (string)drPersonas["nombre"];
+                    per.Apellido = (string)drPersonas["apellido"];
+                    per.Direccion = (string)drPersonas["direccion"];
+                    per.Email = (string)drPersonas["email"];
+                    per.Telefono = (string)drPersonas["telefono"];
+                    per.Legajo = (int)drPersonas["legajo"];
+                    per.Tipo_perona = (int)drPersonas["tipo_persona"];
+                    per.Fecha_nac = (DateTime)drPersonas["fecha_nac"];
+
+                    personas.Add(per);
+                }
+
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de alumnos.", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return personas;
+
+        }
+
         public List<Personas> GetAllDocentes()
         {
             List<Personas> personas = new List<Personas>();

@@ -31,8 +31,59 @@ namespace Data.Database.TablesAdapters
                 OpenConnection();
 
                 SqlCommand cmdMaterias = new SqlCommand("SELECT * FROM materias m " +
-                    "inner join planes p on p.id_plan = m.id_plan " +
-                    "inner join especialidades e on e.id_especialidad = p.id_especialidad ", sqlConn);
+                           "inner join planes p on p.id_plan = m.id_plan " +
+                           "inner join especialidades e on e.id_especialidad = p.id_especialidad ", sqlConn);
+                SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
+
+
+                while (drMaterias.Read())
+                {
+                    Materia mat = new Materia();
+
+                    mat.ID = (int)drMaterias["id_materia"];
+                    mat.DescMateria = (string)drMaterias["desc_materia"];
+                    mat.HorasSemanales = (int)drMaterias["hs_semanales"];
+                    mat.HorasTotales = (int)drMaterias["hs_totales"];
+                    mat.IdPlan = (int)drMaterias["id_plan"];
+
+                    mat.DescPlan = (string)drMaterias["desc_plan"];
+                    mat.DescEspecialidad = (string)drMaterias["desc_especialidad"];
+
+                    materia.Add(mat);
+
+                }
+
+                drMaterias.Close();
+
+
+            }
+            catch (Exception e)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias.", e);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return materia;
+        }
+
+        public object GetAllByComision(int idComision)
+        {
+            List<Materia> materia = new List<Materia>();
+
+            try
+            {
+                OpenConnection(); 
+                
+                SqlCommand cmdMaterias = new SqlCommand("  SELECT m.*, p.*, e.* FROM materias m " +
+                  " inner join planes p on p.id_plan = m.id_plan " +
+                  " inner join especialidades e on e.id_especialidad = p.id_especialidad " +
+                  "  INNER JOIN comisiones c ON c.id_plan = p.id_plan " +
+                  "WHERE c.id_comision = @idComision", sqlConn);
+                cmdMaterias.Parameters.Add("@idComision", SqlDbType.Int).Value = idComision;
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
 
                 while (drMaterias.Read())
