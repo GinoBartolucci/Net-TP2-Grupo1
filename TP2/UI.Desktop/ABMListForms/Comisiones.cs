@@ -24,19 +24,14 @@ namespace UI.Desktop
             return singleton;
         }
         public Comisiones()
-        {
-        
+        {        
             InitializeComponent();
             this.dgvComisiones.AutoGenerateColumns = false;
         }
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
+        public int SelectIdComision { get; set; }
+        public string SelectDescComision { get; set; }
+        public string SelectDescEspecialidad { get; set; }
 
-        }
-        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
-        {
-
-        }
         public void NotificarError(Exception Error)
         {
             var msError = "Error message: " + Error.Message;
@@ -157,6 +152,25 @@ namespace UI.Desktop
         private void dgvComisiones_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            if (dgvComisiones.SelectedRows.Count != 0)
+            {
+                // al seleccionar un curso traer todas las personas que estan en ese curso haceindo un join entre inscripciones alumno y personas
+                SelectIdComision = ((Business.Entities.Comisiones)dgvComisiones.SelectedRows[0].DataBoundItem).ID; // selecciona toda la linea y solo asigna id_curso
+                SelectDescComision = ((Business.Entities.Comisiones)dgvComisiones.SelectedRows[0].DataBoundItem).DescComision;
+                SelectDescEspecialidad = ((Business.Entities.Comisiones)dgvComisiones.SelectedRows[0].DataBoundItem).DescEspecialidad;
+                DialogResult = DialogResult.OK;
+                Close();
+
+            }
+            else if (dgvComisiones.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Error", "Seleccione una Materia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.Cancel;
+            }
         }
     }
 }

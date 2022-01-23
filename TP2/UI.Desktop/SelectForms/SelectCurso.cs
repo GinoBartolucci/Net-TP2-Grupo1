@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
+using UI.Desktop.DesktopsForms;
 
 namespace UI.Desktop.SelectForms
 {
@@ -28,6 +29,7 @@ namespace UI.Desktop.SelectForms
         {
             InitializeComponent();
             this.dgvSelectCurso.AutoGenerateColumns = false;
+
         }
         public int IdCurso { get; set; }
         public string DescComision { get; set; }
@@ -39,6 +41,7 @@ namespace UI.Desktop.SelectForms
             {
                 if (Session.currentUser.TipoPersona == 3)
                 {
+                    tsCurso.Visible = false;
                     //Trae de la base los cursos de este año
                     List<Curso> listaCursos = CursoLogic.GetInstance().GetAllYearPlan(Int32.Parse(DateTime.Now.ToString("yyyy")), Session.currentUser.IdPlan);    
                     listaCursos = BusinessRules.ValidarCursosAlumnos(listaCursos);
@@ -53,6 +56,7 @@ namespace UI.Desktop.SelectForms
                 } 
                 if (Session.currentUser.TipoPersona == 2)
                 {
+                    tsCurso.Visible = false;
                     //Habrir selectcurso para seleccionar los cursos en los que da clase el profesor
                     List<Curso> listaCursos = CursoLogic.GetInstance().GetAllDoc(Session.currentUser.IdPersona);
                     this.dgvSelectCurso.DataSource = listaCursos;
@@ -128,6 +132,57 @@ namespace UI.Desktop.SelectForms
         {
             Listar();
         }
-        
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CursosDesktop ud = new CursosDesktop(ApplicationForm.ModoForm.Alta);
+                ud.ShowDialog();
+            }
+            catch (Exception Error)
+            {
+                NotificarError(Error);
+            }
+            finally
+            {
+                Listar();
+            }
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvSelectCurso.SelectedRows.Count != 0)
+            {
+                int id = ((Curso)dgvSelectCurso.SelectedRows[0].DataBoundItem).id_curso;
+                try
+                {
+                    CursosDesktop ud = new CursosDesktop(ApplicationForm.ModoForm.Modificacion, id);
+                    ud.ShowDialog();
+                }
+                catch (Exception Error)
+                {
+                    NotificarError(Error);
+                }
+                finally
+                {
+                    Listar();
+                }
+            }
+            else if (dgvSelectCurso.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Error", "Seleccione un Curso\n para editar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void NotificarError(Exception Error)
+        {
+            var msError = "Error message: " + Error.Message;
+            if (Error.InnerException != null)
+            {
+                msError = msError + "\nInner exception: " + Error.InnerException.Message;
+            }
+            msError = msError + "\nStack trace: " + Error.StackTrace;
+            MessageBox.Show(msError, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
