@@ -163,7 +163,7 @@ namespace UI.Desktop
 
         private void btnABMCurso_Click(object sender, EventArgs e)
         {
-
+            SelectCurso.GetInstance().ShowDialog();
         }
 
         private void btnABMMateria_Click(object sender, EventArgs e)

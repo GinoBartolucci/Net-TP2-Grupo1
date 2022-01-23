@@ -19,6 +19,10 @@ namespace UI.Desktop.DesktopsForms
         {
             InitializeComponent();
             cbxCargo.SelectedIndex = 0;
+            if (lblDocente.Text =="Docente")
+            {
+                btnDocente.Enabled = false;
+            }
         }
         public DocentesCursosDesktop(ModoForm modo) : this()
         {
@@ -106,7 +110,7 @@ namespace UI.Desktop.DesktopsForms
         }
 
         private void btnCurso_Click(object sender, EventArgs e)
-        {
+        {           
             SelectCurso vSelectPlanes = new SelectCurso();
             vSelectPlanes.ShowDialog();
 
@@ -115,19 +119,20 @@ namespace UI.Desktop.DesktopsForms
                 DocentesCursosActual.id_curso = vSelectPlanes.IdCurso;
                 DocentesCursosActual.DescComision = vSelectPlanes.DescComision;
                 DocentesCursosActual.DescMateria = vSelectPlanes.DescMateria;
-                lblCurso.Text ="Id: "+ DocentesCursosActual.id_curso + "\nComision: " + 
+                lblCurso.Text = "Id: " + DocentesCursosActual.id_curso + "\nComision: " +
                     DocentesCursosActual.DescComision + "\nMateria: " + DocentesCursosActual.DescMateria;
 
             }
-            else if(Modo != ModoForm.Modificacion)
+            else if (Modo != ModoForm.Modificacion)
             {
                 Notificar("Materias", "Debe seleccionar un Curso.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void btnDocente_Click(object sender, EventArgs e)
         {            
-            Usuarios vSelectUsuario = new Usuarios(Usuarios.ModoForm.Seleccion);
+            Usuarios vSelectUsuario = new Usuarios(Usuarios.ModoForm.ABM);
             vSelectUsuario.ShowDialog();
 
             if (vSelectUsuario.DialogResult != DialogResult.Cancel )
@@ -148,6 +153,15 @@ namespace UI.Desktop.DesktopsForms
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (Validar())
+            {
+                GuardarCambios();
+                this.Close();
+            }
         }
     }
 }

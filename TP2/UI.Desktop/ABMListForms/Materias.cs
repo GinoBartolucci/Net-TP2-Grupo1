@@ -35,17 +35,9 @@ namespace UI.Desktop.ABMListForms
                 tsMaterias.Visible = false; //si es alumno saca los abm
             }
         }
-        public void NotificarError(Exception Error)
-        {
-            var msError = "Error message: " + Error.Message;
-            if (Error.InnerException != null)
-            {
-                msError = msError + "\nInner exception: " + Error.InnerException.Message;
-            }
-            msError = msError + "\nStack trace: " + Error.StackTrace;
-            MessageBox.Show(msError, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
+        public int SelectIdMateria { get; set; }
+        public string SelectDescMateria { get; set; }
+        public string SelectDescEspecialidad{ get; set; }
         public void Listar()
         {
             try
@@ -69,7 +61,7 @@ namespace UI.Desktop.ABMListForms
             HsSemanales.DataPropertyName = "HorasSemanales";
             HsTotales.DataPropertyName = "HorasTotales";
             desc_plan.DataPropertyName = "DescPlan";
-            desc_plan.DataPropertyName = "DescEspecialidad";
+            desc_especialidad.DataPropertyName = "DescEspecialidad";
         }
 
 
@@ -163,6 +155,37 @@ namespace UI.Desktop.ABMListForms
         private void Materias_Load(object sender, EventArgs e)
         {
             Listar();
+        }
+
+        public void NotificarError(Exception Error)
+        {
+            var msError = "Error message: " + Error.Message;
+            if (Error.InnerException != null)
+            {
+                msError = msError + "\nInner exception: " + Error.InnerException.Message;
+            }
+            msError = msError + "\nStack trace: " + Error.StackTrace;
+            MessageBox.Show(msError, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            if (dgvMaterias.SelectedRows.Count != 0)
+            {
+                // al seleccionar un curso traer todas las personas que estan en ese curso haceindo un join entre inscripciones alumno y personas
+                SelectIdMateria = ((Business.Entities.Materia)dgvMaterias.SelectedRows[0].DataBoundItem).ID; // selecciona toda la linea y solo asigna id_curso
+                SelectDescMateria = ((Business.Entities.Materia)dgvMaterias.SelectedRows[0].DataBoundItem).DescMateria;
+                SelectDescEspecialidad= ((Business.Entities.Materia)dgvMaterias.SelectedRows[0].DataBoundItem).DescEspecialidad;
+
+                DialogResult = DialogResult.OK;
+                Close();
+
+            }
+            else if (dgvMaterias.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Error", "Seleccione una Materia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.Cancel;
+            }
         }
     }
 }

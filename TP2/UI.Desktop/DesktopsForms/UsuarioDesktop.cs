@@ -18,12 +18,12 @@ namespace UI.Desktop
         public UsuarioDesktop()
         {
             InitializeComponent();
-            cbxTipoPersona.SelectedIndex = 2;
         }        
         public UsuarioDesktop(ModoForm modo):this()
         {
             Text = modo.ToString();
             Modo = modo;
+            cbxTipoPersona.SelectedIndex = 2;
             UsuarioActual = new Business.Entities.Usuario();
         }
         private Business.Entities.Usuario _UsuarioActual;
@@ -36,6 +36,7 @@ namespace UI.Desktop
         {
             Text = modo.ToString();
             btnPlan.Enabled = false;
+            cbxTipoPersona.Enabled = false;
             if (modo == ModoForm.Baja)
             {
                 txtNombre.ReadOnly = true;
@@ -128,31 +129,22 @@ namespace UI.Desktop
             UsuarioActual.Habilitado = chkHabilitado.Checked;
             UsuarioActual.Legajo = int.Parse(txtLegajo.Text);
             UsuarioActual.FechaNac = dtpFechaNacimiento.Value;
+            UsuarioActual.Direccion = txtDireccion.Text;
+            UsuarioActual.Telefono = txtTelefono.Text;
+            UsuarioActual.Email = txtEMail.Text;
             //UsuarioActual.State = Business.Entities.BusinessEntity.States.Deleted;
             //La baja es sacarle al habilitado
         }
         public override bool Validar()
         {   
-            if(cbxTipoPersona.SelectedIndex == 2)
+            String[] controles = { txtNombre.Text, txtApellido.Text, txtEMail.Text, txtClave.Text, 
+                txtConfirmarClave.Text, txtDireccion.Text, txtTelefono.Text, txtLegajo.Text, txtPlan.Text};
+            if (!BusinessRules.ValidarCampos(controles))
             {
-                String[] controles = { txtNombre.Text, txtApellido.Text, txtEMail.Text, txtClave.Text, 
-                    txtConfirmarClave.Text, txtDireccion.Text, txtTelefono.Text, txtLegajo.Text, txtPlan.Text};
-                if (!BusinessRules.ValidarCampos(controles))
-                {
-                    Notificar("Debe llenar todos los campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+                Notificar("Debe llenar todos los campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-            else
-            {
-                String[] controles = { txtNombre.Text, txtApellido.Text, txtEMail.Text, txtClave.Text,
-                    txtConfirmarClave.Text, txtDireccion.Text, txtTelefono.Text, txtPlan.Text };
-                if (BusinessRules.ValidarCampos(controles))
-                {
-                    Notificar("Debe llenar todos los campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            }
+            
                        
             if (txtClave.Text.Length <8 || txtClave.Text != txtConfirmarClave.Text)
             {
@@ -170,8 +162,7 @@ namespace UI.Desktop
         public override void GuardarCambios()
         {
             MapearADatos();
-            Business.Logic.UsuarioLogic ul= new Business.Logic.UsuarioLogic();            
-            ul.Save(UsuarioActual);            
+            Business.Logic.UsuarioLogic.GetInstance().Save(UsuarioActual);            
         }
 
         private void tlUsuarioDesktop_Paint(object sender, PaintEventArgs e)
@@ -206,20 +197,24 @@ namespace UI.Desktop
 
         private void cbxTipoPersona_SelectedValueChanged(object sender, EventArgs e)
         {
-            switch (cbxTipoPersona.SelectedIndex)
+            if (Modo == ModoForm.Alta)
             {
-                case 0:
-                    txtLegajo.Enabled = false;
-                    txtLegajo.Text = "0";
-                    break;
-                case 1:
-                    txtLegajo.Enabled = false;
-                    txtLegajo.Text = "0";
-                    break;
-                case 2:
-                    txtLegajo.Enabled = true;
-                    break;
-                default: break;
+                switch (cbxTipoPersona.SelectedIndex)
+                {
+                    case 0:
+                        txtLegajo.Enabled = false;
+                        txtLegajo.Text = "0";
+                        break;
+                    case 1:
+                        txtLegajo.Enabled = false;
+                        txtLegajo.Text = "0";
+                        break;
+                    case 2:
+                        txtLegajo.Enabled = true;
+                        //txtLegajo.Text = UsuarioActual.Legajo.ToString();
+                        break;
+                    default: break;
+                }
             }
         }
     }

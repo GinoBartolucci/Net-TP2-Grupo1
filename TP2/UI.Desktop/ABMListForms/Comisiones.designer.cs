@@ -33,17 +33,18 @@ namespace UI.Desktop
             this.tcComisiones = new System.Windows.Forms.ToolStripContainer();
             this.tlComisiones = new System.Windows.Forms.TableLayoutPanel();
             this.dgvComisiones = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc_specialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anioEspecialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.tsComisiones = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEdiar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desc_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desc_specialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.anioEspecialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
             this.tcComisiones.ContentPanel.SuspendLayout();
             this.tcComisiones.TopToolStripPanel.SuspendLayout();
             this.tcComisiones.SuspendLayout();
@@ -74,12 +75,14 @@ namespace UI.Desktop
             // 
             // tlComisiones
             // 
-            this.tlComisiones.ColumnCount = 2;
-            this.tlComisiones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlComisiones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlComisiones.ColumnCount = 3;
+            this.tlComisiones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 491F));
+            this.tlComisiones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tlComisiones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tlComisiones.Controls.Add(this.btnSeleccionar, 0, 1);
             this.tlComisiones.Controls.Add(this.dgvComisiones, 0, 0);
-            this.tlComisiones.Controls.Add(this.btnSalir, 1, 1);
-            this.tlComisiones.Controls.Add(this.btnActualizar, 0, 1);
+            this.tlComisiones.Controls.Add(this.btnSalir, 2, 1);
+            this.tlComisiones.Controls.Add(this.btnActualizar, 1, 1);
             this.tlComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlComisiones.Location = new System.Drawing.Point(0, 0);
             this.tlComisiones.Margin = new System.Windows.Forms.Padding(2);
@@ -101,7 +104,7 @@ namespace UI.Desktop
             this.desc_plan,
             this.desc_specialidad,
             this.anioEspecialidad});
-            this.tlComisiones.SetColumnSpan(this.dgvComisiones, 2);
+            this.tlComisiones.SetColumnSpan(this.dgvComisiones, 3);
             this.dgvComisiones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvComisiones.Location = new System.Drawing.Point(2, 2);
             this.dgvComisiones.Margin = new System.Windows.Forms.Padding(2);
@@ -114,6 +117,46 @@ namespace UI.Desktop
             this.dgvComisiones.Size = new System.Drawing.Size(656, 355);
             this.dgvComisiones.TabIndex = 0;
             this.dgvComisiones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvComisiones_CellContentClick);
+            // 
+            // Id
+            // 
+            this.Id.Frozen = true;
+            this.Id.HeaderText = "ID";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 125;
+            // 
+            // descripcion
+            // 
+            this.descripcion.Frozen = true;
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.MinimumWidth = 6;
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Width = 125;
+            // 
+            // desc_plan
+            // 
+            this.desc_plan.HeaderText = "Plan";
+            this.desc_plan.MinimumWidth = 6;
+            this.desc_plan.Name = "desc_plan";
+            this.desc_plan.ReadOnly = true;
+            this.desc_plan.Width = 125;
+            // 
+            // desc_specialidad
+            // 
+            this.desc_specialidad.HeaderText = "Especialidad";
+            this.desc_specialidad.Name = "desc_specialidad";
+            this.desc_specialidad.ReadOnly = true;
+            // 
+            // anioEspecialidad
+            // 
+            this.anioEspecialidad.HeaderText = "Año Especialidad";
+            this.anioEspecialidad.MinimumWidth = 6;
+            this.anioEspecialidad.Name = "anioEspecialidad";
+            this.anioEspecialidad.ReadOnly = true;
+            this.anioEspecialidad.Width = 125;
             // 
             // btnSalir
             // 
@@ -130,7 +173,7 @@ namespace UI.Desktop
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(504, 361);
+            this.btnActualizar.Location = new System.Drawing.Point(497, 361);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
@@ -186,45 +229,17 @@ namespace UI.Desktop
             this.tsbEliminar.Visible = false;
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
-            // Id
+            // btnSeleccionar
             // 
-            this.Id.Frozen = true;
-            this.Id.HeaderText = "ID";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 125;
-            // 
-            // descripcion
-            // 
-            this.descripcion.Frozen = true;
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.MinimumWidth = 6;
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            this.descripcion.Width = 125;
-            // 
-            // desc_plan
-            // 
-            this.desc_plan.HeaderText = "Plan";
-            this.desc_plan.MinimumWidth = 6;
-            this.desc_plan.Name = "desc_plan";
-            this.desc_plan.ReadOnly = true;
-            this.desc_plan.Width = 125;
-            // 
-            // desc_specialidad
-            // 
-            this.desc_specialidad.HeaderText = "Especialidad";
-            this.desc_specialidad.Name = "desc_specialidad";
-            this.desc_specialidad.ReadOnly = true;
-            // 
-            // anioEspecialidad
-            // 
-            this.anioEspecialidad.HeaderText = "Año Especialidad";
-            this.anioEspecialidad.MinimumWidth = 6;
-            this.anioEspecialidad.Name = "anioEspecialidad";
-            this.anioEspecialidad.ReadOnly = true;
-            this.anioEspecialidad.Width = 125;
+            this.btnSeleccionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSeleccionar.Location = new System.Drawing.Point(414, 361);
+            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.TabIndex = 3;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // Comisiones
             // 
@@ -265,5 +280,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn desc_plan;
         private System.Windows.Forms.DataGridViewTextBoxColumn desc_specialidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn anioEspecialidad;
+        private System.Windows.Forms.Button btnSeleccionar;
     }
 }

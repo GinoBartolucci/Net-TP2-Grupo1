@@ -3,8 +3,6 @@
 #### Integrantes:
 * Gino Bartolucci
 * Francisco Mendiburu
-* Ignacio Bruzzesi
-* Brenda Godoy
 	
 #### Comision 301
 #### Profesores:

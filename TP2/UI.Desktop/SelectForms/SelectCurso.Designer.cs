@@ -29,10 +29,9 @@ namespace UI.Desktop.SelectForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectCurso));
             this.tblSelectCurso = new System.Windows.Forms.TableLayoutPanel();
             this.dgvSelectCurso = new System.Windows.Forms.DataGridView();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
             this.id_curso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anio_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,8 +39,15 @@ namespace UI.Desktop.SelectForms
             this.descComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.tsCurso = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.tblSelectCurso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectCurso)).BeginInit();
+            this.tsCurso.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblSelectCurso
@@ -52,13 +58,13 @@ namespace UI.Desktop.SelectForms
             this.tblSelectCurso.Controls.Add(this.dgvSelectCurso, 0, 0);
             this.tblSelectCurso.Controls.Add(this.btnSalir, 1, 1);
             this.tblSelectCurso.Controls.Add(this.btnSeleccionar, 0, 1);
-            this.tblSelectCurso.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblSelectCurso.Location = new System.Drawing.Point(0, 0);
+            this.tblSelectCurso.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tblSelectCurso.Location = new System.Drawing.Point(0, 28);
             this.tblSelectCurso.Name = "tblSelectCurso";
             this.tblSelectCurso.RowCount = 2;
             this.tblSelectCurso.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblSelectCurso.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblSelectCurso.Size = new System.Drawing.Size(747, 283);
+            this.tblSelectCurso.Size = new System.Drawing.Size(752, 552);
             this.tblSelectCurso.TabIndex = 0;
             // 
             // dgvSelectCurso
@@ -79,29 +85,8 @@ namespace UI.Desktop.SelectForms
             this.dgvSelectCurso.Name = "dgvSelectCurso";
             this.dgvSelectCurso.ReadOnly = true;
             this.dgvSelectCurso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSelectCurso.Size = new System.Drawing.Size(741, 248);
+            this.dgvSelectCurso.Size = new System.Drawing.Size(746, 517);
             this.dgvSelectCurso.TabIndex = 0;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(669, 257);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 1;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSeleccionar.Location = new System.Drawing.Point(588, 257);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
-            this.btnSeleccionar.TabIndex = 2;
-            this.btnSeleccionar.Text = "Seleccionar";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // id_curso
             // 
@@ -146,18 +131,87 @@ namespace UI.Desktop.SelectForms
             this.Cupo.Name = "Cupo";
             this.Cupo.ReadOnly = true;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(674, 526);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 1;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSeleccionar.Location = new System.Drawing.Point(593, 526);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.TabIndex = 2;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
+            // 
+            // tsCurso
+            // 
+            this.tsCurso.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNuevo,
+            this.tsbEditar,
+            this.tsbEliminar});
+            this.tsCurso.Location = new System.Drawing.Point(0, 0);
+            this.tsCurso.Name = "tsCurso";
+            this.tsCurso.Size = new System.Drawing.Size(752, 25);
+            this.tsCurso.TabIndex = 1;
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
+            this.tsbNuevo.Text = "toolStripButton1";
+            this.tsbNuevo.ToolTipText = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
+            // tsbEditar
+            // 
+            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(23, 22);
+            this.tsbEditar.Text = "toolStripButton2";
+            this.tsbEditar.ToolTipText = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
+            // 
+            // tsbEliminar
+            // 
+            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
+            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEliminar.Name = "tsbEliminar";
+            this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
+            this.tsbEliminar.Text = "toolStripButton3";
+            this.tsbEliminar.ToolTipText = "Eliminar";
+            this.tsbEliminar.Visible = false;
+            // 
             // SelectCurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 283);
+            this.ClientSize = new System.Drawing.Size(752, 580);
+            this.Controls.Add(this.tsCurso);
             this.Controls.Add(this.tblSelectCurso);
             this.Name = "SelectCurso";
             this.Text = "SelectCurso";
             this.Load += new System.EventHandler(this.SelectCurso_Load);
             this.tblSelectCurso.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectCurso)).EndInit();
+            this.tsCurso.ResumeLayout(false);
+            this.tsCurso.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -174,5 +228,9 @@ namespace UI.Desktop.SelectForms
         private System.Windows.Forms.DataGridViewTextBoxColumn descComision;
         private System.Windows.Forms.DataGridViewTextBoxColumn descMateria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cupo;
+        private System.Windows.Forms.ToolStrip tsCurso;
+        private System.Windows.Forms.ToolStripButton tsbNuevo;
+        private System.Windows.Forms.ToolStripButton tsbEditar;
+        private System.Windows.Forms.ToolStripButton tsbEliminar;
     }
 }
