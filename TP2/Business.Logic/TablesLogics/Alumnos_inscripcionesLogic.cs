@@ -36,6 +36,11 @@ namespace Business.Logic
             return InscripcionData.GetAll();
         }
 
+        public List<Inscripciones> GetEveryone()
+        {
+            return InscripcionData.GetEveryone();
+        }
+
         public List<Inscripciones> GetAllAlum(int idAlumno)
         {
             return InscripcionData.GetAllAlum(idAlumno);

@@ -34,7 +34,13 @@ namespace Business.Logic
         public List<Curso> GetAllYearAlum(int idAlumno, int year)
         {            
             return CursoAdapter.GetInstance().GetAllYearAlum(idAlumno, year);            
-        }                
+        }
+
+        public List<Curso> GetAllAlum(int idAlumno)
+        {
+            return CursoAdapter.GetInstance().GetAllAlum(idAlumno);
+        }
+
         public List<Curso> GetAllDoc(int id_doc)
         {
             return CursoAdapter.GetInstance().GetAllDoc(id_doc);

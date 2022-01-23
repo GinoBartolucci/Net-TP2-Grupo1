@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Comisiones.aspx.cs"  MasterPageFile="~/Site.Master" Inherits="UI.Web.Comisiones" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Comisiones.aspx.cs" MasterPageFile="~/Site.Master" Inherits="UI.Web.Comisiones" %>
 
- <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 
@@ -70,9 +70,33 @@
                 <asp:Label ID="anioEspecialidadValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
                 <br />
                 <asp:Label ID="idPlanLabel" runat="server" Text="ID Plan"></asp:Label>
-                <asp:TextBox ID="idPlanTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="idPlanTextBox" runat="server" Enabled="false"></asp:TextBox>
+                <asp:Button  cssClass="btn btn-primary" runat="server" text="Seleccionar especialidad" OnClick="seleccionarButton" />
                 <asp:Label ID="idPlanValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
-                <br />
+               
+                   <div class="row m-2 py-2"  id="tablaPlan" runat="server" visible="false">
+                    <h3>Seleccionar plan</h3>
+
+                     
+                        <asp:GridView ID="planGridView" runat="server" AutoGenerateColumns="False"
+                SelectedRowStyle-BackColor="Black"
+                SelectedRowStyle-ForeColor="White"
+                   Width="100%"
+                DataKeynames ="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged"  >
+ 
+                <SelectedRowStyle BackColor="Black" ForeColor="White" />
+                
+                <Columns>
+                    <asp:BoundField HeaderText ="ID" DataField ="ID" />
+        
+                    <asp:BoundField  HeaderText ="Descripcion Plan" DataField ="desc_plan" />  
+                    <asp:BoundField HeaderText ="Id Especialidad" DataField ="id_especialidad" />  
+                    <asp:CommandField HeaderText ="Seleccionar" ShowSelectButton ="True" />
+
+                </Columns>
+            </asp:GridView>
+              
+                </div>
 
                 <br />
 
@@ -102,4 +126,4 @@
             </asp:Panel>
         </div>
 
-     </asp:Content>   
+</asp:Content>

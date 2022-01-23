@@ -23,18 +23,18 @@ namespace UI.Web
 
 
         Alumnos_inscripcionesLogic _logicInscripciones;
-        PersonasLogic _logicAlumnos;
+        PersonasLogic _logicDocentes;
 
 
-        private PersonasLogic LogicAlumnos
+        private PersonasLogic LogicDocentes
         {
             get
             {
-                if (_logicAlumnos == null)
+                if (_logicDocentes == null)
                 {
-                    _logicAlumnos = new PersonasLogic();
+                    _logicDocentes = new PersonasLogic();
                 }
-                return _logicAlumnos;
+                return _logicDocentes;
             }
         }
 
@@ -70,7 +70,7 @@ namespace UI.Web
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.AlumnosGridView.SelectedValue;
+            this.SelectedID = (int)this.DocentesGridView.SelectedValue;
             showAdminButtons();
             //LoadForm(this.SelectedID);
 
@@ -81,8 +81,8 @@ namespace UI.Web
         {
             try
             {
-                this.AlumnosGridView.DataSource = this.LogicAlumnos.GetAllDocentes();
-                this.AlumnosGridView.DataBind();
+                this.DocentesGridView.DataSource = this.LogicDocentes.GetAllDocentes();
+                this.DocentesGridView.DataBind();
             }
             catch (Exception ex)
             {
@@ -110,7 +110,7 @@ namespace UI.Web
 
             // SECCIONES
  
-            form_alumno.Visible = false;
+            form_docente.Visible = false;
 
         }
 
@@ -126,9 +126,9 @@ namespace UI.Web
 
         private void LoadForm(int id)
         {
-            this.Entity = this.LogicAlumnos.GetOne(id);
+            this.Entity = this.LogicDocentes.GetOne(id);
 
-            this.idAlumnoIngresoTextBox.Text = this.Entity.ID.ToString();
+            this.idDocenteIngresoTextBox.Text = this.Entity.ID.ToString();
             this.nombreAlumnoTextBox.Text = this.Entity.Nombre;
             this.apellidoAlumnoTextBox.Text = this.Entity.Apellido;
             this.legajoTextBox.Text = this.Entity.Legajo.ToString();
@@ -138,29 +138,22 @@ namespace UI.Web
             this.idPlanTextBox.Text = this.Entity.Id_Plan.ToString();
             this.fechaNacimientoTextBox.Text = this.Entity.Fecha_nac.ToString();
 
-            form_alumno.Visible = true;
+            form_docente.Visible = true;
 
-            /**this.Entity = this.Logic.GetOne(id); 
-            this.idTextBox.Text = Entity.ID.ToString();
-            this.idAlumnoTextBox.Text = Entity.IdAlumno.ToString();
-            this.idCursoTextBox.Text = Entity.DescMateria;
-            this.nombreYapellidoTextBox.Text = Entity.NombreApellido;
-            this.condicionTextBox.Text = Entity.Condicion.ToString();
-            **/
         }
-        private void LoadEntity(Business.Entities.Personas alumno)
+        private void LoadEntity(Business.Entities.Personas docente)
         {
             try
             {
-                alumno.Tipo_perona = 2;
-                alumno.Legajo = int.Parse(legajoTextBox.Text);
-                alumno.Nombre = nombreAlumnoTextBox.Text;
-                alumno.Apellido = apellidoAlumnoTextBox.Text;
-                alumno.Nombre = nombreAlumnoTextBox.Text;
-                alumno.Direccion = direccionAlumnoTextBox.Text;
-                alumno.Telefono = telefonoTextBox.Text;
-                alumno.Email = emailAlumnoTextBox.Text;
-                alumno.Id_Plan = int.Parse(idPlanTextBox.Text);
+                docente.Tipo_perona = 1;
+                docente.Legajo = int.Parse(legajoTextBox.Text);
+                docente.Nombre = nombreAlumnoTextBox.Text;
+                docente.Apellido = apellidoAlumnoTextBox.Text;
+                docente.Nombre = nombreAlumnoTextBox.Text;
+                docente.Direccion = direccionAlumnoTextBox.Text;
+                docente.Telefono = telefonoTextBox.Text;
+                docente.Email = emailAlumnoTextBox.Text;
+                docente.Id_Plan = int.Parse(idPlanTextBox.Text);
             }
             catch (Exception error)
             {
@@ -170,7 +163,7 @@ namespace UI.Web
 
             try
             {
-                alumno.Fecha_nac = DateTime.Parse(fechaNacimientoTextBox.Text);
+                docente.Fecha_nac = DateTime.Parse(fechaNacimientoTextBox.Text);
             }
             catch (Exception error)
             {
@@ -181,7 +174,7 @@ namespace UI.Web
 
         private void ClearForm()
         {
-            this.idAlumnoIngresoTextBox.Text = string.Empty;
+            this.idDocenteIngresoTextBox.Text = string.Empty;
             this.nombreAlumnoTextBox.Text = string.Empty;
             this.apellidoAlumnoTextBox.Text = string.Empty;
             this.legajoTextBox.Text = string.Empty;
@@ -189,7 +182,7 @@ namespace UI.Web
             this.fechaNacimientoTextBox.Text = string.Empty;
         }
         /// <summary>
-        /// Al momento de crear un alumno (Persona), este debe crear un usuario también
+        /// Al momento de crear un docente (Persona), este debe crear un usuario también
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -197,9 +190,9 @@ namespace UI.Web
         {
             ClearForm();
 
-            this.form_alumno.Visible = true;
+            this.form_docente.Visible = true;
             this.FormMode = FormModes.Alta;
-            tituloForm.Text = "Agregar nuevo alumno";
+            tituloForm.Text = "Agregar nuevo docente";
 
         }
 
@@ -213,12 +206,12 @@ namespace UI.Web
                     ClearForm();
                     LoadForm(this.SelectedID);
                     modificarAlumnoButton.Visible = false;
-                    tituloForm.Text = "Modificar alumno";
+                    tituloForm.Text = "Modificar docente";
                     this.FormMode = FormModes.Modificacion;
                 }
                 else
                 {
-                    mostrarMensajeDeError("Selecciona a un alumno");
+                    mostrarMensajeDeError("Selecciona a un docente");
                 }
 
             }
@@ -240,9 +233,9 @@ namespace UI.Web
 
         protected void buscarButton_Click(object sender, EventArgs e)
         {
-            if (idAlumnoIngresoTextBox.Text.Length > 0)
+            if (idDocenteIngresoTextBox.Text.Length > 0)
             {
-                LoadForm(int.Parse(idAlumnoIngresoTextBox.Text));
+                LoadForm(int.Parse(idDocenteIngresoTextBox.Text));
                 tituloForm.Text = "Modificar docente";
                 this.FormMode = FormModes.Modificacion;
                 cursosAlumnoButton.Visible = true;
@@ -250,7 +243,7 @@ namespace UI.Web
             }
             else
             {
-                mostrarMensajeDeError("Ingresa la ID de un alumno");
+                mostrarMensajeDeError("Ingresa la ID de un docente");
             }
 
         }
@@ -259,9 +252,9 @@ namespace UI.Web
         {
             try
             {
-                if (idAlumnoIngresoTextBox.Text.Length > 0 || IsEntitySelected)
+                if (idDocenteIngresoTextBox.Text.Length > 0 || IsEntitySelected)
                 {
-                    LoadGridInscripciones(int.Parse(this.idAlumnoIngresoTextBox.Text));
+                    LoadGridInscripciones(int.Parse(this.idDocenteIngresoTextBox.Text));
                 }
                 else
                 {
@@ -304,7 +297,7 @@ namespace UI.Web
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
                         this.LoadEntity(this.Entity);
-                        LogicAlumnos.Save(Entity);
+                        LogicDocentes.Save(Entity);
                         this.LoadGrid();
                         break;
                     default:
@@ -312,11 +305,11 @@ namespace UI.Web
                     case FormModes.Alta:
                         this.Entity = new Business.Entities.Personas();
                         this.LoadEntity(this.Entity);
-                        LogicAlumnos.Save(Entity);
+                        LogicDocentes.Save(Entity);
                         this.LoadGrid();
                         break;
                 }
-                this.form_alumno.Visible = false;
+                this.form_docente.Visible = false;
             }
             catch (Exception error)
             {
@@ -338,7 +331,7 @@ namespace UI.Web
         protected void cancelarFormAlumnoButton_Click(object sender, EventArgs e)
         {
 
-            this.form_alumno.Visible = false;
+            this.form_docente.Visible = false;
             showAdminButtons();
 
         }

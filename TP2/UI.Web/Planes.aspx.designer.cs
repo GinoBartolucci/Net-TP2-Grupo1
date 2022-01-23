@@ -11,17 +11,17 @@ namespace UI.Web
 {
 
 
-    public partial class Comisiones
+    public partial class Planes
     {
 
         /// <summary>
-        /// especialidadIngresoTextBox control.
+        /// idIngresoTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox especialidadIngresoTextBox;
+        protected global::System.Web.UI.WebControls.TextBox idIngresoTextBox;
 
         /// <summary>
         /// buscarButton control.
@@ -51,24 +51,6 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.GridView gridView;
 
         /// <summary>
-        /// panelAlumnosDocentes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelAlumnosDocentes;
-
-        /// <summary>
-        /// gridViewDocenteAlumno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridViewDocenteAlumno;
-
-        /// <summary>
         /// formPanel control.
         /// </summary>
         /// <remarks>
@@ -78,13 +60,22 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Panel formPanel;
 
         /// <summary>
-        /// descripcionLabel control.
+        /// tituloForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label descripcionLabel;
+        protected global::System.Web.UI.WebControls.Label tituloForm;
+
+        /// <summary>
+        /// descripcionEspecialidadLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label descripcionEspecialidadLabel;
 
         /// <summary>
         /// descripcionTextBox control.
@@ -96,112 +87,58 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox descripcionTextBox;
 
         /// <summary>
-        /// descripcionValidacion control.
+        /// idEspecialidadTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label descripcionValidacion;
+        protected global::System.Web.UI.WebControls.TextBox idEspecialidadTextBox;
 
         /// <summary>
-        /// anioEspecialidadLabel control.
+        /// tablaEspecialidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label anioEspecialidadLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tablaEspecialidad;
 
         /// <summary>
-        /// anioEspecialidadTextBox control.
+        /// PanelEspecialidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox anioEspecialidadTextBox;
+        protected global::System.Web.UI.WebControls.Panel PanelEspecialidad;
 
         /// <summary>
-        /// anioEspecialidadValidacion control.
+        /// especialidadGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label anioEspecialidadValidacion;
+        protected global::System.Web.UI.WebControls.GridView especialidadGridView;
 
         /// <summary>
-        /// idPlanLabel control.
+        /// descripcionEspecialidadValidacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label idPlanLabel;
+        protected global::System.Web.UI.WebControls.Label descripcionEspecialidadValidacion;
 
         /// <summary>
-        /// idPlanTextBox control.
+        /// validacionDescripcionEspecialidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idPlanTextBox;
-
-        /// <summary>
-        /// idPlanValidacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label idPlanValidacion;
-
-        /// <summary>
-        /// tablaPlan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tablaPlan;
-
-        /// <summary>
-        /// planGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView planGridView;
-
-        /// <summary>
-        /// validacionDescripcionCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionDescripcionCartel;
-
-        /// <summary>
-        /// validacionAnioEspecialidadCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionAnioEspecialidadCartel;
-
-        /// <summary>
-        /// validacionIdPlanCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionIdPlanCartel;
+        protected global::System.Web.UI.WebControls.Label validacionDescripcionEspecialidad;
 
         /// <summary>
         /// formActionsPanel control.
