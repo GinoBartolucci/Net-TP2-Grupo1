@@ -21,7 +21,7 @@ namespace Business.Logic
             //Quita cursos que ya no tengan cupos
             if (listaCursos.Count != 0)
             {
-                listaCursos = ValidarCupo(listaCursos);
+               // listaCursos = ValidarCupo(listaCursos);
             }            
             
             

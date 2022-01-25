@@ -26,6 +26,8 @@ namespace UI.Desktop.DesktopsForms
             Text = modo.ToString();
             Modo = modo;
             CursoActual = new Curso();
+            btnComision.Enabled = false;
+            btnMateria.Enabled = false;
         }
 
         private Curso _CursoActual;
@@ -40,6 +42,7 @@ namespace UI.Desktop.DesktopsForms
             Text = modo.ToString();
             btnComision.Enabled = false;
             btnMateria.Enabled = false;
+            btnPlanEspecialidad.Enabled = false;
             if (modo == ModoForm.Baja)
             {
                
@@ -57,6 +60,7 @@ namespace UI.Desktop.DesktopsForms
             lblComision.Text = "Id: " + CursoActual.id_comision + "\nComision: " +
                 CursoActual.DescComision + "\nEspe. " + CursoActual.DescEspecialidad;
             nudAniocalendario.Value = CursoActual.anio_calendario;
+            lblPlanEspecialidad.Text = "Plan: " + CursoActual.DescPlan + "\nEspe.: " +CursoActual.DescEspecialidad;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -110,7 +114,7 @@ namespace UI.Desktop.DesktopsForms
         }
         private void btnMateria_Click(object sender, EventArgs e)
         {
-            Materias vMaterias = new Materias();
+            Materias vMaterias = new Materias(CursoActual.IdPlan);
             vMaterias.ShowDialog();
 
             if (vMaterias.DialogResult != DialogResult.Cancel)
@@ -129,7 +133,7 @@ namespace UI.Desktop.DesktopsForms
 
         private void btnComision_Click(object sender, EventArgs e)
         {
-            Comisiones vComisiones= new Comisiones();
+            Comisiones vComisiones= new Comisiones(CursoActual.IdPlan);
             vComisiones.ShowDialog();
 
             if (vComisiones.DialogResult != DialogResult.Cancel)
@@ -157,6 +161,31 @@ namespace UI.Desktop.DesktopsForms
                 GuardarCambios();
                 this.Close();
             }
+        }
+
+        private void btnPlanEspecialidad_Click(object sender, EventArgs e)
+        {
+            SelectPlanes vPlanes = new SelectPlanes();
+            vPlanes.ShowDialog();
+            lblMateria.Text = "Materia";
+            lblComision.Text = "Comision";
+
+            if (vPlanes.DialogResult != DialogResult.Cancel)
+            {
+                CursoActual.DescPlan = vPlanes.descSelectPlan;
+                CursoActual.DescEspecialidad = vPlanes.descSelectEspecialidad;
+                CursoActual.IdPlan = vPlanes.idSelectPlan;
+
+                lblPlanEspecialidad.Text = "Plan: " + CursoActual.DescPlan + "\nEspe.: " + CursoActual.DescEspecialidad;
+                btnComision.Enabled = true;
+                btnMateria.Enabled = true;
+            }
+            else if (Modo != ModoForm.Modificacion)
+            {
+                Notificar("Comisiones", "Debe seleccionar una Comision.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            lblPlanEspecialidad.Text = "Plan: " + CursoActual.DescPlan + "\nEspe.: " + CursoActual.DescEspecialidad;
+
         }
     }
 }

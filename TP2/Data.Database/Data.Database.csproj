@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter.cs" />
+    <Compile Include="TablesAdapters\ReporteAlumnoAdapter.cs" />
     <Compile Include="TablesAdapters\CursoAdapter.cs" />
     <Compile Include="TablesAdapters\Docentes_cursosAdapter.cs" />
     <Compile Include="TablesAdapters\Alumnos_inscripcionesAdapter.cs" />

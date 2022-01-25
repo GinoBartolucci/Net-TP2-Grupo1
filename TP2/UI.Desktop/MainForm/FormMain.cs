@@ -63,6 +63,12 @@ namespace UI.Desktop
             btnDictado.Visible = false;
 
             btnABMUsuario.Visible = false;
+            btnABMPlanes.Visible = false;
+            btnABMEspecialidad.Visible = false;
+            btnABMComision.Visible = false;
+            btnABMCurso.Visible = false;
+            btnABMMateria.Visible = false;
+            btnABMDictadoDocentes.Visible = false;
         }
         private void DocentesDisplay() 
         { 
@@ -76,11 +82,24 @@ namespace UI.Desktop
             btnCursadoAlumno.Visible = false;
 
             btnABMUsuario.Visible = false;
+            btnABMPlanes.Visible = false;
+            btnABMEspecialidad.Visible = false;
+            btnABMComision.Visible = false;
+            btnABMCurso.Visible = false;
+            btnABMMateria.Visible = false;
+            btnABMDictadoDocentes.Visible = false;
         }
 
         private void AdminDisplay()
         {
-            //muestra u oculta para admins
+            btnListadoAlumnos.Visible = false;
+            btnCargarNotas.Visible = false;
+            btnDictado.Visible = false;
+
+            btnNotasAlumno.Visible = false;
+            btnIncribirse.Visible = false;
+            btnMateriasPlanAlumno.Visible = false;
+            btnCursadoAlumno.Visible = false;
         }             
 
         //ALUMNO
@@ -88,6 +107,8 @@ namespace UI.Desktop
         private void btnNotasAlumno_Click(object sender, EventArgs e)// REPORTE
         {
             //REPORTE
+            ReporteNotas reporte = new ReporteNotas();
+            reporte.ShowDialog();
         }
         private void btnIncribirse_Click(object sender, EventArgs e)
         {
@@ -174,6 +195,11 @@ namespace UI.Desktop
         private void btnABMDictadoDocentes_Click(object sender, EventArgs e)
         {
             DocentesCursos.GetInstance().ShowDialog();
+        }
+
+        private void btnContrasenia_Click(object sender, EventArgs e)
+        {
+            CambiarPassword.GetInstance().ShowDialog();
         }
 
         //ADMIN

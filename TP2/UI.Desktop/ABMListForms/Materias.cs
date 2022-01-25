@@ -25,16 +25,34 @@ namespace UI.Desktop.ABMListForms
             }
             return singleton;
         }
-        public Materias()
+        public Materias(int? idPlan = null)
         {
             InitializeComponent();
             this.dgvMaterias.AutoGenerateColumns = false;
             Text = "Materias";
+            Modo = ModoForm.Modo;
             if (Session.currentUser.TipoPersona ==3)
             {
                 tsMaterias.Visible = false; //si es alumno saca los abm
+                btnSeleccionar.Visible = false;
+            }
+            if(idPlan != null)
+            {
+                Modo = ModoForm.SelectIdPlan;
+                IdPlan = idPlan.Value;
             }
         }
+        public enum ModoForm
+        {
+            Modo ,SelectIdPlan
+        }
+        private ModoForm _Modo;
+        public ModoForm Modo
+        {
+            get { return _Modo; }
+            set { _Modo = value; }
+        }
+        public int IdPlan { get; set; }
         public int SelectIdMateria { get; set; }
         public string SelectDescMateria { get; set; }
         public string SelectDescEspecialidad{ get; set; }
@@ -46,9 +64,9 @@ namespace UI.Desktop.ABMListForms
                 {
                     this.dgvMaterias.DataSource = MateriaLogic.GetInstance().GetAllPlan(Session.currentUser.IdPlan);
                 }
-                else
+                if (Modo == ModoForm.SelectIdPlan) 
                 {
-                    this.dgvMaterias.DataSource = MateriaLogic.GetInstance().GetAll();
+                    this.dgvMaterias.DataSource = MateriaLogic.GetInstance().GetAllPlan(IdPlan);
                 }
 
             }
