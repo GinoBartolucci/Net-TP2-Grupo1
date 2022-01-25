@@ -23,11 +23,27 @@ namespace UI.Desktop
             }
             return singleton;
         }
-        public Comisiones()
+        public Comisiones(int? idPlan = null)
         {        
             InitializeComponent();
             this.dgvComisiones.AutoGenerateColumns = false;
+            if (idPlan != null)
+            {
+                IdPlan = idPlan.Value;
+                Modo = ModoForm.SelectIdPlan;
+            }
         }
+        public enum ModoForm
+        {
+            SelectIdPlan
+        }
+        private ModoForm _Modo;
+        public ModoForm Modo
+        {
+            get { return _Modo; }
+            set { _Modo = value; }
+        }
+        public int IdPlan { get; set; }
         public int SelectIdComision { get; set; }
         public string SelectDescComision { get; set; }
         public string SelectDescEspecialidad { get; set; }
@@ -44,10 +60,19 @@ namespace UI.Desktop
         }
         public void Listar()
         {
-            ComisionesLogic cl= new ComisionesLogic();
             try
             {
-                dgvComisiones.DataSource = cl.GetAll();
+                if (Modo == ModoForm.SelectIdPlan)
+                {
+                    List<Business.Entities.Comisiones> listacomisiones = ComisionesLogic.GetInstance().GetAll();
+                    listacomisiones.RemoveAll(item => item.IdPlan != IdPlan);
+                    dgvComisiones.DataSource = listacomisiones;
+
+                }
+                else
+                {
+                    dgvComisiones.DataSource = ComisionesLogic.GetInstance().GetAll();
+                }
             }
             catch (Exception Error)
             {
@@ -75,11 +100,6 @@ namespace UI.Desktop
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void tlComisiones_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void tsbNuevo_Click(object sender, EventArgs e)

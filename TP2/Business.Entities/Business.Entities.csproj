@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessEntity.cs" />
+    <Compile Include="ReporteAlumno.cs" />
     <Compile Include="Tables\Personas.cs" />
     <Compile Include="Tables\Session.cs" />
     <Compile Include="Tables\Curso.cs" />

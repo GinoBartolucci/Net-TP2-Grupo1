@@ -16,6 +16,8 @@
 
         private int _IdEspecialidad;
 
+        private int _IdPlan;
+
         public int id_curso
         {
             get { return _id_curso; }
@@ -50,5 +52,6 @@
         public int AnioEspecialidad { get => _anioEspecialidad; set => _anioEspecialidad = value; }
         public string DescEspecialidad { get => _DescEspecialidad; set => _DescEspecialidad = value; }
         public int IdEspecialidad { get => _IdEspecialidad; set => _IdEspecialidad = value; }
+        public int IdPlan { get => _IdPlan; set => _IdPlan = value; }
     }
 }

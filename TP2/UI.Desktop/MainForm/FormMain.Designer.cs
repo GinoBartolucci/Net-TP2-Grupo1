@@ -46,10 +46,11 @@ namespace UI.Desktop
             this.btnABMPlanes = new System.Windows.Forms.Button();
             this.btnABMEspecialidad = new System.Windows.Forms.Button();
             this.btnABMComision = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnABMCurso = new System.Windows.Forms.Button();
             this.btnABMMateria = new System.Windows.Forms.Button();
             this.btnABMDictadoDocentes = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnContrasenia = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +85,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.btnABMCurso, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.btnABMMateria, 3, 7);
             this.tableLayoutPanel1.Controls.Add(this.btnABMDictadoDocentes, 5, 7);
+            this.tableLayoutPanel1.Controls.Add(this.btnContrasenia, 5, 9);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -301,6 +303,17 @@ namespace UI.Desktop
             this.btnABMDictadoDocentes.UseVisualStyleBackColor = true;
             this.btnABMDictadoDocentes.Click += new System.EventHandler(this.btnABMDictadoDocentes_Click);
             // 
+            // btnContrasenia
+            // 
+            this.btnContrasenia.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnContrasenia.Location = new System.Drawing.Point(311, 363);
+            this.btnContrasenia.Name = "btnContrasenia";
+            this.btnContrasenia.Size = new System.Drawing.Size(110, 34);
+            this.btnContrasenia.TabIndex = 25;
+            this.btnContrasenia.Text = "Cambiar Contraseña";
+            this.btnContrasenia.UseVisualStyleBackColor = true;
+            this.btnContrasenia.Click += new System.EventHandler(this.btnContrasenia_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,5 +352,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnABMCurso;
         private System.Windows.Forms.Button btnABMMateria;
         private System.Windows.Forms.Button btnABMDictadoDocentes;
+        private System.Windows.Forms.Button btnContrasenia;
     }
 }

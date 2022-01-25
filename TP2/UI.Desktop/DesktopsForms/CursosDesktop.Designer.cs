@@ -44,6 +44,8 @@ namespace UI.Desktop.DesktopsForms
             this.nudCupo = new System.Windows.Forms.NumericUpDown();
             this.nudAniocalendario = new System.Windows.Forms.NumericUpDown();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnPlanEspecialidad = new System.Windows.Forms.Button();
+            this.lblPlanEspecialidad = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCupo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAniocalendario)).BeginInit();
@@ -52,25 +54,27 @@ namespace UI.Desktop.DesktopsForms
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 7;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.9159F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.1755F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.96303F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.12939F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.67577F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.23315F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.Controls.Add(this.txtId, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblId, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblCupo, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblMateria, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lblComision, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblAnioCalendario, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnMateria, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnComision, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 4, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnSalir, 5, 5);
             this.tableLayoutPanel1.Controls.Add(this.nudCupo, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.nudAniocalendario, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnComision, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblComision, 5, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblMateria, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnMateria, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnPlanEspecialidad, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblPlanEspecialidad, 2, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -89,7 +93,7 @@ namespace UI.Desktop.DesktopsForms
             // 
             this.txtId.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(156, 36);
+            this.txtId.Location = new System.Drawing.Point(157, 36);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 0;
@@ -108,7 +112,7 @@ namespace UI.Desktop.DesktopsForms
             // 
             this.lblCupo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCupo.AutoSize = true;
-            this.lblCupo.Location = new System.Drawing.Point(364, 40);
+            this.lblCupo.Location = new System.Drawing.Point(360, 40);
             this.lblCupo.Name = "lblCupo";
             this.lblCupo.Size = new System.Drawing.Size(32, 13);
             this.lblCupo.TabIndex = 3;
@@ -118,7 +122,7 @@ namespace UI.Desktop.DesktopsForms
             // 
             this.lblMateria.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMateria.AutoSize = true;
-            this.lblMateria.Location = new System.Drawing.Point(185, 95);
+            this.lblMateria.Location = new System.Drawing.Point(490, 95);
             this.lblMateria.Name = "lblMateria";
             this.lblMateria.Size = new System.Drawing.Size(42, 13);
             this.lblMateria.TabIndex = 4;
@@ -128,7 +132,7 @@ namespace UI.Desktop.DesktopsForms
             // 
             this.lblComision.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblComision.AutoSize = true;
-            this.lblComision.Location = new System.Drawing.Point(489, 95);
+            this.lblComision.Location = new System.Drawing.Point(487, 151);
             this.lblComision.Name = "lblComision";
             this.lblComision.Size = new System.Drawing.Size(49, 13);
             this.lblComision.TabIndex = 5;
@@ -147,7 +151,7 @@ namespace UI.Desktop.DesktopsForms
             // btnMateria
             // 
             this.btnMateria.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnMateria.Location = new System.Drawing.Point(34, 90);
+            this.btnMateria.Location = new System.Drawing.Point(339, 90);
             this.btnMateria.Name = "btnMateria";
             this.btnMateria.Size = new System.Drawing.Size(75, 23);
             this.btnMateria.TabIndex = 9;
@@ -158,7 +162,7 @@ namespace UI.Desktop.DesktopsForms
             // btnComision
             // 
             this.btnComision.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnComision.Location = new System.Drawing.Point(342, 90);
+            this.btnComision.Location = new System.Drawing.Point(339, 146);
             this.btnComision.Name = "btnComision";
             this.btnComision.Size = new System.Drawing.Size(75, 23);
             this.btnComision.TabIndex = 10;
@@ -169,7 +173,7 @@ namespace UI.Desktop.DesktopsForms
             // btnAceptar
             // 
             this.btnAceptar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAceptar.Location = new System.Drawing.Point(342, 214);
+            this.btnAceptar.Location = new System.Drawing.Point(339, 214);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 11;
@@ -180,7 +184,7 @@ namespace UI.Desktop.DesktopsForms
             // btnSalir
             // 
             this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSalir.Location = new System.Drawing.Point(476, 214);
+            this.btnSalir.Location = new System.Drawing.Point(474, 214);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 12;
@@ -191,7 +195,7 @@ namespace UI.Desktop.DesktopsForms
             // nudCupo
             // 
             this.nudCupo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nudCupo.Location = new System.Drawing.Point(453, 36);
+            this.nudCupo.Location = new System.Drawing.Point(451, 36);
             this.nudCupo.Name = "nudCupo";
             this.nudCupo.Size = new System.Drawing.Size(120, 20);
             this.nudCupo.TabIndex = 2;
@@ -199,7 +203,7 @@ namespace UI.Desktop.DesktopsForms
             // nudAniocalendario
             // 
             this.nudAniocalendario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nudAniocalendario.Location = new System.Drawing.Point(146, 147);
+            this.nudAniocalendario.Location = new System.Drawing.Point(147, 147);
             this.nudAniocalendario.Maximum = new decimal(new int[] {
             2100,
             0,
@@ -213,6 +217,27 @@ namespace UI.Desktop.DesktopsForms
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // btnPlanEspecialidad
+            // 
+            this.btnPlanEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnPlanEspecialidad.Location = new System.Drawing.Point(21, 90);
+            this.btnPlanEspecialidad.Name = "btnPlanEspecialidad";
+            this.btnPlanEspecialidad.Size = new System.Drawing.Size(102, 23);
+            this.btnPlanEspecialidad.TabIndex = 14;
+            this.btnPlanEspecialidad.Text = "Plan-Especialidad";
+            this.btnPlanEspecialidad.UseVisualStyleBackColor = true;
+            this.btnPlanEspecialidad.Click += new System.EventHandler(this.btnPlanEspecialidad_Click);
+            // 
+            // lblPlanEspecialidad
+            // 
+            this.lblPlanEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblPlanEspecialidad.AutoSize = true;
+            this.lblPlanEspecialidad.Location = new System.Drawing.Point(162, 95);
+            this.lblPlanEspecialidad.Name = "lblPlanEspecialidad";
+            this.lblPlanEspecialidad.Size = new System.Drawing.Size(91, 13);
+            this.lblPlanEspecialidad.TabIndex = 15;
+            this.lblPlanEspecialidad.Text = "Plan-Especialidad";
             // 
             // CursosDesktop
             // 
@@ -246,5 +271,7 @@ namespace UI.Desktop.DesktopsForms
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.NumericUpDown nudAniocalendario;
+        private System.Windows.Forms.Button btnPlanEspecialidad;
+        private System.Windows.Forms.Label lblPlanEspecialidad;
     }
 }

@@ -79,7 +79,10 @@ namespace UI.Desktop.ABMListForms
             {
                 if (Session.currentUser.TipoPersona == 3)
                 {
-                    this.dvgInscripcionesAlumnos.DataSource = Alumnos_inscripcionesLogic.GetInstance().GetAllYearAlum(Session.currentUser.IdPersona, Int32.Parse(DateTime.Now.ToString("yyyy"))); //
+                    List<Inscripciones> listaInscrip= Alumnos_inscripcionesLogic.GetInstance().GetAllYearAlum(Session.currentUser.IdPersona, Int32.Parse(DateTime.Now.ToString("yyyy"))); 
+                    listaInscrip.RemoveAll(item => item.Condicion != "Cursando");
+                    dvgInscripcionesAlumnos.DataSource = listaInscrip;
+
                 }
                 if (Session.currentUser.TipoPersona == 2)
                 {                      
