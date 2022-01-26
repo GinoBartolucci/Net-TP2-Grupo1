@@ -184,7 +184,10 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            if (descripcionTextBox.Text.Length > 0)
+            TextBox[] arreglo = { descripcionTextBox, horasSemanalesTextBox, horasTotalesTextBox, idPlanTextBox };
+           
+
+            if (methods.validarYPintarCamposVacios(arreglo))
             {
                 switch (this.FormMode)
                 {
@@ -210,11 +213,12 @@ namespace UI.Web
                         break;
                 }
                 this.formPanel.Visible = false;
-                validacionDescripcionEspecialidad.Visible = false;
+                mensajeDeValidacionDeCampo.Visible = false;
             }
             else
             {
-                validacionDescripcionEspecialidad.Visible = true;
+                mensajeDeValidacionDeCampo.Visible = true;
+
             }
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
@@ -274,5 +278,7 @@ namespace UI.Web
             this.idPlanTextBox.Text = this.planGridView.SelectedValue.ToString();
             this.tablaPlan.Visible = false;
         }
+
+ 
     }
 }

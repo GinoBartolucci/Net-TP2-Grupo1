@@ -49,53 +49,41 @@
         <asp:TextBox ID="descripcionTextBox" CssClass="form-input" runat="server" Columns="60" Height="50px" MaxLength="50" Rows="2"></asp:TextBox>
 
         <div class="row py-3">
-                    <div class="col">
-                        <label>Horas Semanales</label> <br />
-                        <asp:TextBox ID="horasSemanalesTextBox"  CssClass="form-input" runat="server"></asp:TextBox>
-                    </div>
-                        <div class="col">
-                        <label>Horas Totales</label> <br />
-                        <asp:TextBox ID="horasTotalesTextBox"  CssClass="form-input" runat="server"></asp:TextBox>
-                    </div>
-                     <div class="col">
-                        <label>Id Plan</label> <br />
-                        <asp:TextBox ID="idPlanTextBox"  CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>
-                        <asp:Button  cssClass="btn btn-primary" runat="server" text="Seleccionar especialidad" ID="seleccionaBtn" OnClick="seleccionarButton" />
-                     </div>
-
-                </div>
-
-
-
+            <div class="col">
+                <label>
+                Horas Semanales</label>
+                <br />
+                <asp:TextBox ID="horasSemanalesTextBox" runat="server" CssClass="form-input"></asp:TextBox>
+            </div>
+            <div class="col">
+                <label>
+                Horas Totales</label>
+                <br />
+                <asp:TextBox ID="horasTotalesTextBox" runat="server" CssClass="form-input"></asp:TextBox>
+            </div>
+            <div class="col">
+                <label>
+                Id Plan</label>
+                <br />
+                <asp:TextBox ID="idPlanTextBox" runat="server" CssClass="form-input" Enabled="false"></asp:TextBox>
+                <asp:Button ID="seleccionaBtn" runat="server" cssClass="btn btn-primary" OnClick="seleccionarButton" text="Seleccionar especialidad" />
+            </div>
+        </div>
         <br />
-        <div class="row m-2 py-2" id="tablaPlan" runat="server" visible="false">
-                    <h3>Seleccionar plan</h3>
-
-                     
-                        <asp:GridView ID="planGridView" runat="server" AutoGenerateColumns="False"
-                SelectedRowStyle-BackColor="Black"
-                SelectedRowStyle-ForeColor="White"
-                   Width="100%"
-                DataKeynames ="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged"  >
- 
+        <div id="tablaPlan" runat="server" class="row m-2 py-2" visible="false">
+            <h3>Seleccionar plan</h3>
+            <asp:GridView ID="planGridView" runat="server" AutoGenerateColumns="False" DataKeynames="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />
-                
                 <Columns>
-                    <asp:BoundField HeaderText ="ID" DataField ="ID" />
-        
-                    <asp:BoundField  HeaderText ="Descripcion Plan" DataField ="DescPlan" />  
-                    <asp:BoundField HeaderText ="Especialidad" DataField ="DescEspecialidad" />  
-                    <asp:CommandField HeaderText ="Seleccionar" ShowSelectButton ="True" />
-
+                    <asp:BoundField DataField="ID" HeaderText="ID" />
+                    <asp:BoundField DataField="DescPlan" HeaderText="Descripcion Plan" />
+                    <asp:BoundField DataField="DescEspecialidad" HeaderText="Especialidad" />
+                    <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
                 </Columns>
             </asp:GridView>
-              
-                </div>
-
-
+        </div>
         <br />
-        <asp:Label ID="descripcionEspecialidadValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
-        <asp:Label ID="validacionDescripcionEspecialidad" runat="server" Visible="false" Text="* La descripcion no puede estar vacia" ForeColor="#CC3300"></asp:Label>
+        <asp:Label ID="mensajeDeValidacionDeCampo" runat="server" Visible="false" Text=" Hay campos que faltan completar" ForeColor="#CC3300"></asp:Label>
         <br />
 
 

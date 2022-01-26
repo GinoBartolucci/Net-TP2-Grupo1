@@ -141,22 +141,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.GridView planGridView;
 
         /// <summary>
-        /// descripcionEspecialidadValidacion control.
+        /// mensajeDeValidacionDeCampo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label descripcionEspecialidadValidacion;
-
-        /// <summary>
-        /// validacionDescripcionEspecialidad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionDescripcionEspecialidad;
+        protected global::System.Web.UI.WebControls.Label mensajeDeValidacionDeCampo;
 
         /// <summary>
         /// formActionsPanel control.

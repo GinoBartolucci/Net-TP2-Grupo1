@@ -1,12 +1,12 @@
-﻿<%@ Page Title="Inscripciones" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inscripciones.aspx.cs" Inherits="UI.Web.Inscripciones" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inscripciones_Docentes.aspx.cs" Inherits="UI.Web.Inscripciones_Docentes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
-    <div class=" ">
+ 
         <h2>Inscripciones</h2>
         <hr />
-
+        
 
         <div class="form-label-input">
             <label class="form" style="width: 100%">
@@ -29,14 +29,15 @@
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />
 
                 <Columns>
-                    <asp:BoundField HeaderText="ID" DataField="ID" />
+                    <asp:BoundField HeaderText="ID" DataField="id_dictado" />
+                    <asp:BoundField HeaderText="Docente" DataField="NombreApellido" />
+ 
 
-                    <asp:BoundField HeaderText="Alumno" DataField="NombreApellido" />
-                    <asp:BoundField HeaderText="ID Curso" DataField="IdCurso" Visible="True" />
+
                     <asp:BoundField HeaderText="Materia" DataField="DescMateria" Visible="True" />
                     <asp:BoundField HeaderText="Comision" DataField="DescComision" Visible="True" />
-                    <asp:BoundField HeaderText="Condición" DataField="Condicion" />
-                    <asp:BoundField HeaderText="Nota" DataField="Nota" />
+
+                    <asp:BoundField HeaderText="Cargo" DataField="cargo" />
                     <asp:CommandField HeaderText="SeleIccionar" ShowSelectButton="True" />
 
                 </Columns>
@@ -65,13 +66,11 @@
                 <asp:Button ID="seleccionarCursoButton" runat="server" cssClass="btn btn-primary" OnClick="seleccionarCursoButton_Click" text="Seleccionar" />
             </div>
             <div class="col">
-                <asp:Label ID="condicionLabel" runat="server" Text="Condición"></asp:Label>
+                <asp:Label ID="cargoLabel" runat="server" Text="Cargo"></asp:Label>
                 <br />
-                <asp:TextBox ID="condicionTextBox" runat="server" CssClass="form-input"></asp:TextBox>
+                <asp:TextBox ID="cargoTextBox" runat="server" CssClass="form-input" type="number"></asp:TextBox>
                 <br />
-                <asp:Label ID="notaLabel" runat="server" Text="Nota"></asp:Label>
                 <br />
-                <asp:TextBox ID="notaTextBox" runat="server" CssClass="form-input"></asp:TextBox>
             </div>
             <asp:Panel ID="tablaCurso" runat="server" visible="false">
                 <h3>Seleccionar curso</h3>
@@ -89,8 +88,8 @@
             </asp:Panel>
             <asp:Panel ID="alumnosPanel" runat="server" CssClass="tabla">
                 <asp:GridView ID="AlumnosGridView" runat="server" AutoGenerateColumns="False" DataKeynames="ID" OnSelectedIndexChanged="AlumnosGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="1000px">
-                    <SelectedRowStyle BackColor="Black" ForeColor="White" />
-                    <Columns>
+                    <selectedrowstyle backcolor="Black" forecolor="White" />
+                    <columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" />
                         <asp:BoundField DataField="Legajo" HeaderText="Legajo" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
@@ -99,7 +98,7 @@
                         <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
                         <asp:BoundField DataField="Fecha_nac" HeaderText="Fecha de Nacimiento" />
                         <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
-                    </Columns>
+                    </columns>
                 </asp:GridView>
             </asp:Panel>
             <br />
@@ -116,12 +115,12 @@
         </asp:Panel>
 
         <asp:Panel ID="gridActionsPanel" runat="server">
-            <asp:Button ID="editarLinkButton" class="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click"   />
-          
+            <asp:Button ID="editarLinkButton" class="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
+
             <asp:Button ID="nuevoLinkButton" class="btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
         </asp:Panel>
 
-    </div>
+ 
 
 </asp:Content>

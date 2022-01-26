@@ -11,7 +11,7 @@ namespace UI.Web
 {
 
 
-    public partial class Inscripciones
+    public partial class Inscripciones_Docentes
     {
 
         /// <summary>
@@ -114,40 +114,22 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Button seleccionarCursoButton;
 
         /// <summary>
-        /// condicionLabel control.
+        /// cargoLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label condicionLabel;
+        protected global::System.Web.UI.WebControls.Label cargoLabel;
 
         /// <summary>
-        /// condicionTextBox control.
+        /// cargoTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox condicionTextBox;
-
-        /// <summary>
-        /// notaLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label notaLabel;
-
-        /// <summary>
-        /// notaTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox notaTextBox;
+        protected global::System.Web.UI.WebControls.TextBox cargoTextBox;
 
         /// <summary>
         /// tablaCurso control.

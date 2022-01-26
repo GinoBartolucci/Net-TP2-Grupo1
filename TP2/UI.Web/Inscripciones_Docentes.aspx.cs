@@ -9,26 +9,24 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Inscripciones : System.Web.UI.Page
+    public partial class Inscripciones_Docentes: System.Web.UI.Page
     {
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
             modificarVistaSegunPermisosDelUsuario();
         }
-        private Business.Entities.Inscripciones Entity { get; set; }
+        private Business.Entities.Docentes_cursos Entity { get; set; }
 
-        Alumnos_inscripcionesLogic _logic;
+        Docentes_cursosLogic _logic;
 
-        private Alumnos_inscripcionesLogic Logic
+        private Docentes_cursosLogic Logic
         {
             get
             {
                 if (_logic == null)
                 {
-                    _logic = new Alumnos_inscripcionesLogic();
+                    _logic = new Docentes_cursosLogic();
                 }
                 return _logic;
             }
@@ -40,20 +38,17 @@ namespace UI.Web
             switch (usr.DescTipoPersona)
             {
                 case "Administrativo": break;
-                case "Docente": Response.Redirect("Home.aspx"); break;
-                case "Alumno": vistaParaAlumno(); break;
+                case "Docente": vistaParaDocente();  break;
+                case "Alumno": Response.Redirect("Home.aspx");  break;
             }
         }
 
-        private void vistaParaAlumno()
+        private void vistaParaDocente()
         {
             editarLinkButton.Visible = false;
             idPersonaLabel.Visible = false;
             seleccionarPersonaButton.Visible = false;
-            condicionLabel.Visible = false;
-            condicionTextBox.Visible = false;
-            notaLabel.Visible = false;
-            notaTextBox.Visible = false;
+           
             idPersonaTextBox.Visible = false;
 
         }
@@ -105,9 +100,9 @@ namespace UI.Web
             this.Logic.Delete(id);
         }
 
-        private void SaveEntity(Business.Entities.Inscripciones inscripcion)
+        private void SaveEntity(Business.Entities.Docentes_cursos Docente_curso)
         {
-            this.Logic.Save(inscripcion);
+            this.Logic.Save(Docente_curso);
         }
 
         protected void buscarButton_Click(object sender, EventArgs e)
@@ -123,13 +118,16 @@ namespace UI.Web
             Usuario usr = (Usuario)Session["current_user"];
             switch (usr.DescTipoPersona)
             {
-                case "Administrativo": this.gridView.DataSource = this.Logic.GetEveryone(); break;
-                case "Docente": Response.Redirect("Home.aspx"); break;
-                case "Alumno":
-                    this.gridView.DataSource = this.Logic.GetAllAlum(usr.IdPersona);
+                case "Administrativo": this.gridView.DataSource = this.Logic.GetAll(); break;
+                case "Docente":
+                    this.gridView.DataSource = this.Logic.GetAllYearDoc(usr.IdPersona, 2020);
                     this.gridView.Columns[0].Visible = false;
-                    this.gridView.Columns[2].Visible = false;
-                    this.gridView.Columns[7].Visible = false;
+                    this.gridView.Columns[1].Visible = false;
+                    this.gridView.Columns[6].Visible = false;
+                    break;
+                case "Alumno":
+                    Response.Redirect("Home.aspx");
+
 
                     break;
             }
@@ -153,31 +151,31 @@ namespace UI.Web
         {
             this.Entity = this.Logic.GetOne(id);
 
-            idCursoTextBox.Text = Entity.IdCurso.ToString();
-            idPersonaTextBox.Text = Entity.IdAlumno.ToString();
-            condicionTextBox.Text = Entity.Condicion;
-            notaTextBox.Text = Entity.Nota.ToString();
+            idCursoTextBox.Text = Entity.id_curso.ToString();
+            idPersonaTextBox.Text = Entity.id_docente.ToString();
+            cargoTextBox.Text = Entity.cargo.ToString();
 
         }
-        private void LoadEntity(Business.Entities.Inscripciones inscripcion)
+        private void LoadEntity(Business.Entities.Docentes_cursos Docente_curso)
         {
             Usuario usr = (Usuario)Session["current_user"];
             switch (usr.DescTipoPersona)
             {
                 case "Administrativo":
-                    inscripcion.IdAlumno = int.Parse(this.idPersonaTextBox.Text); ;
-                    inscripcion.Condicion = this.condicionTextBox.Text;
-                    inscripcion.Nota = int.Parse(this.notaTextBox.Text);
+                    Docente_curso.id_docente = int.Parse(this.idPersonaTextBox.Text); ;
+               
+                    Docente_curso.id_curso = int.Parse(this.idCursoTextBox.Text);
+       
                     break;
-                case "Docente":; break;
-                case "Alumno":
-                    inscripcion.IdAlumno = usr.IdPersona;
-                    inscripcion.Condicion = "Cursando";
-                    inscripcion.Nota = -1;
+                case "Docente":
+                    Docente_curso.id_docente = usr.IdPersona;
+            
+                    Docente_curso.cargo = int.Parse(this.cargoTextBox.Text);
                     break;
+             
             }
 
-            inscripcion.IdCurso = int.Parse(this.idCursoTextBox.Text);
+            Docente_curso.id_curso = int.Parse(this.idCursoTextBox.Text);
 
         }
 
@@ -186,8 +184,8 @@ namespace UI.Web
 
             idCursoTextBox.Text = string.Empty;
             idPersonaTextBox.Text = string.Empty;
-            condicionTextBox.Text = string.Empty;
-            notaTextBox.Text = string.Empty;
+            cargoTextBox.Text = string.Empty;
+
 
         }
 
@@ -198,7 +196,7 @@ namespace UI.Web
             {
                 this.formPanel.Visible = true;
                 this.FormMode = FormModes.Modificacion;
-                tituloForm.Text = "Modificar inscripcion";
+                tituloForm.Text = "Modificar Docente_curso";
                 this.LoadForm(this.SelectedID);
 
             }
@@ -208,7 +206,7 @@ namespace UI.Web
         {
             this.formPanel.Visible = true;
             this.FormMode = FormModes.Alta;
-            tituloForm.Text = "Crear inscripcion";
+            tituloForm.Text = "Crear Docente_curso";
             this.ClearForm();
         }
 
@@ -226,7 +224,7 @@ namespace UI.Web
             }
             else
             {
-                TextBox[] nuevoArreglo = { idPersonaTextBox, idCursoTextBox, condicionTextBox };
+                TextBox[] nuevoArreglo = { idPersonaTextBox, idCursoTextBox, cargoTextBox };
                 arreglo = nuevoArreglo;
 
             }
@@ -242,7 +240,7 @@ namespace UI.Web
                         this.LoadGrid();
                         break;
                     case FormModes.Modificacion:
-                        this.Entity = new Business.Entities.Inscripciones();
+                        this.Entity = new Business.Entities.Docentes_cursos();
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
                         this.LoadEntity(this.Entity);
@@ -252,7 +250,7 @@ namespace UI.Web
                     default:
                         break;
                     case FormModes.Alta:
-                        this.Entity = new Business.Entities.Inscripciones();
+                        this.Entity = new Business.Entities.Docentes_cursos();
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();

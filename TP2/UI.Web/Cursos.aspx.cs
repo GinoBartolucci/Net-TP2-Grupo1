@@ -39,7 +39,7 @@ namespace UI.Web
             switch (usr.DescTipoPersona)
             {
                 case "Administrativo": break;
-                case "Docente": Response.Redirect("Home.aspx"); break;
+                case "Docente": vistaParaDocente(); break;
                 case "Alumno": vistaParaAlumno(); break;
             }
         }
@@ -54,6 +54,12 @@ namespace UI.Web
             
             selecMateriaButton.Visible = false;
             selecComisionButton.Visible = false; 
+        }
+
+        private void vistaParaDocente()
+        {
+            vistaParaAlumno();
+            listarAlumnosButton.Visible = true;
         }
 
 
@@ -115,10 +121,13 @@ namespace UI.Web
             switch (usr.DescTipoPersona)
             {
                 case "Administrativo": this.gridView.DataSource = this.Logic.GetAll(); break;
-                case "Docente": Response.Redirect("Home.aspx"); break;
+                case "Docente":
+                    this.gridView.DataSource = this.Logic.GetAllDoc(usr.IdPersona);
+                   // this.gridView.Columns[0].Visible = false; 
+                    break;
                 case "Alumno": 
                     this.gridView.DataSource = this.Logic.GetAllYearAlum(usr.IdPersona,DateTime.Now.Year);
-                    this.gridView.Columns[0].Visible = false;
+                  //  this.gridView.Columns[0].Visible = false;
                     this.gridView.Columns[4].Visible = false;
                     this.gridView.Columns[5].Visible = false;
                     break;
@@ -177,7 +186,13 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-             
+            TextBox[] arreglo = { cupoTextBox, idMateriaTextBox, idComisionTextBox, anioCalendarioTextBox};
+
+           
+
+
+            if (methods.validarYPintarCamposVacios(arreglo) )
+            {
                 switch (this.FormMode)
                 {
                     case FormModes.Baja:
@@ -202,9 +217,13 @@ namespace UI.Web
                         break;
                 }
                 this.formPanel.Visible = false;
-               
-            
-             
+            }
+            else
+            {
+                mensajeDeValidacionDeCampo.Visible = true; 
+            }
+
+
         }
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
@@ -284,5 +303,59 @@ namespace UI.Web
             tablaComision.Visible = false;
             
         }
+
+        protected void listarAlumnosButton_Click(object sender, EventArgs e)
+        {
+            if (IsEntitySelected)
+            {   
+                
+                AlumnosDelCursoGridView.DataSource = new Alumnos_inscripcionesLogic().GetAllCurso(this.SelectedID);
+                AlumnosDelCursoGridView.DataBind();
+            alumnosDelCursoPanel.Visible = true;
+            }
+        }
+
+        protected void AlumnosDelCursoGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mostrarCondicionYNota(int.Parse(AlumnosDelCursoGridView.SelectedValue.ToString())) ;
+        }
+
+        protected void mostrarCondicionYNota(int idAlumno)
+        {
+            Business.Entities.Inscripciones inscripcionAlumno = new Alumnos_inscripcionesLogic().GetOne(idAlumno);
+
+            notaTextBox.Text = inscripcionAlumno.Nota.ToString();
+            condicionTextBox.Text = inscripcionAlumno.Condicion; 
+
+            if(inscripcionAlumno.Condicion == "Cursando" || inscripcionAlumno.Nota < 0)
+            {
+                notaTextBox.Enabled = true;
+                condicionTextBox.Enabled = true;
+            }
+        
+        }
+
+        protected void asignarleNotaButton_Click(object sender, EventArgs e)
+        {
+            TextBox[] arregloTexBox = { notaTextBox, condicionTextBox }; 
+            if(     methods.validarYPintarCamposVacios(arregloTexBox) 
+                    && int.Parse(notaTextBox.Text) >= -1   ) 
+            {
+                int idAlumnoInscripcion = int.Parse(AlumnosDelCursoGridView.SelectedValue.ToString());
+
+                Alumnos_inscripcionesLogic aiDB = new Alumnos_inscripcionesLogic();
+
+                Business.Entities.Inscripciones inscripcionAlumno = aiDB.GetOne(idAlumnoInscripcion);
+
+
+                inscripcionAlumno.Nota = int.Parse(notaTextBox.Text);
+                inscripcionAlumno.Condicion = condicionTextBox.Text;
+
+                inscripcionAlumno.State = Business.Entities.BusinessEntity.States.Modified;
+                aiDB.Save(inscripcionAlumno);
+                alumnosDelCursoPanel.Visible = false;
+            }
+           
+        }
     }
-}
+} 

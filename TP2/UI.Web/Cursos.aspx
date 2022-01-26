@@ -17,7 +17,7 @@
     </div>
 
 
-    <asp:Panel ID="gridPanel" runat="server">
+    <asp:Panel ID="gridPanel" runat="server" CssClass="py-3">
         <asp:GridView ID="gridView" runat="server" AutoGenerateColumns="False"
             SelectedRowStyle-BackColor="Black"
             SelectedRowStyle-ForeColor="White"
@@ -28,12 +28,12 @@
 
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="ID" />
-                 
-             <%--   <asp:BoundField HeaderText="ID Materia" DataField="id_materia" />
+
+                <%--   <asp:BoundField HeaderText="ID Materia" DataField="id_materia" />
                 <asp:BoundField HeaderText="ID Comision" DataField="id_comision" />
-              --%>
+                --%>
                 <asp:BoundField HeaderText="Materia" DataField="DescMateria" />
-                 <asp:BoundField HeaderText="Comision" DataField="DescComision" />
+                <asp:BoundField HeaderText="Comision" DataField="DescComision" />
                 <asp:BoundField HeaderText="Año Calendario" DataField="anio_calendario" />
                 <asp:BoundField HeaderText="Cupo" DataField="cupo" />
                 <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
@@ -68,7 +68,7 @@
                 <label>Id Comision</label>
                 <br />
                 <asp:TextBox ID="idComisionTextBox" CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>
-                <asp:Button cssClass="btn btn-primary" runat="server"  ID="selecComisionButton" text="Seleccionar" OnClick="seleccionarComisionButton" />
+                <asp:Button cssClass="btn btn-primary" runat="server" ID="selecComisionButton" text="Seleccionar" OnClick="seleccionarComisionButton" />
             </div>
 
         </div>
@@ -123,9 +123,14 @@
 
                 </asp:GridView>
             </asp:Panel>
+
+
+
             <br />
         </div>
-        <asp:Label ID="descripcionEspecialidadValidacion" runat="server" ForeColor="#CC3300" Text="*"></asp:Label>
+
+
+        <asp:Label ID="mensajeDeValidacionDeCampo" runat="server" ForeColor="#CC3300" Text="Hay campos que faltan completar"></asp:Label>
         <br />
         <br />
         <asp:Panel ID="formActionsPanel" runat="server">
@@ -134,11 +139,43 @@
         </asp:Panel>
     </asp:Panel>
 
+    <asp:Panel ID="alumnosDelCursoPanel" runat="server" Visible="false" CssClass="py-3">
+        <h3>Listado de alumnos</h3>
+        <asp:GridView ID="AlumnosDelCursoGridView" runat="server" AutoGenerateColumns="False"
+            SelectedRowStyle-BackColor="Black"
+            SelectedRowStyle-ForeColor="White"
+            Width="100%"
+            DataKeyNames="ID" OnSelectedIndexChanged="AlumnosDelCursoGridView_SelectedIndexChanged">
+
+            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+
+            <Columns>
+                <asp:BoundField HeaderText="ID" DataField="ID"  />
+                <asp:BoundField HeaderText="Legajo" DataField="legajo" />
+                <asp:BoundField HeaderText="Alumno" DataField="NombreApellido" />
+                <asp:BoundField HeaderText="Materia" DataField="DescMateria" Visible="True" />
+                <asp:BoundField HeaderText="Condición" DataField="Condicion" />
+                <asp:BoundField HeaderText="Nota" DataField="Nota" />
+               <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
+            </Columns>
+        </asp:GridView>
+
+        <label>Condicion</label>
+        <br />
+        <asp:TextBox ID="condicionTextBox" CssClass="form-input" runat="server" Enabled ="false"></asp:TextBox>
+        <br />
+        <label>Nota</label>
+        <br />
+        <asp:TextBox ID="notaTextBox" CssClass="form-input" runat="server" Enabled ="false"></asp:TextBox>
+        <br />
+        <asp:Button ID="asignarleNotaButton" class="btn btn-success" runat="server" Text="Asignarle nota" OnClick="asignarleNotaButton_Click" />
+    </asp:Panel>
     <asp:Panel CssClass="py-3" ID="gridActionsPanel" runat="server">
         <asp:Button ID="editarLinkButton" class="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
-        <asp:Button ID="nuevoLinkButton" class="btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
+        <asp:Button ID="nuevoLinkButton" class="py-3 btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
     </asp:Panel>
+        <asp:Button ID="listarAlumnosButton" class="btn btn-warning" runat="server" Text="Listar alumnos" Visible="false" OnClick="listarAlumnosButton_Click" />
 
 
 </asp:Content>

@@ -177,13 +177,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.GridView comisionGridView;
 
         /// <summary>
-        /// descripcionEspecialidadValidacion control.
+        /// mensajeDeValidacionDeCampo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label descripcionEspecialidadValidacion;
+        protected global::System.Web.UI.WebControls.Label mensajeDeValidacionDeCampo;
 
         /// <summary>
         /// formActionsPanel control.
@@ -213,6 +213,51 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Button cancelarLinkButton;
 
         /// <summary>
+        /// alumnosDelCursoPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel alumnosDelCursoPanel;
+
+        /// <summary>
+        /// AlumnosDelCursoGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView AlumnosDelCursoGridView;
+
+        /// <summary>
+        /// condicionTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox condicionTextBox;
+
+        /// <summary>
+        /// notaTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox notaTextBox;
+
+        /// <summary>
+        /// asignarleNotaButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button asignarleNotaButton;
+
+        /// <summary>
         /// gridActionsPanel control.
         /// </summary>
         /// <remarks>
@@ -238,5 +283,14 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button nuevoLinkButton;
+
+        /// <summary>
+        /// listarAlumnosButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button listarAlumnosButton;
     }
 }

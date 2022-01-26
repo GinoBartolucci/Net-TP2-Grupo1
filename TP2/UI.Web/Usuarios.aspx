@@ -43,6 +43,11 @@
 
 
             <asp:Panel cssClass="py-3" ID="formPanel" runat="server" Visible ="false">
+                   <asp:Label ID="Label1" runat="server" Text="ID Persona"></asp:Label>
+                <asp:TextBox ID="TextBox1" runat="server" Enabled="false"></asp:TextBox>
+                <asp:Label ID="Label2" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
+                <asp:Button runat="server" ID="idPersonaButton" Text="Seleccionar persona" CssClass="btn btn-primary"/>
+                <br />
                 <asp:Label ID="nombreLabel" runat="server" Text="Nombre"></asp:Label>
                 <asp:TextBox ID="nombreTextBox" runat="server"></asp:TextBox>
                 <asp:Label ID="nombreValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>

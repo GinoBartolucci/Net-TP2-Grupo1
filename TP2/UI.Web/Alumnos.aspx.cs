@@ -15,7 +15,7 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             div_mensaje_error.Visible = false;
-            HiddeElements();
+       
             this.LoadGrid();
         }
 
@@ -125,6 +125,7 @@ namespace UI.Web
 
         private void HiddeElements()
         { 
+
             // BOTONES
             cursosAlumnoButton.Visible = false;
            // bajaAlumnoButton.Visible = false;
@@ -136,8 +137,35 @@ namespace UI.Web
             // SECCIONES
             inscripciones_alumno.Visible = false;
             form_alumno.Visible = false;
-
+            
         }
+
+        private void modificarVistaSegunPermisosDelUsuario()
+        {
+            Usuario usr = (Usuario)Session["current_user"];
+            switch (usr.DescTipoPersona)
+            {
+                case "Administrativo": break;
+                case "Docente": Response.Redirect("Home.aspx"); break;
+                case "Alumno": Response.Redirect("Home.aspx");  break;
+            }
+
+            HiddeElements();
+        }
+
+        private void vistaParaDocente()
+        {
+            agregarAlumnoButton.Visible = false;
+            AlumnosGridView.Columns[0].Visible = false;
+            AlumnosGridView.Columns[4].Visible = false;
+            AlumnosGridView.Columns[5].Visible = false;
+            AlumnosGridView.Columns[6].Visible = false;
+            modificarAlumnoButton.Visible = false;
+
+
+            
+        }
+
 
         private void showAdminButtons()
         {

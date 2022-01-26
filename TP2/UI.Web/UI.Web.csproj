@@ -92,6 +92,7 @@
     <Content Include="Especialidades.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Inscripciones.aspx" />
+    <Content Include="Inscripciones_Docentes.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="LogOut.aspx" />
     <Content Include="Materias.aspx" />
@@ -123,7 +124,14 @@
     <Compile Include="Alumnos.aspx.designer.cs">
       <DependentUpon>Alumnos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs">
+    <Compile Include="Inscripciones_Docentes.aspx.cs">
+      <DependentUpon>Inscripciones_Docentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inscripciones_Docentes.aspx.designer.cs">
+      <DependentUpon>Inscripciones_Docentes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="methods.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Comisiones.aspx.cs">

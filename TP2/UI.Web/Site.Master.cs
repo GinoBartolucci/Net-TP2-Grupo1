@@ -37,13 +37,13 @@ namespace UI.Web
         {
             switch (tipoPersona)
             {
-                case 2: // alumno
+                case 3: // alumno
                    nav_alumno.Visible = true;
                     break;
-                case 1: // docente
-                    //Menu1.Visible = true;
+                case 2: // docente
+                    nav_docente.Visible = true;
                     break;
-                case 0: // administrador
+                case 1: // administrador
                     nav_administrador.Visible = true;
                     break;
                 default:

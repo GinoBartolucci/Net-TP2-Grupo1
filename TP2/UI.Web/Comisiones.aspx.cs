@@ -81,8 +81,6 @@ namespace UI.Web
             this.descripcionTextBox.Text = this.Entity.DescComision;
             this.anioEspecialidadTextBox.Text = this.Entity.AnioEspecialidad.ToString();
             this.idPlanTextBox.Text = this.Entity.IdPlan.ToString();
-      
-
         }
 
 
@@ -90,19 +88,18 @@ namespace UI.Web
         private void EnableForm(bool enable)
         {
 
-            this.descripcionTextBox.Enabled = enable;  
+            this.descripcionTextBox.Enabled = enable;
             this.anioEspecialidadTextBox.Enabled = enable;
-            this.idPlanTextBox.Enabled = enable;
  
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
             Usuario usuario = (Usuario)Session["current_user"];
-            this.gridView.DataSource = this.Logic.GetAll();
-            this.gridView.DataBind();
-     
+            LoadGrid();
+
             mostrarOpcionesABM(usuario.TipoPersona);
 
         }
@@ -116,22 +113,15 @@ namespace UI.Web
 
         private void mostrarOpcionesABM(int tipoPersona)
         {
-            if (tipoPersona == 0) // si es administrador
-            {
+ 
                 this.cancelarLinkButton.Visible = true;
                 this.aceptarLinkButton.Visible = true;
                 this.editarLinkButton.Visible = true;
-                this.eliminarLinkButton.Visible = true;
+
                 this.nuevoLinkButton.Visible = true;
                 this.gridView.Visible = true;
                 this.gridPanel.Visible = true;
-            }
-            else
-            {
-                this.panelAlumnosDocentes.Visible = true;
-                this.gridViewDocenteAlumno.Visible = true;
-                
-            }
+      
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -146,22 +136,12 @@ namespace UI.Web
             }
         }
 
-        protected void eliminarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.LoadForm(this.SelectedID);
-            }
-        }
-
         private void LoadEntity(Business.Entities.Comisiones comision)
         {
             comision.DescComision = this.descripcionTextBox.Text;
             comision.IdPlan = int.Parse(this.idPlanTextBox.Text);
             comision.AnioEspecialidad = int.Parse(this.anioEspecialidadTextBox.Text);
-        
+
 
         }
         private void SaveEntity(Business.Entities.Comisiones comision)
@@ -171,30 +151,43 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            switch (this.FormMode)
+            TextBox[] arreglo = { descripcionTextBox, anioEspecialidadTextBox, idPlanTextBox };
+
+
+            if (methods.validarYPintarCamposVacios(arreglo))
             {
-                case FormModes.Baja:
-                    this.DeleteEntity(this.SelectedID);
-                    this.LoadGrid();
-                    break;
-                case FormModes.Modificacion:
-                    this.Entity = new Business.Entities.Comisiones();
-                    this.Entity.ID = this.SelectedID;
-                    this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
-                    this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
-                    this.LoadGrid();
-                    break;
-                default:
-                    break;
-                case FormModes.Alta:
-                    this.Entity = new Business.Entities.Comisiones();
-                    this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
-                    this.LoadGrid();
-                    break;
+
+                switch (this.FormMode)
+                {
+                    case FormModes.Baja:
+                        this.DeleteEntity(this.SelectedID);
+                        this.LoadGrid();
+                        break;
+                    case FormModes.Modificacion:
+                        this.Entity = new Business.Entities.Comisiones();
+                        this.Entity.ID = this.SelectedID;
+                        this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
+                        this.LoadEntity(this.Entity);
+                        this.SaveEntity(this.Entity);
+                        this.LoadGrid();
+                        break;
+                    default:
+                        break;
+                    case FormModes.Alta:
+                        this.Entity = new Business.Entities.Comisiones();
+                        this.LoadEntity(this.Entity);
+                        this.SaveEntity(this.Entity);
+                        this.LoadGrid();
+                        break;
+                }
+                this.formPanel.Visible = false;
+
+
             }
-            this.formPanel.Visible = false;
+            else
+            {
+                validacionCartelLabel.Visible = true;
+            }
         }
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
