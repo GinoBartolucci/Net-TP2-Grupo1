@@ -11,10 +11,10 @@
         <div class="form-label-input">
             <label class="form" style="width: 100%">
                 ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la comision" ID="especialidadIngresoTextBox" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la materia" ID="idIngresoTextBox" runat="server"></asp:TextBox>
 
             </label>
-            <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" />
+            <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
         </div>
 
         <asp:Panel ID="gridPanel" CssClass="py-3" runat="server">
@@ -37,7 +37,7 @@
 
             </asp:GridView>
         </asp:Panel>
-          
+
 
         <asp:Panel ID="formPanel" runat="server" Visible="false">
             <asp:Label ID="descripcionLabel" runat="server" Text="Descripcion"></asp:Label>

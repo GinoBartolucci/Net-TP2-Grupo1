@@ -103,7 +103,7 @@ namespace UI.Web
 
         }
 
-        private void LoadGridInscripciones(int id)
+       /** private void LoadGridInscripciones(int id)
         {
             List<Business.Entities.Inscripciones> inscripcionesDelAlumno = this.Logic.GetAllAlum(id);
             if(inscripcionesDelAlumno.Count > 0)
@@ -121,7 +121,7 @@ namespace UI.Web
             }
           
 
-        }
+        }**/
 
         private void HiddeElements()
         { 
@@ -129,13 +129,11 @@ namespace UI.Web
             // BOTONES
             cursosAlumnoButton.Visible = false;
            // bajaAlumnoButton.Visible = false;
-            inscripcionesAlumnoButton.Visible = false;
-            asignarNotaInscripcionButton.Visible = false;
-            darDeBajaInscripcionButton.Visible = false;
+ 
             modificarAlumnoButton.Visible = false;
 
             // SECCIONES
-            inscripciones_alumno.Visible = false;
+           // inscripciones_alumno.Visible = false;
             form_alumno.Visible = false;
             
         }
@@ -171,7 +169,7 @@ namespace UI.Web
         {
             cursosAlumnoButton.Visible = true;
           //  bajaAlumnoButton.Visible = true;
-            inscripcionesAlumnoButton.Visible = true;
+            //inscripcionesAlumnoButton.Visible = true;
             modificarAlumnoButton.Visible = true;
 
         }
@@ -299,7 +297,7 @@ namespace UI.Web
                 tituloForm.Text = "Modificar alumno";
                 this.FormMode = FormModes.Modificacion;
                 cursosAlumnoButton.Visible = true;
-                inscripcionesAlumnoButton.Visible = true;
+                //inscripcionesAlumnoButton.Visible = true;
             }
             else
             {
@@ -308,26 +306,26 @@ namespace UI.Web
              
         } 
 
-        protected void inscripcionesAlumnoButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(idAlumnoIngresoTextBox.Text.Length > 0 || IsEntitySelected )
-                {
-                LoadGridInscripciones(int.Parse(this.idAlumnoIngresoTextBox.Text));
-                }
-                else
-                {
-                    mostrarMensajeDeError("Selecciona a un alumno");
-                }
+        //protected void inscripcionesAlumnoButton_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if(idAlumnoIngresoTextBox.Text.Length > 0 || IsEntitySelected )
+        //        {
+        //        LoadGridInscripciones(int.Parse(this.idAlumnoIngresoTextBox.Text));
+        //        }
+        //        else
+        //        {
+        //            mostrarMensajeDeError("Selecciona a un alumno");
+        //        }
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                mostrarMensajeDeError(ex.ToString());
-            }
-        }
+        //        mostrarMensajeDeError(ex.ToString());
+        //    }
+        //}
         private void mostrarMensajeDeError(string mensaje)
         {
             div_mensaje_error.Visible = true;
@@ -395,13 +393,25 @@ namespace UI.Web
             showAdminButtons();
 
         }
-
-        protected void cursosAlumnoButton_Click(object sender, EventArgs e)
+        protected void seleccionarButton_Click(object sender, EventArgs e)
         {
-            cursoGridView.DataSource = new CursoLogic().GetAllForAlum(this.SelectedID);
-            cursoGridView.DataBind();
-            cursos_alumno.Visible = true;
+            LoadPlanGrid();
+            tablaPlan.Visible = true;
+
         }
+
+        private void LoadPlanGrid()
+        {
+            this.planGridView.DataSource = new PlanesLogic().GetAll();
+            this.planGridView.DataBind();
+        }
+
+        protected void planGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.idPlanTextBox.Text = this.planGridView.SelectedValue.ToString();
+            this.tablaPlan.Visible = false;
+        }
+
     }
 
        

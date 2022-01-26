@@ -80,13 +80,12 @@
                 </div>
 
 
-        <asp:Label ID="descripcionEspecialidadValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
         <br />
 
 
 
         <br />
-        <asp:Label ID="validacionDescripcionEspecialidad" runat="server" Visible="false" Text="* La descripcion no puede estar vacia" ForeColor="#CC3300"></asp:Label>
+        <asp:Label ID="validacionDescripcionEspecialidad" runat="server" Visible="false" Text="Hay campos que faltan completar" ForeColor="#CC3300"></asp:Label>
 
 
 
@@ -100,7 +99,6 @@
 
     <asp:Panel CssClass="py-3" ID="gridActionsPanel" runat="server">
         <asp:Button ID="editarLinkButton" class="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
-        <asp:Button ID="eliminarLinkButton" class="btn btn-danger" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click" />
         <asp:Button ID="nuevoLinkButton" class="btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
     </asp:Panel>

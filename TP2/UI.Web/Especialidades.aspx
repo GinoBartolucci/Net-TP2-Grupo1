@@ -70,7 +70,7 @@
 
             <asp:Panel ID="gridActionsPanel" runat="server">
                 <asp:Button ID="editarLinkButton" class="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
-                <asp:Button ID="eliminarLinkButton" class="btn btn-danger" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click" />
+ 
                 <asp:Button ID="nuevoLinkButton"  class="btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
             </asp:Panel>

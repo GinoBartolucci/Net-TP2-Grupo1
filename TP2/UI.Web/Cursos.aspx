@@ -130,7 +130,7 @@
         </div>
 
 
-        <asp:Label ID="mensajeDeValidacionDeCampo" runat="server" ForeColor="#CC3300" Text="Hay campos que faltan completar"></asp:Label>
+        <asp:Label ID="mensajeDeValidacionDeCampo" runat="server" Visible="false" ForeColor="#CC3300" Text="Hay campos que faltan completar"></asp:Label>
         <br />
         <br />
         <asp:Panel ID="formActionsPanel" runat="server">

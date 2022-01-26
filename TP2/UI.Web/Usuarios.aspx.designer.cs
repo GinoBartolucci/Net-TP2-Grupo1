@@ -15,13 +15,13 @@ namespace UI.Web
     {
 
         /// <summary>
-        /// especialidadIngresoTextBox control.
+        /// idIngresoTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox especialidadIngresoTextBox;
+        protected global::System.Web.UI.WebControls.TextBox idIngresoTextBox;
 
         /// <summary>
         /// buscarButton control.
@@ -366,13 +366,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Button editarLinkButton;
 
         /// <summary>
-        /// eliminarLinkButton control.
+        /// habilitarLinkButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button eliminarLinkButton;
+        protected global::System.Web.UI.WebControls.Button habilitarLinkButton;
 
         /// <summary>
         /// nuevoLinkButton control.

@@ -155,6 +155,10 @@ namespace UI.Web
         private void ClearForm()
         {
             this.descripcionTextBox.Text = string.Empty;
+            this.horasSemanalesTextBox.Text = string.Empty;
+            this.horasTotalesTextBox.Text = string.Empty;
+            this.idPlanTextBox.Text = string.Empty;
+            this.idIngresoTextBox.Text = string.Empty;
 
         }
 
@@ -171,16 +175,6 @@ namespace UI.Web
             }
         }
 
-        protected void eliminarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.LoadForm(this.SelectedID);
-                tituloForm.Text = "Eliminar materia";
-            }
-        }
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
@@ -247,12 +241,12 @@ namespace UI.Web
         protected void buscarButton_Click(object sender, EventArgs e)
         {
 
-            if (materiaIngresoTextBox.Text.Length > 0)
+            if (idIngresoTextBox.Text.Length > 0)
             {
-                LoadForm(int.Parse(materiaIngresoTextBox.Text));
+                LoadForm(int.Parse(idIngresoTextBox.Text));
                 tituloForm.Text = "Modificar alumno";
                 this.FormMode = FormModes.Modificacion;
-
+                formPanel.Visible = true;
             }
             else
             {

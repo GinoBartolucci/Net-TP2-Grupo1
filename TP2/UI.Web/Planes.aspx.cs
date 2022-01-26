@@ -115,7 +115,7 @@ namespace UI.Web
         private void ClearForm()
         {
             this.descripcionTextBox.Text = string.Empty;
-
+            this.idEspecialidadTextBox.Text = string.Empty;
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -130,21 +130,13 @@ namespace UI.Web
                 this.LoadForm(this.SelectedID);
             }
         }
-
-        protected void eliminarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.LoadForm(this.SelectedID);
-                tituloForm.Text = "Eliminar plan";
-            }
-        }
-
+ 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            if (descripcionTextBox.Text.Length > 0)
+
+            TextBox[] textBoxes = { descripcionTextBox, idEspecialidadTextBox };
+
+            if (methods.validarYPintarCamposVacios(textBoxes))
             {
                 switch (this.FormMode)
                 {
@@ -199,7 +191,7 @@ namespace UI.Web
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
         }
-
+      
         protected void buscarButton_Click(object sender, EventArgs e)
         {
 
@@ -208,7 +200,7 @@ namespace UI.Web
                 LoadForm(int.Parse(idIngresoTextBox.Text));
                 tituloForm.Text = "Modificar alumno";
                 this.FormMode = FormModes.Modificacion;
-
+                this.formPanel.Visible = true;
             }
             else
             {

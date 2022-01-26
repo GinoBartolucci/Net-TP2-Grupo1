@@ -75,6 +75,22 @@ namespace UI.Web
             set { this.ViewState["FormMode"] = value; }
         }
 
+        protected void buscarButton_Click(object sender, EventArgs e)
+        {
+
+            if (idIngresoTextBox.Text.Length > 0)
+            {
+                LoadForm(int.Parse(idIngresoTextBox.Text));
+                this.FormMode = FormModes.Modificacion;
+                formPanel.Visible = true;
+            }
+            else
+            {
+                // mostrarMensajeDeError("Ingresa la ID de un alumno");
+            }
+
+        }
+
         private void LoadGrid()
         {
             this.gridView.DataSource = this.Logic.GetAll();
@@ -118,24 +134,28 @@ namespace UI.Web
             this.LoadGrid();
         }
 
-        protected void editarLinkButton_Click(object sender, EventArgs e)
+        protected void habilitarLinkButton_Click(object sender, EventArgs e)
         {
          
             if (this.IsEntitySelected)
             {
-         
-                this.formPanel.Visible = true;
+
+                this.Entity = Logic.GetOneId(this.SelectedID);
+                this.Entity.Habilitado = !Entity.Habilitado;
+                this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
                 this.FormMode = FormModes.Modificacion;
-                this.LoadForm(this.SelectedID);
+                this.SaveEntity(this.Entity);
+                this.LoadGrid();
+
             }
         }
    
-        protected void eliminarLinkButton_Click(object sender, EventArgs e)
+        protected void editarLinkButton_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
            {
                 this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
+                this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
            }
         }

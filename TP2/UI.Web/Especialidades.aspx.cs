@@ -129,18 +129,7 @@ namespace UI.Web
                 this.LoadForm(this.SelectedID);
             }
         }
-
-        protected void eliminarLinkButton_Click(object sender, EventArgs e)
-        {
-            if (this.IsEntitySelected)
-            {
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Baja;
-                this.LoadForm(this.SelectedID);
-                tituloForm.Text = "Editar especialidad";
-            }
-        }
-
+ 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
             if(descripcionTextBox.Text.Length > 0)
@@ -206,6 +195,7 @@ namespace UI.Web
                 LoadForm(int.Parse(especialidadIngresoTextBox.Text));
                 tituloForm.Text = "Modificar alumno";
                 this.FormMode = FormModes.Modificacion;
+                this.formPanel.Visible = true;
               
             }
             else

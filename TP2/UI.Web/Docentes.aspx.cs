@@ -72,7 +72,8 @@ namespace UI.Web
         {
             this.SelectedID = (int)this.DocentesGridView.SelectedValue;
             showAdminButtons();
-            //LoadForm(this.SelectedID);
+            validacionCamposLabel.Visible = false;
+           
 
         }
 
@@ -94,7 +95,7 @@ namespace UI.Web
 
         private void LoadGridInscripciones(int id)
         {
-         
+
 
 
         }
@@ -102,23 +103,23 @@ namespace UI.Web
         private void HiddeElements()
         {
             // BOTONES
-            cursosAlumnoButton.Visible = false;
+         //   cursosAlumnoButton.Visible = false;
             // bajaAlumnoButton.Visible = false;
-            inscripcionesAlumnoButton.Visible = false;
- 
+           // inscripcionesAlumnoButton.Visible = false;
+
             modificarAlumnoButton.Visible = false;
 
             // SECCIONES
- 
+
             form_docente.Visible = false;
 
         }
 
         private void showAdminButtons()
         {
-            cursosAlumnoButton.Visible = true;
+            //cursosAlumnoButton.Visible = true;
             //  bajaAlumnoButton.Visible = true;
-            inscripcionesAlumnoButton.Visible = true;
+            //inscripcionesAlumnoButton.Visible = true;
             modificarAlumnoButton.Visible = true;
 
         }
@@ -175,11 +176,14 @@ namespace UI.Web
         private void ClearForm()
         {
             this.idDocenteIngresoTextBox.Text = string.Empty;
+            this.legajoTextBox.Text = string.Empty;
             this.nombreAlumnoTextBox.Text = string.Empty;
             this.apellidoAlumnoTextBox.Text = string.Empty;
-            this.legajoTextBox.Text = string.Empty;
             this.direccionAlumnoTextBox.Text = string.Empty;
+            this.telefonoTextBox.Text = string.Empty;
             this.fechaNacimientoTextBox.Text = string.Empty;
+            this.emailAlumnoTextBox.Text = string.Empty;
+            this.idPlanTextBox.Text = string.Empty;
         }
         /// <summary>
         /// Al momento de crear un docente (Persona), este debe crear un usuario también
@@ -198,7 +202,7 @@ namespace UI.Web
 
         protected void modificarAlumnoButton_Click1(object sender, EventArgs e)
         {
-
+            
             try
             {
                 if (IsEntitySelected)
@@ -238,8 +242,8 @@ namespace UI.Web
                 LoadForm(int.Parse(idDocenteIngresoTextBox.Text));
                 tituloForm.Text = "Modificar docente";
                 this.FormMode = FormModes.Modificacion;
-                cursosAlumnoButton.Visible = true;
-                inscripcionesAlumnoButton.Visible = true;
+                //cursosAlumnoButton.Visible = true;
+               // inscripcionesAlumnoButton.Visible = true;
             }
             else
             {
@@ -281,6 +285,17 @@ namespace UI.Web
 
         protected void formAlumnoButton_Click(object sender, EventArgs e)
         {
+            TextBox[] textBoxes = { legajoTextBox,
+                    nombreAlumnoTextBox,
+                    apellidoAlumnoTextBox,
+                    direccionAlumnoTextBox,
+                    telefonoTextBox,
+                    fechaNacimientoTextBox, emailAlumnoTextBox, idPlanTextBox };
+
+           
+            if (methods.validarYPintarCamposVacios(textBoxes))
+            {
+
             Personas nuevoAlumno = new Personas();
 
             try
@@ -315,6 +330,13 @@ namespace UI.Web
             {
                 mostrarMensajeDeError(error.ToString());
             }
+            }
+            else
+            {
+                validacionCamposLabel.Visible = true;
+            }
+                
+
         }
 
         public enum FormModes
@@ -334,6 +356,25 @@ namespace UI.Web
             this.form_docente.Visible = false;
             showAdminButtons();
 
+        }
+
+        protected void seleccionarButton_Click(object sender, EventArgs e)
+        {
+            LoadPlanGrid();
+            tablaPlan.Visible = true;
+
+        }
+
+        private void LoadPlanGrid()
+        {
+            this.planGridView.DataSource = new PlanesLogic().GetAll();
+            this.planGridView.DataBind();
+        }
+
+        protected void planGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.idPlanTextBox.Text = this.planGridView.SelectedValue.ToString();
+            this.tablaPlan.Visible = false;
         }
     }
 

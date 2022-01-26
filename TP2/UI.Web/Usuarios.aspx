@@ -13,10 +13,10 @@
         <div class ="form-label-input">
             <label class="form" style="width:100%">
                 ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la comision" ID="especialidadIngresoTextBox" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la comision" ID="idIngresoTextBox" runat="server"></asp:TextBox>
          
             </label>
-            <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" />
+            <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
         </div>
 
             <asp:Panel cssClass="py-3" ID ="gridPanel" runat ="server" > 
@@ -104,7 +104,7 @@
 
             <asp:Panel ID="gridActionsPanel" runat="server">
                 <asp:Button ID="editarLinkButton" cssClass="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
-                <asp:Button ID="eliminarLinkButton" cssClass="btn btn-danger" runat="server" Text="Eliminar" OnClick="eliminarLinkButton_Click" />
+                <asp:Button ID="habilitarLinkButton" cssClass="btn btn-danger" runat="server" Text="Habilitar" OnClick="habilitarLinkButton_Click" />
                 <asp:Button ID="nuevoLinkButton" cssClass="btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
             </asp:Panel>

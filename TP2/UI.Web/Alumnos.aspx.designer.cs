@@ -15,15 +15,6 @@ namespace UI.Web
     {
 
         /// <summary>
-        /// agregarAlumnoButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button agregarAlumnoButton;
-
-        /// <summary>
         /// idAlumnoIngresoTextBox control.
         /// </summary>
         /// <remarks>
@@ -69,15 +60,6 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Button cursosAlumnoButton;
 
         /// <summary>
-        /// inscripcionesAlumnoButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button inscripcionesAlumnoButton;
-
-        /// <summary>
         /// modificarAlumnoButton control.
         /// </summary>
         /// <remarks>
@@ -85,6 +67,15 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button modificarAlumnoButton;
+
+        /// <summary>
+        /// agregarAlumnoButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button agregarAlumnoButton;
 
         /// <summary>
         /// cursos_alumno control.
@@ -103,69 +94,6 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel cursoPanel;
-
-        /// <summary>
-        /// cursoGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView cursoGridView;
-
-        /// <summary>
-        /// inscripciones_alumno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl inscripciones_alumno;
-
-        /// <summary>
-        /// gridPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel gridPanel;
-
-        /// <summary>
-        /// gridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridView;
-
-        /// <summary>
-        /// asignarInscripcionButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button asignarInscripcionButton;
-
-        /// <summary>
-        /// asignarNotaInscripcionButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button asignarNotaInscripcionButton;
-
-        /// <summary>
-        /// darDeBajaInscripcionButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button darDeBajaInscripcionButton;
 
         /// <summary>
         /// form_alumno control.
@@ -256,6 +184,33 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox idPlanTextBox;
+
+        /// <summary>
+        /// seleccionarButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button seleccionarButton;
+
+        /// <summary>
+        /// tablaPlan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tablaPlan;
+
+        /// <summary>
+        /// planGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView planGridView;
 
         /// <summary>
         /// formAlumnoButton control.

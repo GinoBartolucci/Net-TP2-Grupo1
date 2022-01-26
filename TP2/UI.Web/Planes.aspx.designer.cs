@@ -123,15 +123,6 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.GridView especialidadGridView;
 
         /// <summary>
-        /// descripcionEspecialidadValidacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label descripcionEspecialidadValidacion;
-
-        /// <summary>
         /// validacionDescripcionEspecialidad control.
         /// </summary>
         /// <remarks>
@@ -184,15 +175,6 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button editarLinkButton;
-
-        /// <summary>
-        /// eliminarLinkButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button eliminarLinkButton;
 
         /// <summary>
         /// nuevoLinkButton control.

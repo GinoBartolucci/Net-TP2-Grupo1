@@ -75,6 +75,23 @@ namespace UI.Web
             this.Logic.Delete(id);
         }
 
+        protected void buscarButton_Click(object sender, EventArgs e)
+        {
+
+            if (idIngresoTextBox.Text.Length > 0)
+            {
+                LoadForm(int.Parse(idIngresoTextBox.Text));
+              
+                this.FormMode = FormModes.Modificacion;
+                formPanel.Visible = true;
+            }
+            else
+            {
+                // mostrarMensajeDeError("Ingresa la ID de un alumno");
+            }
+
+        }
+
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOne(id);
