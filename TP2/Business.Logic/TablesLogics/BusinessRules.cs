@@ -30,10 +30,13 @@ namespace Business.Logic
         public static List<Curso> ValidarCupo(List<Curso> listaCursos)
         {
             //Consultar a la base todas las incripciones para este año
-            List<Inscripciones> listaInsAlu = Alumnos_inscripcionesLogic.GetInstance().GetAllYear(Int32.Parse(DateTime.Now.ToString("yyyy")));
-            foreach (var insAlu in listaInsAlu) {
-
-                listaCursos.RemoveAll(item => item.id_curso == insAlu.IdCurso);
+            for (int i = listaCursos.Count - 1; i >= 0; i--)
+            {
+                List<Inscripciones> inscCurso = Alumnos_inscripcionesLogic.GetInstance().GetAllCurso(listaCursos[i].id_curso);
+                if (inscCurso.Count >= listaCursos[i].cupo)
+                {
+                    listaCursos.RemoveAt(i);
+                }
             }            
             return listaCursos;
             
