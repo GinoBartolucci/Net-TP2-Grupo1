@@ -364,6 +364,7 @@ namespace Data.Database
                 return cur;
             
         }
+
         public void Delete(int id_curso)
         {
             try

@@ -29,12 +29,7 @@ namespace Business.Logic
         public Inscripciones GetOne(int id)
         {
             return InscripcionData.GetOne(id);
-        }
-
-        public List<Inscripciones> GetAll()
-        {
-            return InscripcionData.GetAll();
-        }
+        }       
 
         public List<Inscripciones> GetEveryone()
         {
@@ -44,11 +39,6 @@ namespace Business.Logic
         public List<Inscripciones> GetAllAlum(int idAlumno)
         {
             return InscripcionData.GetAllAlum(idAlumno);
-        }
-
-        public List<Inscripciones> GetAllYear(int year)
-        {
-            return InscripcionData.GetAllYear(year);
         }
         
         public List<Inscripciones> GetAllYearAlum(int idAlumno, int year)

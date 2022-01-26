@@ -171,45 +171,7 @@ namespace Data.Database
             {
                 throw new Exception("El curso no existe para ese docente");
             }
-        }
-  
-        public Business.Entities.Docentes_cursos GetOneDictado(int id_dictado)
-        {
-            Docentes_cursos dc = new Docentes_cursos();
-            try
-            {
-                OpenConnection();
-                SqlCommand cmdDocentes_Cursos = new SqlCommand("SELECT * FROM docentes_cursos WHERE id_dictado = @id_dictado", sqlConn);
-                cmdDocentes_Cursos.Parameters.Add("@id_dictado", SqlDbType.Int).Value = id_dictado;
-                SqlDataReader drDocentes_Cursos = cmdDocentes_Cursos.ExecuteReader();
-                while (drDocentes_Cursos.Read())
-                {
-                    dc.id_dictado = (int)drDocentes_Cursos["id_dictado"];
-                    dc.id_curso = (int)drDocentes_Cursos["id_curso"];
-                    dc.id_docente = (int)drDocentes_Cursos["id_docente"];
-                    dc.cargo = (int)drDocentes_Cursos["cargo"];
-
-                }
-                drDocentes_Cursos.Close();
-            }
-            catch (Exception Ex)
-            {
-                Exception ExcepcionManejada = new Exception("Error al recuperar datos de Docentes_cursos", Ex);
-                throw ExcepcionManejada;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-            if (dc.id_dictado != 0)
-            {
-                return dc;
-            }
-            else
-            {
-                throw new Exception("El curso no existe para ese docente");
-            }
-        }
+        }  
         
         public void Save(Docentes_cursos docentes_cursos)
         {
