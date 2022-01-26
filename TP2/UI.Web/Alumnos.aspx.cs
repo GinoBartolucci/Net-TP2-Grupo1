@@ -398,7 +398,7 @@ namespace UI.Web
 
         protected void cursosAlumnoButton_Click(object sender, EventArgs e)
         {
-            cursoGridView.DataSource = new CursoLogic().GetAllAlum(this.SelectedID);
+            cursoGridView.DataSource = new CursoLogic().GetAllForAlum(this.SelectedID);
             cursoGridView.DataBind();
             cursos_alumno.Visible = true;
         }

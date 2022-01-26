@@ -63,6 +63,12 @@
     <Compile Include="DesktopsForms\ApplicationForm.Designer.cs">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DesktopsForms\CambiarPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopsForms\CambiarPassword.Designer.cs">
+      <DependentUpon>CambiarPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="DesktopsForms\ComisionesDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,12 @@
     <Compile Include="ABMListForms\Materias.designer.cs">
       <DependentUpon>Materias.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReporteNotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteNotas.Designer.cs">
+      <DependentUpon>ReporteNotas.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectForms\SelectCurso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +211,9 @@
     </Compile>
     <EmbeddedResource Include="ABMListForms\InscripcionesAlumnos.resx">
       <DependentUpon>InscripcionesAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesktopsForms\CambiarPassword.resx">
+      <DependentUpon>CambiarPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DesktopsForms\ComisionesDesktop.resx">
       <DependentUpon>ComisionesDesktop.cs</DependentUpon>
@@ -258,6 +273,10 @@
     <EmbeddedResource Include="ABMListForms\Materias.resx">
       <DependentUpon>Materias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteAlumno.rdlc" />
+    <EmbeddedResource Include="ReporteNotas.resx">
+      <DependentUpon>ReporteNotas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SelectForms\SelectCurso.resx">
       <DependentUpon>SelectCurso.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +295,8 @@
     <EmbeddedResource Include="SelectForms\SelectEspecialidades.resx">
       <DependentUpon>SelectEspecialidades.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Business.Entities.ReporteAlumno.datasource" />
+    <None Include="Properties\DataSources\Business.Logic.ReporteAlumnoLogic.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -302,6 +323,10 @@
       <Name>Business.Logic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms">
+      <Version>150.1484.0</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

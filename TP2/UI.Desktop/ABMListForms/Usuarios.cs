@@ -14,22 +14,6 @@ namespace UI.Desktop
 {
     public partial class Usuarios : Form
     {
-        public Usuarios()
-        {
-            InitializeComponent();
-            this.dgvUsuarios.AutoGenerateColumns = false;
-            Modo = ModoForm.ABM;
-        }
-        public Usuarios(ModoForm modo) 
-        {
-            InitializeComponent();
-            this.dgvUsuarios.AutoGenerateColumns = false;
-            Modo = modo;
-        }
-        public int IdDocente { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-
         private static Usuarios singleton;
         public static Usuarios GetInstance()
         {
@@ -39,9 +23,32 @@ namespace UI.Desktop
             }
             return singleton;
         }
+        public Usuarios()
+        {
+            InitializeComponent();
+            this.dgvUsuarios.AutoGenerateColumns = false;
+            Modo = ModoForm.Select;
+        }
+        public Usuarios(ModoForm modo, int? idPlan =null) 
+        {
+            InitializeComponent();
+            this.dgvUsuarios.AutoGenerateColumns = false;
+            Modo = modo;
+            if(idPlan != null)
+            {
+                Modo = ModoForm.SelectIdPlan;
+                IdPlan = idPlan.Value;
+            }
+        }
+        public int IdPersona { get; set; }
+        public int IdPlan { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+
+        
         public enum ModoForm
         {
-            Docente, ABM
+            Docente, Select, SelectIdPlan
         }
         private ModoForm _Modo;
         public ModoForm Modo
@@ -71,9 +78,26 @@ namespace UI.Desktop
                     email.DataPropertyName = "Email";
                     habilitado.DataPropertyName = "Habilitado";
                 }
-                else
+                else if(Modo == ModoForm.Select)
                 {
                     dgvUsuarios.DataSource = UsuarioLogic.GetInstance().GetAll();
+                    id.DataPropertyName = "ID";
+                    TipoPersona.DataPropertyName = "TipoPersona";
+                    usuario.DataPropertyName = "NombreUsuario";
+                    legajo.DataPropertyName = "Legajo";
+                    nombre.DataPropertyName = "Nombre";
+                    email.DataPropertyName = "Email";
+                    Especialidad.DataPropertyName = "DescEspecialidad";
+                    DescPlan.DataPropertyName = "DescPlan";
+                    email.DataPropertyName = "EMail";
+                    habilitado.DataPropertyName = "Habilitado";
+                }
+                else if (Modo == ModoForm.SelectIdPlan)
+                {
+                    List<Usuario> listaUsuarios =  UsuarioLogic.GetInstance().GetAll();
+                    listaUsuarios.RemoveAll(item => item.IdPlan != IdPlan);
+                    listaUsuarios.RemoveAll(item => item.TipoPersona != 2);
+                    dgvUsuarios.DataSource = listaUsuarios;
                     id.DataPropertyName = "ID";
                     TipoPersona.DataPropertyName = "TipoPersona";
                     usuario.DataPropertyName = "NombreUsuario";
@@ -189,9 +213,11 @@ namespace UI.Desktop
         {
             if (dgvUsuarios.SelectedRows.Count != 0)
             {
-                IdDocente = ((Business.Entities.Usuario)dgvUsuarios.SelectedRows[0].DataBoundItem).IdPersona; // selecciona toda la linea y solo asigna id_curso
+                IdPersona = ((Business.Entities.Usuario)dgvUsuarios.SelectedRows[0].DataBoundItem).IdPersona; // selecciona toda la linea y solo asigna id_curso
                 Nombre = ((Business.Entities.Usuario)dgvUsuarios.SelectedRows[0].DataBoundItem).Nombre;
                 Apellido = ((Business.Entities.Usuario)dgvUsuarios.SelectedRows[0].DataBoundItem).Apellido;
+                IdPlan = ((Business.Entities.Usuario)dgvUsuarios.SelectedRows[0].DataBoundItem).IdPlan;
+
                 DialogResult = DialogResult.OK;
                 Close();
 

@@ -115,7 +115,7 @@ namespace UI.Desktop.DesktopsForms
                 if (Modo == ModoForm.Alta)
                 {                    
                     InscripcionActual.State = BusinessEntity.States.New;
-                    InscripcionActual.Condicion = "Cursante";
+                    InscripcionActual.Condicion = "Cursando";
                     //this.InscripcionActual.IdCurso = InscripcionActual.IdCurso;
                     //InscripcionActual.IdCurso ya se asigno en el boton curso
                     InscripcionActual.IdAlumno = Session.currentUser.IdPersona;               

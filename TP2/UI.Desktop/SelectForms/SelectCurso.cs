@@ -25,12 +25,28 @@ namespace UI.Desktop.SelectForms
             return singleton;
         }
 
-        public SelectCurso()
+        public SelectCurso(int? idPlan = null)
         {
             InitializeComponent();
             this.dgvSelectCurso.AutoGenerateColumns = false;
-
+            Modo = ModoForm.Select;
+            if (idPlan != null)
+            {
+                IdPlan = idPlan.Value;
+                Modo = ModoForm.SelectIdPlan;
+            }
         }
+        public enum ModoForm
+        {
+            SelectIdPlan, Select
+        }
+        private ModoForm _Modo;
+        public ModoForm Modo
+        {
+            get { return _Modo; }
+            set { _Modo = value; }
+        }
+        public int IdPlan{ get; set; }
         public int IdCurso { get; set; }
         public string DescComision { get; set; }
         public string DescMateria { get; set; }
@@ -71,6 +87,10 @@ namespace UI.Desktop.SelectForms
                 {
                     //Trae de la base los cursos de este año
                     List<Curso> listaCursos = CursoLogic.GetInstance().GetAll();
+                    if (Modo == ModoForm.SelectIdPlan)
+                    {
+                        listaCursos.RemoveAll(item => item.IdPlan !=IdPlan);
+                    }
                     this.dgvSelectCurso.DataSource = listaCursos;
                     if (listaCursos.Count == 0)
                     {
@@ -116,6 +136,8 @@ namespace UI.Desktop.SelectForms
                 IdCurso = ((Business.Entities.Curso)dgvSelectCurso.SelectedRows[0].DataBoundItem).id_curso; // selecciona toda la linea y solo asigna id_curso
                 DescComision = ((Business.Entities.Curso)dgvSelectCurso.SelectedRows[0].DataBoundItem).DescComision;
                 DescMateria = ((Business.Entities.Curso)dgvSelectCurso.SelectedRows[0].DataBoundItem).DescMateria;
+                IdPlan = ((Business.Entities.Curso)dgvSelectCurso.SelectedRows[0].DataBoundItem).IdPlan; // selecciona toda la linea y solo asigna id_curso
+
                 DialogResult = DialogResult.OK;
                 Close();
                                                

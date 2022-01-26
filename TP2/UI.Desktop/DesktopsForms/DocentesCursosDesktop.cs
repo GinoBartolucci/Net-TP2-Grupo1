@@ -18,11 +18,7 @@ namespace UI.Desktop.DesktopsForms
         public DocentesCursosDesktop()
         {
             InitializeComponent();
-            cbxCargo.SelectedIndex = 0;
-            if (lblDocente.Text =="Docente")
-            {
-                btnDocente.Enabled = false;
-            }
+            cbxCargo.SelectedIndex = 0;            
         }
         public DocentesCursosDesktop(ModoForm modo) : this()
         {
@@ -30,7 +26,8 @@ namespace UI.Desktop.DesktopsForms
             Modo = modo;
             DocentesCursosActual = new Docentes_cursos();
         }
-
+        
+        private int IdPlanSelec { get; set; }
         private Docentes_cursos _DocentesCursosActual;
         public Docentes_cursos DocentesCursosActual
         {
@@ -110,44 +107,84 @@ namespace UI.Desktop.DesktopsForms
         }
 
         private void btnCurso_Click(object sender, EventArgs e)
-        {           
-            SelectCurso vSelectPlanes = new SelectCurso();
-            vSelectPlanes.ShowDialog();
-
-            if (vSelectPlanes.DialogResult != DialogResult.Cancel)
+        {   //si ya seleccion el docente le pasa un parametro con el id del plan del docente
+            if (lblDocente.Text == "Docente") 
             {
-                DocentesCursosActual.id_curso = vSelectPlanes.IdCurso;
-                DocentesCursosActual.DescComision = vSelectPlanes.DescComision;
-                DocentesCursosActual.DescMateria = vSelectPlanes.DescMateria;
-                lblCurso.Text = "Id: " + DocentesCursosActual.id_curso + "\nComision: " +
-                    DocentesCursosActual.DescComision + "\nMateria: " + DocentesCursosActual.DescMateria;
+                SelectCurso vSelectPlanes = new SelectCurso();
+                vSelectPlanes.ShowDialog();
+                if (vSelectPlanes.DialogResult != DialogResult.Cancel)
+                {
+                    DocentesCursosActual.id_curso = vSelectPlanes.IdCurso;
+                    DocentesCursosActual.DescComision = vSelectPlanes.DescComision;
+                    DocentesCursosActual.DescMateria = vSelectPlanes.DescMateria;
+                    IdPlanSelec = vSelectPlanes.IdPlan;
+                    lblCurso.Text = "Id: " + DocentesCursosActual.id_curso + "\nComision: " +
+                        DocentesCursosActual.DescComision + "\nMateria: " + DocentesCursosActual.DescMateria;
 
+                }
+                else if (Modo != ModoForm.Modificacion)
+                {
+                    Notificar("Materias", "Debe seleccionar un Curso.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else if (Modo != ModoForm.Modificacion)
+            else
             {
-                Notificar("Materias", "Debe seleccionar un Curso.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SelectCurso vSelectPlanes = new SelectCurso(IdPlanSelec);
+                vSelectPlanes.ShowDialog();
+                if (vSelectPlanes.DialogResult != DialogResult.Cancel)
+                {
+                    DocentesCursosActual.id_curso = vSelectPlanes.IdCurso;
+                    DocentesCursosActual.DescComision = vSelectPlanes.DescComision;
+                    DocentesCursosActual.DescMateria = vSelectPlanes.DescMateria;
+                    lblCurso.Text = "Id: " + DocentesCursosActual.id_curso + "\nComision: " +
+                        DocentesCursosActual.DescComision + "\nMateria: " + DocentesCursosActual.DescMateria;
+
+                }
+                else if (Modo != ModoForm.Modificacion)
+                {
+                    Notificar("Materias", "Debe seleccionar un Curso.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            
         }
 
         private void btnDocente_Click(object sender, EventArgs e)
-        {            
-            Usuarios vSelectUsuario = new Usuarios(Usuarios.ModoForm.ABM);
-            vSelectUsuario.ShowDialog();
-
-            if (vSelectUsuario.DialogResult != DialogResult.Cancel )
+        {         //si ya seleccion el curso le pasa un parametro con el id del plan del curso
+            if (lblCurso.Text == "Curso")
             {
-                DocentesCursosActual.id_docente = vSelectUsuario.IdDocente;
-                DocentesCursosActual.Nombre = vSelectUsuario.Nombre;
-                DocentesCursosActual.Apellido = vSelectUsuario.Apellido;
+                Usuarios vSelectUsuario = new Usuarios(Usuarios.ModoForm.Docente);
+                vSelectUsuario.ShowDialog();
 
-                lblDocente.Text ="Id: "+ DocentesCursosActual.id_docente + "\n" + DocentesCursosActual.NombreApellido;
+                if (vSelectUsuario.DialogResult != DialogResult.Cancel)
+                {
+                    DocentesCursosActual.id_docente = vSelectUsuario.IdPersona;
+                    DocentesCursosActual.Nombre = vSelectUsuario.Nombre;
+                    DocentesCursosActual.Apellido = vSelectUsuario.Apellido;
+                    IdPlanSelec = vSelectUsuario.IdPlan;
+
+                    lblDocente.Text = "Id: " + DocentesCursosActual.id_docente + "\n" + DocentesCursosActual.NombreApellido;
+                }
+                else if (Modo != ModoForm.Modificacion)
+                {
+                    Notificar("Materias", "Debe seleccionar un Docente.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else if(Modo != ModoForm.Modificacion)
+            else
             {
-                Notificar("Materias", "Debe seleccionar un Docente.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Usuarios vSelectUsuario = new Usuarios(Usuarios.ModoForm.Docente, IdPlanSelec);
+                vSelectUsuario.ShowDialog();
+
+                if (vSelectUsuario.DialogResult != DialogResult.Cancel)
+                {
+                    DocentesCursosActual.id_docente = vSelectUsuario.IdPersona;
+                    DocentesCursosActual.Nombre = vSelectUsuario.Nombre;
+                    DocentesCursosActual.Apellido = vSelectUsuario.Apellido;
+                    lblDocente.Text = "Id: " + DocentesCursosActual.id_docente + "\n" + DocentesCursosActual.NombreApellido;
+                }
+                else if (Modo != ModoForm.Modificacion)
+                {
+                    Notificar("Materias", "Debe seleccionar un Docente.\nSi no hay debe crear uno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-             
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
