@@ -37,16 +37,23 @@ namespace UI.Desktop
             Text = modo.ToString();
             btnPlan.Enabled = false;
             cbxTipoPersona.Enabled = false;
+
+            txtNombre.ReadOnly = true;
+            txtApellido.ReadOnly = true;
+            txtLegajo.ReadOnly = true;
+            dtpFechaNacimiento.Enabled = false;
             if (modo == ModoForm.Baja)
             {
                 txtNombre.ReadOnly = true;
-                txtEMail.ReadOnly = true;
-                txtClave.ReadOnly = true;
                 txtApellido.ReadOnly = true;
+                txtEMail.ReadOnly = true;
                 txtUsuario.ReadOnly = true;
                 txtTelefono.ReadOnly = true;
                 txtDireccion.ReadOnly = true;
+                txtLegajo.ReadOnly = true;
+                txtClave.ReadOnly = true;
                 txtConfirmarClave.ReadOnly = true;
+                dtpFechaNacimiento.Enabled = false;
                 
                 //chkHabilitado.Enabled = true;
             }

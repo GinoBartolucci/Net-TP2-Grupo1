@@ -29,9 +29,16 @@ namespace UI.Desktop.ABMListForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Materias));
+            this.ReporteAlumnoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcMaterias = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dgvMaterias = new System.Windows.Forms.DataGridView();
             this.idMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,14 +46,12 @@ namespace UI.Desktop.ABMListForms
             this.HsTotales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desc_especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.desc_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.tsMaterias = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.ReporteAlumnoBindingSource)).BeginInit();
             this.tcMaterias.ContentPanel.SuspendLayout();
             this.tcMaterias.TopToolStripPanel.SuspendLayout();
             this.tcMaterias.SuspendLayout();
@@ -55,6 +60,10 @@ namespace UI.Desktop.ABMListForms
             this.tsMaterias.SuspendLayout();
             this.SuspendLayout();
             // 
+            // ReporteAlumnoBindingSource
+            // 
+            this.ReporteAlumnoBindingSource.DataSource = typeof(Business.Entities.ReporteAlumno);
+            // 
             // tcMaterias
             // 
             // 
@@ -62,12 +71,12 @@ namespace UI.Desktop.ABMListForms
             // 
             this.tcMaterias.ContentPanel.Controls.Add(this.tableLayoutPanel1);
             this.tcMaterias.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.tcMaterias.ContentPanel.Size = new System.Drawing.Size(646, 380);
+            this.tcMaterias.ContentPanel.Size = new System.Drawing.Size(649, 456);
             this.tcMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcMaterias.Location = new System.Drawing.Point(0, 0);
             this.tcMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.tcMaterias.Name = "tcMaterias";
-            this.tcMaterias.Size = new System.Drawing.Size(646, 405);
+            this.tcMaterias.Size = new System.Drawing.Size(649, 481);
             this.tcMaterias.TabIndex = 0;
             this.tcMaterias.Text = "toolStripContainer1";
             // 
@@ -81,19 +90,72 @@ namespace UI.Desktop.ABMListForms
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 468F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.tableLayoutPanel1.Controls.Add(this.btnSeleccionar, 0, 1);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel1.Controls.Add(this.btnSeleccionar, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnSalir, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnActualizar, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.reportViewer1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dgvMaterias, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnSalir, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnActualizar, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.97938F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.020618F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(646, 380);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(649, 456);
             this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSeleccionar.Location = new System.Drawing.Point(391, 424);
+            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.TabIndex = 3;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSalir.Location = new System.Drawing.Point(572, 424);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 1;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnActualizar.Location = new System.Drawing.Point(480, 424);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.TabIndex = 0;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // reportViewer1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.reportViewer1, 3);
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.ReporteAlumnoBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "UI.Desktop.ReporteMateriasPlan.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(3, 410);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(643, 2);
+            this.reportViewer1.TabIndex = 4;
+            this.reportViewer1.Visible = false;
             // 
             // dgvMaterias
             // 
@@ -105,12 +167,13 @@ namespace UI.Desktop.ABMListForms
             this.desc_especialidad,
             this.desc_plan});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvMaterias, 3);
+            this.dgvMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMaterias.Location = new System.Drawing.Point(2, 2);
             this.dgvMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.dgvMaterias.Name = "dgvMaterias";
             this.dgvMaterias.RowTemplate.Height = 24;
             this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterias.Size = new System.Drawing.Size(642, 340);
+            this.dgvMaterias.Size = new System.Drawing.Size(645, 403);
             this.dgvMaterias.TabIndex = 2;
             // 
             // idMateria
@@ -153,30 +216,6 @@ namespace UI.Desktop.ABMListForms
             this.desc_plan.HeaderText = "Plan";
             this.desc_plan.Name = "desc_plan";
             this.desc_plan.ReadOnly = true;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnActualizar.Location = new System.Drawing.Point(480, 351);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnActualizar.TabIndex = 0;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSalir.Location = new System.Drawing.Point(569, 351);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 1;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // tsMaterias
             // 
@@ -224,28 +263,17 @@ namespace UI.Desktop.ABMListForms
             this.tsbEliminar.Visible = false;
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSeleccionar.Location = new System.Drawing.Point(391, 351);
-            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
-            this.btnSeleccionar.TabIndex = 3;
-            this.btnSeleccionar.Text = "Seleccionar";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
-            // 
             // Materias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 405);
+            this.ClientSize = new System.Drawing.Size(649, 481);
             this.Controls.Add(this.tcMaterias);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Materias";
             this.Text = "Materias";
             this.Load += new System.EventHandler(this.Materias_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ReporteAlumnoBindingSource)).EndInit();
             this.tcMaterias.ContentPanel.ResumeLayout(false);
             this.tcMaterias.TopToolStripPanel.ResumeLayout(false);
             this.tcMaterias.TopToolStripPanel.PerformLayout();
@@ -278,5 +306,7 @@ namespace UI.Desktop.ABMListForms
         private System.Windows.Forms.DataGridViewTextBoxColumn desc_plan;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnSeleccionar;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource ReporteAlumnoBindingSource;
     }
 }

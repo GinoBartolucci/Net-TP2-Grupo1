@@ -42,13 +42,13 @@ namespace UI.Desktop
             this.Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
             this.tsUsuarios = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEdiar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
             this.tcUsuarios.ContentPanel.SuspendLayout();
             this.tcUsuarios.TopToolStripPanel.SuspendLayout();
             this.tcUsuarios.SuspendLayout();
@@ -175,6 +175,16 @@ namespace UI.Desktop
             this.habilitado.Name = "habilitado";
             this.habilitado.ReadOnly = true;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(862, 370);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.TabIndex = 2;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -186,15 +196,16 @@ namespace UI.Desktop
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // btnSalir
+            // btnSeleccionar
             // 
-            this.btnSalir.Location = new System.Drawing.Point(862, 370);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 2;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSeleccionar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSeleccionar.Location = new System.Drawing.Point(700, 370);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.TabIndex = 3;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // tsUsuarios
             // 
@@ -205,7 +216,7 @@ namespace UI.Desktop
             this.tsbEliminar});
             this.tsUsuarios.Location = new System.Drawing.Point(3, 0);
             this.tsUsuarios.Name = "tsUsuarios";
-            this.tsUsuarios.Size = new System.Drawing.Size(81, 25);
+            this.tsUsuarios.Size = new System.Drawing.Size(112, 25);
             this.tsUsuarios.TabIndex = 0;
             // 
             // tsbNuevo
@@ -239,18 +250,8 @@ namespace UI.Desktop
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "toolStripButton1";
             this.tsbEliminar.ToolTipText = "Eliminar";
+            this.tsbEliminar.Visible = false;
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSeleccionar.Location = new System.Drawing.Point(700, 370);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
-            this.btnSeleccionar.TabIndex = 3;
-            this.btnSeleccionar.Text = "Seleccionar";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // Usuarios
             // 

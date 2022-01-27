@@ -27,15 +27,19 @@ namespace UI.Desktop
         {        
             InitializeComponent();
             this.dgvComisiones.AutoGenerateColumns = false;
+            Modo = ModoForm.ABM;
+            btnSeleccionar.Visible = false;
             if (idPlan != null)
             {
                 IdPlan = idPlan.Value;
                 Modo = ModoForm.SelectIdPlan;
+                btnSeleccionar.Visible = true;
+
             }
         }
         public enum ModoForm
         {
-            SelectIdPlan
+            ABM, SelectIdPlan
         }
         private ModoForm _Modo;
         public ModoForm Modo

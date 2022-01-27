@@ -105,12 +105,6 @@
     <Compile Include="ABMListForms\Especialidades.designer.cs">
       <DependentUpon>Especialidades.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABMListForms\Modulos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABMListForms\Modulos.designer.cs">
-      <DependentUpon>Modulos.cs</DependentUpon>
-    </Compile>
     <Compile Include="DesktopsForms\InscripcionesAlumnosDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,18 +116,6 @@
     </Compile>
     <Compile Include="DesktopsForms\MateriaDesktop.Designer.cs">
       <DependentUpon>MateriaDesktop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopsForms\ModulosDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DesktopsForms\ModulosDesktop.designer.cs">
-      <DependentUpon>ModulosDesktop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DesktopsForms\ModuloUsuarioDesktop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DesktopsForms\ModuloUsuarioDesktop.Designer.cs">
-      <DependentUpon>ModuloUsuarioDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="ABMListForms\DocentesCursos.cs">
       <SubType>Form</SubType>
@@ -234,20 +216,11 @@
       <DependentUpon>Especialidades.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABMListForms\Modulos.resx">
-      <DependentUpon>Modulos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DesktopsForms\InscripcionesAlumnosDesktop.resx">
       <DependentUpon>InscripcionesAlumnosDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DesktopsForms\MateriaDesktop.resx">
       <DependentUpon>MateriaDesktop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DesktopsForms\ModulosDesktop.resx">
-      <DependentUpon>ModulosDesktop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DesktopsForms\ModuloUsuarioDesktop.resx">
-      <DependentUpon>ModuloUsuarioDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABMListForms\DocentesCursos.resx">
       <DependentUpon>DocentesCursos.cs</DependentUpon>
@@ -274,6 +247,7 @@
       <DependentUpon>Materias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteAlumno.rdlc" />
+    <EmbeddedResource Include="ReporteMateriasPlan.rdlc" />
     <EmbeddedResource Include="ReporteNotas.resx">
       <DependentUpon>ReporteNotas.cs</DependentUpon>
     </EmbeddedResource>

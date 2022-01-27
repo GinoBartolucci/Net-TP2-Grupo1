@@ -8,6 +8,8 @@
         private string _descComision;
         private string _Nombre;
         private string _Apellido;
+        private string _DescCargo;
+        private int _IdPlan;
 
         public int id_dictado
         {
@@ -30,6 +32,7 @@
             get { return _cargo; }
             set { _cargo = value; }
         }
+        
 
         public string DescMateria { get => _descMateria; set => _descMateria = value; }
         public string DescComision { get => _descComision; set => _descComision = value; }
@@ -37,5 +40,7 @@
 
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string Apellido { get => _Apellido; set => _Apellido = value; }
+        public string DescCargo { get => _DescCargo; set => _DescCargo = value; }
+        public int IdPlan { get => _IdPlan; set => _IdPlan = value; }
     }
 }

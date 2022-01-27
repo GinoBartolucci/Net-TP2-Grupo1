@@ -31,6 +31,7 @@ namespace UI.Desktop.ABMListForms
             this.dgvMaterias.AutoGenerateColumns = false;
             Text = "Materias";
             Modo = ModoForm.Modo;
+            btnSeleccionar.Visible = false;
             if (Session.currentUser.TipoPersona ==3)
             {
                 tsMaterias.Visible = false; //si es alumno saca los abm
@@ -40,6 +41,9 @@ namespace UI.Desktop.ABMListForms
             {
                 Modo = ModoForm.SelectIdPlan;
                 IdPlan = idPlan.Value;
+                btnSeleccionar.Visible = true;
+                tsMaterias.Visible = false;
+
             }
         }
         public enum ModoForm
@@ -63,10 +67,16 @@ namespace UI.Desktop.ABMListForms
                 if (Session.currentUser.TipoPersona == 3)
                 {
                     this.dgvMaterias.DataSource = MateriaLogic.GetInstance().GetAllPlan(Session.currentUser.IdPlan);
+                    ReporteAlumnoBindingSource.DataSource = ReporteAlumnoLogic.GetInstance().GetReporteAlumno(Session.currentUser);
+                    this.reportViewer1.RefreshReport();
                 }
                 if (Modo == ModoForm.SelectIdPlan) 
                 {
                     this.dgvMaterias.DataSource = MateriaLogic.GetInstance().GetAllPlan(IdPlan);
+                }
+                else if(Session.currentUser.TipoPersona != 3)
+                {
+                    this.dgvMaterias.DataSource = MateriaLogic.GetInstance().GetAll();
                 }
 
             }
@@ -80,6 +90,7 @@ namespace UI.Desktop.ABMListForms
             HsTotales.DataPropertyName = "HorasTotales";
             desc_plan.DataPropertyName = "DescPlan";
             desc_especialidad.DataPropertyName = "DescEspecialidad";
+            //anio_especialidad
         }
 
 
@@ -173,6 +184,7 @@ namespace UI.Desktop.ABMListForms
         private void Materias_Load(object sender, EventArgs e)
         {
             Listar();
+            this.reportViewer1.RefreshReport();
         }
 
         public void NotificarError(Exception Error)
