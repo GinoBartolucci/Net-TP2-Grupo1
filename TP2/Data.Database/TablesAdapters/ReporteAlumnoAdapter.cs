@@ -126,7 +126,7 @@ namespace Data.Database
 
         }
 
-        public List<ReporteAlumno> GetReportesDelAlumno(int  idPersona)
+        public List<ReporteAlumno> GetReportesDelAlumno(int?  idPersona)
         {
             List<ReporteAlumno> reporteAlumno = new List<ReporteAlumno>();
             try
@@ -134,9 +134,9 @@ namespace Data.Database
                 OpenConnection();
  
 
-                SqlCommand cmdMaterias = new SqlCommand("SELECT  coalesce(com.anio_especialidad,0), coalesce(com.desc_comision,0)," +
+                SqlCommand cmdMaterias = new SqlCommand("SELECT  ISNULL(com.anio_especialidad,0) anio_especialidad, ISNULL(com.desc_comision,' ') desc_comision, " +
                     " m.desc_materia, m.id_materia, " +
-                    "  coalesce(ai.condicion,'') condicion, coalesce(ai.nota,0),  " +
+                    " ISNULL(ai.condicion,'') condicion, ISNULL(ai.nota,0) nota,  " +
                     " pl.desc_plan " +
                     " FROM materias m " +
                     " LEFT JOIN cursos c ON c.id_materia = m.id_materia " +

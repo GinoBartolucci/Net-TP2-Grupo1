@@ -30,7 +30,8 @@ namespace Business.Logic
         }
         public List<ReporteAlumno> GetReportesDelAlumno(int idAlumno)
         {
-            return ReporteAlumnoAdapter.GetInstance().GetReportesDelAlumno(idAlumno);
+            return ReporteAlumnoAdapter.GetInstance().GetReporteAlumno(new UsuarioLogic().GetOneId(idAlumno));
+            //return ReporteAlumnoAdapter.GetInstance().GetReportesDelAlumno(idAlumno);
 
         }
 

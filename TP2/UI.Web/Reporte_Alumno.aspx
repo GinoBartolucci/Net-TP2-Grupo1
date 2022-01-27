@@ -32,7 +32,7 @@
 
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetReportesDelAlumno" TypeName="Business.Logic.ReporteAlumnoLogic">
         <SelectParameters>
-            <asp:SessionParameter DefaultValue="" Name="idAlumno" SessionField="ID" Type="Int32" />
+            <asp:SessionParameter Name="idAlumno" SessionField="ID" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
 

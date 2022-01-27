@@ -28,7 +28,9 @@ namespace UI.Web
         {
             Usuario alumnoActual = (Usuario)Session["current_user"];
 
-            var reporte = new ReporteAlumnoLogic().GetReportesDelAlumno(alumnoActual.ID);
+            Session["ID"] = alumnoActual.ID;
+
+          //  var reporte = new ReporteAlumnoLogic().GetReportesDelAlumno(alumnoActual.ID);
 
            // this.Reporte_AlumnoViewer.LocalReport.ReportEmbeddedResource = "UI.Web.ReporteAlumno.rdlc"; //= "UI.Web.ReporteAlumno.rdlc";
             //this.Reporte_AlumnoViewer.LocalReport.DataSources.Clear();
