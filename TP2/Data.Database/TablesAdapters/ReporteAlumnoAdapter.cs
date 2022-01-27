@@ -51,10 +51,7 @@ namespace Data.Database
                     report.DescMateria = (string)drMaterias["desc_materia"];
                     report.IdMateria = (int)drMaterias["id_materia"];
                     report.DescPlan = (string)drMaterias["desc_plan"];
-
-
-
-
+                     
                     reporteAlumno.Add(report);
                 }
                 drMaterias.Close();
@@ -120,6 +117,80 @@ namespace Data.Database
 
         }
 
+        public List<ReporteAlumno> GetReportesDelAlumno(int  idPersona)
+        {
+            List<ReporteAlumno> reporteAlumno = new List<ReporteAlumno>();
+            try
+            {
+                OpenConnection();
+ 
+
+                SqlCommand cmdMaterias = new SqlCommand("SELECT  com.anio_especialidad, com.desc_comision, " +
+                    " m.desc_materia, m.id_materia, " +
+                    " coalesce(ai.condicion,'') condicion, ai.nota, " +
+                    " pl.desc_plan " +
+                    " FROM materias m " +
+                    " LEFT JOIN cursos c ON c.id_materia = m.id_materia " +
+                    " LEFT JOIN comisiones com ON com.id_comision = c.id_comision " +
+                    " LEFT JOIN alumnos_inscripciones ai ON ai.id_curso = c.id_curso " +
+                    " LEFT JOIN personas p ON p.id_persona = ai.id_alumno " +
+                    " LEFT JOIN planes pl ON m.id_plan = pl.id_plan " +
+                    " WHERE p.id_persona = @idPersona OR  p.id_persona is null ;", sqlConn);
+                
+                cmdMaterias.Parameters.Add("@idPersona", SqlDbType.Int).Value = idPersona;
+
+                SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
+
+                while (drMaterias.Read())
+                {
+                    ReporteAlumno report = new ReporteAlumno();
+ 
+                    report.AnioEspecialidad = (int)drMaterias["anio_especialidad"];
+                    report.DescMateria = (string)drMaterias["desc_materia"];
+                    report.IdMateria = (int)drMaterias["id_materia"];
+                    report.DescPlan = (string)drMaterias["desc_plan"];
+
+                    switch ((string)drMaterias["condicion"])
+                    {
+                        case "":
+                            report.Estado = "";
+                            break;
+                        case "Libre":
+                            report.Estado = "Libre";
+                            break;
+                        case "Cursando":
+                            report.Estado = "Cursa en: " + (string)drMaterias["desc_comision"];
+                            break;
+                        case "Regular":
+                            report.Estado = "Regular";
+                            break;
+                        case "Aprobado":
+                            report.Estado = "Aprobado con " + ((int)drMaterias["nota"]).ToString();
+                            break;
+                    }
+
+                   
+
+
+                    reporteAlumno.Add(report);
+                }
+                drMaterias.Close();
+ 
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos GetAll() " + Ex.ToString(), Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return reporteAlumno;
+
+        }
     }
 }
 /*

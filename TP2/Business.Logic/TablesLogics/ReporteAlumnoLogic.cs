@@ -28,6 +28,11 @@ namespace Business.Logic
             return ReporteAlumnoAdapter.GetInstance().GetReporteAlumno(alumno);
 
         }
+        public List<ReporteAlumno> GetReportesDelAlumno(int idAlumno)
+        {
+            return ReporteAlumnoAdapter.GetInstance().GetReportesDelAlumno(idAlumno);
+
+        }
 
     }
 }
