@@ -39,7 +39,6 @@ namespace UI.Desktop.ABMListForms
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.id_alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_inscripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,11 +61,11 @@ namespace UI.Desktop.ABMListForms
             // tcInscripcionesAlumnos.ContentPanel
             // 
             this.tcInscripcionesAlumnos.ContentPanel.Controls.Add(this.tlInscripcionesAlumnos);
-            this.tcInscripcionesAlumnos.ContentPanel.Size = new System.Drawing.Size(946, 425);
+            this.tcInscripcionesAlumnos.ContentPanel.Size = new System.Drawing.Size(854, 425);
             this.tcInscripcionesAlumnos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcInscripcionesAlumnos.Location = new System.Drawing.Point(0, 0);
             this.tcInscripcionesAlumnos.Name = "tcInscripcionesAlumnos";
-            this.tcInscripcionesAlumnos.Size = new System.Drawing.Size(946, 450);
+            this.tcInscripcionesAlumnos.Size = new System.Drawing.Size(854, 450);
             this.tcInscripcionesAlumnos.TabIndex = 0;
             this.tcInscripcionesAlumnos.Text = "toolStripContainer1";
             // 
@@ -88,14 +87,13 @@ namespace UI.Desktop.ABMListForms
             this.tlInscripcionesAlumnos.RowCount = 2;
             this.tlInscripcionesAlumnos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlInscripcionesAlumnos.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlInscripcionesAlumnos.Size = new System.Drawing.Size(946, 425);
+            this.tlInscripcionesAlumnos.Size = new System.Drawing.Size(854, 425);
             this.tlInscripcionesAlumnos.TabIndex = 0;
             // 
             // dvgInscripcionesAlumnos
             // 
             this.dvgInscripcionesAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgInscripcionesAlumnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_alumno,
             this.id_inscripcion,
             this.legajo,
             this.nombreApellido,
@@ -110,14 +108,14 @@ namespace UI.Desktop.ABMListForms
             this.dvgInscripcionesAlumnos.Name = "dvgInscripcionesAlumnos";
             this.dvgInscripcionesAlumnos.ReadOnly = true;
             this.dvgInscripcionesAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgInscripcionesAlumnos.Size = new System.Drawing.Size(940, 390);
+            this.dvgInscripcionesAlumnos.Size = new System.Drawing.Size(848, 390);
             this.dvgInscripcionesAlumnos.TabIndex = 0;
             this.dvgInscripcionesAlumnos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgInscripcionesAlumnos_CellContentClick);
             // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(787, 399);
+            this.btnActualizar.Location = new System.Drawing.Point(695, 399);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
@@ -127,7 +125,7 @@ namespace UI.Desktop.ABMListForms
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(868, 399);
+            this.btnSalir.Location = new System.Drawing.Point(776, 399);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
@@ -176,13 +174,6 @@ namespace UI.Desktop.ABMListForms
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
-            // 
-            // id_alumno
-            // 
-            this.id_alumno.Frozen = true;
-            this.id_alumno.HeaderText = "ID Alumno";
-            this.id_alumno.Name = "id_alumno";
-            this.id_alumno.ReadOnly = true;
             // 
             // id_inscripcion
             // 
@@ -244,7 +235,7 @@ namespace UI.Desktop.ABMListForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 450);
+            this.ClientSize = new System.Drawing.Size(854, 450);
             this.Controls.Add(this.tcInscripcionesAlumnos);
             this.Name = "InscripcionesAlumnos";
             this.Text = "Inscripciones Alumnos Lista";
@@ -273,7 +264,6 @@ namespace UI.Desktop.ABMListForms
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_alumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_inscripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn legajo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreApellido;

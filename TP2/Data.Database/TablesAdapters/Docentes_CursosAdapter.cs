@@ -47,8 +47,20 @@ namespace Data.Database
                     dc.id_dictado = (int)drDocentes_Cursos["id_dictado"];
                     dc.id_curso = (int)drDocentes_Cursos["id_curso"];
                     dc.id_docente = (int)drDocentes_Cursos["id_docente"];
-                    dc.cargo = (int)drDocentes_Cursos["cargo"];
 
+                    dc.cargo = (int)drDocentes_Cursos["cargo"];
+                    switch (dc.cargo)
+                    {
+                        case 0:
+                            dc.DescCargo = "Jefe";
+                            break;
+                        case 1:
+                            dc.DescCargo = "Docente";
+                            break;
+                        case 2:
+                            dc.DescCargo = "Ayudante";
+                            break;
+                    }
 
                     dc.DescMateria = (string)drDocentes_Cursos["desc_materia"];
                     dc.DescComision = (string)drDocentes_Cursos["desc_comision"];
@@ -101,6 +113,19 @@ namespace Data.Database
                     dc.id_docente = (int)drDocentes_Cursos["id_docente"];
                     dc.cargo = (int)drDocentes_Cursos["cargo"];
 
+                    switch (dc.cargo)
+                    {
+                        case 0:
+                            dc.DescCargo = "Jefe";
+                            break;
+                        case 1:
+                            dc.DescCargo = "Docente";
+                            break;
+                        case 2:
+                            dc.DescCargo = "Ayudante";
+                            break;
+                    }
+
                     dc.DescMateria = (string)drDocentes_Cursos["desc_materia"];
                     dc.DescComision = (string)drDocentes_Cursos["desc_comision"];
                     dc.Nombre = (string)drDocentes_Cursos["nombre"];
@@ -145,6 +170,20 @@ namespace Data.Database
                     dc.id_curso = (int)drDocentes_Cursos["id_curso"];
                     dc.id_docente = (int)drDocentes_Cursos["id_docente"];
                     dc.cargo = (int)drDocentes_Cursos["cargo"];
+
+                    switch (dc.cargo)
+                    {
+                        case 0:
+                            dc.DescCargo = "Jefe";
+                            break;
+                        case 1:
+                            dc.DescCargo = "Docente";
+                            break;
+                        case 2:
+                            dc.DescCargo = "Ayudante";
+                            break;
+                    }
+                    dc.IdPlan = (int)drDocentes_Cursos["id_plan"];
 
                     dc.DescMateria = (string)drDocentes_Cursos["desc_materia"];
                     dc.DescComision = (string)drDocentes_Cursos["desc_comision"];
@@ -215,7 +254,7 @@ namespace Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand("UPDATE docentes_cursos SET id_docente = @id_docente, cargo = @cargo, " +
-                    "id_curso = @id_curso" +
+                    "id_curso = @id_curso " +
                     "WHERE id_dictado = @id_dictado ", sqlConn);
 
                 cmdSave.Parameters.Add("@id_dictado", SqlDbType.Int).Value = docentes_cursos.id_dictado;
@@ -240,11 +279,10 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("INSERT INTO  (id_dictado,id_docente,id_curso,cargo)" +
-                    "values(@id_dictado,@id_docente,@id_curso,@cargo)" +
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO docentes_cursos (id_docente,id_curso,cargo) " +
+                    "values(@id_docente,@id_curso,@cargo) " +
                     "select @@identity ", sqlConn);
 
-                cmdSave.Parameters.Add("@id_dictado", SqlDbType.Int).Value = docentes_cursos.id_dictado;
                 cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = docentes_cursos.id_curso;
                 cmdSave.Parameters.Add("@id_docente", SqlDbType.Int).Value = docentes_cursos.id_docente;
                 cmdSave.Parameters.Add("@cargo", SqlDbType.Int).Value = docentes_cursos.cargo;

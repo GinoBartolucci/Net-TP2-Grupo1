@@ -55,6 +55,7 @@ namespace UI.Desktop.DesktopsForms
             lblCurso.Text = lblCurso.Text = "Id: " + DocentesCursosActual.id_curso + "\nComision: " + 
                 DocentesCursosActual.DescComision + "\nMateria: " + DocentesCursosActual.DescMateria;
             lblDocente.Text = "Id: " + DocentesCursosActual.id_docente + " " + DocentesCursosActual.NombreApellido;
+            IdPlanSelec = DocentesCursosActual.IdPlan;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -80,7 +81,6 @@ namespace UI.Desktop.DesktopsForms
                 {
                     DocentesCursosActual.State = BusinessEntity.States.New;
                 }
-                DocentesCursosActual.id_dictado = int.Parse(txtId.Text);
                 DocentesCursosActual.cargo = cbxCargo.SelectedIndex;
                 
             }
@@ -92,7 +92,7 @@ namespace UI.Desktop.DesktopsForms
         }
         public override bool Validar()
         {             
-            if (cbxCargo.SelectedIndex !=-1|| lblDocente.Text == "Docente" ||lblCurso.Text=="Curso")
+            if (cbxCargo.SelectedIndex ==-1|| lblDocente.Text == "Docente" ||lblCurso.Text=="Curso")
             {
                 Notificar("Todos los campos deben estar completos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

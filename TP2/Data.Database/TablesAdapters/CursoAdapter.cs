@@ -406,10 +406,11 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("UPDATE cursos SET id_curso = @id_curso, id_materia = @id_materia, " +
-                    "id_comision = @id_comision, anio_calendario = @anio_calendario, cupo = @cupo", sqlConn);
+                SqlCommand cmdSave = new SqlCommand("UPDATE cursos SET id_materia = @id_materia, " +
+                    "id_comision = @id_comision, anio_calendario = @anio_calendario, cupo = @cupo " +
+                    "where id_curso=@id_curso", sqlConn);
 
-                cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = curso.ID;
+                cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = curso.id_curso;
                 cmdSave.Parameters.Add("@id_materia", SqlDbType.Int).Value = curso.id_materia;
                 cmdSave.Parameters.Add("@id_comision", SqlDbType.Int).Value = curso.id_comision;
                 cmdSave.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = curso.anio_calendario;
@@ -432,11 +433,11 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdSave = new SqlCommand("INSERT INTO cursos (id_materia,id_comision,anio_calendario,cupo)" +
-                    "values(@id_materia,@id_comision,@anio_calendario,@cupo)" +
+                SqlCommand cmdSave = new SqlCommand("INSERT INTO cursos (id_materia,id_comision,anio_calendario,cupo) " +
+                    "values(@id_materia,@id_comision,@anio_calendario,@cupo) " +
                     "select @@identity ", sqlConn);
 
-              //  cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = curso.ID;
+                //  cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = curso.id_curso;
                 cmdSave.Parameters.Add("@id_materia", SqlDbType.Int).Value = curso.id_materia;
                 cmdSave.Parameters.Add("@id_comision", SqlDbType.Int).Value = curso.id_comision;
                 cmdSave.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = curso.anio_calendario;

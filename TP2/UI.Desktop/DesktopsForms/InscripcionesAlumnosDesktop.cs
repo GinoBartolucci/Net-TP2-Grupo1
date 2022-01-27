@@ -205,7 +205,9 @@ namespace UI.Desktop.DesktopsForms
             else
             {
                 InscripcionActual.IdCurso = ventanaNuevaInscripcion.IdCurso;
-                lblSelecCurso.Text = InscripcionActual.IdCurso.ToString();
+                lblSelecCurso.Text = "Id Curso: " + InscripcionActual.IdCurso.ToString() 
+                    + "\nMateria: " + ventanaNuevaInscripcion.DescMateria 
+                    + "\nComision: " + ventanaNuevaInscripcion.DescComision;
             }
         }
 

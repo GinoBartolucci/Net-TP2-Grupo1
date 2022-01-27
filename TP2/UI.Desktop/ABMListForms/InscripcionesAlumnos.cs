@@ -43,7 +43,6 @@ namespace UI.Desktop.ABMListForms
             if (Session.currentUser.TipoPersona == 3)//si es alumno no ve los botones abm
             {
                 tscInscripcionesAlumnos.Visible = false;
-                id_alumno.Visible = false;
                 nombreApellido.Visible = false;
                 legajo.Visible = false;
                 condicion.Visible = false;
@@ -55,20 +54,17 @@ namespace UI.Desktop.ABMListForms
             InitializeComponent();
             Modo = modo;
             this.dvgInscripcionesAlumnos.AutoGenerateColumns = false;
-            id_alumno.Visible = false;
             id_inscripcion.Visible = false;
             if (Modo == ModoF.Lista)
             {
                 tsbNuevo.Visible = false;
                 tsbEliminar.Visible = false;
                 tsbEditar.Visible = false;
-                id_alumno.Visible = false;
             }
             else {
                 tsbNuevo.Visible = false;
                 tsbEliminar.Visible = false;
 
-                id_alumno.Visible = false;
             }
             idCursoDocente = idCurso;
         }

@@ -116,7 +116,7 @@ namespace UI.Desktop
             nuevaInscripcion.ShowDialog();
             if (nuevaInscripcion.DialogResult == DialogResult.OK)
             {
-                MessageBox.Show("Inscripcion Correcta", "Felicidades", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Inscripcion Correcta", "Felicidades", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
         }
         private void btnMateriasPlanAlumno_Click(object sender, EventArgs e)

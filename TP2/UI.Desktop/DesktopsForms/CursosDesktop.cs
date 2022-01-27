@@ -43,6 +43,7 @@ namespace UI.Desktop.DesktopsForms
             btnComision.Enabled = false;
             btnMateria.Enabled = false;
             btnPlanEspecialidad.Enabled = false;
+            nudAniocalendario.Enabled = false;
             if (modo == ModoForm.Baja)
             {
                
@@ -86,7 +87,7 @@ namespace UI.Desktop.DesktopsForms
                 {
                     CursoActual.State = BusinessEntity.States.New;
                 }
-                CursoActual.id_curso = int.Parse(txtId.Text);
+                //CursoActual.id_curso = int.Parse(txtId.Text);
                 CursoActual.cupo = Decimal.ToInt32(nudCupo.Value);
                 CursoActual.anio_calendario = Decimal.ToInt32(nudAniocalendario.Value);
 
@@ -99,7 +100,7 @@ namespace UI.Desktop.DesktopsForms
         }
         public override bool Validar()
         {
-            if (nudAniocalendario.Value != 0 || nudCupo.Value != 0 || lblMateria.Text == "Materia" || lblComision.Text == "Comision")
+            if (nudAniocalendario.Value == 0 || nudCupo.Value == 0 || lblMateria.Text == "Materia" || lblComision.Text == "Comision")
             {
                 Notificar("Todos los campos deben estar completos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
