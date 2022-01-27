@@ -86,7 +86,7 @@ namespace UI.Desktop.DesktopsForms
                 // MateriaActual.ID = int.Parse(txtId.Text);
                 MateriaActual.DescMateria = txtDescMateria.Text;
                 MateriaActual.HorasSemanales = int.Parse(txtHsSemanales.Text);
-                MateriaActual.IdPlan = int.Parse(lblPlan.Text);
+                //MateriaActual.IdPlan = int.Parse(lblPlan.Text);
                 MateriaActual.HorasTotales = int.Parse(txtHsTotales.Text);
 
 

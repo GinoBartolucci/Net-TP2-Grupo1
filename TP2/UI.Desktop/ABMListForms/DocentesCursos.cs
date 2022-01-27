@@ -66,7 +66,7 @@ namespace UI.Desktop
             }
             id_dictado.DataPropertyName = "id_dictado";
             id_curso.DataPropertyName = "id_curso";
-            cargo.DataPropertyName = "Cargo";
+            cargo.DataPropertyName = "DescCargo";
             desc_Materia.DataPropertyName = "DescMateria";
             desc_Comision.DataPropertyName = "DescComision";              
             

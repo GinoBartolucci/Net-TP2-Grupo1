@@ -33,7 +33,7 @@ namespace Data.Database
             {
                 OpenConnection();
 
-                SqlCommand cmdMaterias = new SqlCommand("select distinct com.anio_especialidad, m.desc_materia, m.id_materia, p.desc_plan " +
+                SqlCommand cmdMaterias = new SqlCommand("select distinct coalesce( com.anio_especialidad, 0) anio_especialidad, m.desc_materia, m.id_materia, p.desc_plan " +
                     "from materias m " +
                     "inner join planes p on p.id_plan = m.id_plan " +
                     "left join cursos c on c.id_materia = m.id_materia " +                    
@@ -52,8 +52,13 @@ namespace Data.Database
                     report.DescMateria = (string)drMaterias["desc_materia"];
                     report.IdMateria = (int)drMaterias["id_materia"];
                     report.DescPlan = (string)drMaterias["desc_plan"];
-                     
-                    reporteAlumno.Add(report);
+
+
+                    if (report.AnioEspecialidad != 0)// si es 0 es porque la materia no tiene comision por lo tanto no tiene anio_especialidad
+                    {
+                        reporteAlumno.Add(report);
+                    }
+
                 }
                 drMaterias.Close();
 
@@ -87,6 +92,9 @@ namespace Data.Database
                             break;
                         case "Aprobado":
                             report.Estado = "Aprobado con " + ((int)drCursada["nota"]).ToString();
+                            break;
+                        default:
+                            report.Estado = "";
                             break;
                     }
 

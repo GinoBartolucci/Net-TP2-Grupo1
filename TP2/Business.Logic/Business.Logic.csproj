@@ -47,10 +47,7 @@
     <Compile Include="TablesLogics\Docentes_cursosLogic.cs" />
     <Compile Include="TablesLogics\Alumnos_inscripcionesLogic.cs" />
     <Compile Include="TablesLogics\MateriaLogic.cs" />
-    <Compile Include="TablesLogics\Modulos_usuariosLogic.cs" />
-    <Compile Include="TablesLogics\PersonasLogic.cs" />
     <Compile Include="TablesLogics\PlanesLogic.cs" />
-    <Compile Include="TablesLogics\ModulosLogic.cs" />
     <Compile Include="TablesLogics\BusinessLogic.cs" />
     <Compile Include="TablesLogics\ComisionesLogic.cs" />
     <Compile Include="TablesLogics\EspecialidadesLogic.cs" />

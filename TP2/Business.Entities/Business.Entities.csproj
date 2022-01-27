@@ -69,9 +69,7 @@
     <Compile Include="Tables\Planes.cs" />
     <Compile Include="Tables\Comisiones.cs" />
     <Compile Include="Tables\Especialidades.cs" />
-    <Compile Include="Tables\Modulos_usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tables\Modulos.cs" />
     <Compile Include="Tables\Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
