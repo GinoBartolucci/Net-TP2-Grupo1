@@ -14,23 +14,31 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!IsPostBack)
+            {
+                loadViewer();
+            }
+
       
+
+        }
+
+        private void loadViewer()
+        {
             Usuario alumnoActual = (Usuario)Session["current_user"];
-           
+
             var reporte = new ReporteAlumnoLogic().GetReportesDelAlumno(alumnoActual.ID);
 
-            this.Reporte_AlumnoViewer.LocalReport.DataSources.Clear();
-            ReportDataSource rds = new ReportDataSource("Reporte_AlumnoViewer", reporte);
-          
- 
+           // this.Reporte_AlumnoViewer.LocalReport.ReportEmbeddedResource = "UI.Web.ReporteAlumno.rdlc"; //= "UI.Web.ReporteAlumno.rdlc";
+            //this.Reporte_AlumnoViewer.LocalReport.DataSources.Clear();
+            //ReportDataSource rds = new ReportDataSource("Reporte_AlumnoViewer", reporte);
 
-            this.Reporte_AlumnoViewer.LocalReport.ReportEmbeddedResource = "UI.Web.ReporteAlumno.rdlc";
-             this.Reporte_AlumnoViewer.LocalReport.DataSources.Add(rds);
 
-            this.Reporte_AlumnoViewer.LocalReport.Refresh();
 
-      
+            //this.Reporte_AlumnoViewer.LocalReport.DataSources.Add(rds);
 
+           // this.Reporte_AlumnoViewer.LocalReport.Refresh();
         }
     }
 }

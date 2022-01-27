@@ -226,7 +226,6 @@
     <Content Include="Site.Master" />
     <None Include="packages.config" />
     <Content Include="ReportViewerPlanes.rdlc" />
-    <EmbeddedResource Include="ReporteAlumno.rdlc" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -248,7 +247,9 @@
       <Name>Data.Database</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ReporteAlumno.rdlc" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

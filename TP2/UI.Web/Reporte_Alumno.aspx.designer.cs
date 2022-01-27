@@ -24,12 +24,12 @@ namespace UI.Web
         protected global::Microsoft.Reporting.WebForms.ReportViewer Reporte_AlumnoViewer;
 
         /// <summary>
-        /// Reporte_AlunoObjectDataSource control.
+        /// ObjectDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource Reporte_AlunoObjectDataSource;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
     }
 }

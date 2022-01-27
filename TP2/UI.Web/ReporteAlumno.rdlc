@@ -6,21 +6,21 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>4.1275cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>4.1275cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>4.1275cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>4.1275cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.81167cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -31,7 +31,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Año</Value>
+                              <Value>Anio Especialidad</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -61,7 +61,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Materia</Value>
+                              <Value>Desc Materia</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -121,7 +121,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Plan</Value>
+                              <Value>Estado</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -145,7 +145,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.81167cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -285,13 +285,13 @@
               <KeepWithGroup>After</KeepWithGroup>
             </TablixMember>
             <TablixMember>
-              <Group Name="Detalles" />
+              <Group Name="Details" />
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet1</DataSetName>
-        <Height>1.2cm</Height>
-        <Width>10cm</Width>
+        <DataSetName>AlumnoDataSet</DataSetName>
+        <Height>1.62333cm</Height>
+        <Width>16.51cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -299,10 +299,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.90625in</Height>
+    <Height>2in</Height>
     <Style />
   </Body>
-  <Width>4in</Width>
+  <Width>6.5in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -315,18 +315,18 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="BusinessEntities">
+    <DataSource Name="BusinessLogic">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>70e24917-31aa-4cbe-a852-85c532bab93d</rd:DataSourceID>
+      <rd:DataSourceID>e93e5235-4763-4649-a197-a9771c56f1b6</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="AlumnoDataSet">
       <Query>
-        <DataSourceName>BusinessEntities</DataSourceName>
+        <DataSourceName>BusinessLogic</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -338,26 +338,28 @@
           <DataField>DescMateria</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="DescPlan">
-          <DataField>DescPlan</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="IdMateria">
+          <DataField>IdMateria</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Estado">
           <DataField>Estado</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="IdMateria">
-          <DataField>IdMateria</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="DescPlan">
+          <DataField>DescPlan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>Business.Entities</rd:DataSetName>
-        <rd:TableName>ReporteAlumno</rd:TableName>
-        <rd:ObjectDataSourceType>Business.Entities.ReporteAlumno, Business.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>Business.Logic</rd:DataSetName>
+        <rd:TableName>ReporteAlumnoLogic</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>GetReportesDelAlumno</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.Generic.List`1[Business.Entities.ReporteAlumno] GetReportesDelAlumno(Int32)</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceType>Business.Logic.ReporteAlumnoLogic, Business.Logic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>b80ab233-6ac4-42ff-821b-4b6cea508f10</rd:ReportID>
+  <rd:ReportID>6c8ac07b-b526-4842-8010-78b27e7acf5a</rd:ReportID>
 </Report>

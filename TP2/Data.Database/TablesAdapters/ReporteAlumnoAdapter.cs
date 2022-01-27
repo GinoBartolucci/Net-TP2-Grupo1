@@ -5,6 +5,7 @@ using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace Data.Database
 {
     public class ReporteAlumnoAdapter: Adapter
@@ -125,9 +126,9 @@ namespace Data.Database
                 OpenConnection();
  
 
-                SqlCommand cmdMaterias = new SqlCommand("SELECT  com.anio_especialidad, com.desc_comision, " +
+                SqlCommand cmdMaterias = new SqlCommand("SELECT  coalesce(com.anio_especialidad,0), coalesce(com.desc_comision,0)," +
                     " m.desc_materia, m.id_materia, " +
-                    " coalesce(ai.condicion,'') condicion, ai.nota, " +
+                    "  coalesce(ai.condicion,'') condicion, coalesce(ai.nota,0),  " +
                     " pl.desc_plan " +
                     " FROM materias m " +
                     " LEFT JOIN cursos c ON c.id_materia = m.id_materia " +
@@ -135,7 +136,7 @@ namespace Data.Database
                     " LEFT JOIN alumnos_inscripciones ai ON ai.id_curso = c.id_curso " +
                     " LEFT JOIN personas p ON p.id_persona = ai.id_alumno " +
                     " LEFT JOIN planes pl ON m.id_plan = pl.id_plan " +
-                    " WHERE p.id_persona = @idPersona OR  p.id_persona is null ;", sqlConn);
+                    " WHERE p.id_persona = @idPersona or p.id_persona is null", sqlConn);
                 
                 cmdMaterias.Parameters.Add("@idPersona", SqlDbType.Int).Value = idPersona;
 

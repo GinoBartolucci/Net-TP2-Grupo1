@@ -222,6 +222,9 @@
                 </a></li>
 
                 <li><a class="icon-label" href="Inscripciones.aspx">Inscripciones</a></li>
+
+                 <li><a class="icon-label" href="Reporte_Alumno.aspx">Reporte</a></li>
+
                 <li><a class="icon-label" href="LogOut.aspx"><span class="material-icons">logout</span><label>Salir</label>
                 </a></li>
             </ul>
