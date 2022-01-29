@@ -26,18 +26,18 @@ namespace Business.Entities
 
         //materia
         private string _DescMateria;
-        private int? _IdMateria;
+        private int _IdMateria;
         private string _DescPlan;
 
         private string _Estado;
 
         //public string DescComision { get => _DescComision; set => _DescComision = value; }
-        public int? AnioEspecialidad { get => _AnioEspecialidad; set => _AnioEspecialidad = (int)value; }
+        public int AnioEspecialidad { get => _AnioEspecialidad; set => _AnioEspecialidad = value; }
         //public string Condicion { get => _Condicion; set => _Condicion = value; }
         //public int Nota { get => _nota; set => _nota = value; }
         //public int IdCurso { get => _IdCurso; set => _IdCurso = value; }
         public string DescMateria { get => _DescMateria; set => _DescMateria = value; }
-        public int? IdMateria { get => _IdMateria; set => _IdMateria = value; }
+        public int IdMateria { get => _IdMateria; set => _IdMateria = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
         public string DescPlan { get => _DescPlan; set => _DescPlan = value; }
     }

@@ -44,6 +44,12 @@ namespace Business.Logic
         {
             return CursoAdapter.GetInstance().GetAllDoc(id_doc);
         }
+
+        public List<Curso> GetAllForDoc(int id_doc)
+        {
+            return CursoAdapter.GetInstance().GetAllForDoc(id_doc);
+        }
+        
         public void Save(Business.Entities.Curso c)
         {
             CursoAdapter.GetInstance().Save(c);

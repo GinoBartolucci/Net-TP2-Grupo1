@@ -40,7 +40,7 @@ namespace UI.Web
                 this.ViewState["SelectedID"] = value;
             }
         }
-        
+
         private bool IsEntitySelected
         {
             get
@@ -54,13 +54,14 @@ namespace UI.Web
 
         private UsuarioLogic Logic
         {
-            get { 
+            get
+            {
                 if (_logic == null)
                 {
                     _logic = new UsuarioLogic();
                 }
                 return _logic;
-                }
+            }
         }
 
 
@@ -77,16 +78,28 @@ namespace UI.Web
 
         protected void buscarButton_Click(object sender, EventArgs e)
         {
+            int idIngreso = int.Parse(this.idIngresoTextBox.Text);
 
             if (idIngresoTextBox.Text.Length > 0)
             {
-                LoadForm(int.Parse(idIngresoTextBox.Text));
-                this.FormMode = FormModes.Modificacion;
-                formPanel.Visible = true;
+                try
+                {
+                    idIngresoTextBox.BorderColor = System.Drawing.Color.White;
+                    ClearForm();
+                    LoadForm(idIngreso);
+
+                    this.FormMode = FormModes.Modificacion;
+                    this.formPanel.Visible = true;
+                }
+                catch (Exception er)
+                {
+
+                    idIngresoTextBox.BorderColor = System.Drawing.Color.Red;
+                }
             }
             else
             {
-                // mostrarMensajeDeError("Ingresa la ID de un alumno");
+                idIngresoTextBox.BorderColor = System.Drawing.Color.Red;
             }
 
         }
@@ -105,15 +118,20 @@ namespace UI.Web
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOneId(id);
+            this.idPersonaTextBox.Text = this.Entity.IdPersona.ToString();
             this.apellidoTextBox.Text = this.Entity.Apellido;
             this.nombreTextBox.Text = this.Entity.Nombre;
             this.emailTextBox.Text = this.Entity.Email;
             this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
             this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
 
+            LoadPersonaForm(Entity.IdPersona);
+           // EnablePersonaForm(false);
+
+
         }
 
-        
+
 
         private void EnableForm(bool enable)
         {
@@ -136,7 +154,7 @@ namespace UI.Web
 
         protected void habilitarLinkButton_Click(object sender, EventArgs e)
         {
-         
+
             if (this.IsEntitySelected)
             {
 
@@ -149,27 +167,32 @@ namespace UI.Web
 
             }
         }
-   
+
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
             if (this.IsEntitySelected)
-           {
+            {
                 this.formPanel.Visible = true;
                 this.FormMode = FormModes.Modificacion;
                 this.LoadForm(this.SelectedID);
-           }
+            }
         }
 
         private void LoadEntity(Usuario usuario)
         {
-           
-                usuario.Apellido = this.apellidoTextBox.Text;
-                usuario.Nombre = this.nombreTextBox.Text;
-                usuario.Email = this.emailTextBox.Text;
-                usuario.Clave = this.ClaveTextBox.Text;
-                usuario.NombreUsuario = this.nombreUsuarioTextBox.Text;
-                usuario.Habilitado = this.habilitadoCheckBox.Checked;          
 
+            usuario.IdPersona = int.Parse(this.idPersonaTextBox.Text);
+            usuario.Apellido = this.apellidoTextBox.Text;
+            usuario.Nombre = this.nombreTextBox.Text;
+            usuario.Email = this.emailTextBox.Text;
+            usuario.Clave = this.ClaveTextBox.Text;
+            usuario.NombreUsuario = this.nombreUsuarioTextBox.Text;
+            usuario.Habilitado = this.habilitadoCheckBox.Checked;
+
+            usuario.Telefono = this.telefonoTextBox.Text;
+            usuario.Direccion = this.direccionTextBox.Text;
+            usuario.FechaNac = DateTime.Parse(this.fechaNacimientoTextBox.Text);
+            usuario.TipoPersona = int.Parse(tipoPersonaTextBox.Text);
         }
         private void SaveEntity(Usuario usuario)
         {
@@ -198,9 +221,9 @@ namespace UI.Web
                         this.formPanel.Visible = false;
                     }
                     break;
-                   
+
                 default:
-                    break; 
+                    break;
                 case FormModes.Alta:
                     if (validacioneForm())
                     {
@@ -210,26 +233,28 @@ namespace UI.Web
                         this.LoadGrid();
                         this.formPanel.Visible = false;
                     }
-                    break; 
+                    break;
             }
-           
+
         }
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            
-                this.formPanel.Visible = true;
-                this.FormMode = FormModes.Alta;
+
+            this.formPanel.Visible = true;
+            this.FormMode = FormModes.Alta;
             this.ClearForm();
-            this.EnableForm(true); 
+            this.EnableForm(true);
         }
 
         private void ClearForm()
         {
+        
+        
             this.apellidoTextBox.Text = string.Empty;
             this.nombreTextBox.Text = string.Empty;
             this.emailTextBox.Text = string.Empty;
-            this.habilitadoCheckBox.Text = string.Empty; 
+            this.habilitadoCheckBox.Text = string.Empty;
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -241,7 +266,7 @@ namespace UI.Web
         {
             ClearForm();
             this.formPanel.Visible = false;
-            
+
         }
 
         private bool validacioneForm()
@@ -249,7 +274,7 @@ namespace UI.Web
             bool bandera = false;
             int contador = 0;
 
-            bandera = ( String.IsNullOrEmpty(nombreTextBox.Text)) ? true : false;
+            bandera = (String.IsNullOrEmpty(nombreTextBox.Text)) ? true : false;
             contador = (bandera == true) ? contador + 1 : contador;
             validacionNombreCartel.Visible = bandera;
 
@@ -265,14 +290,61 @@ namespace UI.Web
             contador = (bandera == true) ? contador + 1 : contador;
             validacionNombreUsuarioCartel.Visible = bandera;
 
-            bandera = ( String.IsNullOrEmpty(ClaveTextBox.Text) || ClaveTextBox.Text != repetirClaveTextBox.Text) ? true : false;
+            bandera = (ClaveTextBox.Text != String.Empty || (ClaveTextBox.Text != repetirClaveTextBox.Text) ) ? true : false;
             contador = (bandera == true) ? contador++ : contador;
             validacionClaveCartel.Visible = bandera;
 
 
 
 
-            return contador == 0; 
+            return contador == 0;
         }
-    } 
+
+        protected void idPersonaButton_Click(object sender, EventArgs e)
+        {
+            AlumnosGridView.DataSource = new PersonasLogic().GetAll();
+            AlumnosGridView.DataBind();
+            personaPanel.Visible = !personaPanel.Visible; 
+
+        }
+
+        protected void AlumnosGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            LoadPersonaForm(int.Parse(AlumnosGridView.SelectedValue.ToString()));
+             
+            EnablePersonaForm(false);
+
+
+            personaPanel.Visible = !personaPanel.Visible;
+
+
+        }
+
+
+        protected void EnablePersonaForm(bool bandera)
+        {
+            this.nombreTextBox.Enabled = bandera;
+            this.apellidoTextBox.Enabled = bandera;
+            this.telefonoTextBox.Enabled = bandera;
+            this.tipoPersonaTextBox.Enabled = bandera;
+            this.fechaNacimientoTextBox.Enabled = bandera;
+            this.direccionTextBox.Enabled = bandera;
+        }
+
+        protected void LoadPersonaForm(int idPersona)
+        {
+            Personas personaSelecionada = new PersonasLogic()
+               .GetOne(idPersona);
+
+            this.idPersonaTextBox.Text = personaSelecionada.ID.ToString();
+            this.nombreTextBox.Text = personaSelecionada.Nombre;
+            this.apellidoTextBox.Text = personaSelecionada.Apellido;
+            this.telefonoTextBox.Text = personaSelecionada.Telefono;
+            this.fechaNacimientoTextBox.Text = personaSelecionada.Fecha_nac.ToString();
+            this.tipoPersonaTextBox.Text = personaSelecionada.Tipo_perona.ToString();
+            this.direccionTextBox.Text = personaSelecionada.Direccion;
+        }
+
+    }
 }

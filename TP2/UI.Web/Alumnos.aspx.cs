@@ -15,7 +15,7 @@ namespace UI.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             div_mensaje_error.Visible = false;
-       
+
             this.LoadGrid();
         }
 
@@ -92,10 +92,10 @@ namespace UI.Web
         {
             try
             {
-            this.AlumnosGridView.DataSource = this.LogicAlumnos.GetAllAlumnos();
-            this.AlumnosGridView.DataBind();
+                this.AlumnosGridView.DataSource = this.LogicAlumnos.GetAllAlumnos();
+                this.AlumnosGridView.DataBind();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 div_mensaje_error.Visible = true;
                 mensaje_error.Text = ex.ToString();
@@ -103,39 +103,19 @@ namespace UI.Web
 
         }
 
-       /** private void LoadGridInscripciones(int id)
-        {
-            List<Business.Entities.Inscripciones> inscripcionesDelAlumno = this.Logic.GetAllAlum(id);
-            if(inscripcionesDelAlumno.Count > 0)
-            {
-                this.gridView.DataSource = this.Logic.GetAllAlum(id);
-                this.gridView.DataBind();
-                inscripciones_alumno.Visible = true;
-                asignarNotaInscripcionButton.Visible = true;
-                darDeBajaInscripcionButton.Visible = true;
-            }
-            else
-            {
-                mostrarMensajeDeError("No se encontraron inscripciones de este alumno");
-                asignarInscripcionButton.Visible = true;
-            }
-          
-
-        }**/
-
         private void HiddeElements()
-        { 
+        {
 
             // BOTONES
             cursosAlumnoButton.Visible = false;
-           // bajaAlumnoButton.Visible = false;
- 
+            // bajaAlumnoButton.Visible = false;
+
             modificarAlumnoButton.Visible = false;
 
             // SECCIONES
-           // inscripciones_alumno.Visible = false;
+            // inscripciones_alumno.Visible = false;
             form_alumno.Visible = false;
-            
+
         }
 
         private void modificarVistaSegunPermisosDelUsuario()
@@ -145,7 +125,7 @@ namespace UI.Web
             {
                 case "Administrativo": break;
                 case "Docente": Response.Redirect("Home.aspx"); break;
-                case "Alumno": Response.Redirect("Home.aspx");  break;
+                case "Alumno": Response.Redirect("Home.aspx"); break;
             }
 
             HiddeElements();
@@ -161,14 +141,14 @@ namespace UI.Web
             modificarAlumnoButton.Visible = false;
 
 
-            
+
         }
 
 
         private void showAdminButtons()
         {
             cursosAlumnoButton.Visible = true;
-          //  bajaAlumnoButton.Visible = true;
+            //  bajaAlumnoButton.Visible = true;
             //inscripcionesAlumnoButton.Visible = true;
             modificarAlumnoButton.Visible = true;
 
@@ -197,7 +177,7 @@ namespace UI.Web
             this.idCursoTextBox.Text = Entity.DescMateria;
             this.nombreYapellidoTextBox.Text = Entity.NombreApellido;
             this.condicionTextBox.Text = Entity.Condicion.ToString();
-            **/ 
+            **/
         }
         private void LoadEntity(Business.Entities.Personas alumno)
         {
@@ -227,13 +207,13 @@ namespace UI.Web
             {
                 mostrarMensajeDeError("Ingrese la fecha con el siguiente formato: yyyy-mm-dd \n" + error.ToString());
             }
-          
+
         }
 
         private void ClearForm()
-        { 
+        {
             this.idAlumnoIngresoTextBox.Text = string.Empty;
-            this.nombreAlumnoTextBox.Text =string.Empty;
+            this.nombreAlumnoTextBox.Text = string.Empty;
             this.apellidoAlumnoTextBox.Text = string.Empty;
             this.legajoTextBox.Text = string.Empty;
             this.direccionAlumnoTextBox.Text = string.Empty;
@@ -260,7 +240,7 @@ namespace UI.Web
             try
             {
                 if (IsEntitySelected)
-                { 
+                {
                     ClearForm();
                     LoadForm(this.SelectedID);
                     modificarAlumnoButton.Visible = false;
@@ -284,27 +264,40 @@ namespace UI.Web
 
         protected void asignarNotaAlumnoButton_Click(object sender, EventArgs e)
         {
-           // nombre.Text = Entity.NombreApellido;
+            // nombre.Text = Entity.NombreApellido;
 
 
         }
 
         protected void buscarButton_Click(object sender, EventArgs e)
         {
+
+            int idIngreso = int.Parse(this.idAlumnoIngresoTextBox.Text);
             if (idAlumnoIngresoTextBox.Text.Length > 0)
             {
-                LoadForm(int.Parse(idAlumnoIngresoTextBox.Text));
-                tituloForm.Text = "Modificar alumno";
-                this.FormMode = FormModes.Modificacion;
-                cursosAlumnoButton.Visible = true;
-                //inscripcionesAlumnoButton.Visible = true;
+                try
+                {
+                    ClearForm();
+                    LoadForm(idIngreso);
+                    tituloForm.Text = "Modificar alumno";
+                    this.FormMode = FormModes.Modificacion;
+                    cursosAlumnoButton.Visible = true;
+                    idAlumnoIngresoTextBox.BorderColor = System.Drawing.Color.White;
+                }
+                catch (Exception er)
+                {
+                    mostrarMensajeDeError("No existe o fue mal ingresado");
+                    idAlumnoIngresoTextBox.BorderColor = System.Drawing.Color.Red;
+                }
             }
             else
             {
                 mostrarMensajeDeError("Ingresa la ID de un alumno");
+                idAlumnoIngresoTextBox.BorderColor = System.Drawing.Color.Red;
+
             }
-             
-        } 
+
+        }
 
         //protected void inscripcionesAlumnoButton_Click(object sender, EventArgs e)
         //{
@@ -334,7 +327,7 @@ namespace UI.Web
 
         protected void asignarInscripcionButton_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         protected void formAlumnoButton_Click(object sender, EventArgs e)
@@ -343,31 +336,31 @@ namespace UI.Web
 
             try
             {
-              
-            switch (this.FormMode)
-            {
-                case FormModes.Baja:
-                   // this.DeleteEntity(this.SelectedID);
-                    this.LoadGrid();
-                    break;
-                case FormModes.Modificacion:
-                    this.Entity = new Business.Entities.Personas();
-                    this.Entity.ID = this.SelectedID;
-                    this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
-                    this.LoadEntity(this.Entity);
-                    LogicAlumnos.Save(Entity);
-                    this.LoadGrid();
-                    break;
-                default:
-                    break;
-                case FormModes.Alta:
-                    this.Entity = new Business.Entities.Personas();
-                    this.LoadEntity(this.Entity);
-                    LogicAlumnos.Save(Entity);
-                    this.LoadGrid();
-                    break;
-            }
-            this.form_alumno.Visible = false;
+
+                switch (this.FormMode)
+                {
+                    case FormModes.Baja:
+                        // this.DeleteEntity(this.SelectedID);
+                        this.LoadGrid();
+                        break;
+                    case FormModes.Modificacion:
+                        this.Entity = new Business.Entities.Personas();
+                        this.Entity.ID = this.SelectedID;
+                        this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
+                        this.LoadEntity(this.Entity);
+                        LogicAlumnos.Save(Entity);
+                        this.LoadGrid();
+                        break;
+                    default:
+                        break;
+                    case FormModes.Alta:
+                        this.Entity = new Business.Entities.Personas();
+                        this.LoadEntity(this.Entity);
+                        LogicAlumnos.Save(Entity);
+                        this.LoadGrid();
+                        break;
+                }
+                this.form_alumno.Visible = false;
             }
             catch (Exception error)
             {
@@ -414,9 +407,9 @@ namespace UI.Web
 
     }
 
-       
 
 
-    }
 
- 
+}
+
+

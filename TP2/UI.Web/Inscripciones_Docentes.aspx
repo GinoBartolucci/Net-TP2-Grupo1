@@ -30,14 +30,14 @@
 
                 <Columns>
                     <asp:BoundField HeaderText="ID" DataField="id_dictado" />
-                    <asp:BoundField HeaderText="Docente" DataField="NombreApellido" />
+                    <asp:BoundField HeaderText="Docente" DataField="NombreApellido" Visible="True" />
  
 
 
                     <asp:BoundField HeaderText="Materia" DataField="DescMateria" Visible="True" />
                     <asp:BoundField HeaderText="Comision" DataField="DescComision" Visible="True" />
 
-                    <asp:BoundField HeaderText="Cargo" DataField="cargo" />
+                    <asp:BoundField HeaderText="Cargo" DataField="DescCargo" />
                     <asp:CommandField HeaderText="SeleIccionar" ShowSelectButton="True" />
 
                 </Columns>

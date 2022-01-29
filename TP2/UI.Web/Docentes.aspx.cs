@@ -239,11 +239,19 @@ namespace UI.Web
         {
             if (idDocenteIngresoTextBox.Text.Length > 0)
             {
+                try
+                {
                 LoadForm(int.Parse(idDocenteIngresoTextBox.Text));
                 tituloForm.Text = "Modificar docente";
                 this.FormMode = FormModes.Modificacion;
-                //cursosAlumnoButton.Visible = true;
-               // inscripcionesAlumnoButton.Visible = true;
+
+                }
+                catch(Exception er)
+                {
+                    mostrarMensajeDeError("No existe o fue mal ingresado");
+
+                }
+           
             }
             else
             {

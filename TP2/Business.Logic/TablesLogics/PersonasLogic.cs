@@ -12,6 +12,9 @@ namespace Business.Logic
     {
         private PersonasAdapter PersonasData;
 
+        private int tipoPersonaDocente = 2;
+        private int tipoPersonaAlumno = 3;
+
         public PersonasLogic(){
             PersonasData = new PersonasAdapter();
         }
@@ -25,9 +28,15 @@ namespace Business.Logic
         }
         public List<Personas> GetAlumnsByCourse(int idCurso)
         {
-            return PersonasData.GetAlumnsByCourse(idCurso);
+            return PersonasData.GetPersonasByCourse(idCurso, tipoPersonaAlumno);
         }
-        
+
+        public List<Personas> GetDocentesByCourse(int idCurso)
+        {
+            return PersonasData.GetPersonasByCourse(idCurso, tipoPersonaDocente);
+        }
+
+
         public void Save(Personas p)
         {
             PersonasData.Save(p);
@@ -39,11 +48,11 @@ namespace Business.Logic
 
         public List<Personas> GetAllAlumnos()
         {
-            return PersonasData.GetAllAlumnos(); 
+            return PersonasData.GetAllTipoPersona(tipoPersonaAlumno); 
         }
         public List<Personas> GetAllDocentes()
         {
-            return PersonasData.GetAllDocentes(); 
+            return PersonasData.GetAllTipoPersona(tipoPersonaDocente);
         }
     }
 }

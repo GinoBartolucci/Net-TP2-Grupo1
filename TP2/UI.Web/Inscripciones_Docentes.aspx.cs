@@ -107,8 +107,28 @@ namespace UI.Web
 
         protected void buscarButton_Click(object sender, EventArgs e)
         {
-            LoadForm(int.Parse(this.ingresoTextBox.Text));
-            this.formPanel.Visible = true;
+
+            if (ingresoTextBox.Text.Length > 0)
+            {
+                try
+                {
+                    ingresoTextBox.BorderColor = System.Drawing.Color.White;
+                    ClearForm();
+                    LoadForm(int.Parse(ingresoTextBox.Text));
+                    tituloForm.Text = "Modificar inscripcion";
+                    this.FormMode = FormModes.Modificacion;
+                    this.formPanel.Visible = true;
+                }
+                catch (Exception er)
+                {
+
+                    ingresoTextBox.BorderColor = System.Drawing.Color.Red;
+                }
+            }
+            else
+            {
+                ingresoTextBox.BorderColor = System.Drawing.Color.Red;
+            }
 
 
         }
@@ -118,12 +138,15 @@ namespace UI.Web
             Usuario usr = (Usuario)Session["current_user"];
             switch (usr.DescTipoPersona)
             {
-                case "Administrativo": this.gridView.DataSource = this.Logic.GetAll(); break;
+                case "Administrativo": 
+                    this.gridView.DataSource = this.Logic.GetAll();
+                    this.gridView.Columns[1].Visible = true;
+                    break;
                 case "Docente":
                     this.gridView.DataSource = this.Logic.GetAllYearDoc(usr.IdPersona, 2020);
                     this.gridView.Columns[0].Visible = false;
                     this.gridView.Columns[1].Visible = false;
-                    this.gridView.Columns[6].Visible = false;
+                    this.gridView.Columns[5].Visible = false;
                     break;
                 case "Alumno":
                     Response.Redirect("Home.aspx");
@@ -289,9 +312,9 @@ namespace UI.Web
         {
             this.tablaCurso.Visible = false;
             AlumnosGridView.DataSource = (idCursoTextBox.Text != string.Empty) ?
-                    new PersonasLogic().GetAlumnsByCourse(int.Parse(idCursoTextBox.Text))
+                    new PersonasLogic().GetDocentesByCourse(int.Parse(idCursoTextBox.Text))
                     :
-                    new PersonasLogic().GetAllAlumnos();
+                    new PersonasLogic().GetAllDocentes();
             AlumnosGridView.DataBind();
             this.alumnosPanel.Visible = true;
 
@@ -304,15 +327,15 @@ namespace UI.Web
             Usuario usr = (Usuario)Session["current_user"];
             switch (usr.DescTipoPersona)
             {
-                case "Docente": break;
-                case "Alumno":
+                case "Administrativo": break;
+                case "Docente":
                     idPersonaTextBox.Text = usr.IdPersona.ToString();
                     break;
             }
 
             this.alumnosPanel.Visible = false;
             cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty) ?
-                    new CursoLogic().GetAllForAlum(int.Parse(idPersonaTextBox.Text))
+                    new CursoLogic().GetAllForDoc(int.Parse(idPersonaTextBox.Text))
                     :
                     new CursoLogic().GetAll();
             cursoGridView.DataBind();

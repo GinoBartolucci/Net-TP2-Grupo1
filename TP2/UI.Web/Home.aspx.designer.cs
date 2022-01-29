@@ -24,13 +24,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Label nombreAlumno;
 
         /// <summary>
-        /// especialidadAlumno control.
+        /// tipoPersonaLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label especialidadAlumno;
+        protected global::System.Web.UI.WebControls.Label tipoPersonaLabel;
 
         /// <summary>
         /// planAlumno control.

@@ -85,69 +85,69 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Personas\Alumnos.aspx" />
-    <Content Include="Institucional\Comisiones.aspx" />
-    <Content Include="Institucional\Cursos.aspx" />
-    <Content Include="Personas\Docentes.aspx" />
-    <Content Include="Institucional\Especialidades.aspx" />
+    <Content Include="Alumnos.aspx" />
+    <Content Include="Comisiones.aspx" />
+    <Content Include="Cursos.aspx" />
+    <Content Include="Docentes.aspx" />
+    <Content Include="Especialidades.aspx" />
     <Content Include="Home.aspx" />
-    <Content Include="Inscripciones\Inscripciones.aspx" />
-    <Content Include="Inscripciones\Inscripciones_Docentes.aspx" />
+    <Content Include="Inscripciones.aspx" />
+    <Content Include="Inscripciones_Docentes.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="LogOut.aspx" />
-    <Content Include="Institucional\Materias.aspx" />
-    <Content Include="Institucional\Planes.aspx" />
+    <Content Include="Materias.aspx" />
+    <Content Include="Planes.aspx" />
     <Content Include="ReportePlanes.aspx" />
     <Content Include="Reporte_Alumno.aspx" />
     <Content Include="Styles\SiteMaster.css" />
     <Content Include="Styles\tablas.css" />
-    <Content Include="Personas\Usuarios.aspx" />
+    <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Personas\Alumnos.aspx.cs">
+    <Compile Include="Alumnos.aspx.cs">
       <DependentUpon>Alumnos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Personas\Alumnos.aspx.designer.cs">
+    <Compile Include="Alumnos.aspx.designer.cs">
       <DependentUpon>Alumnos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Inscripciones\Inscripciones_Docentes.aspx.cs">
+    <Compile Include="Inscripciones_Docentes.aspx.cs">
       <DependentUpon>Inscripciones_Docentes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Inscripciones\Inscripciones_Docentes.aspx.designer.cs">
+    <Compile Include="Inscripciones_Docentes.aspx.designer.cs">
       <DependentUpon>Inscripciones_Docentes.aspx</DependentUpon>
     </Compile>
     <Compile Include="methods.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Institucional\Comisiones.aspx.cs">
+    <Compile Include="Comisiones.aspx.cs">
       <DependentUpon>Comisiones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Institucional\Comisiones.aspx.designer.cs">
+    <Compile Include="Comisiones.aspx.designer.cs">
       <DependentUpon>Comisiones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Institucional\Cursos.aspx.cs">
+    <Compile Include="Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Institucional\Cursos.aspx.designer.cs">
+    <Compile Include="Cursos.aspx.designer.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Personas\Docentes.aspx.cs">
+    <Compile Include="Docentes.aspx.cs">
       <DependentUpon>Docentes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Personas\Docentes.aspx.designer.cs">
+    <Compile Include="Docentes.aspx.designer.cs">
       <DependentUpon>Docentes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Institucional\Especialidades.aspx.cs">
+    <Compile Include="Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Institucional\Especialidades.aspx.designer.cs">
+    <Compile Include="Especialidades.aspx.designer.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
@@ -157,11 +157,11 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Inscripciones\Inscripciones.aspx.cs">
+    <Compile Include="Inscripciones.aspx.cs">
       <DependentUpon>Inscripciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Inscripciones\Inscripciones.aspx.designer.cs">
+    <Compile Include="Inscripciones.aspx.designer.cs">
       <DependentUpon>Inscripciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
@@ -178,18 +178,18 @@
     <Compile Include="LogOut.aspx.designer.cs">
       <DependentUpon>LogOut.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Institucional\Materias.aspx.cs">
+    <Compile Include="Materias.aspx.cs">
       <DependentUpon>Materias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Institucional\Materias.aspx.designer.cs">
+    <Compile Include="Materias.aspx.designer.cs">
       <DependentUpon>Materias.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Institucional\Planes.aspx.cs">
+    <Compile Include="Planes.aspx.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Institucional\Planes.aspx.designer.cs">
+    <Compile Include="Planes.aspx.designer.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,11 +214,11 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Personas\Usuarios.aspx.cs">
+    <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Personas\Usuarios.aspx.designer.cs">
+    <Compile Include="Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -250,6 +250,7 @@
   <ItemGroup>
     <EmbeddedResource Include="ReporteAlumno.rdlc" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

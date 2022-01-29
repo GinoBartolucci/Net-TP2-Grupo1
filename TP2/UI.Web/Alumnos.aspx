@@ -5,13 +5,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <h2>Alumnos</h2>
     <hr />
-  
-    <div class="form-label-input">
-        <label class="form" style="width: 100%">
-            ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID del alumno" ID="idAlumnoIngresoTextBox" runat="server"></asp:TextBox>
 
-        </label>
+    <div class="form-label-input">
+
+        <asp:Label ID="IDbuscadorLabel" runat="server" CssClass="form" Width="100%" Text="ID: ">
+
+        </asp:Label>
+            <asp:TextBox CssClass="form-input" placeholder="ingresar ID " ID="idAlumnoIngresoTextBox" runat="server"></asp:TextBox>
+
         <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
     </div>
 
@@ -43,7 +44,7 @@
     <br />
 
 
-    <asp:Button class="btn btn-info" ID="cursosAlumnoButton" runat="server" Text="Ver cursos"  />
+    <asp:Button class="btn btn-info" ID="cursosAlumnoButton" runat="server" Text="Ver cursos" />
     <asp:Button class="btn btn-dark" ID="modificarAlumnoButton" runat="server" Text="Modificar" OnClick="modificarAlumnoButton_Click1" />
     <asp:Button ID="agregarAlumnoButton" class="btn btn-success" runat="server" Text="Nuevo alumno" OnClick="agregarAlumnoButton_Click" />
 

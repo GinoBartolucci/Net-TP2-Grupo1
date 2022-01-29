@@ -13,19 +13,47 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["current_user"] != null)
+            Usuario usuarioActual = (Usuario)Session["current_user"];
+            pantallaSegunTipoPersona(usuarioActual.DescTipoPersona);
+        }
+
+
+        private void pantallaSegunTipoPersona(string tipoPersona)
+        {
+
+            switch(tipoPersona)
             {
-                Usuario usuario = (Usuario)Session["current_user"];
-                nombreAlumno.Text = usuario.Apellido + " " + usuario.Nombre;
-                especialidadAlumno.Text = "Estudiante de " + usuario.Email;                
-                planAlumno.Text = "Plan " + "2008";
-            }
-            else
-            {
+                case "Docente": pantallaDocente();  break;
+                case "Alumno": pantallaAlumno(); break;
+                case "Administrativo": pantallaAdminsitrador(); break;
             }
         }
 
 
-    
+        private void pantallaAlumno()
+        {
+            Usuario usuario = (Usuario)Session["current_user"];
+            nombreAlumno.Text = usuario.Apellido + " " + usuario.Nombre;
+            tipoPersonaLabel.Text = "Estudiante de " + usuario.DescEspecialidad;
+            planAlumno.Text = "Plan " + usuario.DescPlan;
+        }
+
+        private void pantallaAdminsitrador()
+        {
+            Usuario usuario = (Usuario)Session["current_user"];
+            nombreAlumno.Text = usuario.Apellido + " " + usuario.Nombre;
+            tipoPersonaLabel.Text = "Administrador";
+            planAlumno.Text = " " ;
+        }
+        private void pantallaDocente()
+        {
+            Usuario usuario = (Usuario)Session["current_user"];
+            nombreAlumno.Text = usuario.Apellido + " " + usuario.Nombre;
+            tipoPersonaLabel.Text = "Profesor";
+            planAlumno.Text = " ";
+        }
+
+
+
     }
 }

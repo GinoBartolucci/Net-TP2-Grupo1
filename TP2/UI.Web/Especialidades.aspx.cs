@@ -12,7 +12,7 @@ namespace UI.Web
 {
     public partial class Especialidades : System.Web.UI.Page
     {
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.LoadGrid();
@@ -97,7 +97,7 @@ namespace UI.Web
         {
 
             this.descripcionEspecialidadLabel.Visible = enable;
-            this.descripcionTextBox.Enabled = enable; // >>> ???? >> > > > > >> > > > > > > > > 
+            this.descripcionTextBox.Enabled = enable;  
         }
 
         private void LoadForm(int id)
@@ -129,36 +129,36 @@ namespace UI.Web
                 this.LoadForm(this.SelectedID);
             }
         }
- 
+
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            if(descripcionTextBox.Text.Length > 0)
+            if (descripcionTextBox.Text.Length > 0)
             {
-            switch (this.FormMode)
-            {
-                case FormModes.Baja:
-                    this.DeleteEntity(this.SelectedID);
-                    this.LoadGrid();
-                    break;
-                case FormModes.Modificacion:
-                    this.Entity = new Business.Entities.Especialidades();
-                    this.Entity.ID = this.SelectedID;
-                    this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
-                    this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
-                    this.LoadGrid();
-                    break;
-                default:
-                    break;
-                case FormModes.Alta:
-                    this.Entity = new Business.Entities.Especialidades();
-                    this.LoadEntity(this.Entity);
-                    this.SaveEntity(this.Entity);
-                    this.LoadGrid();
-                    break;
-            }
-            this.formPanel.Visible = false;
-            validacionDescripcionEspecialidad.Visible = false;
+                switch (this.FormMode)
+                {
+                    case FormModes.Baja:
+                        this.DeleteEntity(this.SelectedID);
+                        this.LoadGrid();
+                        break;
+                    case FormModes.Modificacion:
+                        this.Entity = new Business.Entities.Especialidades();
+                        this.Entity.ID = this.SelectedID;
+                        this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
+                        this.LoadEntity(this.Entity);
+                        this.SaveEntity(this.Entity);
+                        this.LoadGrid();
+                        break;
+                    default:
+                        break;
+                    case FormModes.Alta:
+                        this.Entity = new Business.Entities.Especialidades();
+                        this.LoadEntity(this.Entity);
+                        this.SaveEntity(this.Entity);
+                        this.LoadGrid();
+                        break;
+                }
+                this.formPanel.Visible = false;
+                validacionDescripcionEspecialidad.Visible = false;
             }
             else
             {
@@ -192,15 +192,24 @@ namespace UI.Web
         {
             if (especialidadIngresoTextBox.Text.Length > 0)
             {
-                LoadForm(int.Parse(especialidadIngresoTextBox.Text));
-                tituloForm.Text = "Modificar alumno";
-                this.FormMode = FormModes.Modificacion;
-                this.formPanel.Visible = true;
-              
+                try
+                {
+
+                    ClearForm();
+                    LoadForm(int.Parse(especialidadIngresoTextBox.Text));
+                    tituloForm.Text = "Modificar alumno";
+                    this.FormMode = FormModes.Modificacion;
+                    this.formPanel.Visible = true;
+                }
+                catch (Exception er)
+                {
+
+                    especialidadIngresoTextBox.BorderColor = System.Drawing.Color.Red;
+                }
             }
             else
             {
-               // mostrarMensajeDeError("Ingresa la ID de un alumno");
+                especialidadIngresoTextBox.BorderColor = System.Drawing.Color.Red;
             }
         }
     }

@@ -112,8 +112,24 @@ namespace UI.Web
 
         protected void buscarButton_Click(object sender, EventArgs e)
         {
-            LoadForm(int.Parse(this.ingresoTextBox.Text));
-            this.formPanel.Visible = true;
+            if (this.ingresoTextBox.Text != String.Empty)
+            {
+                try
+                {
+                    ingresoTextBox.BorderColor = System.Drawing.Color.White;
+                    LoadForm(int.Parse(this.ingresoTextBox.Text));
+                    this.formPanel.Visible = true;
+                }
+                catch (Exception er)
+                {
+
+                    ingresoTextBox.BorderColor = System.Drawing.Color.Red;
+                }
+            }
+            else
+            {
+                ingresoTextBox.BorderColor = System.Drawing.Color.Red;
+            }
 
 
         }

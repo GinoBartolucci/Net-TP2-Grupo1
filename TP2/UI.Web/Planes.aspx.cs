@@ -197,14 +197,24 @@ namespace UI.Web
 
             if (idIngresoTextBox.Text.Length > 0)
             {
-                LoadForm(int.Parse(idIngresoTextBox.Text));
-                tituloForm.Text = "Modificar alumno";
-                this.FormMode = FormModes.Modificacion;
-                this.formPanel.Visible = true;
+                try
+                {
+                    idIngresoTextBox.BorderColor = System.Drawing.Color.White;
+                    ClearForm();
+                    LoadForm(int.Parse(idIngresoTextBox.Text));
+                    tituloForm.Text = "Modificar plan";
+                    this.FormMode = FormModes.Modificacion;
+                    this.formPanel.Visible = true;
+                }
+                catch (Exception er)
+                {
+
+                    idIngresoTextBox.BorderColor = System.Drawing.Color.Red;
+                }
             }
             else
             {
-                // mostrarMensajeDeError("Ingresa la ID de un alumno");
+                idIngresoTextBox.BorderColor = System.Drawing.Color.Red;
             }
 
         }

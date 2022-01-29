@@ -59,17 +59,18 @@ namespace Data.Database.TablesAdapters
 
         }
 
-        public List<Personas> GetAllAlumnos()
+        public List<Personas> GetAllTipoPersona(int tipoPersona)
         {
             List<Personas> personas = new List<Personas>();
             try
             {
                 OpenConnection();
 
-                SqlCommand cmdPersonas = new SqlCommand("select * from personas WHERE tipo_persona = 2", sqlConn);
+                SqlCommand cmdPersonas = new SqlCommand("SELECT * " +
+                    "   FROM personas WHERE tipo_persona = @tipoPersona ", sqlConn);
 
                 SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
-
+                cmdPersonas.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = tipoPersona;
                 while (drPersonas.Read())
                 {
                     Personas per = new Personas();
@@ -91,7 +92,7 @@ namespace Data.Database.TablesAdapters
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de alumnos.", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista.", Ex);
                 throw ExcepcionManejada;
             }
             finally
@@ -103,7 +104,7 @@ namespace Data.Database.TablesAdapters
 
         }
 
-        public List<Personas> GetAlumnsByCourse(int IdCurso)
+        public List<Personas> GetPersonasByCourse(int IdCurso, int tipoPersona)
         {
             List<Personas> personas = new List<Personas>();
             try
@@ -116,12 +117,12 @@ namespace Data.Database.TablesAdapters
 
                 " INNER JOIN comisiones c ON c.id_comision = cur.id_comision " +
 
-                " INNER JOIN personas p ON p.id_plan = m.id_plan " + 
+                " INNER JOIN personas p ON p.id_plan = m.id_plan " +
 
-               " WHERE cur.id_curso = @idCurso AND tipo_persona = 2", sqlConn);
+               " WHERE cur.id_curso = @idCurso AND tipo_persona = @tipoPersona", sqlConn);
 
                 cmdPersonas.Parameters.Add("@idCurso", SqlDbType.Int).Value = IdCurso;
-
+                cmdPersonas.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = tipoPersona;
                 SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
 
                 while (drPersonas.Read())
@@ -157,49 +158,7 @@ namespace Data.Database.TablesAdapters
 
         }
 
-        public List<Personas> GetAllDocentes()
-        {
-            List<Personas> personas = new List<Personas>();
-            try
-            {
-                OpenConnection();
-
-                SqlCommand cmdPersonas = new SqlCommand("select * from personas WHERE tipo_persona = 1", sqlConn);
-
-                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
-
-                while (drPersonas.Read())
-                {
-                    Personas per = new Personas();
-
-                    per.ID = (int)drPersonas["id_persona"];
-                    per.Nombre = (string)drPersonas["nombre"];
-                    per.Apellido = (string)drPersonas["apellido"];
-                    per.Direccion = (string)drPersonas["direccion"];
-                    per.Email = (string)drPersonas["email"];
-                    per.Telefono = (string)drPersonas["telefono"];
-                    per.Legajo = (int)drPersonas["legajo"];
-                    per.Tipo_perona = (int)drPersonas["tipo_persona"];
-                    per.Fecha_nac = (DateTime)drPersonas["fecha_nac"];
-
-                    personas.Add(per);
-                }
-
-                drPersonas.Close();
-            }
-            catch (Exception Ex)
-            {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de docentes.", Ex);
-                throw ExcepcionManejada;
-            }
-            finally
-            {
-                CloseConnection();
-            }
-
-            return personas;
-
-        }
+      
         public Personas GetOne(int ID)
         {
             Personas per = new Personas();

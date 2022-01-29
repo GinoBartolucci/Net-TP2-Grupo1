@@ -18,10 +18,12 @@
         </style>
     
         <asp:Label cssClass="label-top" runat="server" id="nombreAlumno" Font-Size="24px" >NombreAlumno</asp:Label>
-        <asp:Label cssClass="label-top" runat="server" id="especialidadAlumno" Font-Size="20px" ForeColor="Gray" >Estudiante de Lorem impsum</asp:Label>
-        <asp:Label cssClass="label-top" runat="server" id="planAlumno" Font-Size="18px" ForeColor="Gray" >Plan IMPSUM</asp:Label>
         <hr />
+        <asp:Label cssClass="label-top" runat="server" id="tipoPersonaLabel" Font-Size="20px" ForeColor="Gray" >Estudiante de Lorem impsum</asp:Label>
+        <asp:Label cssClass="label-top" runat="server" id="planAlumno" Font-Size="18px" ForeColor="Gray" >Plan IMPSUM</asp:Label>
         <br />
+        
+
         
 
  

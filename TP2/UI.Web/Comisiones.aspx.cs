@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 //using Business.Entities.Tables;
 using Business.Entities;
 using Business.Logic;
+
 namespace UI.Web
 {
     public partial class Comisiones : System.Web.UI.Page
@@ -80,14 +81,21 @@ namespace UI.Web
 
             if (idIngresoTextBox.Text.Length > 0)
             {
-                LoadForm(int.Parse(idIngresoTextBox.Text));
-              
-                this.FormMode = FormModes.Modificacion;
-                formPanel.Visible = true;
+                try
+                {
+                    LoadForm(int.Parse(idIngresoTextBox.Text));
+                    this.FormMode = FormModes.Modificacion;
+                    formPanel.Visible = true;
+                }
+                catch (Exception er)
+                {
+
+                    idIngresoTextBox.BorderColor = System.Drawing.Color.Red;
+                }
             }
             else
             {
-                // mostrarMensajeDeError("Ingresa la ID de un alumno");
+                idIngresoTextBox.BorderColor = System.Drawing.Color.Red;
             }
 
         }
@@ -107,7 +115,7 @@ namespace UI.Web
 
             this.descripcionTextBox.Enabled = enable;
             this.anioEspecialidadTextBox.Enabled = enable;
- 
+
 
         }
 
@@ -130,15 +138,15 @@ namespace UI.Web
 
         private void mostrarOpcionesABM(int tipoPersona)
         {
- 
-                this.cancelarLinkButton.Visible = true;
-                this.aceptarLinkButton.Visible = true;
-                this.editarLinkButton.Visible = true;
 
-                this.nuevoLinkButton.Visible = true;
-                this.gridView.Visible = true;
-                this.gridPanel.Visible = true;
-      
+            this.cancelarLinkButton.Visible = true;
+            this.aceptarLinkButton.Visible = true;
+            this.editarLinkButton.Visible = true;
+
+            this.nuevoLinkButton.Visible = true;
+            this.gridView.Visible = true;
+            this.gridPanel.Visible = true;
+
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
