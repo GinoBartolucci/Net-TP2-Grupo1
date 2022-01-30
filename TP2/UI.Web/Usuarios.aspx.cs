@@ -341,7 +341,7 @@ namespace UI.Web
             this.nombreTextBox.Text = personaSelecionada.Nombre;
             this.apellidoTextBox.Text = personaSelecionada.Apellido;
             this.telefonoTextBox.Text = personaSelecionada.Telefono;
-            this.fechaNacimientoTextBox.Text = personaSelecionada.Fecha_nac.ToString();
+            this.fechaNacimientoTextBox.Text = String.Format("{0:yyyy-MM-dd}", personaSelecionada.Fecha_nac);
             this.tipoPersonaTextBox.Text = personaSelecionada.Tipo_perona.ToString();
             this.direccionTextBox.Text = personaSelecionada.Direccion;
         }

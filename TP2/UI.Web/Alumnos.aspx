@@ -11,13 +11,13 @@
         <asp:Label ID="IDbuscadorLabel" runat="server" CssClass="form" Width="100%" Text="ID: ">
 
         </asp:Label>
-            <asp:TextBox CssClass="form-input" placeholder="ingresar ID " ID="idAlumnoIngresoTextBox" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="form-input" type="number" min="0" placeholder="ingresar ID " ID="idAlumnoIngresoTextBox" runat="server"></asp:TextBox>
 
         <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
     </div>
 
     <br />
-    <asp:Panel ID="alumnosPanel" runat="server" CssClass="tabla">
+    <asp:Panel ID="alumnosPanel" runat="server" CssClass="tabla" >
         <asp:GridView ID="AlumnosGridView" runat="server" AutoGenerateColumns="False"
             SelectedRowStyle-BackColor="Black"
             SelectedRowStyle-ForeColor="White"
@@ -44,7 +44,7 @@
     <br />
 
 
-    <asp:Button class="btn btn-info" ID="cursosAlumnoButton" runat="server" Text="Ver cursos" />
+    <%--<asp:Button class="btn btn-info" ID="cursosAlumnoButton" runat="server" Text="Ver cursos" />--%>
     <asp:Button class="btn btn-dark" ID="modificarAlumnoButton" runat="server" Text="Modificar" OnClick="modificarAlumnoButton_Click1" />
     <asp:Button ID="agregarAlumnoButton" class="btn btn-success" runat="server" Text="Nuevo alumno" OnClick="agregarAlumnoButton_Click" />
 
@@ -64,42 +64,42 @@
         <form method="post" action="">
             <div class="row">
                 <label>Legajo: </label>
-                <br />
-                <asp:TextBox CssClass="form-input" placeholder="Legajo" ID="legajoTextBox" runat="server"></asp:TextBox>
+                
+                <asp:TextBox Width="200px" CssClass="form-input" type="number"  placeholder="Legajo" ID="legajoTextBox" runat="server"></asp:TextBox>
 
             </div>
 
             <div class="row">
                 <div class="col">
                     <label>Nombre: </label>
-                    <asp:TextBox CssClass="form-input" placeholder="Nombre" ID="nombreAlumnoTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-input" AutoCompleteType="FirstName" placeholder="Nombre" ID="nombreAlumnoTextBox" runat="server"></asp:TextBox>
                 </div>
                 <div class="col">
                     <label>Apellido: </label>
-                    <asp:TextBox CssClass="form-input" placeholder="Apellido" ID="apellidoAlumnoTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-input" AutoCompleteType="LastName" placeholder="Apellido" ID="apellidoAlumnoTextBox" runat="server"></asp:TextBox>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
                     <label>Direccion: </label>
-                    <asp:TextBox CssClass="form-input" placeholder="Direccion" ID="direccionAlumnoTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-input" placeholder="Direccion" AutoCompleteType="HomeStreetAddress" ID="direccionAlumnoTextBox" runat="server"></asp:TextBox>
                 </div>
                 <div class="col">
                     <label>Telefono: </label>
-                    <asp:TextBox CssClass="form-input" placeholder="Telefono" ID="telefonoTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-input" placeholder="Telefono" AutoCompleteType="Cellular" ID="telefonoTextBox" runat="server"></asp:TextBox>
                 </div>
             </div>
 
             <div class="row">
                 <label>Fecha de Nacimiento: </label>
-                <asp:TextBox CssClass="form-input" placeholder="yyyy-mm-dd" ID="fechaNacimientoTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox CssClass="form-input" Width="200px" type="date"  placeholder="yyyy-mm-dd" ID="fechaNacimientoTextBox" runat="server"></asp:TextBox>
             </div>
 
             <div class="row">
                 <div class="col">
                     <label>Email: </label>
-                    <asp:TextBox CssClass="form-input" placeholder="Email" ID="emailAlumnoTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-input" placeholder="Email" AutoCompleteType="Email" ID="emailAlumnoTextBox" runat="server"></asp:TextBox>
                 </div>
                 <div class="col">
                     <label>Id Plan: </label>

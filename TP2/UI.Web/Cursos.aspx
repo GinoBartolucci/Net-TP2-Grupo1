@@ -10,7 +10,7 @@
     <div class="form-label-input">
         <label class="form" style="width: 100%">
             ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID del curso" ID="ingresoTextBox" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID del curso" ID="ingresoTextBox"  type="number" min="0" runat="server"></asp:TextBox>
 
         </label>
         <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
@@ -50,13 +50,13 @@
         <hr />
         <label>Cupo</label>
         <br />
-        <asp:TextBox ID="cupoTextBox" CssClass="form-input" runat="server"></asp:TextBox>
+        <asp:TextBox ID="cupoTextBox" type="number" min="0" CssClass="form-input" runat="server"></asp:TextBox>
 
         <div class="row py-3">
             <div class="col">
                 <label>Año Calendario</label>
                 <br />
-                <asp:TextBox ID="anioCalendarioTextBox" CssClass="form-input" runat="server"></asp:TextBox>
+                <asp:TextBox ID="anioCalendarioTextBox" type="number" CssClass="form-input" runat="server"></asp:TextBox>
             </div>
             <div class="col">
                 <label>Id Materia</label>
@@ -166,7 +166,7 @@
         <br />
         <label>Nota</label>
         <br />
-        <asp:TextBox ID="notaTextBox" CssClass="form-input" runat="server" Enabled ="false"></asp:TextBox>
+        <asp:TextBox ID="notaTextBox" CssClass="form-input" type="number" min="0" max="100" runat="server" Enabled ="false"></asp:TextBox>
         <br />
         <asp:Button ID="asignarleNotaButton" class="btn btn-success" runat="server" Text="Asignarle nota" OnClick="asignarleNotaButton_Click" />
     </asp:Panel>

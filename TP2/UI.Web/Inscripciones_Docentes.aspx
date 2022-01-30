@@ -11,7 +11,7 @@
         <div class="form-label-input">
             <label class="form" style="width: 100%">
                 ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la inscripcion" ID="ingresoTextBox" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la inscripcion"  type="number" min="0"  ID="ingresoTextBox" runat="server"></asp:TextBox>
 
             </label>
             <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
@@ -68,8 +68,9 @@
             <div class="col">
                 <asp:Label ID="cargoLabel" runat="server" Text="Cargo"></asp:Label>
                 <br />
-                <asp:TextBox ID="cargoTextBox" runat="server" CssClass="form-input" type="number"></asp:TextBox>
+                <asp:TextBox ID="cargoTextBox" runat="server" CssClass="form-input " max="3" min="1" step="1" type="number"></asp:TextBox>
                 <br />
+                <asp:Label ID="idCargosLabel" runat="server" cssClass="text text-muted" Text="1-Jefe 2-Docente 3- Ayudante"></asp:Label>
                 <br />
             </div>
             <asp:Panel ID="tablaCurso" runat="server" visible="false">

@@ -29,13 +29,7 @@ namespace UI.Web
             cartelErrorLabel.Text = " ¡Error al ingresar la contraseña o el usuario!";
         }
 
-        private void NotificarError(Exception e)
-        {
-             
-            cartelErrorLabel.Visible = true;
-            cartelErrorLabel.Text = e.ToString(); 
-        }
-
+   
         protected void ingresarButton_Click(object sender, EventArgs e)
         {
             UsuarioLogic BD = new UsuarioLogic();
@@ -44,8 +38,16 @@ namespace UI.Web
             {
                 Usuario usuario = BD.LoginUsuario(this.usuarioTextBox.Text, this.contraseniaTextBox.Text);
              
+                if(usuario != null)
+                {
                 Session["current_user"]  = usuario;
                 Response.Redirect("Home.aspx"); 
+                }
+                else
+                {
+                    NotificarError();
+                }
+
 
             }
             catch(Exception error)

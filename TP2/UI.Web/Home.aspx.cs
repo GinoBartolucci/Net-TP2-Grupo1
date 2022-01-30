@@ -13,15 +13,17 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuarioActual = (Usuario)Session["current_user"];
-            pantallaSegunTipoPersona(usuarioActual.DescTipoPersona);
+           this.usuario = (Usuario)Session["current_user"];
+           
+            pantallaSegunTipoPersona();
         }
 
+        private Usuario usuario;
 
-        private void pantallaSegunTipoPersona(string tipoPersona)
+        private void pantallaSegunTipoPersona()
         {
 
-            switch(tipoPersona)
+            switch(usuario.DescTipoPersona)
             {
                 case "Docente": pantallaDocente();  break;
                 case "Alumno": pantallaAlumno(); break;
@@ -32,7 +34,7 @@ namespace UI.Web
 
         private void pantallaAlumno()
         {
-            Usuario usuario = (Usuario)Session["current_user"];
+           
             nombreAlumno.Text = usuario.Apellido + " " + usuario.Nombre;
             tipoPersonaLabel.Text = "Estudiante de " + usuario.DescEspecialidad;
             planAlumno.Text = "Plan " + usuario.DescPlan;
@@ -40,14 +42,14 @@ namespace UI.Web
 
         private void pantallaAdminsitrador()
         {
-            Usuario usuario = (Usuario)Session["current_user"];
+           
             nombreAlumno.Text = usuario.Apellido + " " + usuario.Nombre;
             tipoPersonaLabel.Text = "Administrador";
             planAlumno.Text = " " ;
         }
         private void pantallaDocente()
         {
-            Usuario usuario = (Usuario)Session["current_user"];
+          
             nombreAlumno.Text = usuario.Apellido + " " + usuario.Nombre;
             tipoPersonaLabel.Text = "Profesor";
             planAlumno.Text = " ";

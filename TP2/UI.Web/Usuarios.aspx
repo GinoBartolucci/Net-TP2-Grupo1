@@ -12,7 +12,7 @@
         <div class="form-label-input">
             <label class="form" style="width: 100%">
                 ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la comision" ID="idIngresoTextBox" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la comision"  type="number" min="0"  ID="idIngresoTextBox" runat="server"></asp:TextBox>
 
             </label>
             <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
@@ -82,15 +82,15 @@
 
                     <br />
                     <asp:Label ID="nombreLabel" runat="server" Text="Nombre"></asp:Label>
-                    <asp:TextBox ID="nombreTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="nombreTextBox" AutoCompleteType="FirstName" runat="server"></asp:TextBox>
                     <asp:Label ID="nombreValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
                     <br />
                     <asp:Label ID="apellidoLabel" runat="server" Text="Apellido"></asp:Label>
-                    <asp:TextBox ID="apellidoTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="apellidoTextBox" AutoCompleteType="LastName" runat="server"></asp:TextBox>
                     <asp:Label ID="apellidoValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
                     <br />
                     <asp:Label ID="emailLabel" runat="server" Text="Email"></asp:Label>
-                    <asp:TextBox ID="emailTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="emailTextBox" AutoCompleteType="Email" runat="server"></asp:TextBox>
                     <asp:Label ID="emailValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
                     <br />
 
@@ -100,7 +100,7 @@
 
 
                     <asp:Label ID="nombreUsuarioLabel" runat="server" Text="Usuario: "></asp:Label>
-                    <asp:TextBox ID="nombreUsuarioTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="nombreUsuarioTextBox"    runat="server"></asp:TextBox>
                     <asp:Label ID="nombreUsuarioValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
                     <br />
 
@@ -108,20 +108,20 @@
                 </div>
                 <div class="col">
                     <asp:Label ID="Label3" runat="server" Text="Direccion"></asp:Label>
-                    <asp:TextBox ID="direccionTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="direccionTextBox" AutoCompleteType="HomeStreetAddress" runat="server"></asp:TextBox>
 
                     <br />
                     <asp:Label ID="Label5" runat="server" Text="Telefono"></asp:Label>
-                    <asp:TextBox ID="telefonoTextBox" type="number" runat="server"></asp:TextBox>
+                    <asp:TextBox type="number" ID="telefonoTextBox" AutoCompleteType="Cellular" runat="server"></asp:TextBox>
 
                     <br />
                
 
                     <asp:Label ID="Label9" runat="server" Text="Fecha de Nacimiento: "></asp:Label>
-                    <asp:TextBox ID="fechaNacimientoTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="fechaNacimientoTextBox" type="date" runat="server"></asp:TextBox>
                     <br />
                           <asp:Label ID="Label4" runat="server" Text="Tipo persona: "></asp:Label>
-                    <asp:TextBox ID="tipoPersonaTextBox" type="number" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="tipoPersonaTextBox" type="number" min="1" max="3" runat="server"></asp:TextBox>
                     <br />
                 </div>
             </div>

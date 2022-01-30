@@ -69,8 +69,9 @@ namespace Data.Database.TablesAdapters
                 SqlCommand cmdPersonas = new SqlCommand("SELECT * " +
                     "   FROM personas WHERE tipo_persona = @tipoPersona ", sqlConn);
 
-                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
                 cmdPersonas.Parameters.Add("@tipoPersona", SqlDbType.Int).Value = tipoPersona;
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
                 while (drPersonas.Read())
                 {
                     Personas per = new Personas();

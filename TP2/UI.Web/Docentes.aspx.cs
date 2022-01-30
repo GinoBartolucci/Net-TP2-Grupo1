@@ -137,7 +137,7 @@ namespace UI.Web
             this.telefonoTextBox.Text = this.Entity.Telefono;
             this.emailAlumnoTextBox.Text = this.Entity.Email;
             this.idPlanTextBox.Text = this.Entity.Id_Plan.ToString();
-            this.fechaNacimientoTextBox.Text = this.Entity.Fecha_nac.ToString();
+            this.fechaNacimientoTextBox.Text = String.Format("{0:yyyy-MM-dd}", this.Entity.Fecha_nac);
 
             form_docente.Visible = true;
 
@@ -146,7 +146,7 @@ namespace UI.Web
         {
             try
             {
-                docente.Tipo_perona = 1;
+                docente.Tipo_perona = 2;
                 docente.Legajo = int.Parse(legajoTextBox.Text);
                 docente.Nombre = nombreAlumnoTextBox.Text;
                 docente.Apellido = apellidoAlumnoTextBox.Text;

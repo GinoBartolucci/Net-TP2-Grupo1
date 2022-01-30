@@ -10,7 +10,7 @@
     <div class="form-label-input">
             <label class="form" style="width:100%">
                 ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID del plan" ID="idIngresoTextBox" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID del plan"  type="number" min="0"  ID="idIngresoTextBox" runat="server"></asp:TextBox>
          
             </label>
             <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />

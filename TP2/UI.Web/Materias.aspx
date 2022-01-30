@@ -11,7 +11,7 @@
     <div class="form-label-input">
         <label class="form" style="width: 100%">
             ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la materia" ID="idIngresoTextBox" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la materia"   type="number" min="0"  ID="idIngresoTextBox" runat="server"></asp:TextBox>
 
         </label>
         <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
@@ -55,19 +55,19 @@
                 <label>
                     Horas Semanales</label>
                 <br />
-                <asp:TextBox ID="horasSemanalesTextBox" runat="server" CssClass="form-input"></asp:TextBox>
+                <asp:TextBox ID="horasSemanalesTextBox" type="number" min="0" runat="server" CssClass="form-input"></asp:TextBox>
             </div>
             <div class="col">
                 <label>
                     Horas Totales</label>
                 <br />
-                <asp:TextBox ID="horasTotalesTextBox" runat="server" CssClass="form-input"></asp:TextBox>
+                <asp:TextBox ID="horasTotalesTextBox"  type="number" min="0"  runat="server" CssClass="form-input"></asp:TextBox>
             </div>
             <div class="col">
                 <label>
                     Id Plan</label>
                 <br />
-                <asp:TextBox ID="idPlanTextBox" runat="server" CssClass="form-input" Enabled="false"></asp:TextBox>
+                <asp:TextBox ID="idPlanTextBox"  runat="server" CssClass="form-input" Enabled="false"></asp:TextBox>
                 <asp:Button ID="seleccionaBtn" runat="server" cssClass="btn btn-primary" OnClick="seleccionarButton" text="Seleccionar Plan" />
             </div>
         </div>

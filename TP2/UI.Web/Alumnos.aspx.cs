@@ -107,7 +107,7 @@ namespace UI.Web
         {
 
             // BOTONES
-            cursosAlumnoButton.Visible = false;
+            //cursosAlumnoButton.Visible = false;
             // bajaAlumnoButton.Visible = false;
 
             modificarAlumnoButton.Visible = false;
@@ -147,7 +147,7 @@ namespace UI.Web
 
         private void showAdminButtons()
         {
-            cursosAlumnoButton.Visible = true;
+            //cursosAlumnoButton.Visible = true;
             //  bajaAlumnoButton.Visible = true;
             //inscripcionesAlumnoButton.Visible = true;
             modificarAlumnoButton.Visible = true;
@@ -167,7 +167,7 @@ namespace UI.Web
             this.telefonoTextBox.Text = this.Entity.Telefono;
             this.emailAlumnoTextBox.Text = this.Entity.Email;
             this.idPlanTextBox.Text = this.Entity.Id_Plan.ToString();
-            this.fechaNacimientoTextBox.Text = this.Entity.Fecha_nac.ToString();
+            this.fechaNacimientoTextBox.Text = String.Format("{0:yyyy-MM-dd}", this.Entity.Fecha_nac);
 
             form_alumno.Visible = true;
 
@@ -183,7 +183,7 @@ namespace UI.Web
         {
             try
             {
-                alumno.Tipo_perona = 2;
+                alumno.Tipo_perona = 3;
                 alumno.Legajo = int.Parse(legajoTextBox.Text);
                 alumno.Nombre = nombreAlumnoTextBox.Text;
                 alumno.Apellido = apellidoAlumnoTextBox.Text;
@@ -281,7 +281,7 @@ namespace UI.Web
                     LoadForm(idIngreso);
                     tituloForm.Text = "Modificar alumno";
                     this.FormMode = FormModes.Modificacion;
-                    cursosAlumnoButton.Visible = true;
+                    //cursosAlumnoButton.Visible = true;
                     idAlumnoIngresoTextBox.BorderColor = System.Drawing.Color.White;
                 }
                 catch (Exception er)

@@ -11,7 +11,7 @@
         <div class="form-label-input">
             <label class="form" style="width: 100%">
                 ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID de la materia" ID="idIngresoTextBox" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" type="number" min="0" placeholder="ingresar ID de la materia" ID="idIngresoTextBox" runat="server"></asp:TextBox>
 
             </label>
             <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
@@ -48,7 +48,7 @@
             <br />
             <asp:Label ID="anioEspecialidadLabel" runat="server" Text="Anio Especialidad"></asp:Label>
             <asp:Label ID="anioEspecialidadValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
-            <asp:TextBox ID="anioEspecialidadTextBox" type="number" runat="server"></asp:TextBox>
+            <asp:TextBox ID="anioEspecialidadTextBox" type="number" min="0" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="idPlanLabel" runat="server" Text="ID Plan"></asp:Label>
             <asp:Label ID="idPlanValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
