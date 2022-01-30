@@ -330,9 +330,9 @@ namespace UI.Web
 
             this.alumnosPanel.Visible = false;
             cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty) ?
-                    new CursoLogic().GetAllForAlum(int.Parse(idPersonaTextBox.Text))
+                   BusinessRules.ValidarCupo(new CursoLogic().GetAllForAlum(int.Parse(idPersonaTextBox.Text)))
                     :
-                    new CursoLogic().GetAll();
+                    BusinessRules.ValidarCupo(new CursoLogic().GetAll());
             cursoGridView.DataBind();
             this.tablaCurso.Visible = true;
 

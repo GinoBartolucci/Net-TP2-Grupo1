@@ -59,7 +59,7 @@ namespace UI.Web
         private void vistaParaDocente()
         {
             vistaParaAlumno();
-            listarAlumnosButton.Visible = true;
+           // listarAlumnosButton.Visible = true;
         }
 
 
@@ -318,16 +318,17 @@ namespace UI.Web
         {
             if (IsEntitySelected)
             {
-
                 AlumnosDelCursoGridView.DataSource = new Alumnos_inscripcionesLogic().GetAllCurso(this.SelectedID);
                 AlumnosDelCursoGridView.DataBind();
                 alumnosDelCursoPanel.Visible = true;
+                mostrarCondicionYNota(int.Parse(AlumnosDelCursoGridView.SelectedValue.ToString()));
             }
         }
 
         protected void AlumnosDelCursoGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mostrarCondicionYNota(int.Parse(AlumnosDelCursoGridView.SelectedValue.ToString()));
+            listarAlumnosButton.Visible = true;
+          
         }
 
         protected void mostrarCondicionYNota(int idAlumno)
