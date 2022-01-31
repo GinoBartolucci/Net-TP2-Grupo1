@@ -247,7 +247,6 @@
       <DependentUpon>Materias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteAlumno.rdlc" />
-    <EmbeddedResource Include="ReporteMateriasPlan.rdlc" />
     <EmbeddedResource Include="ReporteNotas.resx">
       <DependentUpon>ReporteNotas.cs</DependentUpon>
     </EmbeddedResource>
