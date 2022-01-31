@@ -246,6 +246,7 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+            listarAlumnosButton.Visible = true;
         }
 
         protected void buscarButton_Click(object sender, EventArgs e)
@@ -305,6 +306,7 @@ namespace UI.Web
         {
             this.idMateriaTextBox.Text = this.materiaGridView.SelectedValue.ToString();
             tablaMateria.Visible = false;
+
         }
 
         protected void comisionGridView_SelectedIndexChanged(object sender, EventArgs e)
@@ -321,14 +323,14 @@ namespace UI.Web
                 AlumnosDelCursoGridView.DataSource = new Alumnos_inscripcionesLogic().GetAllCurso(this.SelectedID);
                 AlumnosDelCursoGridView.DataBind();
                 alumnosDelCursoPanel.Visible = true;
-                mostrarCondicionYNota(int.Parse(AlumnosDelCursoGridView.SelectedValue.ToString()));
+               
             }
         }
 
         protected void AlumnosDelCursoGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listarAlumnosButton.Visible = true;
-          
+            mostrarCondicionYNota(int.Parse(AlumnosDelCursoGridView.SelectedValue.ToString()));
+
         }
 
         protected void mostrarCondicionYNota(int idAlumno)
