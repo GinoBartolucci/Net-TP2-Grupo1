@@ -67,8 +67,8 @@ namespace UI.Desktop.ABMListForms
                 if (Session.currentUser.TipoPersona == 3)
                 {
                     this.dgvMaterias.DataSource = MateriaLogic.GetInstance().GetAllPlan(Session.currentUser.IdPlan);
-                    ReporteAlumnoBindingSource.DataSource = ReporteAlumnoLogic.GetInstance().GetReporteAlumno(Session.currentUser);
-                    this.reportViewer1.RefreshReport();
+                    //ReporteAlumnoBindingSource.DataSource = ReporteAlumnoLogic.GetInstance().GetReporteAlumno(Session.currentUser);
+                    //this.reportViewer1.RefreshReport();
                 }
                 if (Modo == ModoForm.SelectIdPlan) 
                 {
@@ -184,7 +184,7 @@ namespace UI.Desktop.ABMListForms
         private void Materias_Load(object sender, EventArgs e)
         {
             Listar();
-            this.reportViewer1.RefreshReport();
+            //this.reportViewer1.RefreshReport();
         }
 
         public void NotificarError(Exception Error)
