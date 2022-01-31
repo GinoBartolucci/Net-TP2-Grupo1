@@ -30,7 +30,6 @@ namespace UI.Desktop.ABMListForms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Materias));
             this.ReporteAlumnoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcMaterias = new System.Windows.Forms.ToolStripContainer();
@@ -38,7 +37,6 @@ namespace UI.Desktop.ABMListForms
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dgvMaterias = new System.Windows.Forms.DataGridView();
             this.idMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescMateria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,11 +88,10 @@ namespace UI.Desktop.ABMListForms
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 468F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel1.Controls.Add(this.btnSeleccionar, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnSalir, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnActualizar, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.reportViewer1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dgvMaterias, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -141,21 +138,6 @@ namespace UI.Desktop.ABMListForms
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // reportViewer1
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.reportViewer1, 3);
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "DataSet1";
-            reportDataSource2.Value = this.ReporteAlumnoBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "UI.Desktop.ReporteMateriasPlan.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(3, 410);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(643, 2);
-            this.reportViewer1.TabIndex = 4;
-            this.reportViewer1.Visible = false;
             // 
             // dgvMaterias
             // 
@@ -306,7 +288,6 @@ namespace UI.Desktop.ABMListForms
         private System.Windows.Forms.DataGridViewTextBoxColumn desc_plan;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnSeleccionar;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource ReporteAlumnoBindingSource;
     }
 }

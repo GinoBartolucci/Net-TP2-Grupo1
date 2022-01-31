@@ -88,7 +88,7 @@ namespace UI.Desktop.ABMListForms
                             listaInscrip.RemoveAll(item => item.Condicion == "Aprobado" || item.Condicion == "Libre");// para poder la nota solo trae los regulares
                             if (listaInscrip.Count == 0)
                             {
-                                MessageBox.Show("No hay alumnos no aprobados en este curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("No hay alumnos Regulares o Cursantes\n en este curso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Close();
                             }
                         }
