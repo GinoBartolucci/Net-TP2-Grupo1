@@ -9,7 +9,7 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Inscripciones_Docentes: System.Web.UI.Page
+    public partial class Inscripciones_Docentes : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,8 +38,8 @@ namespace UI.Web
             switch (usr.DescTipoPersona)
             {
                 case "Administrativo": break;
-                case "Docente": vistaParaDocente();  break;
-                case "Alumno": Response.Redirect("Home.aspx");  break;
+                case "Docente": vistaParaDocente(); break;
+                case "Alumno": Response.Redirect("Home.aspx"); break;
             }
         }
 
@@ -78,7 +78,7 @@ namespace UI.Web
         {
             get
             {
-                return (this.SelectedID != 0);
+                return  this.SelectedID != 0  ;
             }
         }
 
@@ -138,7 +138,7 @@ namespace UI.Web
             Usuario usr = (Usuario)Session["current_user"];
             switch (usr.DescTipoPersona)
             {
-                case "Administrativo": 
+                case "Administrativo":
                     this.gridView.DataSource = this.Logic.GetAll();
                     this.gridView.Columns[1].Visible = true;
                     break;
@@ -154,7 +154,7 @@ namespace UI.Web
 
                     break;
             }
-            this.gridView.Columns[1].Visible = false;
+            
 
             this.gridView.DataBind();
 
@@ -177,7 +177,7 @@ namespace UI.Web
             idCursoTextBox.Text = Entity.id_curso.ToString();
             idPersonaTextBox.Text = Entity.id_docente.ToString();
             //cargoTextBox.Text = Entity.cargo.ToString();
-            cargoDropDownList.SelectedValue = Entity.cargo.ToString() ;
+            cargoDropDownList.SelectedValue = Entity.cargo.ToString();
 
         }
         private void LoadEntity(Business.Entities.Docentes_cursos Docente_curso)
@@ -187,22 +187,22 @@ namespace UI.Web
             //{
             //    case "Administrativo":
             //        Docente_curso.id_docente = int.Parse(this.idPersonaTextBox.Text); ;
-               
+
             //        Docente_curso.id_curso = int.Parse(this.idCursoTextBox.Text);
-                  
+
             //        break;
             //    case "Docente":
             //        Docente_curso.id_docente = usr.IdPersona;
-            
-                
+
+
             //        break;
-             
+
             //}
             Docente_curso.id_docente = int.Parse(this.idPersonaTextBox.Text);
-           // Docente_curso.cargo = int.Parse(this.cargoTextBox.Text);
+            // Docente_curso.cargo = int.Parse(this.cargoTextBox.Text);
             Docente_curso.cargo = int.Parse(this.cargoDropDownList.SelectedValue);
             Docente_curso.id_curso = int.Parse(this.idCursoTextBox.Text);
-          
+
         }
 
         private void ClearForm()
@@ -257,7 +257,7 @@ namespace UI.Web
 
 
 
-            if (methods.validarYPintarCamposVacios(arreglo) && cargoDropDownList.SelectedValue != string.Empty )
+            if (methods.validarYPintarCamposVacios(arreglo) && cargoDropDownList.SelectedValue != string.Empty)
             {
                 switch (this.FormMode)
                 {
@@ -311,14 +311,19 @@ namespace UI.Web
 
         }
 
+        protected void LoadPersonaGrid()
+        {
+            AlumnosGridView.DataSource = (idCursoTextBox.Text != string.Empty) ?
+                   new PersonasLogic().GetDocentesByCourse(int.Parse(idCursoTextBox.Text))
+                   :
+                   new PersonasLogic().GetAllDocentes();
+            AlumnosGridView.DataBind();
+        }
+
         protected void seleccionarPersonaButton_Click(object sender, EventArgs e)
         {
             this.tablaCurso.Visible = false;
-            AlumnosGridView.DataSource = (idCursoTextBox.Text != string.Empty) ?
-                    new PersonasLogic().GetDocentesByCourse(int.Parse(idCursoTextBox.Text))
-                    :
-                    new PersonasLogic().GetAllDocentes();
-            AlumnosGridView.DataBind();
+            LoadPersonaGrid();
             this.alumnosPanel.Visible = true;
 
         }
@@ -337,11 +342,7 @@ namespace UI.Web
             }
 
             this.alumnosPanel.Visible = false;
-            cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty) ?
-                    new CursoLogic().GetAllForDoc(int.Parse(idPersonaTextBox.Text))
-                    :
-                    new CursoLogic().GetAll();
-            cursoGridView.DataBind();
+            LoadCursoGrid();
             this.tablaCurso.Visible = true;
 
         }
@@ -358,15 +359,33 @@ namespace UI.Web
             this.alumnosPanel.Visible = false;
         }
 
+        protected void LoadCursoGrid()
+        {
+            cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty) ?
+             new CursoLogic().GetAllForDoc(int.Parse(idPersonaTextBox.Text))
+             :
+             new CursoLogic().GetAll();
+            cursoGridView.DataBind();
+        }
+
+
         protected void cursoGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             cursoGridView.PageIndex = e.NewPageIndex;
-            cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty) ?
-        new CursoLogic().GetAllForDoc(int.Parse(idPersonaTextBox.Text))
-        :
-        new CursoLogic().GetAll();
-            cursoGridView.DataBind();
+            LoadCursoGrid();
 
+        }
+
+        protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridView.PageIndex = e.NewPageIndex;
+            LoadGrid();
+        }
+
+        protected void AlumnosGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            AlumnosGridView.PageIndex = e.NewPageIndex;
+            LoadPersonaGrid();
         }
     }
 }

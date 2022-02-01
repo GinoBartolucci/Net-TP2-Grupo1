@@ -92,7 +92,7 @@ namespace UI.Web
             }
 
         }
- 
+
 
         private void HiddeElements()
         {
@@ -222,7 +222,7 @@ namespace UI.Web
 
         }
 
- 
+
         protected void buscarButton_Click(object sender, EventArgs e)
         {
             if (idDocenteIngresoTextBox.Text.Length > 0)
@@ -248,14 +248,14 @@ namespace UI.Web
 
         }
 
-       
+
         private void mostrarMensajeDeError(string mensaje)
         {
             div_mensaje_error.Visible = true;
             mensaje_error.Text = mensaje;
         }
 
-     
+
 
         protected void formAlumnoButton_Click(object sender, EventArgs e)
         {

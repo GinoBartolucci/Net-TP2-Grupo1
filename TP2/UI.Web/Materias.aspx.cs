@@ -284,6 +284,11 @@ namespace UI.Web
             this.tablaPlan.Visible = false;
         }
 
- 
+        protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridView.PageIndex = e.NewPageIndex;
+            LoadGrid();
+        }
+
     }
 }

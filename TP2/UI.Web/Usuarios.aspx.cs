@@ -93,8 +93,7 @@ namespace UI.Web
                 }
                 catch (Exception er)
                 {
-
-                    idIngresoTextBox.BorderColor = System.Drawing.Color.Red;
+                  idIngresoTextBox.BorderColor = System.Drawing.Color.Red;
                 }
             }
             else
@@ -110,11 +109,6 @@ namespace UI.Web
             this.gridView.DataBind();
         }
 
-        private void DeleteEntity(int id)
-        {
-            this.Logic.Delete(id);
-        }
-
         private void LoadForm(int id)
         {
             this.Entity = this.Logic.GetOneId(id);
@@ -126,7 +120,7 @@ namespace UI.Web
             this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
 
             LoadPersonaForm(Entity.IdPersona);
-           // EnablePersonaForm(false);
+            // EnablePersonaForm(false);
 
 
         }
@@ -181,7 +175,11 @@ namespace UI.Web
         private void LoadEntity(Usuario usuario)
         {
 
-            usuario.IdPersona = int.Parse(this.idPersonaTextBox.Text);
+            usuario.IdPersona = (this.idPersonaTextBox.Text != string.Empty) ?
+                int.Parse(this.idPersonaTextBox.Text)
+                :
+                usuario.IdPersona
+                ;
             usuario.Apellido = this.apellidoTextBox.Text;
             usuario.Nombre = this.nombreTextBox.Text;
             usuario.Email = this.emailTextBox.Text;
@@ -193,6 +191,7 @@ namespace UI.Web
             usuario.Direccion = this.direccionTextBox.Text;
             usuario.FechaNac = DateTime.Parse(this.fechaNacimientoTextBox.Text);
             usuario.TipoPersona = int.Parse(tipoPersonaTextBox.Text);
+            usuario.IdPlan = int.Parse(idPlanTextBox.Text);
         }
         private void SaveEntity(Usuario usuario)
         {
@@ -202,16 +201,14 @@ namespace UI.Web
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
 
-            switch (this.FormMode)
+            if (validacioneForm())
             {
-                case FormModes.Baja:
-                    this.DeleteEntity(this.SelectedID);
-                    this.LoadGrid();
-                    this.formPanel.Visible = false;
-                    break;
-                case FormModes.Modificacion:
-                    if (validacioneForm())
-                    {
+
+                switch (this.FormMode)
+                {
+
+                    case FormModes.Modificacion:
+
                         this.Entity = new Usuario();
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
@@ -219,22 +216,23 @@ namespace UI.Web
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
                         this.formPanel.Visible = false;
-                    }
-                    break;
 
-                default:
-                    break;
-                case FormModes.Alta:
-                    if (validacioneForm())
-                    {
+                        break;
+
+                    default:
+                        break;
+                    case FormModes.Alta:
+
                         this.Entity = new Usuario();
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
                         this.formPanel.Visible = false;
-                    }
-                    break;
+
+                        break;
+                }
             }
+
 
         }
 
@@ -249,62 +247,64 @@ namespace UI.Web
 
         private void ClearForm()
         {
-        
-        
-            this.apellidoTextBox.Text = string.Empty;
+
+
+            this.idPersonaTextBox.Text = string.Empty;
             this.nombreTextBox.Text = string.Empty;
+            this.apellidoTextBox.Text = string.Empty;
             this.emailTextBox.Text = string.Empty;
             this.habilitadoCheckBox.Text = string.Empty;
+            this.nombreUsuarioTextBox.Text = string.Empty;
+            this.direccionTextBox.Text = string.Empty;
+            this.telefonoTextBox.Text = string.Empty;
+            this.fechaNacimientoTextBox.Text = string.Empty;
+            this.tipoPersonaTextBox.Text = string.Empty;
+            this.ClaveTextBox.Text = string.Empty;
+            this.repetirClaveTextBox.Text = string.Empty;
+
         }
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+            formPanel.Visible = false;
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             ClearForm();
             this.formPanel.Visible = false;
+            planPanel.Visible = false;
 
+            validacionCamposVacios.Visible = false;
+
+            validacionEmailCartel.Visible = false;
+
+            validacionClaveCartel.Visible = false;
         }
 
         private bool validacioneForm()
         {
-            bool bandera = false;
-            int contador = 0;
+            TextBox[] textBoxes = {nombreTextBox, apellidoTextBox, nombreUsuarioTextBox,
+                direccionTextBox, telefonoTextBox, fechaNacimientoTextBox,tipoPersonaTextBox,
+                idPlanTextBox};
 
-            bandera = (String.IsNullOrEmpty(nombreTextBox.Text)) ? true : false;
-            contador = (bandera == true) ? contador + 1 : contador;
-            validacionNombreCartel.Visible = bandera;
+            validacionCamposVacios.Visible = !methods.validarYPintarCamposVacios(textBoxes);
+            validacionEmailCartel.Visible =  !methods.validarEmail(this.emailTextBox);
+            validacionClaveCartel.Visible =  !methods.validarClaves(ClaveTextBox, repetirClaveTextBox);
 
-            bandera = (String.IsNullOrEmpty(apellidoTextBox.Text)) ? true : false;
-            contador = (bandera == true) ? contador + 1 : contador;
-            validacionApellidoCartel.Visible = bandera;
-
-            bandera = (String.IsNullOrEmpty(emailTextBox.Text)) ? true : false;
-            contador = (bandera == true) ? contador + 1 : contador;
-            validacionEmailCartel.Visible = bandera;
-
-            bandera = (String.IsNullOrEmpty(nombreUsuarioTextBox.Text)) ? true : false;
-            contador = (bandera == true) ? contador + 1 : contador;
-            validacionNombreUsuarioCartel.Visible = bandera;
-
-            bandera = (ClaveTextBox.Text != String.Empty || (ClaveTextBox.Text != repetirClaveTextBox.Text) ) ? true : false;
-            contador = (bandera == true) ? contador++ : contador;
-            validacionClaveCartel.Visible = bandera;
-
-
-
-
-            return contador == 0;
+            return !validacionEmailCartel.Visible
+                    &&
+                    !validacionCamposVacios.Visible
+                    &&
+                    !validacionClaveCartel.Visible;
         }
 
         protected void idPersonaButton_Click(object sender, EventArgs e)
         {
             AlumnosGridView.DataSource = new PersonasLogic().GetAll();
             AlumnosGridView.DataBind();
-            personaPanel.Visible = !personaPanel.Visible; 
+            personaPanel.Visible = !personaPanel.Visible;
 
         }
 
@@ -312,7 +312,7 @@ namespace UI.Web
         {
 
             LoadPersonaForm(int.Parse(AlumnosGridView.SelectedValue.ToString()));
-             
+
             EnablePersonaForm(false);
 
 
@@ -330,6 +330,8 @@ namespace UI.Web
             this.tipoPersonaTextBox.Enabled = bandera;
             this.fechaNacimientoTextBox.Enabled = bandera;
             this.direccionTextBox.Enabled = bandera;
+            this.seleccionarPlanButton.Enabled = bandera;
+     
         }
 
         protected void LoadPersonaForm(int idPersona)
@@ -337,6 +339,7 @@ namespace UI.Web
             Personas personaSelecionada = new PersonasLogic()
                .GetOne(idPersona);
 
+            this.idPlanTextBox.Text = personaSelecionada.Id_Plan.ToString();
             this.idPersonaTextBox.Text = personaSelecionada.ID.ToString();
             this.nombreTextBox.Text = personaSelecionada.Nombre;
             this.apellidoTextBox.Text = personaSelecionada.Apellido;
@@ -344,7 +347,36 @@ namespace UI.Web
             this.fechaNacimientoTextBox.Text = String.Format("{0:yyyy-MM-dd}", personaSelecionada.Fecha_nac);
             this.tipoPersonaTextBox.Text = personaSelecionada.Tipo_perona.ToString();
             this.direccionTextBox.Text = personaSelecionada.Direccion;
+           
         }
 
+        protected void tipoPersonaDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tipoPersonaTextBox.Text = tipoPersonaDropDownList.SelectedValue;
+        }
+        protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridView.PageIndex = e.NewPageIndex;
+            LoadGrid();
+        }
+
+        protected void seleccionarPlanButton_Click(object sender, EventArgs e)
+        {
+            planGridView.DataSource = new PlanesLogic().GetAll();
+            planGridView.DataBind();
+            planPanel.Visible = true;
+        }
+
+        protected void planGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idPlanTextBox.Text = planGridView.SelectedValue.ToString();
+            planPanel.Visible = false;
+        }
+        protected void AlumnosGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            AlumnosGridView.PageIndex = e.NewPageIndex;
+            AlumnosGridView.DataSource = new PersonasLogic().GetAll();
+            AlumnosGridView.DataBind();
+        }
     }
 }

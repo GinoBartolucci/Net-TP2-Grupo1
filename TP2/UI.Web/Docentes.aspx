@@ -22,7 +22,8 @@
             SelectedRowStyle-BackColor="Black"
             SelectedRowStyle-ForeColor="White"
             Width="1000px"
-            
+            CssClass="table caption-top"
+                        
             DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="DocentesGridView_PageIndexChanging">
 
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
@@ -115,7 +116,9 @@
              <br />
             <div id="tablaPlan" runat="server" class="row m-2 py-2" visible="false">
                 <h3>Seleccionar plan</h3>
-                <asp:GridView ID="planGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">
+                <asp:GridView ID="planGridView" runat="server" 
+                    CssClass="table caption-top"
+                    AutoGenerateColumns="False" DataKeyNames="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">
                     <SelectedRowStyle BackColor="Black" ForeColor="White" />
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" />

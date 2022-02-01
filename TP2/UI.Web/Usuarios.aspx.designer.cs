@@ -312,6 +312,69 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.TextBox tipoPersonaTextBox;
 
         /// <summary>
+        /// tipoPersonaDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList tipoPersonaDropDownList;
+
+        /// <summary>
+        /// Label6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label6;
+
+        /// <summary>
+        /// idPlanTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox idPlanTextBox;
+
+        /// <summary>
+        /// seleccionarPlanButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button seleccionarPlanButton;
+
+        /// <summary>
+        /// Label7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label7;
+
+        /// <summary>
+        /// planPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel planPanel;
+
+        /// <summary>
+        /// planGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView planGridView;
+
+        /// <summary>
         /// claveLabel control.
         /// </summary>
         /// <remarks>
@@ -366,22 +429,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Label RepetirClaveValidacion;
 
         /// <summary>
-        /// validacionNombreCartel control.
+        /// validacionCamposVacios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionNombreCartel;
-
-        /// <summary>
-        /// validacionApellidoCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionApellidoCartel;
+        protected global::System.Web.UI.WebControls.Label validacionCamposVacios;
 
         /// <summary>
         /// validacionEmailCartel control.
@@ -391,15 +445,6 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label validacionEmailCartel;
-
-        /// <summary>
-        /// validacionNombreUsuarioCartel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label validacionNombreUsuarioCartel;
 
         /// <summary>
         /// validacionClaveCartel control.

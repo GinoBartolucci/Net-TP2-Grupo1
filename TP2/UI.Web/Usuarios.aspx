@@ -23,6 +23,8 @@
                 SelectedRowStyle-BackColor="Black"
                 SelectedRowStyle-ForeColor="White"
                 Width="100%"
+                CssClass="table caption-top"
+                AllowPaging="True" OnPageIndexChanging="gridView_PageIndexChanging"
                 DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
 
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />
@@ -53,6 +55,8 @@
                     SelectedRowStyle-BackColor="Black"
                     SelectedRowStyle-ForeColor="White"
                     Width="1000px"
+                    CssClass="table caption-top"
+                     AllowPaging="True" OnPageIndexChanging="AlumnosGridView_PageIndexChanging"
                     DataKeyNames="ID" OnSelectedIndexChanged="AlumnosGridView_SelectedIndexChanged">
 
                     <SelectedRowStyle BackColor="Black" ForeColor="White" />
@@ -112,7 +116,7 @@
 
                     <br />
                     <asp:Label ID="Label5" runat="server" Text="Telefono"></asp:Label>
-                    <asp:TextBox type="number" ID="telefonoTextBox" AutoCompleteType="Cellular" runat="server"></asp:TextBox>
+                    <asp:TextBox  ID="telefonoTextBox" AutoCompleteType="Cellular" runat="server"></asp:TextBox>
 
                     <br />
                
@@ -121,9 +125,47 @@
                     <asp:TextBox ID="fechaNacimientoTextBox" type="date" runat="server"></asp:TextBox>
                     <br />
                           <asp:Label ID="Label4" runat="server" Text="Tipo persona: "></asp:Label>
-                    <asp:TextBox ID="tipoPersonaTextBox" type="number" min="1" max="3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="tipoPersonaTextBox" type="number" min="1" max="3" runat="server" enabled="false"></asp:TextBox>
+                    
+                    <asp:DropDownList ID="tipoPersonaDropDownList" runat="server" OnSelectedIndexChanged="tipoPersonaDropDownList_SelectedIndexChanged" AutoPostBack="True">
+
+                        <asp:ListItem Selected="True" Value="">Seleccionar</asp:ListItem>
+                        <asp:ListItem Value="1">Administrador</asp:ListItem>
+                        <asp:ListItem Value="2">Docente</asp:ListItem>
+                        <asp:ListItem  Value="3">Alumno</asp:ListItem>
+
+                    </asp:DropDownList>
                     <br />
+                        <asp:Label ID="Label6" runat="server" Text="ID Plan"></asp:Label>
+                <asp:TextBox ID="idPlanTextBox" runat="server" Enabled="false"></asp:TextBox>
+                <asp:Button runat="server" ID="seleccionarPlanButton" Text="Seleccionar" CssClass="btn btn-primary" OnClick="seleccionarPlanButton_Click" />
+                <asp:Label ID="Label7" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
+
+                
+
+    
                 </div>
+                  <asp:Panel ID="planPanel" visible="false" runat="server">
+        <asp:GridView ID="planGridView" runat="server" AutoGenerateColumns="False"
+            SelectedRowStyle-BackColor="Black"
+            SelectedRowStyle-ForeColor="White"
+            Width="100%"
+            CssClass="table caption-top m-2"
+            DataKeyNames="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged" >
+
+            <SelectedRowStyle BackColor="Black" ForeColor="White" />
+
+            <Columns>
+                <asp:BoundField HeaderText="ID" DataField="ID" />
+                
+                <asp:BoundField HeaderText="Descripcion Plan" DataField="DescPlan" />
+                <asp:BoundField HeaderText="Id Especialidad" DataField="IdEspecialidad" />
+                <asp:BoundField HeaderText="Especialidad" DataField="DescEspecialidad" />
+                <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
+
+            </Columns>
+        </asp:GridView>
+    </asp:Panel>
             </div>
 
 
@@ -138,17 +180,14 @@
             <asp:Label ID="RepetirClaveValidacion" runat="server" Text="*" ForeColor="#CC3300"></asp:Label>
             <br />
 
-
-            <asp:Label ID="validacionNombreCartel" Visible="false" runat="server" Text="* El nombre no puede estar vacio" ForeColor="#CC3300"></asp:Label>
+            <asp:Label ID="validacionCamposVacios" Visible="false" runat="server" Text="* Hay campos que faltan completar" ForeColor="#CC3300"></asp:Label>
             <br />
-            <asp:Label ID="validacionApellidoCartel" Visible="false" runat="server" Text="* El apellido no puede estar vacio" ForeColor="#CC3300"></asp:Label>
-            <br />
+       
             <asp:Label ID="validacionEmailCartel" Visible="false" runat="server" Text="* El email es invalido" ForeColor="#CC3300"></asp:Label>
             <br />
-            <asp:Label ID="validacionNombreUsuarioCartel" Visible="false" runat="server" Text="* El nombre usuario  no puede estar vacio" ForeColor="#CC3300"></asp:Label>
-            <br />
+         
             <asp:Label ID="validacionClaveCartel" Visible="false" runat="server" Text="* Las claves no coinciden" ForeColor="#CC3300"></asp:Label>
-
+            <br />
 
             <asp:Panel ID="formActionsPanel" runat="server">
                 <asp:Button CssClass="btn btn-success" ID="aceptarLinkButton" runat="server" Text="Aceptar" OnClick="aceptarLinkButton_Click" />

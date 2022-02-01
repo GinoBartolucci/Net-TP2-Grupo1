@@ -22,6 +22,7 @@
             SelectedRowStyle-BackColor="Black"
             SelectedRowStyle-ForeColor="White"
             Width="100%"
+            CssClass="table caption-top"
             DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
 
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
@@ -64,6 +65,7 @@
                     SelectedRowStyle-BackColor="Black"
                     SelectedRowStyle-ForeColor="White"
                        Width="100%"
+                    CssClass="table caption-top"
                     DataKeynames ="ID" OnSelectedIndexChanged="especialidadGridView_SelectedIndexChanged">
  
                     <SelectedRowStyle BackColor="Black" ForeColor="White" />

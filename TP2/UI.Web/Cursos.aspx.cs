@@ -39,7 +39,7 @@ namespace UI.Web
             switch (usr.DescTipoPersona)
             {
                 case "Administrativo": break;
-                case "Docente": vistaParaDocente();  break;
+                case "Docente": vistaParaDocente(); break;
                 case "Alumno": vistaParaAlumno(); break;
             }
         }
@@ -49,7 +49,7 @@ namespace UI.Web
 
             formActionsPanel.Visible = false;
             gridActionsPanel.Visible = false;
-             
+
             selecMateriaButton.Visible = false;
             selecComisionButton.Visible = false;
             buscadorPorID.Visible = false;
@@ -58,8 +58,8 @@ namespace UI.Web
         private void vistaParaDocente()
         {
             vistaParaAlumno();
-           
-            
+
+
         }
 
 
@@ -116,7 +116,7 @@ namespace UI.Web
 
                 this.Logic.Save(curso);
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 mensajeDeValidacionDeCampo.Visible = true;
             }
@@ -167,12 +167,12 @@ namespace UI.Web
             curso.anio_calendario = int.Parse(this.anioCalendarioTextBox.Text);
             curso.id_materia = int.Parse(this.idMateriaTextBox.Text);
             curso.id_comision = int.Parse(this.idComisionTextBox.Text);
-            curso.id_curso = curso.ID; 
+            curso.id_curso = curso.ID;
         }
 
         private void ClearForm()
         {
-            
+
             this.cupoTextBox.Text = string.Empty;
             this.anioCalendarioTextBox.Text = string.Empty;
             this.idMateriaTextBox.Text = string.Empty;
@@ -202,10 +202,7 @@ namespace UI.Web
             {
                 switch (this.FormMode)
                 {
-                    case FormModes.Baja:
-                        this.DeleteEntity(this.SelectedID);
-                        this.LoadGrid();
-                        break;
+
                     case FormModes.Modificacion:
                         this.Entity = new Business.Entities.Curso();
                         this.Entity.ID = this.SelectedID;
@@ -333,14 +330,14 @@ namespace UI.Web
                 AlumnosDelCursoGridView.DataSource = new Alumnos_inscripcionesLogic().GetAllCurso(this.SelectedID);
                 AlumnosDelCursoGridView.DataBind();
                 alumnosDelCursoPanel.Visible = true;
-               
+
             }
         }
 
         protected void AlumnosDelCursoGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             mostrarCondicionYNota(int.Parse(AlumnosDelCursoGridView.SelectedValue.ToString()));
-            
+
         }
 
         protected void mostrarCondicionYNota(int idAlumno)
@@ -348,18 +345,18 @@ namespace UI.Web
             Business.Entities.Inscripciones inscripcionAlumno = new Alumnos_inscripcionesLogic().GetOne(idAlumno);
 
             notaTextBox.Text = inscripcionAlumno.Nota.ToString();
-           // condicionTextBox.Text = inscripcionAlumno.Condicion;
+            // condicionTextBox.Text = inscripcionAlumno.Condicion;
             condicionDropDownList.SelectedValue = inscripcionAlumno.Condicion;
             notaTextBox.Enabled = false;
             if (inscripcionAlumno.Condicion == "Cursando" || inscripcionAlumno.Nota < 0)
             {
-               
+
                 condicionDropDownList.Enabled = true;
             }
             else
             {
-                
-                 condicionDropDownList.Enabled = false;
+
+                condicionDropDownList.Enabled = false;
             }
 
         }
@@ -389,19 +386,19 @@ namespace UI.Web
 
         protected void condicionDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            notaTextBox.Enabled = 
-                    (condicionDropDownList.SelectedValue == "Aprobado") ? 
-                    true 
+            notaTextBox.Enabled =
+                    (condicionDropDownList.SelectedValue == "Aprobado") ?
+                    true
                     : false;
- 
-            notaTextBox.Text  =
+
+            notaTextBox.Text =
                     (condicionDropDownList.SelectedValue == "Aprobado") ?
                      notaTextBox.Text
                     : "-1";
 
         }
 
-      
+
         protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gridView.PageIndex = e.NewPageIndex;

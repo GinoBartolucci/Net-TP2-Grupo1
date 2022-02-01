@@ -306,16 +306,30 @@ namespace UI.Web
         protected void seleccionarPersonaButton_Click(object sender, EventArgs e)
         {
             this.tablaCurso.Visible = false;
-            AlumnosGridView.DataSource = (idCursoTextBox.Text != string.Empty) ?
-                    new PersonasLogic().GetAlumnsByCourse(int.Parse(idCursoTextBox.Text))
-                    :
-                    new PersonasLogic().GetAllAlumnos();
-            AlumnosGridView.DataBind();
+            LoadPersonaGrid();
             this.alumnosPanel.Visible = true;
 
         }
 
 
+
+        protected void LoadCursoGrid()
+        {
+            cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty) ?
+                   BusinessRules.ValidarCupo(new CursoLogic().GetAllForAlum(int.Parse(idPersonaTextBox.Text)))
+                    :
+                    BusinessRules.ValidarCupo(new CursoLogic().GetAll());
+            cursoGridView.DataBind();
+        }
+
+        protected void LoadPersonaGrid()
+        {
+            AlumnosGridView.DataSource = (idCursoTextBox.Text != string.Empty) ?
+                   new PersonasLogic().GetAlumnsByCourse(int.Parse(idCursoTextBox.Text))
+                   :
+                   new PersonasLogic().GetAllAlumnos();
+            AlumnosGridView.DataBind();
+        }
 
         protected void seleccionarCursoButton_Click(object sender, EventArgs e)
         {
@@ -329,11 +343,7 @@ namespace UI.Web
             }
 
             this.alumnosPanel.Visible = false;
-            cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty) ?
-                   BusinessRules.ValidarCupo(new CursoLogic().GetAllForAlum(int.Parse(idPersonaTextBox.Text)))
-                    :
-                    BusinessRules.ValidarCupo(new CursoLogic().GetAll());
-            cursoGridView.DataBind();
+            LoadCursoGrid();
             this.tablaCurso.Visible = true;
 
         }
@@ -349,5 +359,24 @@ namespace UI.Web
             idPersonaTextBox.Text = this.AlumnosGridView.SelectedValue.ToString();
             this.alumnosPanel.Visible = false;
         }
+
+        protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridView.PageIndex = e.NewPageIndex;
+            LoadGrid();
+        }
+
+        protected void cursoGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            cursoGridView.PageIndex = e.NewPageIndex;
+            LoadCursoGrid();
+        }
+
+        protected void AlumnosGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            AlumnosGridView.PageIndex = e.NewPageIndex;
+            LoadPersonaGrid();
+        }
+
     }
 }

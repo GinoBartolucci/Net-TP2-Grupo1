@@ -54,7 +54,6 @@
     <Compile Include="TablesLogics\EspecialidadesLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TablesLogics\UsuarioLogic.cs" />
-    <Compile Include="validacionWeb.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business.Entities\Business.Entities.csproj">

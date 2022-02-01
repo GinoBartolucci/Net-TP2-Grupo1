@@ -24,6 +24,9 @@
                 SelectedRowStyle-BackColor="Black"
                 SelectedRowStyle-ForeColor="White"
                 Width="100%"
+                cssClass="table caption-top" AllowPaging="true"
+                OnPageIndexChanging ="gridView_PageIndexChanging"
+     
                 DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
 
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />
@@ -75,7 +78,7 @@
             </div>
             <asp:Panel ID="tablaCurso" runat="server" visible="false">
                 <h3>Seleccionar curso</h3>
-                <asp:GridView ID="cursoGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnSelectedIndexChanged="cursoGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">
+                <asp:GridView ID="cursoGridView" runat="server" AllowPaging="true" AutoGenerateColumns="False" cssClass="table caption-top" DataKeyNames="ID" OnPageIndexChanging="cursoGridView_PageIndexChanging" OnSelectedIndexChanged="cursoGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">
                     <selectedrowstyle backcolor="Black" forecolor="White" />
                     <columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" />
@@ -87,8 +90,8 @@
                     </columns>
                 </asp:GridView>
             </asp:Panel>
-            <asp:Panel ID="alumnosPanel" runat="server" CssClass="tabla">
-                <asp:GridView ID="AlumnosGridView" runat="server" AutoGenerateColumns="False" DataKeynames="ID" OnSelectedIndexChanged="AlumnosGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="1000px">
+            <asp:Panel ID="alumnosPanel" runat="server">
+                <asp:GridView ID="AlumnosGridView" runat="server" AllowPaging="true" AutoGenerateColumns="False" cssClass="table caption-top" DataKeynames="ID" OnPageIndexChanging="AlumnosGridView_PageIndexChanging" OnSelectedIndexChanged="AlumnosGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="1000px">
                     <SelectedRowStyle BackColor="Black" ForeColor="White" />
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" />
