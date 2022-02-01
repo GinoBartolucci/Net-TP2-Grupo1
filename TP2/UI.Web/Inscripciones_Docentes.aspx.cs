@@ -48,7 +48,7 @@ namespace UI.Web
             editarLinkButton.Visible = false;
             idPersonaLabel.Visible = false;
             seleccionarPersonaButton.Visible = false;
-           
+            buscadorPorID.Visible = false;
             idPersonaTextBox.Visible = false;
 
         }
@@ -143,7 +143,7 @@ namespace UI.Web
                     this.gridView.Columns[1].Visible = true;
                     break;
                 case "Docente":
-                    this.gridView.DataSource = this.Logic.GetAllYearDoc(usr.IdPersona, 2020);
+                    this.gridView.DataSource = this.Logic.GetAllYearDoc(usr.IdPersona, DateTime.Today.Year);
                     this.gridView.Columns[0].Visible = false;
                     this.gridView.Columns[1].Visible = false;
                     this.gridView.Columns[5].Visible = false;
@@ -176,39 +176,42 @@ namespace UI.Web
 
             idCursoTextBox.Text = Entity.id_curso.ToString();
             idPersonaTextBox.Text = Entity.id_docente.ToString();
-            cargoTextBox.Text = Entity.cargo.ToString();
+            //cargoTextBox.Text = Entity.cargo.ToString();
+            cargoDropDownList.SelectedValue = Entity.cargo.ToString() ;
 
         }
         private void LoadEntity(Business.Entities.Docentes_cursos Docente_curso)
         {
             Usuario usr = (Usuario)Session["current_user"];
-            switch (usr.DescTipoPersona)
-            {
-                case "Administrativo":
-                    Docente_curso.id_docente = int.Parse(this.idPersonaTextBox.Text); ;
+            //switch (usr.DescTipoPersona)
+            //{
+            //    case "Administrativo":
+            //        Docente_curso.id_docente = int.Parse(this.idPersonaTextBox.Text); ;
                
-                    Docente_curso.id_curso = int.Parse(this.idCursoTextBox.Text);
-       
-                    break;
-                case "Docente":
-                    Docente_curso.id_docente = usr.IdPersona;
+            //        Docente_curso.id_curso = int.Parse(this.idCursoTextBox.Text);
+                  
+            //        break;
+            //    case "Docente":
+            //        Docente_curso.id_docente = usr.IdPersona;
             
-                    Docente_curso.cargo = int.Parse(this.cargoTextBox.Text);
-                    break;
+                
+            //        break;
              
-            }
-
+            //}
+            Docente_curso.id_docente = int.Parse(this.idPersonaTextBox.Text);
+           // Docente_curso.cargo = int.Parse(this.cargoTextBox.Text);
+            Docente_curso.cargo = int.Parse(this.cargoDropDownList.SelectedValue);
             Docente_curso.id_curso = int.Parse(this.idCursoTextBox.Text);
-
+          
         }
 
         private void ClearForm()
         {
-
+            mensajeDeValidacionDeCampo.Visible = false;
             idCursoTextBox.Text = string.Empty;
             idPersonaTextBox.Text = string.Empty;
-            cargoTextBox.Text = string.Empty;
-
+            //cargoTextBox.Text = string.Empty;
+            //cargoDropDownList.SelectedValue ;
 
         }
 
@@ -247,14 +250,14 @@ namespace UI.Web
             }
             else
             {
-                TextBox[] nuevoArreglo = { idPersonaTextBox, idCursoTextBox, cargoTextBox };
+                TextBox[] nuevoArreglo = { idPersonaTextBox, idCursoTextBox };
                 arreglo = nuevoArreglo;
 
             }
 
 
 
-            if (methods.validarYPintarCamposVacios(arreglo))
+            if (methods.validarYPintarCamposVacios(arreglo) && cargoDropDownList.SelectedValue != string.Empty )
             {
                 switch (this.FormMode)
                 {
@@ -353,6 +356,17 @@ namespace UI.Web
         {
             idPersonaTextBox.Text = this.AlumnosGridView.SelectedValue.ToString();
             this.alumnosPanel.Visible = false;
+        }
+
+        protected void cursoGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            cursoGridView.PageIndex = e.NewPageIndex;
+            cursoGridView.DataSource = (idPersonaTextBox.Text != string.Empty) ?
+        new CursoLogic().GetAllForDoc(int.Parse(idPersonaTextBox.Text))
+        :
+        new CursoLogic().GetAll();
+            cursoGridView.DataBind();
+
         }
     }
 }

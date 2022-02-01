@@ -7,14 +7,14 @@
     <hr />
 
 
-    <div class="form-label-input">
+    <asp:Panel class="form-label-input" runat="server" ID="buscadorPorID">
         <label class="form" style="width: 100%">
             ID:
-               <asp:TextBox CssClass="form-input" placeholder="ingresar ID del curso" ID="ingresoTextBox"  type="number" min="0" runat="server"></asp:TextBox>
+               <asp:TextBox CssClass="form-input" placeholder="ingresar ID del curso" ID="ingresoTextBox" type="number" min="0" runat="server"></asp:TextBox>
 
         </label>
         <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
-    </div>
+    </asp:Panel>
 
 
     <asp:Panel ID="gridPanel" runat="server" CssClass="py-3">
@@ -22,6 +22,8 @@
             SelectedRowStyle-BackColor="Black"
             SelectedRowStyle-ForeColor="White"
             Width="100%"
+            AllowPaging="True" OnPageIndexChanging="gridView_PageIndexChanging"
+            CssClass="table caption-top"
             DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
 
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
@@ -41,7 +43,7 @@
             </Columns>
         </asp:GridView>
     </asp:Panel>
-
+    <asp:Button ID="listarAlumnosButton" class="btn btn-warning" runat="server" Text="Listar alumnos" Visible="false" OnClick="listarAlumnosButton_Click" />
 
     <asp:Panel ID="formPanel" CssClass="p-3" runat="server" Visible="false">
         <h4>
@@ -83,6 +85,7 @@
                     SelectedRowStyle-BackColor="Black"
                     SelectedRowStyle-ForeColor="White"
                     Width="100%"
+                    CssClass="table caption-top"
                     DataKeyNames="ID" OnSelectedIndexChanged="materiaGridView_SelectedIndexChanged">
 
                     <selectedrowstyle backcolor="Black" forecolor="White" />
@@ -109,6 +112,7 @@
                     SelectedRowStyle-BackColor="Black"
                     SelectedRowStyle-ForeColor="White"
                     Width="100%"
+                    CssClass="table caption-top"
                     DataKeynames="ID" OnSelectedIndexChanged="comisionGridView_SelectedIndexChanged">
 
                     <selectedrowstyle backcolor="Black" forecolor="White" />
@@ -139,43 +143,52 @@
         </asp:Panel>
     </asp:Panel>
 
-    <asp:Panel ID="alumnosDelCursoPanel" runat="server" Visible="false" CssClass="py-3">
+    <asp:Panel ID="alumnosDelCursoPanel" runat="server" Visible="false" CssClass=" px-2 py-3">
         <h3>Listado de alumnos</h3>
         <asp:GridView ID="AlumnosDelCursoGridView" runat="server" AutoGenerateColumns="False"
             SelectedRowStyle-BackColor="Black"
             SelectedRowStyle-ForeColor="White"
+            CssClass="table caption-top"
             Width="100%"
             DataKeyNames="ID" OnSelectedIndexChanged="AlumnosDelCursoGridView_SelectedIndexChanged">
 
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
 
             <Columns>
-                <asp:BoundField HeaderText="ID" DataField="ID"  />
+                <asp:BoundField HeaderText="ID" DataField="ID" />
                 <asp:BoundField HeaderText="Legajo" DataField="legajo" />
                 <asp:BoundField HeaderText="Alumno" DataField="NombreApellido" />
                 <asp:BoundField HeaderText="Materia" DataField="DescMateria" Visible="True" />
                 <asp:BoundField HeaderText="Condición" DataField="Condicion" />
                 <asp:BoundField HeaderText="Nota" DataField="Nota" />
-               <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
+                <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
             </Columns>
         </asp:GridView>
 
         <label>Condicion</label>
         <br />
-        <asp:TextBox ID="condicionTextBox" CssClass="form-input" runat="server" Enabled ="false"></asp:TextBox>
+        <%--<asp:TextBox ID="condicionTextBox" CssClass="form-input" runat="server" Enabled="false"></asp:TextBox>--%>
+        <asp:DropDownList ID="condicionDropDownList" runat="server"   OnSelectedIndexChanged="condicionDropDownList_SelectedIndexChanged" AutoPostBack="True">
+            <asp:ListItem></asp:ListItem> 
+            <asp:ListItem>Cursando</asp:ListItem>
+            <asp:ListItem>Regular</asp:ListItem>
+            <asp:ListItem>Aprobado</asp:ListItem>
+            <asp:ListItem>Libre</asp:ListItem>
+
+        </asp:DropDownList>
         <br />
         <label>Nota</label>
         <br />
-        <asp:TextBox ID="notaTextBox" CssClass="form-input" type="number" min="0" max="100" runat="server" Enabled ="false"></asp:TextBox>
+        <asp:TextBox ID="notaTextBox" CssClass="form-input" type="number" min="6" max="10"  runat="server" Enabled="false"></asp:TextBox>
         <br />
-        <asp:Button ID="asignarleNotaButton" class="btn btn-success" runat="server" Text="Asignarle nota" OnClick="asignarleNotaButton_Click" />
+        <asp:Button ID="asignarleNotaButton" class="btn btn-success my-3" runat="server" Text="Asignar condicion" OnClick="asignarleNotaButton_Click" />
     </asp:Panel>
     <asp:Panel CssClass="py-3" ID="gridActionsPanel" runat="server">
         <asp:Button ID="editarLinkButton" class="btn btn-dark" runat="server" Text="Editar" OnClick="editarLinkButton_Click" />
-        <asp:Button ID="nuevoLinkButton" class="py-3 btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
+        <asp:Button ID="nuevoLinkButton" class="my-3 btn btn-success" runat="server" Text="Nuevo" OnClick="nuevoLinkButton_Click" />
 
     </asp:Panel>
-        <asp:Button ID="listarAlumnosButton" class="btn btn-warning" runat="server" Text="Listar alumnos" Visible="false" OnClick="listarAlumnosButton_Click" />
+    
 
 
 </asp:Content>

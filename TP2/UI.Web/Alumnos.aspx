@@ -22,7 +22,11 @@
             SelectedRowStyle-BackColor="Black"
             SelectedRowStyle-ForeColor="White"
             Width="1000px"
+             CssClass="table caption-top"
+            AllowPaging="True" OnPageIndexChanging="AlumnosGridView_PageIndexChanging"
             DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
+
+            <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
 
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
 
@@ -69,8 +73,8 @@
 
             </div>
 
-            <div class="row">
-                <div class="col">
+            <div class="row mx-2 my-1">
+                <div class="col ">
                     <label>Nombre: </label>
                     <asp:TextBox CssClass="form-input" AutoCompleteType="FirstName" placeholder="Nombre" ID="nombreAlumnoTextBox" runat="server"></asp:TextBox>
                 </div>
@@ -80,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row my-1">
                 <div class="col">
                     <label>Direccion: </label>
                     <asp:TextBox CssClass="form-input" placeholder="Direccion" AutoCompleteType="HomeStreetAddress" ID="direccionAlumnoTextBox" runat="server"></asp:TextBox>
@@ -91,12 +95,12 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row my-1 mx-2">
                 <label>Fecha de Nacimiento: </label>
                 <asp:TextBox CssClass="form-input" Width="200px" type="date"  placeholder="yyyy-mm-dd" ID="fechaNacimientoTextBox" runat="server"></asp:TextBox>
             </div>
 
-            <div class="row">
+            <div class="row my-1">
                 <div class="col">
                     <label>Email: </label>
                     <asp:TextBox CssClass="form-input" placeholder="Email" AutoCompleteType="Email" ID="emailAlumnoTextBox" runat="server"></asp:TextBox>
@@ -111,7 +115,9 @@
 
             <div id="tablaPlan" runat="server" class="row m-2 py-2" visible="false">
                 <h3>Seleccionar plan</h3>
-                <asp:GridView ID="planGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">
+                <asp:GridView ID="planGridView" runat="server" 
+                     CssClass="table caption-top"
+                    AutoGenerateColumns="False" DataKeyNames="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">
                     <SelectedRowStyle BackColor="Black" ForeColor="White" />
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" />

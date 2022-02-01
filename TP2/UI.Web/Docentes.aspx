@@ -22,7 +22,8 @@
             SelectedRowStyle-BackColor="Black"
             SelectedRowStyle-ForeColor="White"
             Width="1000px"
-            DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
+            
+            DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="DocentesGridView_PageIndexChanging">
 
             <SelectedRowStyle BackColor="Black" ForeColor="White" />
 
@@ -58,14 +59,14 @@
         <hr />
         <form method="post" action="">
 
-            <div class="row">
+            <div class="row mx-2 my-1">
                 <label>Legajo: </label>
                 <br />
-                <asp:TextBox CssClass="form-input"  type="number" placeholder="Legajo" ID="legajoTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox CssClass="form-input" Width="200px"  type="number" placeholder="Legajo" ID="legajoTextBox" runat="server"></asp:TextBox>
 
             </div>
 
-            <div class="row">
+            <div class="row my-1">
                 <div class="col">
                     <label>Nombre: </label>
                     <asp:TextBox CssClass="form-input"  AutoCompleteType="FirstName" placeholder="Nombre" ID="nombreAlumnoTextBox" runat="server"></asp:TextBox>
@@ -76,28 +77,28 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row my-1">
                 <div class="col">
                     <label>Direccion: </label>
                     <asp:TextBox CssClass="form-input" placeholder="Direccion"  AutoCompleteType="HomeStreetAddress" ID="direccionAlumnoTextBox" runat="server"></asp:TextBox>
                 </div>
                 <div class="col">
                     <label>Telefono: </label>
-                    <asp:TextBox CssClass="form-input" placeholder="Telefono" type="number" ID="telefonoTextBox" AutoCompleteType="Cellular" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-input" placeholder="Telefono"  ID="telefonoTextBox" AutoCompleteType="Cellular" runat="server"></asp:TextBox>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row my-1 mx-2">
                 <label>Fecha de Nacimiento: </label>
-                <asp:TextBox CssClass="form-input" type="date" placeholder="yyyy-mm-dd" ID="fechaNacimientoTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox CssClass="form-input" width="200px" type="date" placeholder="yyyy-mm-dd" ID="fechaNacimientoTextBox" runat="server"></asp:TextBox>
             </div>
 
-            <div class="row">
+            <div class="row my-1">
                 <div class="col">
                     <label>Email: </label>
                     <asp:TextBox CssClass="form-input" AutoCompleteType="Email" placeholder="Email" ID="emailAlumnoTextBox" runat="server"></asp:TextBox>
                 </div>
-                <div class="col">
+                <div class="col my-1">
                     <label>Id Plan: </label>
                     <asp:TextBox ID="idPlanTextBox" runat="server" CssClass="form-input" Enabled="false"></asp:TextBox>
                     <asp:Button ID="seleccionarButton" runat="server" CssClass="btn btn-primary" Text="Seleccionar Plan" OnClick="seleccionarButton_Click" />
@@ -111,7 +112,7 @@
 
            
                 <asp:Label runat="server" ID="validacionCamposLabel" Text="Hay campos que faltan por completar" ForeColor="red" Visible="false"> </asp:Label>
-
+             <br />
             <div id="tablaPlan" runat="server" class="row m-2 py-2" visible="false">
                 <h3>Seleccionar plan</h3>
                 <asp:GridView ID="planGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">

@@ -213,12 +213,16 @@ namespace UI.Web
         private void ClearForm()
         {
             this.idAlumnoIngresoTextBox.Text = string.Empty;
+            this.legajoTextBox.Text = string.Empty;
             this.nombreAlumnoTextBox.Text = string.Empty;
             this.apellidoAlumnoTextBox.Text = string.Empty;
-            this.legajoTextBox.Text = string.Empty;
             this.direccionAlumnoTextBox.Text = string.Empty;
+            this.telefonoTextBox.Text = string.Empty;
             this.fechaNacimientoTextBox.Text = string.Empty;
+            this.emailAlumnoTextBox.Text = string.Empty;
+            this.idAlumnoIngresoTextBox.Text = string.Empty;
         }
+
         /// <summary>
         /// Al momento de crear un alumno (Persona), este debe crear un usuario también
         /// </summary>
@@ -332,41 +336,55 @@ namespace UI.Web
 
         protected void formAlumnoButton_Click(object sender, EventArgs e)
         {
-            Personas nuevoAlumno = new Personas();
+            TextBox[] textBoxes = { legajoTextBox, nombreAlumnoTextBox, apellidoAlumnoTextBox,
+                    direccionAlumnoTextBox, telefonoTextBox, fechaNacimientoTextBox, emailAlumnoTextBox, idPlanTextBox };
 
-            try
+            if (methods.validarYPintarCamposVacios(textBoxes))
             {
+                Personas nuevoAlumno = new Personas();
 
-                switch (this.FormMode)
+                try
                 {
-                    case FormModes.Baja:
-                        // this.DeleteEntity(this.SelectedID);
-                        this.LoadGrid();
-                        break;
-                    case FormModes.Modificacion:
-                        this.Entity = new Business.Entities.Personas();
-                        this.Entity.ID = this.SelectedID;
-                        this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
-                        this.LoadEntity(this.Entity);
-                        LogicAlumnos.Save(Entity);
-                        this.LoadGrid();
-                        break;
-                    default:
-                        break;
-                    case FormModes.Alta:
-                        this.Entity = new Business.Entities.Personas();
-                        this.LoadEntity(this.Entity);
-                        LogicAlumnos.Save(Entity);
-                        this.LoadGrid();
-                        break;
+
+                    switch (this.FormMode)
+                    {
+                        case FormModes.Baja:
+                            // this.DeleteEntity(this.SelectedID);
+                            this.LoadGrid();
+                            break;
+                        case FormModes.Modificacion:
+                            this.Entity = new Business.Entities.Personas();
+                            this.Entity.ID = this.SelectedID;
+                            this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
+                            this.LoadEntity(this.Entity);
+                            LogicAlumnos.Save(Entity);
+                            this.LoadGrid();
+                            break;
+                        default:
+                            break;
+                        case FormModes.Alta:
+                            this.Entity = new Business.Entities.Personas();
+                            this.LoadEntity(this.Entity);
+                            LogicAlumnos.Save(Entity);
+                            this.LoadGrid();
+                            break;
+                    }
+                    this.form_alumno.Visible = false;
                 }
-                this.form_alumno.Visible = false;
+                catch (Exception error)
+                {
+                    mostrarMensajeDeError(error.ToString());
+                }
             }
-            catch (Exception error)
+            else
             {
-                mostrarMensajeDeError(error.ToString());
+                mostrarMensajeDeError("Hay campos vacios que faltan completar");
             }
+
+
+
         }
+
 
         public enum FormModes
         {
@@ -403,6 +421,12 @@ namespace UI.Web
         {
             this.idPlanTextBox.Text = this.planGridView.SelectedValue.ToString();
             this.tablaPlan.Visible = false;
+        }
+
+        protected void AlumnosGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            AlumnosGridView.PageIndex = e.NewPageIndex;
+            LoadGrid();
         }
 
     }

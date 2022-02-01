@@ -15,6 +15,15 @@ namespace UI.Web
     {
 
         /// <summary>
+        /// buscadorPorID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel buscadorPorID;
+
+        /// <summary>
         /// ingresoTextBox control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridView;
+
+        /// <summary>
+        /// listarAlumnosButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button listarAlumnosButton;
 
         /// <summary>
         /// formPanel control.
@@ -231,13 +249,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.GridView AlumnosDelCursoGridView;
 
         /// <summary>
-        /// condicionTextBox control.
+        /// condicionDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox condicionTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList condicionDropDownList;
 
         /// <summary>
         /// notaTextBox control.
@@ -283,14 +301,5 @@ namespace UI.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button nuevoLinkButton;
-
-        /// <summary>
-        /// listarAlumnosButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button listarAlumnosButton;
     }
 }

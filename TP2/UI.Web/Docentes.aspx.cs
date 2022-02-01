@@ -73,7 +73,7 @@ namespace UI.Web
             this.SelectedID = (int)this.DocentesGridView.SelectedValue;
             showAdminButtons();
             validacionCamposLabel.Visible = false;
-           
+
 
         }
 
@@ -92,20 +92,14 @@ namespace UI.Web
             }
 
         }
-
-        private void LoadGridInscripciones(int id)
-        {
-
-
-
-        }
+ 
 
         private void HiddeElements()
         {
             // BOTONES
-         //   cursosAlumnoButton.Visible = false;
+            //   cursosAlumnoButton.Visible = false;
             // bajaAlumnoButton.Visible = false;
-           // inscripcionesAlumnoButton.Visible = false;
+            // inscripcionesAlumnoButton.Visible = false;
 
             modificarAlumnoButton.Visible = false;
 
@@ -197,12 +191,13 @@ namespace UI.Web
             this.form_docente.Visible = true;
             this.FormMode = FormModes.Alta;
             tituloForm.Text = "Agregar nuevo docente";
+            validacionCamposLabel.Visible = false;
 
         }
 
         protected void modificarAlumnoButton_Click1(object sender, EventArgs e)
         {
-            
+            validacionCamposLabel.Visible = false;
             try
             {
                 if (IsEntitySelected)
@@ -227,31 +222,24 @@ namespace UI.Web
 
         }
 
-
-        protected void asignarNotaAlumnoButton_Click(object sender, EventArgs e)
-        {
-            // nombre.Text = Entity.NombreApellido;
-
-
-        }
-
+ 
         protected void buscarButton_Click(object sender, EventArgs e)
         {
             if (idDocenteIngresoTextBox.Text.Length > 0)
             {
                 try
                 {
-                LoadForm(int.Parse(idDocenteIngresoTextBox.Text));
-                tituloForm.Text = "Modificar docente";
-                this.FormMode = FormModes.Modificacion;
+                    LoadForm(int.Parse(idDocenteIngresoTextBox.Text));
+                    tituloForm.Text = "Modificar docente";
+                    this.FormMode = FormModes.Modificacion;
 
                 }
-                catch(Exception er)
+                catch (Exception er)
                 {
                     mostrarMensajeDeError("No existe o fue mal ingresado");
 
                 }
-           
+
             }
             else
             {
@@ -260,36 +248,14 @@ namespace UI.Web
 
         }
 
-        protected void inscripcionesAlumnoButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (idDocenteIngresoTextBox.Text.Length > 0 || IsEntitySelected)
-                {
-                    LoadGridInscripciones(int.Parse(this.idDocenteIngresoTextBox.Text));
-                }
-                else
-                {
-                    mostrarMensajeDeError("Selecciona a un docente");
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                mostrarMensajeDeError(ex.ToString());
-            }
-        }
+       
         private void mostrarMensajeDeError(string mensaje)
         {
             div_mensaje_error.Visible = true;
             mensaje_error.Text = mensaje;
         }
 
-        protected void asignarInscripcionButton_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         protected void formAlumnoButton_Click(object sender, EventArgs e)
         {
@@ -300,50 +266,51 @@ namespace UI.Web
                     telefonoTextBox,
                     fechaNacimientoTextBox, emailAlumnoTextBox, idPlanTextBox };
 
-           
+
             if (methods.validarYPintarCamposVacios(textBoxes))
             {
 
-            Personas nuevoAlumno = new Personas();
+                Personas nuevoAlumno = new Personas();
 
-            try
-            {
-
-                switch (this.FormMode)
+                try
                 {
-                    case FormModes.Baja:
-                        // this.DeleteEntity(this.SelectedID);
-                        this.LoadGrid();
-                        break;
-                    case FormModes.Modificacion:
-                        this.Entity = new Business.Entities.Personas();
-                        this.Entity.ID = this.SelectedID;
-                        this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
-                        this.LoadEntity(this.Entity);
-                        LogicDocentes.Save(Entity);
-                        this.LoadGrid();
-                        break;
-                    default:
-                        break;
-                    case FormModes.Alta:
-                        this.Entity = new Business.Entities.Personas();
-                        this.LoadEntity(this.Entity);
-                        LogicDocentes.Save(Entity);
-                        this.LoadGrid();
-                        break;
+
+                    switch (this.FormMode)
+                    {
+                        case FormModes.Baja:
+                            // this.DeleteEntity(this.SelectedID);
+                            this.LoadGrid();
+                            break;
+                        case FormModes.Modificacion:
+                            this.Entity = new Business.Entities.Personas();
+                            this.Entity.ID = this.SelectedID;
+                            this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
+                            this.LoadEntity(this.Entity);
+                            LogicDocentes.Save(Entity);
+                            this.LoadGrid();
+                            break;
+                        default:
+                            break;
+                        case FormModes.Alta:
+                            this.Entity = new Business.Entities.Personas();
+                            this.LoadEntity(this.Entity);
+                            LogicDocentes.Save(Entity);
+                            this.LoadGrid();
+                            break;
+                    }
+                    this.form_docente.Visible = false;
                 }
-                this.form_docente.Visible = false;
-            }
-            catch (Exception error)
-            {
-                mostrarMensajeDeError(error.ToString());
-            }
+                catch (Exception error)
+                {
+                    mostrarMensajeDeError(error.ToString());
+                }
             }
             else
             {
                 validacionCamposLabel.Visible = true;
+                this.form_docente.Visible = true;
             }
-                
+
 
         }
 
@@ -370,6 +337,7 @@ namespace UI.Web
         {
             LoadPlanGrid();
             tablaPlan.Visible = true;
+            this.form_docente.Visible = true;
 
         }
 
@@ -383,6 +351,12 @@ namespace UI.Web
         {
             this.idPlanTextBox.Text = this.planGridView.SelectedValue.ToString();
             this.tablaPlan.Visible = false;
+            this.form_docente.Visible = true;
+        }
+
+        protected void DocentesGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            LoadGrid();
         }
     }
 

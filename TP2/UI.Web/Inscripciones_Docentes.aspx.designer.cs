@@ -15,6 +15,15 @@ namespace UI.Web
     {
 
         /// <summary>
+        /// buscadorPorID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel buscadorPorID;
+
+        /// <summary>
         /// ingresoTextBox control.
         /// </summary>
         /// <remarks>
@@ -123,22 +132,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Label cargoLabel;
 
         /// <summary>
-        /// cargoTextBox control.
+        /// cargoDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cargoTextBox;
-
-        /// <summary>
-        /// idCargosLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label idCargosLabel;
+        protected global::System.Web.UI.WebControls.DropDownList cargoDropDownList;
 
         /// <summary>
         /// tablaCurso control.

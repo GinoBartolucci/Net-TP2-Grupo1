@@ -51,7 +51,7 @@ namespace UI.Web
         {
           
             nombreAlumno.Text = usuario.Apellido + " " + usuario.Nombre;
-            tipoPersonaLabel.Text = "Profesor";
+            tipoPersonaLabel.Text = "Profesor de " + usuario.DescEspecialidad;
             planAlumno.Text = " ";
         }
 

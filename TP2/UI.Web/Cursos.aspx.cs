@@ -39,7 +39,7 @@ namespace UI.Web
             switch (usr.DescTipoPersona)
             {
                 case "Administrativo": break;
-                case "Docente": vistaParaDocente(); break;
+                case "Docente": vistaParaDocente();  break;
                 case "Alumno": vistaParaAlumno(); break;
             }
         }
@@ -49,17 +49,17 @@ namespace UI.Web
 
             formActionsPanel.Visible = false;
             gridActionsPanel.Visible = false;
-
-
-
+             
             selecMateriaButton.Visible = false;
             selecComisionButton.Visible = false;
+            buscadorPorID.Visible = false;
         }
 
         private void vistaParaDocente()
         {
             vistaParaAlumno();
-           // listarAlumnosButton.Visible = true;
+           
+            
         }
 
 
@@ -111,7 +111,15 @@ namespace UI.Web
 
         private void SaveEntity(Business.Entities.Curso curso)
         {
-            this.Logic.Save(curso);
+            try
+            {
+
+                this.Logic.Save(curso);
+            }
+            catch(Exception er)
+            {
+                mensajeDeValidacionDeCampo.Visible = true;
+            }
         }
 
 
@@ -155,19 +163,20 @@ namespace UI.Web
         }
         private void LoadEntity(Business.Entities.Curso curso)
         {
-            curso.id_comision = int.Parse(this.idComisionTextBox.Text);
-            curso.id_materia = int.Parse(this.idMateriaTextBox.Text);
             curso.cupo = int.Parse(this.cupoTextBox.Text);
             curso.anio_calendario = int.Parse(this.anioCalendarioTextBox.Text);
+            curso.id_materia = int.Parse(this.idMateriaTextBox.Text);
+            curso.id_comision = int.Parse(this.idComisionTextBox.Text);
+            curso.id_curso = curso.ID; 
         }
 
         private void ClearForm()
         {
-
-            this.idComisionTextBox.Text = string.Empty;
-            this.idMateriaTextBox.Text = string.Empty;
-            this.anioCalendarioTextBox.Text = string.Empty;
+            
             this.cupoTextBox.Text = string.Empty;
+            this.anioCalendarioTextBox.Text = string.Empty;
+            this.idMateriaTextBox.Text = string.Empty;
+            this.idComisionTextBox.Text = string.Empty;
 
         }
 
@@ -189,8 +198,6 @@ namespace UI.Web
             TextBox[] arreglo = { cupoTextBox, idMateriaTextBox, idComisionTextBox, anioCalendarioTextBox };
 
 
-
-
             if (methods.validarYPintarCamposVacios(arreglo))
             {
                 switch (this.FormMode)
@@ -203,6 +210,7 @@ namespace UI.Web
                         this.Entity = new Business.Entities.Curso();
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = Business.Entities.BusinessEntity.States.Modified;
+                        //this.Entity = Logic.GetOne(Entity.ID);
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
@@ -221,6 +229,7 @@ namespace UI.Web
             else
             {
                 mensajeDeValidacionDeCampo.Visible = true;
+                this.formPanel.Visible = true;
             }
 
 
@@ -247,6 +256,7 @@ namespace UI.Web
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
             listarAlumnosButton.Visible = true;
+            alumnosDelCursoPanel.Visible = false;
         }
 
         protected void buscarButton_Click(object sender, EventArgs e)
@@ -259,7 +269,7 @@ namespace UI.Web
                     ingresoTextBox.BorderColor = System.Drawing.Color.White;
                     ClearForm();
                     LoadForm(idIngreso);
-                    tituloForm.Text = "Modificar alumno";
+                    tituloForm.Text = "Modificar curso";
                     this.FormMode = FormModes.Modificacion;
                     this.formPanel.Visible = true;
                 }
@@ -330,7 +340,7 @@ namespace UI.Web
         protected void AlumnosDelCursoGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             mostrarCondicionYNota(int.Parse(AlumnosDelCursoGridView.SelectedValue.ToString()));
-
+            
         }
 
         protected void mostrarCondicionYNota(int idAlumno)
@@ -338,20 +348,26 @@ namespace UI.Web
             Business.Entities.Inscripciones inscripcionAlumno = new Alumnos_inscripcionesLogic().GetOne(idAlumno);
 
             notaTextBox.Text = inscripcionAlumno.Nota.ToString();
-            condicionTextBox.Text = inscripcionAlumno.Condicion;
-
+           // condicionTextBox.Text = inscripcionAlumno.Condicion;
+            condicionDropDownList.SelectedValue = inscripcionAlumno.Condicion;
+            notaTextBox.Enabled = false;
             if (inscripcionAlumno.Condicion == "Cursando" || inscripcionAlumno.Nota < 0)
             {
-                notaTextBox.Enabled = true;
-                condicionTextBox.Enabled = true;
+               
+                condicionDropDownList.Enabled = true;
+            }
+            else
+            {
+                
+                 condicionDropDownList.Enabled = false;
             }
 
         }
 
         protected void asignarleNotaButton_Click(object sender, EventArgs e)
         {
-            TextBox[] arregloTexBox = { notaTextBox, condicionTextBox };
-            if (methods.validarYPintarCamposVacios(arregloTexBox)
+            TextBox[] arregloTexBox = { notaTextBox };
+            if (methods.validarYPintarCamposVacios(arregloTexBox) && condicionDropDownList.SelectedValue != string.Empty
                     && int.Parse(notaTextBox.Text) >= -1)
             {
                 int idAlumnoInscripcion = int.Parse(AlumnosDelCursoGridView.SelectedValue.ToString());
@@ -362,7 +378,7 @@ namespace UI.Web
 
 
                 inscripcionAlumno.Nota = int.Parse(notaTextBox.Text);
-                inscripcionAlumno.Condicion = condicionTextBox.Text;
+                inscripcionAlumno.Condicion = condicionDropDownList.SelectedValue;
 
                 inscripcionAlumno.State = Business.Entities.BusinessEntity.States.Modified;
                 aiDB.Save(inscripcionAlumno);
@@ -370,5 +386,28 @@ namespace UI.Web
             }
 
         }
+
+        protected void condicionDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            notaTextBox.Enabled = 
+                    (condicionDropDownList.SelectedValue == "Aprobado") ? 
+                    true 
+                    : false;
+ 
+            notaTextBox.Text  =
+                    (condicionDropDownList.SelectedValue == "Aprobado") ?
+                     notaTextBox.Text
+                    : "-1";
+
+        }
+
+      
+        protected void gridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gridView.PageIndex = e.NewPageIndex;
+            LoadGrid();
+        }
+
+
     }
 }
