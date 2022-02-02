@@ -23,6 +23,7 @@
                 SelectedRowStyle-ForeColor="White"
                 Width="100%"
                 cssClass="table caption-top"
+                AllowPaging="True" OnPageIndexChanging="gridView_PageIndexChanging"
                 DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
 
                 <SelectedRowStyle BackColor="Black" ForeColor="White" />

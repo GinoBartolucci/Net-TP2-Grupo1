@@ -231,6 +231,7 @@ namespace UI.Web
 
                         break;
                 }
+                EnablePersonaForm(true);
             }
 
 
@@ -275,7 +276,7 @@ namespace UI.Web
             ClearForm();
             this.formPanel.Visible = false;
             planPanel.Visible = false;
-
+            EnablePersonaForm(true);
             validacionCamposVacios.Visible = false;
 
             validacionEmailCartel.Visible = false;
@@ -331,6 +332,7 @@ namespace UI.Web
             this.fechaNacimientoTextBox.Enabled = bandera;
             this.direccionTextBox.Enabled = bandera;
             this.seleccionarPlanButton.Enabled = bandera;
+            this.tipoPersonaDropDownList.Enabled = bandera; 
      
         }
 

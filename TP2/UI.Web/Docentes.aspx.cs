@@ -259,15 +259,10 @@ namespace UI.Web
 
         protected void formAlumnoButton_Click(object sender, EventArgs e)
         {
-            TextBox[] textBoxes = { legajoTextBox,
-                    nombreAlumnoTextBox,
-                    apellidoAlumnoTextBox,
-                    direccionAlumnoTextBox,
-                    telefonoTextBox,
-                    fechaNacimientoTextBox, emailAlumnoTextBox, idPlanTextBox };
+           
 
 
-            if (methods.validarYPintarCamposVacios(textBoxes))
+            if (validarCampos())
             {
 
                 Personas nuevoAlumno = new Personas();
@@ -314,6 +309,18 @@ namespace UI.Web
 
         }
 
+        private bool validarCampos()
+        {
+            TextBox[] textBoxes = { legajoTextBox,
+                    nombreAlumnoTextBox,
+                    apellidoAlumnoTextBox,
+                    direccionAlumnoTextBox,
+                    telefonoTextBox,
+                    fechaNacimientoTextBox, emailAlumnoTextBox, idPlanTextBox };
+
+            return methods.validarYPintarCamposVacios(textBoxes) && methods.validarEmail(emailAlumnoTextBox);
+        }
+
         public enum FormModes
         {
             Alta, Baja, Modificacion
@@ -356,6 +363,7 @@ namespace UI.Web
 
         protected void DocentesGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            DocentesGridView.PageIndex = e.NewPageIndex;
             LoadGrid();
         }
     }

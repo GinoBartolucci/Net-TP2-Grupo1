@@ -36,7 +36,7 @@
                 <asp:BoundField HeaderText="Legajo" DataField="Legajo" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                <asp:BoundField HeaderText="Direccion" DataField="Email" />
+                <asp:BoundField HeaderText="Email" DataField="Email" />
                 <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
                 <asp:BoundField HeaderText="Fecha de Nacimiento" DataField="Fecha_nac" />
                 <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
