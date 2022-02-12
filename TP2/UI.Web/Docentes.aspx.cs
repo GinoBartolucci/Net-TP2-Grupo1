@@ -102,7 +102,7 @@ namespace UI.Web
             // inscripcionesAlumnoButton.Visible = false;
 
             modificarAlumnoButton.Visible = false;
-
+          
             // SECCIONES
 
             form_docente.Visible = false;
@@ -123,7 +123,7 @@ namespace UI.Web
         {
             this.Entity = this.LogicDocentes.GetOne(id);
 
-            this.idDocenteIngresoTextBox.Text = this.Entity.ID.ToString();
+            this.buscadorUC.setId( this.Entity.ID.ToString());
             this.nombreAlumnoTextBox.Text = this.Entity.Nombre;
             this.apellidoAlumnoTextBox.Text = this.Entity.Apellido;
             this.legajoTextBox.Text = this.Entity.Legajo.ToString();
@@ -169,7 +169,7 @@ namespace UI.Web
 
         private void ClearForm()
         {
-            this.idDocenteIngresoTextBox.Text = string.Empty;
+            this.buscadorUC.setId(string.Empty);
             this.legajoTextBox.Text = string.Empty;
             this.nombreAlumnoTextBox.Text = string.Empty;
             this.apellidoAlumnoTextBox.Text = string.Empty;
@@ -225,11 +225,11 @@ namespace UI.Web
 
         protected void buscarButton_Click(object sender, EventArgs e)
         {
-            if (idDocenteIngresoTextBox.Text.Length > 0)
+            if (buscadorUC.getId().Length > 0)
             {
                 try
                 {
-                    LoadForm(int.Parse(idDocenteIngresoTextBox.Text));
+                    LoadForm(int.Parse(buscadorUC.getId()));
                     tituloForm.Text = "Modificar docente";
                     this.FormMode = FormModes.Modificacion;
 
@@ -334,6 +334,7 @@ namespace UI.Web
 
         protected void cancelarFormAlumnoButton_Click(object sender, EventArgs e)
         {
+           
 
             this.form_docente.Visible = false;
             showAdminButtons();
@@ -342,30 +343,37 @@ namespace UI.Web
 
         protected void seleccionarButton_Click(object sender, EventArgs e)
         {
-            LoadPlanGrid();
-            tablaPlan.Visible = true;
+            //    LoadPlanGrid();
+            FormTablaPlanUC.Visible = true;
             this.form_docente.Visible = true;
 
         }
 
-        private void LoadPlanGrid()
+        //private void LoadPlanGrid()
+        //{
+        //    this.planGridView.DataSource = new PlanesLogic().GetAll();
+        //    this.planGridView.DataBind();
+        //}
+        protected void selectPlan_Click(object sender, EventArgs e)
         {
-            this.planGridView.DataSource = new PlanesLogic().GetAll();
-            this.planGridView.DataBind();
-        }
-
-        protected void planGridView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.idPlanTextBox.Text = this.planGridView.SelectedValue.ToString();
-            this.tablaPlan.Visible = false;
+            this.idPlanTextBox.Text = FormTablaPlanUC.getIdSelected();
+            FormTablaPlanUC.Visible = false;
             this.form_docente.Visible = true;
         }
+        //protected void planGridView_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    this.idPlanTextBox.Text = this.planGridView.SelectedValue.ToString();
+        //    this.tablaPlan.Visible = false;
+        //    this.form_docente.Visible = true;
+        //}
 
         protected void DocentesGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             DocentesGridView.PageIndex = e.NewPageIndex;
             LoadGrid();
         }
+
+ 
     }
 
 

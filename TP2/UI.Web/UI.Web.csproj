@@ -90,6 +90,7 @@
     <Content Include="Cursos.aspx" />
     <Content Include="Docentes.aspx" />
     <Content Include="Especialidades.aspx" />
+    <Content Include="FormTablaPlanUC.ascx" />
     <Content Include="Home.aspx" />
     <Content Include="Inscripciones.aspx" />
     <Content Include="Inscripciones_Docentes.aspx" />
@@ -101,8 +102,10 @@
     <Content Include="Reporte_Alumno.aspx" />
     <Content Include="Styles\SiteMaster.css" />
     <Content Include="Styles\tablas.css" />
+    <Content Include="tablaPlanUC.ascx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
+    <Content Include="buscadorUC.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alumnos.aspx.cs">
@@ -111,6 +114,13 @@
     </Compile>
     <Compile Include="Alumnos.aspx.designer.cs">
       <DependentUpon>Alumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormTablaPlanUC.ascx.cs">
+      <DependentUpon>FormTablaPlanUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormTablaPlanUC.ascx.designer.cs">
+      <DependentUpon>FormTablaPlanUC.ascx</DependentUpon>
     </Compile>
     <Compile Include="Inscripciones_Docentes.aspx.cs">
       <DependentUpon>Inscripciones_Docentes.aspx</DependentUpon>
@@ -214,12 +224,26 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="tablaPlanUC.ascx.cs">
+      <DependentUpon>tablaPlanUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tablaPlanUC.ascx.designer.cs">
+      <DependentUpon>tablaPlanUC.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="buscadorUC.ascx.cs">
+      <DependentUpon>buscadorUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="buscadorUC.ascx.designer.cs">
+      <DependentUpon>buscadorUC.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,21 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Docentes.aspx.cs" Inherits="UI.Web.Docentes" %>
 
+<%@ Register Src="~/buscadorUC.ascx" TagPrefix="uc1" TagName="buscadorUC" %>
+<%@ Register Src="~/tablaPlanUC.ascx" TagPrefix="uc1" TagName="tablaPlanUC" %>
+<%@ Register Src="~/FormTablaPlanUC.ascx" TagPrefix="uc1" TagName="FormTablaPlanUC" %>
+
+
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
 
     <h2>Docentes</h2>
     <hr />
-
-    <div class="form-label-input">
+      <div class="form-label-input">
+<%--  
         <label class="form" style="width: 100%">
             ID:
                <asp:TextBox CssClass="form-input" type="number" min="0" placeholder="ingresar ID del docente" ID="idDocenteIngresoTextBox" runat="server"></asp:TextBox>
 
         </label>
+    --%>
+    <uc1:buscadorUC runat="server" id="buscadorUC" />
         <asp:Button class="btn btn-primary" ID="buscarButton" runat="server" Text="Buscar" OnClick="buscarButton_Click" />
     </div>
-
     <br />
     <asp:Panel ID="docentesPanel" runat="server" CssClass="tabla">
         <asp:GridView ID="DocentesGridView" runat="server" AutoGenerateColumns="False"
@@ -114,9 +122,12 @@
            
                 <asp:Label runat="server" ID="validacionCamposLabel" Text="Hay campos que faltan por completar" ForeColor="red" Visible="false"> </asp:Label>
              <br />
-            <div id="tablaPlan" runat="server" class="row m-2 py-2" visible="false">
+            <uc1:FormTablaPlanUC runat="server" id="FormTablaPlanUC" />
+            <asp:Button ID="selectPlan" runat="server" CssClass="btn btn-primary" Text="Seleccionar" OnClick="selectPlan_Click"   /><br />
+     <%--       <div id="tablaPlan" runat="server" class="row m-2 py-2" visible="false">
                 <h3>Seleccionar plan</h3>
-                <asp:GridView ID="planGridView" runat="server" 
+               
+               <asp:GridView ID="planGridView" runat="server" 
                     CssClass="table caption-top"
                     AutoGenerateColumns="False" DataKeyNames="ID" OnSelectedIndexChanged="planGridView_SelectedIndexChanged" SelectedRowStyle-BackColor="Black" SelectedRowStyle-ForeColor="White" Width="100%">
                     <SelectedRowStyle BackColor="Black" ForeColor="White" />
@@ -126,8 +137,8 @@
                         <asp:BoundField DataField="DescEspecialidad" HeaderText="Especialidad" />
                         <asp:CommandField HeaderText="Seleccionar" ShowSelectButton="True" />
                     </Columns>
-                </asp:GridView>
-            </div>
+                </asp:GridView> 
+            </div>--%>
 
             <asp:Button ID="formAlumnoButton" class="btn btn-success" runat="server" Text="Guardar" OnClick="formAlumnoButton_Click" />
             <asp:Button ID="cancelarFormAlumnoButton" class="btn btn-danger" runat="server" Text="Cancelar" OnClick="cancelarFormAlumnoButton_Click" />

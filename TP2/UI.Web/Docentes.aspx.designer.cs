@@ -15,13 +15,13 @@ namespace UI.Web
     {
 
         /// <summary>
-        /// idDocenteIngresoTextBox control.
+        /// buscadorUC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idDocenteIngresoTextBox;
+        protected global::UI.Web.WebUserControl1 buscadorUC;
 
         /// <summary>
         /// buscarButton control.
@@ -177,22 +177,22 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.Label validacionCamposLabel;
 
         /// <summary>
-        /// tablaPlan control.
+        /// FormTablaPlanUC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tablaPlan;
+        protected global::UI.Web.FormTablaPlanUC FormTablaPlanUC;
 
         /// <summary>
-        /// planGridView control.
+        /// selectPlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView planGridView;
+        protected global::System.Web.UI.WebControls.Button selectPlan;
 
         /// <summary>
         /// formAlumnoButton control.
